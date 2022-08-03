@@ -1,0 +1,10 @@
+.normal-font {
+    font-family: 'Times New Roman', Times, serif;
+    color: blueviolet;
+}
+
+.google-font {
+    font-family: "Square Peg";
+    color:firebrick;
+    font-size: 2em;
+}
