@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .box1 {
+            background-color: purple;
+            height: 200px;
+            width: 200px;
+        }
+        .box2 {
+            background-color: green;
+            border: 1px dashed blue;
+            height: 200px;
+            width: 200px;
+        }
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+    <title>Vue3 Basics</title>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <h1 style="text-align: center;">Hello World</h1>
+        
+        <p>Hello <span style="border: 1px dashed green; margin: 5px; padding: 5px">{{ greeting }}</span></p>
+        <input @keyup.enter="greetFunc('debuging')" v-model="greeting">
+        <hr>
+        <!-- <button v-on:click="isVisible = !isVisible">Toggle Box</button> -->
+        <button @click="isVisible1 = !isVisible1">Toggle Box 1</button>
+        <div v-if="isVisible1" class="box1"></div>
+        <hr>
+        <button @click="toggleBox2">Toggle Box 2</button>
+        <div v-if="isVisible2" class="box2"></div>
+    </div>    
+
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+    <script src="../../../libs/vue.global.js"></script>
+    <script>
+        let app = Vue.createApp({
+            data: function() {
+                return {
+                    greeting: "your name",
+                    isVisible1: false,
+                    isVisible2: false,
+                }
+            },
+            methods: {
+                toggleBox2 () {
+                    this.isVisible2 = !this.isVisible2;
+                },
+
+                greetFunc (msg) {
+                    console.log(this.greeting + " " + msg);
+                }
+            },
+        });
+        app.mount("#app");
+    </script>
+</body>
+</html>
