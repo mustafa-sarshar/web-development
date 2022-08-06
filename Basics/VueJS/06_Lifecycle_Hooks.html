@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .box {
+            background-color: purple;
+            height: 200px;
+            width: 200px;
+        }
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+    <title>Vue3 Basics</title>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <!-- <button v-on:click="isVisible = !isVisible">Toggle Box</button> -->
+        <button @click="toggleBox">Toggle Box</button>
+        <test-box v-if="isVisible" class="box" />
+    </div>    
+
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+    <script src="../../../libs/vue.global.js"></script>
+    <script>
+        let app = Vue.createApp({
+            data: function() {
+                return {
+                    isVisible: false,
+                }
+            },
+            methods: {
+                toggleBox () {
+                    this.isVisible = !this.isVisible;
+                },
+            },
+            updated() {
+                console.log("updated");
+            },
+        });
+
+        app.component(
+            "test-box",
+            {
+                template: `
+                    <div class="box"></div>
+                `,
+                created() {
+                    console.log("created");
+                },
+                mounted() {
+                    console.log("mounted");
+                },
+                unmounted() {
+                    console.log("unmounted");
+                },
+                
+            },
+        );
+        app.mount("#app");
+    </script>
+</body>
+</html>
