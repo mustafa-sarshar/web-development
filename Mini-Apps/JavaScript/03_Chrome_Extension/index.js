@@ -68,7 +68,7 @@ function render_item_list(lst_items) {
     txt_input.value = "";
 };
 
-function delete_all_items () {
+function delete_all_items() {
     lst_saved_items = [];
     update_localStorage(reset=true);
     render_item_list(lst_saved_items);
