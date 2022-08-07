@@ -34,7 +34,7 @@ function save_tab_clicked() {
             let idx = search_item_in_list(lst_saved_items, activeTabURL);
             if (idx === null) {      
                 lst_saved_items.push(activeTabURL);
-                update_localStorage(false);
+                update_localStorage();
                 render_item_list(lst_saved_items);
             };
         },
@@ -47,7 +47,7 @@ function save_input_clicked() {
         let idx = search_item_in_list(lst_saved_items, input_value);
         if (idx === null) {
             lst_saved_items.push(txt_input.value);            
-            update_localStorage(false);
+            update_localStorage();
             render_item_list(lst_saved_items);
         };
     };
@@ -61,7 +61,7 @@ function render_item_list(lst_items) {
                 <a target="_blank" href="${lst_items[i]}" >
                     ${lst_items[i]}
                 </a>
-                <button class="BTN-DEL" onclick="del_item(${i})">DEL</button>
+                <button class="BTN-DEL" onclick="delete_item(${i})">DEL</button>
             </li>
         `;     
     };    
@@ -70,13 +70,13 @@ function render_item_list(lst_items) {
 
 function delete_all_items () {
     lst_saved_items = [];
-    update_localStorage(true);
+    update_localStorage(reset=true);
     render_item_list(lst_saved_items);
 };
 
-function del_item(idx_item) {
+function delete_item(idx_item) {
     lst_saved_items.splice(idx_item, 1);
-    update_localStorage(true);
+    update_localStorage(reset=true);
     render_item_list(lst_saved_items);
 };
 
@@ -90,7 +90,9 @@ function search_item_in_list(lst_target, item_to_search) {
 };
 
 function update_localStorage(reset=false) {
-    if (reset) { window.localStorage.clear(); };
+    if (reset) {
+        window.localStorage.clear();
+    };
     window.localStorage.setItem(
         "saved_items",
         JSON.stringify(lst_saved_items),
