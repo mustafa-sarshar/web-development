@@ -69,8 +69,8 @@ function render_item_list(lst_items) {
 };
 
 function delete_all_items () {
-    localStorage.clear();
     lst_saved_items = [];
+    update_localStorage(true);
     render_item_list(lst_saved_items);
 };
 
