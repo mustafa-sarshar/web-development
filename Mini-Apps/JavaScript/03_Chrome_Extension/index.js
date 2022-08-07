@@ -19,25 +19,26 @@ function init_saved_items() {
 };
 
 function save_tab_clicked() {
-    let activeTabURL = window.location.toString();
-
-    lst_saved_items.push(activeTabURL);
-    update_localStorage(false);
-    render_item_list(lst_saved_items);
-
     // Different methods
-    /* chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+    /* let activeTabURL = window.location.toString();
+    OR
+    chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
         let activeTabURL = tabs[0].url;
         ...
     });
-    OR ->
+    OR -> */
     chrome.tabs.query(
         {active: true, currentWindow: true},
         function (tabs) {
-            let activeTabURL = tabs[0].url;
-            ...
+            let activeTabURL = tabs[0].url;      
+            let idx = search_item_in_list(lst_saved_items, activeTabURL);
+            if (idx === null) {      
+                lst_saved_items.push(activeTabURL);
+                update_localStorage(false);
+                render_item_list(lst_saved_items);
+            };
         },
-    ); */
+    );
 };
 
 function save_input_clicked() {
@@ -46,7 +47,7 @@ function save_input_clicked() {
         let idx = search_item_in_list(lst_saved_items, input_value);
         if (idx === null) {
             lst_saved_items.push(txt_input.value);            
-            update_localStorage(true);
+            update_localStorage(false);
             render_item_list(lst_saved_items);
         };
     };
@@ -70,14 +71,11 @@ function render_item_list(lst_items) {
 function delete_all_items () {
     localStorage.clear();
     lst_saved_items = [];
-    render_item_list();
+    render_item_list(lst_saved_items);
 };
 
 function del_item(idx_item) {
-    console.log(idx_item);
-    console.log(lst_saved_items);
     lst_saved_items.splice(idx_item, 1);
-    console.log(lst_saved_items);
     update_localStorage(true);
     render_item_list(lst_saved_items);
 };
