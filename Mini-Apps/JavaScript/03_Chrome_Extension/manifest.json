@@ -1,0 +1,14 @@
+{
+    "short_name": "Item Saver",
+    "name": "Item Saver",
+    "manifest_version": 3,
+    "version": "1.0",
+    
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": "notes.png"
+    },
+    "permissions": [
+        "tabs"
+    ]
+}
