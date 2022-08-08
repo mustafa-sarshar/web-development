@@ -15,7 +15,6 @@ let txt_player = document.getElementById("txt-player");
 
 txt_player.textContent = player.name + ": $" + player.chips;
 
-
 function getRandomCard() {
     let randomNum = Math.floor(Math.random() * 13) + 1;
     if (randomNum > 10) {
@@ -38,6 +37,7 @@ function getAllCards() {
 function startGame() {
     if (isAlive === false) {
         isAlive = true;
+        resetContainers();
         cards.push(getRandomCard());
         cards.push(getRandomCard());
         sum = cards[0] + cards [1];
@@ -48,7 +48,7 @@ function startGame() {
 function renderGame() {    
     txt_sum.textContent = "Sum: " + sum;
     txt_cards.textContent = "Cards: " + getAllCards();
-    if (sum<21) {
+    if (sum < 21) {
         message = "Do you want to draw a new card? 🙂";
     } else if (sum === 21) {
         message = "Yes sir! You have got Blackjack! 🥳";
@@ -68,4 +68,13 @@ function newCard() {
         sum += card;
         renderGame();
     };
+};
+
+function resetContainers() {
+    txt_sum.textContent = "Sum: ";
+    txt_cards.textContent = "Cards: ";
+    cards = [];
+    sum = 0;
+    hasBlackJack = false;
+    message = "";
 };
