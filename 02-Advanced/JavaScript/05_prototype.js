@@ -96,12 +96,6 @@ console.log(bear.walks())
 console.log(bear.__proto__);
 
 
-
-
-
-
-
-
 // Custome Function /////////////////////////////////////////////////////////
 function loopThroughObject(obj) {
     // for (const key in obj) {
