@@ -75,3 +75,18 @@ body {
     text-align: right;
     font-style: italic;
 }
+
+.flex-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+  
+.footer {
+    margin-top: auto;
+    margin-bottom: 10px;
+    background-color: lightgray;
+    padding: 5px;
+    text-align: center;
+}
