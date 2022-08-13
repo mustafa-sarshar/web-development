@@ -32,6 +32,8 @@
     padding: 10px 1px;
     align-items: center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, .5);
+    /* transition: background-color .5s; */
+    transition: .5s;
 }
 
 .navbar.active {
