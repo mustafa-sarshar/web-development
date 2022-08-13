@@ -5,7 +5,7 @@
 
 .top-container {
     background-image: url("https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
-    height: 100vh;
+    height: 50vh;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -15,12 +15,32 @@
 
 .top-container h1 {
     color: white;
-    font-size: 50px;
+    font-size: 30px;
     letter-spacing: 3px;
 }
 
 .text {
-    margin: 50px 5%;
+    margin-top: 15px;
+    margin-bottom: 50px;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-indent: 20px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.text:first-letter {
+    font-weight: bold;
+    font-size: 20px;
+    color: red;
+    font-family: Algerian, 'Courier New', Courier, monospace;
+}
+
+.topics {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .navbar {
