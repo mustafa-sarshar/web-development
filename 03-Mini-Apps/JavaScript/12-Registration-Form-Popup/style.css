@@ -1,0 +1,119 @@
+body {
+    margin: 0px;
+}
+
+h1 {
+    font-size: 60px;
+    color: white;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 4px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+}
+
+h4 {
+    font-size: 30px;
+    margin: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    letter-spacing: 3px;
+}
+
+label {
+    font-size: 15px;
+    margin: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: left;
+    letter-spacing: 1px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    background: url("./gabin-vallet-J154nEkpzlQ-unsplash.jpg");
+    background-size: cover;
+    transition: filter 0.7s;
+}
+
+.btn-join {
+    padding: 10px 20px;
+    width: 200px;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.btn-join:hover {
+    filter: brightness(0.8);
+}
+
+.blur.main-container {
+    filter: blur(5px) brightness(0.7);
+}
+
+.popup-container {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 200px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: url("./fitsum-admasu-oGv9xIl7DkY-unsplash.jpg");
+    background-size: cover;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.8);
+    opacity: 1;
+    transition: all 0.7s;
+}
+
+.btn-join-popup {
+    padding: 5px 10px;
+    /* width: 100px; */
+    margin-top: 5px;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 15px;
+}
+
+.input {
+    border: 2px solid darkblue;
+    padding: 5px 10px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.input::placeholder {
+    color: rgb(30, 80, 144);
+}
+
+.close-icon {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.close-icon:hover {
+    color: darkblue;
+}
+
+.hide.popup-container {
+    visibility: hidden;
+    opacity: 0;
+    top: 10%;
+}
