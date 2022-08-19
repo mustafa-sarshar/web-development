@@ -58,4 +58,3 @@ const myBike = new Motocycle()
 console.log(myBike);
 console.log(myBike.ready());
 console.log(myBike.wheelie());
-
