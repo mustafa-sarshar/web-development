@@ -4,11 +4,9 @@ class Person {
         this.firstName = fName
         this.lastName = lName
     }
-
     getName () {
         return this.firstName + " " + this.lastName
     }
-
     sayName() {
         console.log(this.getName())
     }
@@ -23,7 +21,6 @@ class Superman extends Person {
         super(fName, lName)
         this.isSuperman = true
     }
-
     activeSuperman() {
         console.log("The superman is in the building!")
     }
