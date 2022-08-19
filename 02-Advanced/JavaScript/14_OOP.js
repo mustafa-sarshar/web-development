@@ -6,10 +6,10 @@ const circle = {
         y: 1,
         z: 1
     },
-    draw: function() {
+    draw: function () {
         console.log("Drawing...");
     },
-    summary: function() {
+    summary: function () {
         console.log(`Summary:\nRadius: ${this.radius}\tLocation: X:${this.location.x}, Y:${this.location.y}, Z:${this.location.z}.`)
     },
 };
@@ -22,10 +22,10 @@ function createCircle(radius, location={ x:1, y:1, z:1 }) {
     return {
         radius,
         location,
-        draw: function() {
+        draw: function () {
             console.log("Drawing...");
         },
-        summary: function() {
+        summary: function () {
             console.log(`Summary:\nRadius: ${this.radius}\tLocation: X:${this.location.x}, Y:${this.location.y}, Z:${this.location.z}.`)
         },
     };
@@ -38,10 +38,10 @@ myCircle.summary();
 function Circle(radius, location={ x:1, y:1, z:1 }) {
     this.radius = radius;
     this.location = location;
-    this.draw = function() {
+    this.draw = function () {
         console.log("Drawing...");
     }
-    this.summary = function() {
+    this.summary = function () {
         console.log(`Summary:\nRadius: ${this.radius}\tLocation: X:${this.location.x}, Y:${this.location.y}, Z:${this.location.z}.`);
     }
 };
@@ -52,10 +52,10 @@ myCircle2.summary()
 const Circle_FuncConst = new Function("radius", "location = { x:1, y:1, z:1 }", `
     this.radius = radius;
     this.location = location;
-    this.draw = function() {
+    this.draw = function () {
         console.log("Drawing...");
     }
-    this.summary = function() {
+    this.summary = function () {
         console.log("Radius:", this.radius, "\tLocation", this.location);
     }
 `);
@@ -66,18 +66,18 @@ myCircle3.summary();
 
 // Private Members
 function Car(model, color, maxSpeed) {
-    let object = "car";     // private property
+    let objectName = "car";     // private property
     this.model = model;
     this.color = color;
     this.maxSpeed = maxSpeed;
-    this.startEngine = function() {
-        console.log(`The ${object} '${this.model}' started and will reach the max speed of ${this.maxSpeed} km/h.`);
+    this.startEngine = function () {
+        console.log(`The ${objectName} '${this.model}' started and will reach the max speed of ${this.maxSpeed} km/h.`);
     };
-    this.stopEngine = function() {
-        console.log(`The ${object} '${this.model}' stopped!!!`);
+    this.stopEngine = function () {
+        console.log(`The ${objectName} '${this.model}' stopped!!!`);
     };
     this.summary = function () {
-        console.log(`The ${object} has model: '${this.model}'\tColor: ${this.color}, Max speed: ${this.maxSpeed}.`);
+        console.log(`The ${objectName} has model: '${this.model}'\tColor: ${this.color}, Max speed: ${this.maxSpeed}.`);
     };
     const resetCarSettings = () => {       // private method
         this.model = undefined;
@@ -86,7 +86,7 @@ function Car(model, color, maxSpeed) {
     };
     this.resetObject = function () {
         resetCarSettings(this);
-        console.log(`The ${object}'s settings reset!!!`);
+        console.log(`The ${objectName}'s settings reset!!!`);
         this.summary();
     };
 };
@@ -100,21 +100,21 @@ myCar.resetObject();
 
 // Getter and setter
 function House(type, color, size) {
-    let object = "house";     // private property
+    let objectName = "house";     // private property
     this.type = type;
     this.color = color;
     this.size = size;
     this.status = "free";
-    this.rent = function() {
-        console.log(`The ${object} '${this.type}' rented.`);
+    this.rent = function () {
+        console.log(`The ${objectName} '${this.type}' rented.`);
         this.status = "rented";
     };
-    this.sell = function() {
-        console.log(`The ${object} '${this.type}' sold!!!`);
+    this.sell = function () {
+        console.log(`The ${objectName} '${this.type}' sold!!!`);
         this.status = "sold";
     };
     this.summary = function () {
-        console.log(`The ${object} has type: '${this.type}'\tColor: ${this.color}\tsize: ${this.size}\tcurrent status: ${this.status}.`);
+        console.log(`The ${objectName} has type: '${this.type}'\tColor: ${this.color}\tsize: ${this.size}\tcurrent status: ${this.status}.`);
     };
     const resetHouseSettings = () => {       // private method
         this.type = undefined;
@@ -124,13 +124,88 @@ function House(type, color, size) {
     };
     this.resetObject = function () {
         resetHouseSettings(this);
-        console.log(`The ${object}'s settings reset!!!`);
+        console.log(`The ${objectName}'s settings reset!!!`);
         this.summary();
     };
+
+    Object.defineProperty(this, "objectName", {
+        get: function () { return objectName; },
+        set: function (value) {
+            if (typeof value !== "string") throw Error("Object name must be a string!!!");
+            objectName = value;
+        }
+    });
 };
 
 const myHouse = new House("Villa", "brown", "big");
+console.log("Object Name:", myHouse.objectName);
+// myHouse.objectName = 123;        // Throws an Error.
 myHouse.summary();
 myHouse.rent();
 myHouse.sell();
 myHouse.resetObject();
+
+// Stop Watch Object
+const StopWatch = function () {
+    let startTimePoint = 0;
+    let stopTimePoint = 0;
+    let duration = 0;
+    let running = false;
+    this.startTimer = function () {
+        if (running) {
+            console.log("Please stop the timer first!");
+            return false;
+        }
+        startTimePoint = new Date().getTime();
+        stopTimePoint = 0;
+        running = true;
+        console.log("Timer started!");
+    };
+    this.stopTimer = function () {
+        if (!running) {
+            console.log("Please start the timer first!");
+            return false;
+        }
+        stopTimePoint = new Date().getTime();
+        duration += stopTimePoint - startTimePoint;
+        running = false;
+        console.log("Timer stopped!");
+    };
+    this.resetTimer = function () {
+        startTimePoint = 0;
+        stopTimePoint = 0;
+        duration = 0;
+        running = false;
+        console.log("Timer reset!!!");
+    };
+    this.summary = function () {
+        console.log(`Start time point: ${startTimePoint}\tStop time point: ${stopTimePoint}\tDuration: ${duration} (ms).`);
+    };
+    Object.defineProperty(this, "duration", {
+        get: function () { return duration; },
+        set: function (value) { duration = value }
+    });
+};
+
+const myStopWatch = new StopWatch();
+myStopWatch.summary();
+myStopWatch.stopTimer()
+myStopWatch.startTimer();
+myStopWatch.summary();
+sleepFor(1000);
+myStopWatch.stopTimer()
+myStopWatch.summary();
+myStopWatch.startTimer();
+myStopWatch.summary();
+sleepFor(3000);
+myStopWatch.stopTimer()
+myStopWatch.summary();
+myStopWatch.resetTimer();
+myStopWatch.summary();
+
+function sleepFor(durationMS){
+    let timeNow = new Date().getTime();
+    while (new Date().getTime() < timeNow + durationMS) { 
+        /* Do nothing */ 
+    };
+};

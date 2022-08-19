@@ -32,3 +32,26 @@ const obj_iterable = {
 for (const word of obj_iterable) {
     console.log(word)
 }
+
+// Define a range function similar to python range()
+const range10 = {
+    [Symbol.iterator]: function () {
+        const num = 10
+        let curIndex = -1;
+        const iterator = {
+            next: function () {
+                if (curIndex < num-1) {
+                    curIndex++
+                    return { value: curIndex, done: false }
+                } else
+                    return { value: undefined, done: true }
+            },
+        }
+        return iterator
+    }
+};
+
+for (const idx of range10) {
+    console.log("Current index:", idx);
+}
+
