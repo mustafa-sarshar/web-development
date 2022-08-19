@@ -1,3 +1,4 @@
+// Apply filter() and sort() methods.
 const players = [
     { id: 0, sport: "Basketball", age: 28, salary: 12_000_000 },
     { id: 1, sport: "Soccer", age: 35, salary: 500_000 },
@@ -20,3 +21,18 @@ console.log("Old players:", oldPlayers);
 console.log("Players sorted by salary (desc.):", playersSortedBySalary);
 console.log("Players sorted by age (desc.):", playersSortedByAge);
 console.log("Players:", players);
+
+// Apply map() method.
+const colors = ["red", "blue", "black", "yellow", "green"];
+
+let counter = 0;
+const colorsWithInfo = colors.map(color => `Color ${color} has index ${counter++}`);
+console.log(colorsWithInfo);
+
+// Apply concat() method
+const arr1 = [1, 2, 3, 4, 5];
+const arr2 = [10, 20, 30, 40, 50];
+const arr12 = arr1.concat(arr2);        // equals to const arr12 = [...arr1, ...arr2];
+console.log("Arr1:", arr1);
+console.log("Arr2:", arr2);
+console.log("Arr12:", arr12);
