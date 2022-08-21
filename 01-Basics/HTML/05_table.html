@@ -4,34 +4,96 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tables</title>
+    <style>
+        table, thead, tr, th, td, caption {
+            border: 1px solid rgb(9, 9, 9);
+            font-family:'Courier New', Courier, monospace;
+            border-collapse: collapse;
+            padding: .5rem;
+        }
+        table caption {
+            background-color: darkgray;
+            color: white;
+            font-weight: bold;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+    </style>
 </head>
 <body>
-    <table border="1">
-        
-        <thead>
-            <th>Col 1</th>
-            <th>Col 2</th>
-            <th>Col 3</th>
-            <th>Col 4</th>
-        </thead>
-        <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-            <td>Data 3</td>
-            <td>Data 4</td>
-        </tr>
-        <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-            <td>Data 3</td>
-            <td>Data 4</td>
-        </tr>
-        <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-            <td>Data 3</td>
-            <td>Data 4</td>
-        </tr>
-    </table>
+    <section>
+        <h2>A simple example</h2>
+        <table border="1">        
+            <thead>
+                <th>Col 1</th>
+                <th>Col 2</th>
+                <th>Col 3</th>
+                <th>Col 4</th>
+            </thead>
+            <tr>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3</td>
+                <td>Data 4</td>
+            </tr>
+            <tr>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3</td>
+                <td>Data 4</td>
+            </tr>
+            <tr>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3</td>
+                <td>Data 4</td>
+            </tr>
+        </table>
+    </section>
+    <br><br><br>
+    <section>
+        <h2>My Daily Schedule</h2>
+        <table>
+            <caption>Daily Schedule</caption>
+            <thead>
+                <th>Time</th>
+                <th>Activity</th>
+            </thead>
+            <tr>
+                <td>
+                    <time datetime="08:00">8am</time>-<time datetime="11:00">11am</time>
+                </td>
+                <td>
+                    Write code
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <time datetime="11:00">11am</time>-<time datetime="12:00">12pm</time>
+                </td>
+                <td>
+                    Eat lunch
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <time datetime="12:00">12pm</time>-<time datetime="17:00">5pm</time>
+                </td>
+                <td>
+                    Study for other courses
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">Happy after work time 😄</td>
+            </tr>
+            <tr>
+                <td rowspan="2">Rest of the day</td>
+                <td>Sport & Fitness</td>
+            </tr>
+            <tr>                
+                <td>Sleep</td>
+            </tr>
+        </table>
+    </section>
 </body>
 </html>
