@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,38 +7,104 @@
     <title>Forms</title>
 </head>
 <body>
-    <h3>Registration Form</h3>
-    <form action="">
-        <label for="fname">First Name:</label>
-        <input type="text" id="fname" name="fname" placeholder="first name">
-        <br>
-        <label for="lname">Last Name:</label>
-        <input type="text" id="lname" name="lname" placeholder="last name">
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="email goes here">
-        <br>
-        <label for="pass">Password:</label>
-        <input type="password" id="pass" name="pass" placeholder="be careful :)">
-        <br>
-        <label for="male">Male</label>
-        <input type="radio" id="male" name="gender" value="male">
-        <label for="female">Female</label>
-        <input type="radio" id="female" name="gender" value="female">
-        <label for="diverse">Diverse</label>
-        <input type="radio" id="diverse" name="gender" value="diverse">
-        <br>
-        <label for="profession">What is your profession?</label>
-        <select name="profession" id="profession">
-            <option value="student">Student</option>
-            <option value="engineer">Engineer</option>
-            <option value="Unemployed">Unemployed</option>
-        </select>
-        <br>
-        <label for="bio">Biography:</label><br>
-        <textarea name="bio" id="bio" cols="30" rows="10">tell us about yourself!</textarea>
-        <br><br>
-        <input type="submit">
-    </form>
+    <article>
+        <h1>Welcome to our website</h1>
+        <section>
+            <h3>Registration Form</h3>
+            <p>Don't hesitate to register yourself NOW!!! 😊</p>
+            <form action="#" method="GET">
+                <fieldset>
+                    <legend><strong>Required personal info</strong></legend>
+                    <p>
+                        <label for="fname">First Name:</label>
+                        <input type="text" id="fname" name="fname" placeholder="first name" autocomplete="on" required autofocus>
+                    </p>
+                    <p>
+                        <label for="lname">Last Name:</label>
+                        <input type="text" id="lname" name="lname" placeholder="last name" autocomplete="on" required>
+                    </p>
+                    <p>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="email goes here" autocomplete="on" required>
+                    </p>
+                    <p>
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+49-123-555-5555" autocomplete="on" pattern="[+]{1}[0-9]{2}-[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                    </p>
+                    <p>
+                        <label for="pass">Password:</label>
+                        <input type="password" id="pass" name="pass" placeholder="be careful :)" autocomplete="off" required>
+                    </p>
+                </fieldset>
+                <fieldset>
+                    <legend><strong>Optional personal info</strong></legend>
+                    <p>
+                        <span>What is your gender?</span><br>
+                        <label for="male">Male</label>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="female">Female</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="diverse">Diverse</label>
+                        <input type="radio" id="diverse" name="gender" value="diverse">
+                    </p>
+                    <p>
+                        <label for="status">What is your current status?</label>
+                        <select name="status" id="status" size="1">
+                            <optgroup label="Not working">
+                                <option value="child">Child</option>
+                                <option value="pupil">Pupil</option>
+                                <option value="student">Student</option>
+                                <option value="unemployed">Unemployed</option>
+                                <option value="retired">Retired</option>
+                            </optgroup>
+                            <optgroup label="Working">
+                                <option value="freelancer">Freelancer</option>
+                                <option value="employee">Employee</option>
+                                <option value="employer">Employer</option>
+                            </optgroup>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="nationality">Where do you come from?</label>
+                        <input type="text" name="nationality" id="nationality" list="nationality-list">
+                        <datalist id="nationality-list">
+                            <option value="child">
+                            <option value="pupil"></option>
+                            <option value="student"></option>
+                            <option value="unemployed"></option>
+                            <option value="retired"></option>
+                            <option value="freelancer"></option>
+                            <option value="employee"></option>
+                            <option value="employer"></option>
+                        </datalist>
+                    </p>                    
+                    <p>
+                        <label for="decade">What is your favorite decade?</label>
+                        <input type="number" id="decade" name="decade" min="1900" max="2020" step="10" placeholder="1990">
+                    </p>
+                    <p>
+                        <span>What is your pet?</span><br>
+                        <input type="checkbox" name="pets" id="dog">
+                        <label for="dog">Dog</label>
+                        <input type="checkbox" name="pets" id="cat">
+                        <label for="cat">Cat</label>
+                        <input type="checkbox" name="pets" id="fish">
+                        <label for="fish">Fish</label>
+                        <input type="checkbox" name="pets" id="others">
+                        <label for="others">Others</label>
+                    </p>
+                    <p>
+                        <label for="bio">Biography:</label><br>
+                        <textarea name="bio" id="bio" cols="30" rows="10">tell us about yourself!</textarea>
+                    </p>
+                </fieldset>
+                <p>
+                    <button type="submit">Submit</button>
+                    <button type="submit" formaction="#" formmethod="post">Post</button>
+                    <button type="reset">Reset</button>
+                </p>
+            </form>
+        </section>
+    </article>
 </body>
 </html>

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,39 +16,44 @@
             background-color: darkgray;
             color: white;
             font-weight: bold;
-            font-style: italic;
-            letter-spacing: 2px;
+            font-size: large;
+            letter-spacing: 5px;
+            font-family: serif;
         }
     </style>
 </head>
 <body>
     <section>
         <h2>A simple example</h2>
-        <table border="1">        
+        <table>
             <thead>
-                <th>Col 1</th>
-                <th>Col 2</th>
-                <th>Col 3</th>
-                <th>Col 4</th>
+                <tr>
+                    <th scope="col">Col 1</th>
+                    <th scope="col">Col 2</th>
+                    <th scope="col">Col 3</th>
+                    <th scope="col">Col 4</th>
+                </tr>
             </thead>
-            <tr>
-                <td>Data 1</td>
-                <td>Data 2</td>
-                <td>Data 3</td>
-                <td>Data 4</td>
-            </tr>
-            <tr>
-                <td>Data 1</td>
-                <td>Data 2</td>
-                <td>Data 3</td>
-                <td>Data 4</td>
-            </tr>
-            <tr>
-                <td>Data 1</td>
-                <td>Data 2</td>
-                <td>Data 3</td>
-                <td>Data 4</td>
-            </tr>
+            <tbody>
+                <tr>
+                    <td>Data 1</td>
+                    <td>Data 2</td>
+                    <td>Data 3</td>
+                    <td>Data 4</td>
+                </tr>
+                <tr>
+                    <td>Data 1</td>
+                    <td>Data 2</td>
+                    <td>Data 3</td>
+                    <td>Data 4</td>
+                </tr>
+                <tr>
+                    <td>Data 1</td>
+                    <td>Data 2</td>
+                    <td>Data 3</td>
+                    <td>Data 4</td>
+                </tr>
+            </tbody>
         </table>
     </section>
     <br><br><br>
@@ -56,43 +62,60 @@
         <table>
             <caption>Daily Schedule</caption>
             <thead>
-                <th>Time</th>
-                <th>Activity</th>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Activity</th>
+                </tr>
             </thead>
-            <tr>
-                <td>
-                    <time datetime="08:00">8am</time>-<time datetime="11:00">11am</time>
-                </td>
-                <td>
-                    Write code
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <time datetime="11:00">11am</time>-<time datetime="12:00">12pm</time>
-                </td>
-                <td>
-                    Eat lunch
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <time datetime="12:00">12pm</time>-<time datetime="17:00">5pm</time>
-                </td>
-                <td>
-                    Study for other courses
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">Happy after work time 😄</td>
-            </tr>
-            <tr>
-                <td rowspan="2">Rest of the day</td>
-                <td>Sport & Fitness</td>
-            </tr>
-            <tr>                
-                <td>Sleep</td>
-            </tr>
+            <tbody>
+                <tr>
+                    <th scope="row">Morning</th>
+                    <td>
+                        <time datetime="08:00">8am</time>-<time datetime="11:00">11am</time>
+                    </td>
+                    <td>
+                        Write code
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Break</th>
+                    <td>
+                        <time datetime="11:00">11am</time>-<time datetime="12:00">12pm</time>
+                    </td>
+                    <td>
+                        Eat lunch
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Afternoon</th>
+                    <td>
+                        <time datetime="12:00">12pm</time>-<time datetime="17:00">5pm</time>
+                    </td>
+                    <td>
+                        Study for other courses
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: center; background-color: lightgray; font-weight: bold">Happy after work time 😄</td>
+                </tr>
+                <tr>
+                    <th scope="row">Evening</th>
+                    <td rowspan="2">Rest of the day</td>
+                    <td>Sport & Fitness</td>
+                </tr>
+                <tr>
+                    <th scope="row">Night</th>
+                    <td>Sleep</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" style="text-align: center; background-color: lightgray; font-weight: bold">
+                        That's it. 😏
+                    </td>
+                </tr>
+            </tfoot>
         </table>
     </section>
 </body>
