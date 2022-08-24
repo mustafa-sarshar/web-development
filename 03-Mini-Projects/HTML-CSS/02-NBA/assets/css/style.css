@@ -11,7 +11,7 @@ body {
     border-right: 1px solid #333;
 }
 
-header {
+header, footer {
     text-align: center;
 }
 
@@ -30,6 +30,10 @@ hr {
 
 p {
     text-align: justify;
+}
+
+footer p {
+    text-align: center;
 }
 
 nav {
