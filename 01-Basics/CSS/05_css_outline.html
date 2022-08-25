@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Outline</title>
+    <style>
+        #div-parent {
+            border: 5px solid purple;
+        }
+        #div-child {
+            width: 400px;
+            height: 100px;
+            background-color: aqua;
+
+            margin: 50px;
+            border: 10px solid rgba(165, 194, 64, 0.681);
+            outline: 20px dashed rgba(209, 34, 34, 0.723);
+            outline-offset: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div-parent">
+        <div id="div-child">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, odio praesentium ut dolorum ipsa odit, similique voluptatem sequi magnam ea explicabo saepe veritatis dicta, officiis harum sunt fugiat assumenda error?
+        </div>        
+    </div>
+</body>
+</html>
