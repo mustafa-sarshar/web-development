@@ -4,16 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=fire|Audiowide"> <!-- Use Multiple Google Fonts -->
     <title>CSS FONT</title>
     <style>
+        body {
+            font-size: 100%; /* It shows the same text size in all browsers, and allows all browsers to zoom or resize the text! */
+        }
+
         h1 {
             text-align: center;
             margin-top: 5px;
             text-decoration: underline dashed darkblue;
         }
 
+        h2 {
+            margin: 0;
+            padding-left: 20px;
+        }
+
         .container {
-            width: 400px;
+            width: 500px;
             background-color: azure;
             margin: auto;
         }
@@ -21,7 +31,7 @@
         .container p {
             text-align: justify;
             text-align-last: center;
-            text-indent: 30px;
+            text-indent: 2em;   /* pixels to em formula: pixels/16 = em */
             padding: 10px;
             outline: 3px double;
             outline-offset: 10px;
@@ -58,6 +68,26 @@
             font-variant: small-caps;
         }
 
+        #p-responsive-font-size {
+            font-size: 2vw; /* vw unit, means the "viewport width */
+            /* Viewport is the browser window size. 1vw = 1% of viewport width. If the viewport is 50cm wide, 1vw is 0.5cm. */
+        }
+
+        #p-google-font-sofia {
+            font-family: "Sofia", Arial;
+            font-size: 20px;
+            text-shadow: 3px 3px 3px #ababab;
+        }
+        
+        #p-google-font-sofia-with-fire {
+            font-family: "Sofia", Arial;
+            font-size: 20px;
+        }
+
+        #p-google-font-audiowide {
+            font-family: "Audiowide", Arial;
+        }
+
     </style>
 </head>
 <body>
@@ -82,6 +112,22 @@
         <h2>Fantasy</h2>
         <p id="p-fantasy">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem pariatur qui nam nostrum debitis atque voluptatibus molestias corporis incidunt dolor voluptate quasi in accusantium, cum ipsa possimus assumenda ut sunt?
+        </p>
+        <h2>Responsive Font Size</h2>
+        <p id="p-responsive-font-size">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident illum, atque suscipit soluta qui explicabo! Error corrupti, cupiditate et esse sint reprehenderit est voluptatum consectetur provident saepe, alias nostrum ipsam?
+        </p>
+        <h2>Google Fonts - Sofia</h2>
+        <p id="p-google-font-sofia">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa saepe laudantium at. Eos mollitia provident facere autem harum tempora voluptatem pariatur suscipit quibusdam laudantium, alias commodi molestiae repellat odit qui.
+        </p>
+        <h2>Google Fonts - Sofia with fire</h2>
+        <p id="p-google-font-sofia-with-fire" class="font-effect-fire">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa saepe laudantium at. Eos mollitia provident facere autem harum tempora voluptatem pariatur suscipit quibusdam laudantium, alias commodi molestiae repellat odit qui.
+        </p>
+        <h2>Google Fonts - Audiowide</h2>
+        <p id="p-google-font-audiowide">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa saepe laudantium at. Eos mollitia provident facere autem harum tempora voluptatem pariatur suscipit quibusdam laudantium, alias commodi molestiae repellat odit qui.
         </p>
     </div>
 </body>
