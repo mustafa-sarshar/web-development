@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Lists</title>
+    <style>
+        header {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        main {
+            width: 600px;
+            margin: 0;
+            padding: 0;
+            background-color: lightgray;
+        }
+
+        #ul1 {
+            list-style-type: circle;
+            list-style-position: inside;
+        }
+        
+        #ul2 {
+            list-style-type: none;
+            padding: 0;
+            border: 1px solid darkgray;
+        }
+        #ul2 li {
+            padding: 8px 16px;
+            border-bottom: 1px solid darkgray
+        }
+        #ul2 li:last-child {
+            border-bottom: none
+        }
+
+        #ol1 {
+            list-style-type: lower-greek;
+            list-style-position: outside;
+            border: 1px dashed beige;
+        }
+        #ol1 li {
+            margin: 2px;
+            border-bottom: 1px solid;
+            border-left: 1px solid red;
+            padding-left: 10px;
+        }
+        #ol1 li:last-child {
+            border-bottom: none;
+        }
+
+        #ol2 {
+            list-style-type: lower-alpha;
+        }
+        #ol2 li {
+            margin: 5px;
+            list-style-position: outside;
+            border-bottom: 1px solid;
+        }
+
+        #ul-no-default-settings {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #ul-customized1 {
+            background-color: rgb(226, 113, 43);
+            margin: 5px;
+            padding: 5px;
+        }
+
+        #ul-customized1 li {
+            background: #2a1212;
+            color: white;
+            padding: 5px;
+            margin-left: 35px;
+        }
+
+        #ul-customized2 {
+            border-left: 5px solid red;
+            background-color: #f1f1f1;
+            list-style-type: none;
+            padding: 10px 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CSS Lists</h1>
+    </header>
+    <hr>
+    <main>
+        <h2>Unordered List</h2>
+        <ul id="ul1">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <ul id="ul2">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <h2>Ordered List</h2>
+        <ol id="ol1">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ol>
+        <ol id="ol2">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ol>
+        <h2>No Default Settings</h2>
+        <ul id="ul-customized1">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <h2>Customized List</h2>
+        <ul id="ul-customized2">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </main>
+    <footer>
+        <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_list-style-type_all" target="_blank">All List Style Types</a>
+    </footer>
+    <hr>
+</body>
+</html>
