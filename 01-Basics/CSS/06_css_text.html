@@ -5,8 +5,121 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Text</title>
+    <style>
+        .container {
+            margin: auto;
+            width: 400px;
+            background-color: aqua;
+        }
+
+        .container h1 {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .container h2 {
+            letter-spacing: -3px;
+            text-align: center;
+        }
+
+        .super-script {
+            vertical-align: super;
+        }
+
+        .overline {
+            text-decoration-line: overline;
+            text-decoration-thickness: 5px;
+            text-decoration-color: black;
+            color: coral;
+            font-weight: bold;
+        }
+
+        .underline {
+            text-decoration-line: underline;
+            text-decoration-style: wavy;
+            color: darkred;
+        }
+
+        .line-through {
+            text-decoration-line: line-through;
+            color: blue;
+        }
+
+        .negative-word-spacing {
+            word-spacing: -10px;
+            color: red;
+        }
+
+        .shadowing {
+            text-shadow: 2px 3px 4px blue;
+        }
+
+        .double-shadowing {
+            text-shadow: 2px 2px 4px black, 0 0 25px blue, 15px 15px 5px darkblue;
+        }
+
+        #p1 {
+            padding: 10px;
+            outline: 2px solid black;
+            outline-offset: 5px;
+            
+            color: blue;
+            text-align: justify;
+            text-align-last: center;
+        }
+
+        #p2 {
+            direction: rtl;
+            unicode-bidi: bidi-override;
+            padding: 10px;
+            outline: 5px double red;
+            outline-offset: 2px;
+            text-align: justify;
+        }
+
+        #p3 {
+            padding: 10px;
+            color: red;
+            text-indent: 50px;
+        }
+
+        #p4 {
+            padding: 1.5em;
+            border: 1px dashed brown;
+            
+            color: darkblue;
+            text-align: justify;
+            text-indent: 50px;
+            word-spacing: 10px;
+            line-height: 30px;
+        }
+
+        #p5 {
+            white-space: nowrap;
+        }
+
+    </style>
 </head>
 <body>
-    
+    <div class="container">
+        <h1>Text Properties</h1>
+        <p id="p1">
+            Lorem ipsum dolor sit <span class="super-script">😀</span> amet consectetur adipisicing elit. Molestias sint sapiente exercitationem ad explicabo cum reprehenderit facere ipsam optio perferendis perspiciatis maxime, libero temporibus veniam nulla nam repudiandae necessitatibus officiis.
+        </p>
+        <p id="p2">
+            اربك تكست هو اول موقع يسمح لزواره الكرام بتحويل الكتابة العربي الى كتابة مفهومة من قبل اغلب برامج التصميم مثل الفوتوشوب و الافترايفكتس و البريمير و الافد ميدا كومبوزر و السموك و برامج اخرى كثيرة
+        </p>
+        <p id="p3">
+            Lorem ipsum, dolor sit amet <span class="overline">consectetur</span> adipisicing elit. Doloribus <span class="underline">placeat</span> reprehenderit modi hic aut mollitia temporibus molestiae aliquam officia <span class="line-through">deserunt</span> maiores, odit nemo! Quasi, dolor quisquam voluptatem necessitatibus dolores impedit!
+        </p>
+        <h2>This is just a bad letter spacing</h2>
+        <p id="p4">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique reiciendis cumque est, libero sunt a ipsam architecto ad excepturi quae, dignissimos ut, velit quasi quisquam impedit voluptate magni repudiandae autem! <span class="shadowing">HEY YOU</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis, dolore in pariatur maxime aliquam vitae alias laudantium perspiciatis tenetur eveniet error culpa facilis iste eum possimus nesciunt eos fuga cum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quae illo, deleniti consequuntur <span class="negative-word-spacing">unde saepe odit dolorem quo itaque vel asperiores mollitia temporibus accusantium aliquam? Delectus nesciunt tenetur rerum id!</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, incidunt quidem fugiat suscipit laboriosam accusamus nihil, quas ut vel laborum dolor dolore? Dolorem deleniti ea, et omnis <span class="double-shadowing">WHAT'S UP?</span> corrupti repellat nisi.
+        </p>
+        <p id="p5">
+            No Wrapping Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, voluptatum ratione cupiditate ab, laboriosam magnam incidunt autem dolorum obcaecati nihil corporis esse ex architecto ipsum aliquid quasi ullam sunt veniam? No Wrapping
+        </p>
+    </div>
 </body>
 </html>
