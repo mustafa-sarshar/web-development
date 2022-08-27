@@ -17,7 +17,7 @@
             overflow-x: auto; /* CSS Responsive Table */
         }
 
-        #table1, #table2 {
+        #table1, #table2, #table3 {
             border: 3px solid blue;
             padding: 10px;
             width: 100%;
@@ -83,6 +83,27 @@
             background-color: rgb(195, 148, 91);
         }       
 
+        #table3 caption {
+            font-weight: bold;
+        }
+        #table3 thead {
+            border-bottom: 2px solid black;
+        }
+        #table3 th, #table3 td {
+            border: 2px solid black;
+            text-align: center;
+            vertical-align: middle;
+        }
+        #table3 th {
+            padding: 5px 5px;
+            white-space: nowrap;
+            letter-spacing: 3px;
+        }
+        #table3 td {
+            font-style: italic;
+            padding: 2px 5px;
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
@@ -130,7 +151,7 @@
             </tfoot>
         </table>
         <hr>
-        <div style="overflow-x:auto;">
+        <div>
             <table id="table2">
                 <caption>Caption of the Table</caption>
                 <thead>
@@ -169,7 +190,44 @@
                 </tbody>
             </table>
         </div>
-        
+        <hr>
+        <div style="overflow-x: scroll;">
+            <table id="table3">
+                <caption>CSS Responsive Table</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Head 1</th>
+                        <th scope="col">Head 2</th>
+                        <th scope="col">Head 3</th>
+                        <th scope="col">Head 4</th>
+                        <th scope="col">Head 5</th>
+                        <th scope="col">Head 6</th>
+                        <th scope="col">Head 7</th>
+                        <th scope="col">Head 8</th>
+                        <th scope="col">Head 9</th>
+                        <th scope="col">Head 10</th>
+                        <th scope="col">Head 11</th>
+                        <th scope="col">Head 12</th>
+                    </tr>                    
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cell 1</td>
+                        <td>Cell 2</td>
+                        <td>Cell 3</td>
+                        <td>Cell 4</td>
+                        <td>Cell 5</td>
+                        <td>Cell 6</td>
+                        <td>Cell 7</td>
+                        <td>Cell 8</td>
+                        <td>Cell 9</td>
+                        <td>Cell 10</td>
+                        <td>Cell 11</td>
+                        <td>Cell 12</td>
+                    </tr>                    
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>
