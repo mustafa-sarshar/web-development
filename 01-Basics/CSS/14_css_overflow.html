@@ -7,7 +7,35 @@
     <link rel="stylesheet" href="../../assets/global_style_1.css">
     <title>CSS Overflow</title>
     <style>
-
+        .mussar-container {
+            padding: 10px;
+        }
+        .div-style {
+            width: 95%;
+            height: 100px;
+            text-align: justify;
+            padding: 10px;
+            background-color: aqua;
+        }
+        .overflow-visible {
+            overflow: visible;
+        }
+        .overflow-hidden {
+            overflow: hidden;
+        }
+        .overflow-scroll {
+            overflow: scroll;
+        }
+        .overflow-auto {
+            overflow: auto;
+        }
+        .overflow-xy {
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            overflow-y: scroll; /* Add vertical scrollbar */
+        }
+        .overflow-wrap {
+            overflow-wrap: break-word;
+        }
     </style>
 </head>
 <body>
@@ -17,9 +45,54 @@
     <hr>
     <main>
         <div class="mussar-container">
-
+            <h2>Overflow - Visible</h2>
+            <div class="div-style overflow-visible">
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae blanditiis rerum veniam dolor dignissimos quibusdam voluptatum totam ex. Eligendi asperiores provident, voluptas odit repudiandae tenetur quidem modi consequatur iure quae?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt aliquid corrupti mollitia nostrum neque quo, accusantium ut eaque. Illo blanditiis cum assumenda, fuga aliquid distinctio placeat repellat harum dolorum ea.
+                </p>
+            </div>
+            <br><br>
+            <hr>
+            <h2>Overflow - Hidden</h2>
+            <div class="div-style overflow-hidden">
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae blanditiis rerum veniam dolor dignissimos quibusdam voluptatum totam ex. Eligendi asperiores provident, voluptas odit repudiandae tenetur quidem modi consequatur iure quae?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt aliquid corrupti mollitia nostrum neque quo, accusantium ut eaque. Illo blanditiis cum assumenda, fuga aliquid distinctio placeat repellat harum dolorum ea.
+                </p>
+            </div>
+            <hr>
+            <h2>Overflow - Scroll</h2>
+            <div class="div-style overflow-scroll">
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae blanditiis rerum veniam dolor dignissimos quibusdam voluptatum totam ex. Eligendi asperiores provident, voluptas odit repudiandae tenetur quidem modi consequatur iure quae?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt aliquid corrupti mollitia nostrum neque quo, accusantium ut eaque. Illo blanditiis cum assumenda, fuga aliquid distinctio placeat repellat harum dolorum ea.
+                </p>
+            </div>
+            <h2>Overflow - Auto</h2>
+            <div class="div-style overflow-auto">
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae blanditiis rerum veniam dolor dignissimos quibusdam voluptatum totam ex. Eligendi asperiores provident, voluptas odit repudiandae tenetur quidem modi consequatur iure quae?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt aliquid corrupti mollitia nostrum neque quo, accusantium ut eaque. Illo blanditiis cum assumenda, fuga aliquid distinctio placeat repellat harum dolorum ea.
+                </p>
+            </div>
+            <h2>Overflow - XY</h2>
+            <div class="div-style overflow-xy">
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae blanditiis rerum veniam dolor dignissimos quibusdam voluptatum totam ex. Eligendi asperiores provident, voluptas odit repudiandae tenetur quidem modi consequatur iure quae?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt aliquid corrupti mollitia nostrum neque quo, accusantium ut eaque. Illo blanditiis cum assumenda, fuga aliquid distinctio placeat repellat harum dolorum ea.
+                </p>
+            </div>
+            <h2>Overflow - Wrap - break words</h2>
+            <div class="div-style overflow-wrap">
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae blanditiis rerum veniam dolor dignissimos quibusdam voluptatum totam ex. Eligendi asperiores provident, voluptas odit repudiandae tenetur quidem modi consequatur iure quae?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt aliquid corrupti mollitia nostrum neque quo, accusantium ut eaque. Illo blanditiis cum assumenda, fuga aliquid distinctio placeat repellat harum dolorum ea.
+                </p>
+            </div>
         </div>
     </main>
+    <br><br><br><br><br>
     <footer>
         <div class="mussar-footer">
             <p>
