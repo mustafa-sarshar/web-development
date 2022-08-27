@@ -11,13 +11,13 @@
             justify-content: center;
             margin: auto;
             width: 400px;
-            min-width: 400px;
+            min-width: 350px;
             background-color: bisque;
             padding: 20px;
             overflow-x: auto; /* CSS Responsive Table */
         }
 
-        #table1, #table2, #table3 {
+        #table1, #table2 {
             border: 3px solid blue;
             padding: 10px;
             width: 100%;
@@ -83,6 +83,13 @@
             background-color: rgb(195, 148, 91);
         }       
 
+        #table3 {
+            border-collapse: separate;
+            border-spacing: 2px;
+            caption-side: bottom;
+            table-layout: auto;
+            width: 100%;
+        }
         #table3 caption {
             font-weight: bold;
         }
@@ -151,7 +158,7 @@
             </tfoot>
         </table>
         <hr>
-        <div>
+        <div style="overflow-x: auto;">
             <table id="table2">
                 <caption>Caption of the Table</caption>
                 <thead>
@@ -224,7 +231,49 @@
                         <td>Cell 10</td>
                         <td>Cell 11</td>
                         <td>Cell 12</td>
-                    </tr>                    
+                    </tr>
+                    <tr style="empty-cells: show;">
+                        <td>Cell 1</td>
+                        <td></td>
+                        <td>Cell 3</td>
+                        <td>Cell 4</td>
+                        <td>Cell 5</td>
+                        <td>Cell 6</td>
+                        <td></td>
+                        <td>Cell 8</td>
+                        <td>Cell 9</td>
+                        <td>Cell 10</td>
+                        <td></td>
+                        <td>Cell 12</td>
+                    </tr>
+                    <tr style="empty-cells: hide;">
+                        <td></td>
+                        <td>Cell 2</td>
+                        <td></td>
+                        <td>Cell 4</td>
+                        <td>Cell 5</td>
+                        <td></td>
+                        <td>Cell 7</td>
+                        <td>Cell 8</td>
+                        <td>Cell 9</td>
+                        <td>Cell 10</td>
+                        <td>Cell 11</td>
+                        <td>Cell 12</td>
+                    </tr>
+                    <tr>
+                        <td>Cell 1</td>
+                        <td>Cell 2</td>
+                        <td>Cell 3</td>
+                        <td>Cell 4</td>
+                        <td>Cell 5</td>
+                        <td>Cell 6</td>
+                        <td>Cell 7</td>
+                        <td>Cell 8</td>
+                        <td>Cell 9</td>
+                        <td>Cell 10</td>
+                        <td>Cell 11</td>
+                        <td>Cell 12</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

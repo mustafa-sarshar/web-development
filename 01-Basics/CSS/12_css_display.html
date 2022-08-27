@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Display</title>
+    <style>
+        header {
+            text-align: center;
+        }
+        header nav {
+            background-color: darkgray;
+        }
+        header nav ul {
+            padding: 10px;
+        }
+        header nav ul li {
+            display: inline;
+            margin: 0 30px;
+        }
+        footer {
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        #box-left, #box-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            background-color: rgb(110, 16, 16);
+            border-radius: 5px;
+            margin: 10px;
+            color: white;
+        }
+        #box-left:hover, #box-right:hover {
+            display: none;
+        }
+
+        #box-middle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            background-color: rgb(110, 102, 16);
+            border-radius: 5px;
+            margin: 10px;
+        }
+        #box-middle:hover {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="https://www.w3schools.com/css/css_display_visibility.asp" target="_blank">CSS Display</a>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Page 1</a></li>
+                <li><a href="#">Page 2</a></li>
+                <li><a href="#">Page 3</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div id="box-left">LEFT</div>
+            <div id="box-middle">MIDDLE</div>
+            <div id="box-right">RIGHT</div>
+        </div>
+    </main>
+    <hr>
+    <footer>
+        <p>
+            Move the mouse over the boxes to see the effects.
+        </p>
+    </footer>
+</body>
+</html>
