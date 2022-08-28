@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/global_style_1.css">
-    <title>CSS Float and Clear</title>
+    <title>CSS Align</title>
     <style>
         .center {
             margin: auto;
@@ -46,12 +46,12 @@
             display: inline-block;
             vertical-align: middle;
         }
-        .center-vertically {
+        .center-vertically1 {
             height: 80px;
             position: relative;
             border: 3px solid green;
         }
-        .center-vertically > p {
+        .center-vertically1 > p {
             position: absolute;
             margin: 0;
             padding: 0;
@@ -59,6 +59,28 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
+        .small-box {
+            background-color: darkcyan;
+            width: 50px;
+            border: 1px solid black;
+            border-radius: 5%;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .small-box > p {
+            line-height: 1.5em;
+            display: inline-block;
+            vertical-align: middle;
+            color: white;
+        }
+        .center-vertically2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            border: 3px solid green;
+        }
+
     </style>
 </head>
 <body>
@@ -100,12 +122,18 @@
                 </p>
             </div>
             <h2>Center Vertically - Using position & transform</h2>
-            <div class="center-vertically">
+            <div class="center-vertically1">
                 <p>
                     SMALL TEXT
                 </p>
             </div>
             <hr>
+            <h2>Center Vertically - Using Flexbox</h2>
+            <div class="center-vertically2">
+                <div class="small-box">
+                    <p>HELLO</p>
+                </div>
+            </div>
         </div>        
     </main>
     <br><br><br><br><br>

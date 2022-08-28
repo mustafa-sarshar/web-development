@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS Pseudo Classes</title>
+    <style>
+        .anchor > a:link {
+            color: black;
+        }
+        .anchor > a:visited {
+            color: darkgray;
+            font-style: italic;
+        }
+        .anchor > a:hover {
+            color: black;
+            font-weight: bold;
+        }
+        .anchor > a:active {
+            color: darkblue;
+            letter-spacing: 3px;
+        }
+        .anchor > a.highlight:hover {
+            color: red;
+            font-size: large;
+        }
+        .box {
+            margin: auto;
+            width: fit-content;
+            height: fit-content;
+            background-color: green;
+            padding: 10px;
+            cursor: not-allowed;
+            color: white;
+        }
+        .box:hover {
+            display: none;
+        }
+        .tooltip .question {
+            cursor: pointer;
+        }
+        .tooltip .answer {
+            display: none;
+            border: 1px red solid;
+            border-radius: 5%;
+            text-align: center;
+            padding: 5px 0;
+        }
+        .tooltip:hover .answer {
+            display: block;
+        }
+        .tooltip .answer:hover {
+            font-weight: bold;
+            border-style: dashed;
+            letter-spacing: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css_pseudo_classes.asp" target="_blank">CSS Pseudo Classes</a></h1>
+    </header>
+    <hr>
+    <main>        
+        <div class="mussar-container">
+            <h2>Anchor Pseudo-classes</h2>
+            <div class="anchor">
+                <a href="#">Just a simple Link</a>
+            </div>
+            <div class="anchor">
+                <a class="highlight" href="#">A simple Link with Highlight Effect</a>
+            </div>
+            <hr>
+            <h2>Uncatchable Box</h2>
+            <div class="box">Catch ME 😀</div>
+            <hr>
+            <h2>Simple Tooltip</h2>
+            <div class="tooltip">
+                <h3 class="question">>> Who is the GOAT 🐐 ?</h3>
+                <p class="answer">Michael Jordan 👌</p>
+            </div>
+        </div>        
+    </main>
+    <br><br><br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p>
+                COPY RIGHT
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
