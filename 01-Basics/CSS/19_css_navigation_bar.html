@@ -48,15 +48,19 @@
             overflow: hidden;
             background-color: darkgray;
         }
-        .navbar-horizontal ul li {
-            float: left;
+        .navbar-horizontal ul li:not(:last-child) {
+            float: left;            
+            border-right: 1px solid white;
+        }
+        .navbar-horizontal ul li:last-child {
+            border-left: 1px solid white;
         }
 
         .navbar-horizontal ul li a {
             display: block;
             color: white;
             text-align: center;
-            padding: 14px 16px;
+            padding: 5px 5px;
             text-decoration: none;
         }
         
@@ -99,6 +103,7 @@
                     <li class="right"><a href="#">Sign Up</a></li>
                 </ul>
             </div>
+            <h3><a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_dropdown_navbar" target="_blank">Example of a nice horizontal navbar</a></h3>
         </div>
     </main>
     <br><br><br><br><br>
