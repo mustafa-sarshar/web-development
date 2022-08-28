@@ -5,88 +5,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/global_style_1.css">
-    <title>CSS Pseudo-elements</title>
+    <title>CSS Navigation Bar</title>
     <style>
         p {
             text-indent: 2em;
             text-align: justify;
         }
-        .div-first-line,
-        .div-first-letter,
-        .div-before-after,
-        .div-marker,
-        .div-selection {
+        .navbar-vertical,
+        .navbar-horizontal {
             border: 1px green solid;
             padding: 10px;
+            margin: auto;
         }
-        .div-first-line p::first-line {
-            color: darkblue;
+        .navbar-vertical ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: darkgray;
+            padding: 5px;
+        }
+        .navbar-vertical li {
+            background-color: gray;
+            margin: 0 auto;
+        }
+        .navbar-vertical ul li a {
+            display: block;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            padding: 5px;
+        }
+        .navbar-vertical ul li:not(.active) a:hover {
+            color: green;
+            background-color: white;
             font-weight: bold;
-            font-variant: small-caps;
         }
-        .div-first-letter {
-            border: 1px green solid;
-            padding: 10px;
+        
+        .navbar-horizontal ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: darkgray;
         }
-        .div-first-letter p::first-letter {
-            color: #ff0000;
-            font-size: xx-large;
+        .navbar-horizontal ul li {
+            float: left;
         }
-        .div-before-after p::before {
-            content: "🗾";
+
+        .navbar-horizontal ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
         }
-        .div-before-after p::after {
-            content: "👌";
+        
+        .navbar-horizontal ul li:not(.active) a:hover {
+            background-color: white;
+            color: green;
         }
-        .div-marker li::marker {
-            font-size: 10px;
-            color: red;
+        ul li.active {
+            background-color: darkgreen;
+            font-weight: bold;
         }
-        .div-selection p::selection {
-            color: lightgreen;
-            background: black
+        ul li.right {
+            float: right;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1><a href="https://www.w3schools.com/css/css_pseudo_elements.asp" target="_blank">CSS Pseudo Elements</a></h1>
+        <h1><a href="https://www.w3schools.com/css/css_navbar.asp" target="_blank">CSS Navigation Bar</a></h1>
     </header>
     <hr>
-    <main>        
+    <main>
         <div class="mussar-container">
-            <h2>::first-line</h2>
-            <div class="div-first-line">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur totam soluta accusamus autem quae aperiam praesentium consequuntur laboriosam aliquid labore nemo, inventore nobis illum nostrum! Quia asperiores cum neque blanditiis!
-                </p>
-            </div>
-            <h2>::first-letter</h2>
-            <div class="div-first-letter">
-                <p>
-                    This is big. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto similique beatae ab sint provident accusamus accusantium natus voluptatem exercitationem, quam dicta nostrum dolorum ea numquam aperiam laboriosam iure odio esse.
-                </p>
-                <p>
-                    Is indeed big. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto similique beatae ab sint provident accusamus accusantium natus voluptatem exercitationem, quam dicta nostrum dolorum ea numquam aperiam laboriosam iure odio esse.
-                </p>
-            </div>
-            <h2>::befor and ::after</h2>
-            <div class="div-before-after">
-                <p>This is a sentence in the middle.</p>
-            </div>
-            <h2>::marker</h2>
-            <div class="div-marker">
+            <h2>Navbar - Vertical</h2>
+            <div class="navbar-vertical">
                 <ul>
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </div>
-            <h2>::selection</h2>
-            <div class="div-selection">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci aliquid, optio itaque nobis vel libero aut excepturi non laborum architecto magnam corrupti sunt quasi fuga vitae, dolores repudiandae incidunt ipsum?
-                </p>
+            <h3><a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_navbar_vertical_fixed" target="_blank">Example of a nice vertical navbar</a></h3>
+            <hr>
+            <h2>Navbar - Horizontal</h2>
+            <div class="navbar-horizontal">
+                <ul>
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li class="right"><a href="#">Sign Up</a></li>
+                </ul>
             </div>
         </div>
     </main>

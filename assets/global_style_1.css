@@ -48,6 +48,10 @@ hr {
     color: black;
 }
 
+.mussar-footer p {
+    text-align: center;
+}
+
 .mussar-footer p:last-child::after {
     content: "COPY RIGHT";
 }
