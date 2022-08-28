@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS Float and Clear</title>
+    <style>
+        .center {
+            margin: auto;
+            width: 60%;
+        }
+        .mussar-container > p {
+            border: 1px solid black;
+        }
+        .img-centered {
+            display: block;
+            margin: 0 auto;
+        }
+        .clearfix {
+            content: "";
+            display: table;
+            clear: both;
+            text-align: justify;
+            text-indent: 2em;
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .clearfix img {
+            float: right;
+            padding-left: 10px;
+        }
+        .center-all1 {
+            text-align: center; /* centered horizontally */
+            padding: 10px 0;    /* centered vertically */
+            border: 1px solid black;
+        }
+        .center-all2 {
+            line-height: 2em;
+            text-align: center;
+            border: 1px solid black;
+        }
+        .center-all2 > p {
+            line-height: 1.5;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .center-vertically {
+            height: 80px;
+            position: relative;
+            border: 3px solid green;
+        }
+        .center-vertically > p {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css_align.asp" target="_blank">CSS Align</a></h1>
+    </header>
+    <hr>
+    <main>        
+        <div class="mussar-container">
+            <h2>Paragraph not Centered</h2>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora perspiciatis quis dignissimos deleniti mollitia, quo nulla nisi ut hic ipsam expedita. Expedita quibusdam architecto iusto harum officia, blanditiis quisquam possimus?
+            </p>
+            <hr>
+            <h2>Paragraph Centered</h2>
+            <p class="center">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum provident illo cumque vero magnam deserunt temporibus, cum iste nemo quam minus reiciendis, qui excepturi eligendi deleniti! Atque enim explicabo assumenda.
+            </p>
+            <hr>
+            <h2>Photo Centered</h2>
+            <img class="img-centered" src="https://images.unsplash.com/photo-1661548738009-6774412fc283?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=694&q=80" width="60%" alt="Image from Unsplash.com">
+            <hr>
+            <h2>ClearFix Hack</h2>
+            <div class="clearfix">
+                <img src="https://images.unsplash.com/photo-1659535832621-4ef57c0e141b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80" alt="Image from Unsplash.com" width="40%">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, labore fugiat possimus placeat, quo provident id iure quisquam sed dolor distinctio officia sapiente ab vel officiis explicabo repellendus quis velit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit nobis, voluptatem harum iste quod deserunt quam eligendi earum vero at, perspiciatis quos atque porro dolorum adipisci, velit suscipit saepe nesciunt.
+            </div>
+            <hr>
+            <h2>Center Text Vertically and Horizontally - Trick 1</h2>
+            <div class="center-all1">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit corporis, impedit unde cum veritatis cumque, et debitis omnis provident ex facilis minus sed fuga perferendis delectus quo totam eos expedita.
+                </p>
+            </div>
+            <h2>Center Text Vertically and Horizontally - Trick 2</h2>
+            <div class="center-all2">
+                <p>
+                    SMALL TEXT
+                </p>
+            </div>
+            <h2>Center Vertically - Using position & transform</h2>
+            <div class="center-vertically">
+                <p>
+                    SMALL TEXT
+                </p>
+            </div>
+            <hr>
+        </div>        
+    </main>
+    <br><br><br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p>
+                COPY RIGHT
+            </p>
+            <p>
+                Photos by <a href="https://unsplash.com/@whynotnatali?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Natali Hordiiuk</a> and by <a href="https://unsplash.com/@samsungmemory?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Samsung Memory</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

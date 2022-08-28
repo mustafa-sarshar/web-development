@@ -9,8 +9,95 @@
     <style>
         .mussar-container {
             padding: 10px;
+            display: flex;
         }
-        
+        .div-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-transform: uppercase;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            width: 100px;
+            height: 50px;
+            background-color: rgba(0, 0, 139, 0.9);
+            margin: 5px;
+            border-radius: 5px;
+            outline: 2px green solid;
+            outline-offset: 5px;
+        }
+        .div-small-box {
+            width: fit-content;
+            height: fit-content;
+            background-color: red;
+            color: white;
+            padding: 5px;
+        }
+        .div-fancy-box {
+            background: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+            linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+            linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+            border-radius: 5px;
+            width: fit-content;
+            height: fit-content;
+            color: black;
+            padding: 30px 15px;
+            margin: 15px;
+        }
+        .float-left {
+            float: left;
+            clear: both;
+        }
+        .float-right {
+            float: right;
+        }
+        .float-none {
+            float: none;
+        }
+        .clear-both {
+            clear: both;
+        }
+        .clearfix {
+            border: 2px solid green;
+            overflow: auto;
+            text-align: justify;
+        }
+        .clearfix p {
+            padding: 0 5px;
+            text-indent: 2em;
+        }
+        .boxes * {
+            box-sizing: border-box;
+        }
+        .boxes::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        .vertical-box {
+            float: left;
+            width: 33.33%;
+            padding: 50px;
+        }
+        .clearfix2 p {
+            text-align: justify;
+            text-indent: 2em;
+        }
+        .text-container {
+            display: flex;
+            flex-wrap: nowrap;
+            background-color: darkgray;
+            padding: 5px;
+        }
+        .textbox {
+            background-color: #f1f1f1;
+            width: 50%;
+            margin: 5px;
+            padding: 10px;
+            text-indent: 1em;
+            text-align: justify;
+            line-height: 1em;
+        }
     </style>
 </head>
 <body>
@@ -20,6 +107,41 @@
     <hr>
     <main>
         <div class="mussar-container">
+            <div class="div-box float-left">LEFT</div>
+            <div class="div-box float-none">NONE</div>
+            <div class="div-box float-right">RIGHT</div>
+        </div>
+        <hr>
+        <div class="div-small-box float-left">ABC</div>
+        <div class="clear-both">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi officiis consectetur amet doloribus deserunt, eveniet cumque ad laboriosam laborum impedit eius quod non possimus distinctio optio ea modi mollitia at!
+        </div>
+        <hr>
+        <div class="clearfix">
+            <div class="div-fancy-box float-right">RAINBOW</div>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit sit enim cupiditate aut.
+            </p>
+        </div>
+        <hr>
+        <div class="clearfix2">
+            <div class="boxes">
+                <div class="vertical-box" style="background-color:#bbb"></div>
+                <div class="vertical-box" style="background-color:rgb(136, 130, 130)"></div>
+                <div class="vertical-box" style="background-color:rgb(86, 86, 86)"></div>
+            </div>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolorum harum quas dolorem sequi! Minus nulla corporis ex itaque incidunt saepe ad fugiat in vel culpa similique, perferendis corrupti placeat.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, illum! Voluptate possimus repellendus unde autem, sint suscipit ducimus nam corrupti voluptates atque molestiae ipsam ullam aliquam? Eius animi quae quasi!
+            </p>
+        </div>
+        <div class="text-container">
+            <div class="textbox">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut blanditiis quae nam voluptatibus deserunt, distinctio praesentium neque quisquam similique hic, et itaque, enim assumenda nobis sed laudantium a dolorem. Quidem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto dignissimos sapiente aliquid quibusdam vitae! Aut dolor totam laborum nisi, voluptas explicabo nesciunt quaerat odio impedit quibusdam, expedita amet, ipsam corrupti.
+            </div>
+            <div class="textbox">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut blanditiis quae nam voluptatibus deserunt, distinctio praesentium neque quisquam similique hic, et itaque, enim assumenda nobis sed laudantium a dolorem. Quidem.
+            </div>
             
         </div>
     </main>
