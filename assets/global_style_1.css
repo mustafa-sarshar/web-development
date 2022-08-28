@@ -47,3 +47,7 @@ hr {
     background-color: bisque;
     color: black;
 }
+
+.mussar-footer p:last-child::after {
+    content: "COPY RIGHT";
+}

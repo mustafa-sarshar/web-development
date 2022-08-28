@@ -4,18 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
     <title>CSS Tables</title>
     <style>
-        .container {
-            display: block;
-            justify-content: center;
-            margin: auto;
-            max-width: 400px;
-            background-color: bisque;
-            padding: 20px;
-            overflow-x: auto; /* CSS Responsive Table */
-        }
-
         #table1, #table2 {
             border: 3px solid blue;
             padding: 10px;
@@ -113,52 +104,15 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <table id="table1">
-            <caption>Caption of the Table</caption>
-            <thead>
-                <tr>
-                    <th scope="col">Column 1</th>
-                    <th scope="col">Column 2</th>
-                    <th scope="col">Column 3</th>
-                    <th scope="col">Column 4</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">Row 1</th>
-                    <td>Cell 1-1</td>
-                    <td>Cell 1-2</td>
-                    <td>Cell 1-3</td>
-                </tr>
-                <tr>
-                    <th scope="row">Row 2</th>
-                    <td>Cell 2-1</td>
-                    <td>Cell 2-2</td>
-                    <td>Cell 2-3</td>
-                </tr>
-                <tr>
-                    <th scope="row">Row 3</th>
-                    <td>Cell 3-1</td>
-                    <td>Cell 3-2</td>
-                    <td>Cell 3-3</td>
-                </tr>
-                <tr>
-                    <th scope="row">Row 4</th>
-                    <td>Cell 4-1</td>
-                    <td>Cell 4-2</td>
-                    <td>Cell 4-3</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="4">Info in the Footer</td>
-                </tr>
-            </tfoot>
-        </table>
-        <hr>
-        <div style="overflow-x: auto;">
-            <table id="table2">
+    <header>
+        <h1>
+            <a href="https://www.w3schools.com/css/css_table.asp" target="_blank" rel="noopener noreferrer">CSS Tables</a>
+        </h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <table id="table1">
                 <caption>Caption of the Table</caption>
                 <thead>
                     <tr>
@@ -194,88 +148,138 @@
                         <td>Cell 4-3</td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">Info in the Footer</td>
+                    </tr>
+                </tfoot>
             </table>
+            <hr>
+            <div style="overflow-x: auto;">
+                <table id="table2">
+                    <caption>Caption of the Table</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Column 1</th>
+                            <th scope="col">Column 2</th>
+                            <th scope="col">Column 3</th>
+                            <th scope="col">Column 4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Row 1</th>
+                            <td>Cell 1-1</td>
+                            <td>Cell 1-2</td>
+                            <td>Cell 1-3</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Row 2</th>
+                            <td>Cell 2-1</td>
+                            <td>Cell 2-2</td>
+                            <td>Cell 2-3</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Row 3</th>
+                            <td>Cell 3-1</td>
+                            <td>Cell 3-2</td>
+                            <td>Cell 3-3</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Row 4</th>
+                            <td>Cell 4-1</td>
+                            <td>Cell 4-2</td>
+                            <td>Cell 4-3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr>
+            <div style="overflow-x: scroll;">
+                <table id="table3">
+                    <caption>CSS Responsive Table</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Head 1</th>
+                            <th scope="col">Head 2</th>
+                            <th scope="col">Head 3</th>
+                            <th scope="col">Head 4</th>
+                            <th scope="col">Head 5</th>
+                            <th scope="col">Head 6</th>
+                            <th scope="col">Head 7</th>
+                            <th scope="col">Head 8</th>
+                            <th scope="col">Head 9</th>
+                            <th scope="col">Head 10</th>
+                            <th scope="col">Head 11</th>
+                            <th scope="col">Head 12</th>
+                        </tr>                    
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cell 1</td>
+                            <td>Cell 2</td>
+                            <td>Cell 3</td>
+                            <td>Cell 4</td>
+                            <td>Cell 5</td>
+                            <td>Cell 6</td>
+                            <td>Cell 7</td>
+                            <td>Cell 8</td>
+                            <td>Cell 9</td>
+                            <td>Cell 10</td>
+                            <td>Cell 11</td>
+                            <td>Cell 12</td>
+                        </tr>
+                        <tr style="empty-cells: show;">
+                            <td>Cell 1</td>
+                            <td></td>
+                            <td>Cell 3</td>
+                            <td>Cell 4</td>
+                            <td>Cell 5</td>
+                            <td>Cell 6</td>
+                            <td></td>
+                            <td>Cell 8</td>
+                            <td>Cell 9</td>
+                            <td>Cell 10</td>
+                            <td></td>
+                            <td>Cell 12</td>
+                        </tr>
+                        <tr style="empty-cells: hide;">
+                            <td></td>
+                            <td>Cell 2</td>
+                            <td></td>
+                            <td>Cell 4</td>
+                            <td>Cell 5</td>
+                            <td></td>
+                            <td>Cell 7</td>
+                            <td>Cell 8</td>
+                            <td>Cell 9</td>
+                            <td>Cell 10</td>
+                            <td>Cell 11</td>
+                            <td>Cell 12</td>
+                        </tr>
+                        <tr>
+                            <td>Cell 1</td>
+                            <td>Cell 2</td>
+                            <td>Cell 3</td>
+                            <td>Cell 4</td>
+                            <td>Cell 5</td>
+                            <td>Cell 6</td>
+                            <td>Cell 7</td>
+                            <td>Cell 8</td>
+                            <td>Cell 9</td>
+                            <td>Cell 10</td>
+                            <td>Cell 11</td>
+                            <td>Cell 12</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <hr>
-        <div style="overflow-x: scroll;">
-            <table id="table3">
-                <caption>CSS Responsive Table</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head 1</th>
-                        <th scope="col">Head 2</th>
-                        <th scope="col">Head 3</th>
-                        <th scope="col">Head 4</th>
-                        <th scope="col">Head 5</th>
-                        <th scope="col">Head 6</th>
-                        <th scope="col">Head 7</th>
-                        <th scope="col">Head 8</th>
-                        <th scope="col">Head 9</th>
-                        <th scope="col">Head 10</th>
-                        <th scope="col">Head 11</th>
-                        <th scope="col">Head 12</th>
-                    </tr>                    
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Cell 1</td>
-                        <td>Cell 2</td>
-                        <td>Cell 3</td>
-                        <td>Cell 4</td>
-                        <td>Cell 5</td>
-                        <td>Cell 6</td>
-                        <td>Cell 7</td>
-                        <td>Cell 8</td>
-                        <td>Cell 9</td>
-                        <td>Cell 10</td>
-                        <td>Cell 11</td>
-                        <td>Cell 12</td>
-                    </tr>
-                    <tr style="empty-cells: show;">
-                        <td>Cell 1</td>
-                        <td></td>
-                        <td>Cell 3</td>
-                        <td>Cell 4</td>
-                        <td>Cell 5</td>
-                        <td>Cell 6</td>
-                        <td></td>
-                        <td>Cell 8</td>
-                        <td>Cell 9</td>
-                        <td>Cell 10</td>
-                        <td></td>
-                        <td>Cell 12</td>
-                    </tr>
-                    <tr style="empty-cells: hide;">
-                        <td></td>
-                        <td>Cell 2</td>
-                        <td></td>
-                        <td>Cell 4</td>
-                        <td>Cell 5</td>
-                        <td></td>
-                        <td>Cell 7</td>
-                        <td>Cell 8</td>
-                        <td>Cell 9</td>
-                        <td>Cell 10</td>
-                        <td>Cell 11</td>
-                        <td>Cell 12</td>
-                    </tr>
-                    <tr>
-                        <td>Cell 1</td>
-                        <td>Cell 2</td>
-                        <td>Cell 3</td>
-                        <td>Cell 4</td>
-                        <td>Cell 5</td>
-                        <td>Cell 6</td>
-                        <td>Cell 7</td>
-                        <td>Cell 8</td>
-                        <td>Cell 9</td>
-                        <td>Cell 10</td>
-                        <td>Cell 11</td>
-                        <td>Cell 12</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    </main>    
+    <hr>
+    <br><br><br>
+    <footer class="mussar-footer">
+        <p></p>
+    </footer>
 </body>
 </html>

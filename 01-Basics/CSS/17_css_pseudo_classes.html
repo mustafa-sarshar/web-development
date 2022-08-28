@@ -56,6 +56,28 @@
             border-style: dashed;
             letter-spacing: 5px;
         }
+        .first-child ul:first-child, .first-child ul li:first-child {
+            color: blue;
+            font-weight: bold;
+        }
+        .lang-pseudo-class {
+            border: 5px green solid;
+            padding: 5px;
+            text-align: justify;
+            text-indent: 1em;
+        }
+        .lang-pseudo-class q:lang(mark1) {
+            quotes: "[" "]";
+            color: blue;
+        }
+        .lang-pseudo-class q:lang(mark2) {
+            quotes: "/" "\\";
+            color: green;
+        }
+        .lang-pseudo-class q:lang(mark3) {
+            quotes: "#" "#";
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -81,14 +103,38 @@
                 <h3 class="question">>> Who is the GOAT 🐐 ?</h3>
                 <p class="answer">Michael Jordan 👌</p>
             </div>
-        </div>        
+            <hr>
+            <h2>First Child</h2>
+            <div class="first-child">
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                </ul>
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                </ul>
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                </ul>
+            </div>
+            <hr>
+            <h2>:lang Pseudo-class</h2>
+            <div class="lang-pseudo-class">
+                <p>
+                    Lorem ipsum <q lang="mark1">dolor sit amet</q> consectetur adipisicing elit. Illum <q lang="mark2">aspernatur adipisci</q> quaerat, eveniet rem at autem eaque quisquam voluptatem? Ab numquam dolore veniam <q lang="mark3">voluptatibus</q> suscipit soluta placeat voluptate, aliquam temporibus.
+                </p>
+            </div>
+        </div>
     </main>
     <br><br><br><br><br>
     <footer>
         <div class="mussar-footer">
-            <p>
-                COPY RIGHT
-            </p>
+            <p></p>
         </div>
     </footer>
 </body>

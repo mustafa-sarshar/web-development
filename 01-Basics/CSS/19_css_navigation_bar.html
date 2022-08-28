@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS Pseudo-elements</title>
+    <style>
+        p {
+            text-indent: 2em;
+            text-align: justify;
+        }
+        .div-first-line,
+        .div-first-letter,
+        .div-before-after,
+        .div-marker,
+        .div-selection {
+            border: 1px green solid;
+            padding: 10px;
+        }
+        .div-first-line p::first-line {
+            color: darkblue;
+            font-weight: bold;
+            font-variant: small-caps;
+        }
+        .div-first-letter {
+            border: 1px green solid;
+            padding: 10px;
+        }
+        .div-first-letter p::first-letter {
+            color: #ff0000;
+            font-size: xx-large;
+        }
+        .div-before-after p::before {
+            content: "🗾";
+        }
+        .div-before-after p::after {
+            content: "👌";
+        }
+        .div-marker li::marker {
+            font-size: 10px;
+            color: red;
+        }
+        .div-selection p::selection {
+            color: lightgreen;
+            background: black
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css_pseudo_elements.asp" target="_blank">CSS Pseudo Elements</a></h1>
+    </header>
+    <hr>
+    <main>        
+        <div class="mussar-container">
+            <h2>::first-line</h2>
+            <div class="div-first-line">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur totam soluta accusamus autem quae aperiam praesentium consequuntur laboriosam aliquid labore nemo, inventore nobis illum nostrum! Quia asperiores cum neque blanditiis!
+                </p>
+            </div>
+            <h2>::first-letter</h2>
+            <div class="div-first-letter">
+                <p>
+                    This is big. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto similique beatae ab sint provident accusamus accusantium natus voluptatem exercitationem, quam dicta nostrum dolorum ea numquam aperiam laboriosam iure odio esse.
+                </p>
+                <p>
+                    Is indeed big. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto similique beatae ab sint provident accusamus accusantium natus voluptatem exercitationem, quam dicta nostrum dolorum ea numquam aperiam laboriosam iure odio esse.
+                </p>
+            </div>
+            <h2>::befor and ::after</h2>
+            <div class="div-before-after">
+                <p>This is a sentence in the middle.</p>
+            </div>
+            <h2>::marker</h2>
+            <div class="div-marker">
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                </ul>
+            </div>
+            <h2>::selection</h2>
+            <div class="div-selection">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci aliquid, optio itaque nobis vel libero aut excepturi non laborum architecto magnam corrupti sunt quasi fuga vitae, dolores repudiandae incidunt ipsum?
+                </p>
+            </div>
+        </div>
+    </main>
+    <br><br><br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+</body>
+</html>
