@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS Image Sprites</title>
+    <style>
+        .mussar-container {
+            display: block;
+            width: 600px;
+            height: 400px;
+        }
+        #img-top-left {
+            margin: 10px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 298px;
+            height: 198px;
+            background: url("https://images.unsplash.com/photo-1662520406997-750f2bd3b8d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1181&q=80") 0px 0px;
+        }
+        #img-top-right {
+            margin: 10px;
+            position: absolute;
+            top: 10px;
+            left: 310px;
+            width: 298px;
+            height: 198px;
+            background: url("https://images.unsplash.com/photo-1662520406997-750f2bd3b8d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1181&q=80") 300px 0px;
+        }
+        #img-bottom-left {
+            margin: 10px;
+            position: absolute;
+            top: 210px;
+            left: 10px;
+            width: 298px;
+            height: 198px;
+            background: url("https://images.unsplash.com/photo-1662520406997-750f2bd3b8d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1181&q=80") 0px -200px;
+        }
+        #img-bottom-right {
+            margin: 10px;
+            position: absolute;
+            top: 210px;
+            left: 310px;
+            width: 298px;
+            height: 198px;
+            background: url("https://images.unsplash.com/photo-1662520406997-750f2bd3b8d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1181&q=80") 300px -200px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css_image_sprites.asp" target="_blank">CSS Image Sprites</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <div id="img-top-left">
+                <img src="" alt="">
+            </div>
+            <div id="img-top-right">
+                <img src="" alt="">
+            </div>
+            <div id="img-bottom-left">
+                <img src="" alt="">
+            </div>
+            <div id="img-bottom-right">
+                <img src="" alt="">
+            </div>
+        </div>
+    </main>    
+    <footer>
+        <div class="mussar-footer">
+            <p>
+                Photo by <a href="https://unsplash.com/es/@njl10150?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Nicholas Ledoux</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a>
+            </p>
+            <p></p>
+        </div>
+    </footer>
+</body>
+</html>
