@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS Attribute Selectors</title>
+    <style>
+        .img-block {
+            display: flex;
+            margin: auto;
+            position: relative;
+            justify-content: center;
+            background-color: lightgray;
+            height: 315px;
+        }
+        .img-container {
+            display: flex;
+            padding: 10px;
+        }
+        img[title="nature"] {
+            border: 3px solid green;
+            border-radius: 5px;
+        }
+        img[alt="street"] {
+            box-shadow: 2px 2px 4px rgba(100, 0, 0, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="#" target="_blank">CSS Attribute Selectors</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <div class="img-block">
+                <div class="img-container">
+                    <img src="https://picsum.photos/id/237/200/300" alt="dog">
+                </div>
+                <div class="img-container">
+                    <img src="https://picsum.photos/id/10/200/300" alt="sea" title="nature">
+                </div>
+                <div class="img-container">
+                    <img src="https://picsum.photos/id/610/200/300" alt="beach" title="nature">
+                </div>
+                <div class="img-container">
+                    <img src="https://picsum.photos/id/351/200/300" alt="street">
+                </div>
+            </div>
+        </div>
+    </main>    
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+</body>
+</html>

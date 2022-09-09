@@ -46,6 +46,7 @@ hr {
     width: 100%;
     background-color: bisque;
     color: black;
+    z-index: 1000;
 }
 
 .mussar-footer p {
