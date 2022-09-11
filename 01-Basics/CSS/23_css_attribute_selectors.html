@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="../../assets/global_style_1.css">
     <title>CSS Attribute Selectors</title>
     <style>
+        .mussar-container {
+            width: 870px;
+        }
         .img-block {
             display: flex;
             margin: auto;
             position: relative;
             justify-content: center;
-            background-color: lightgray;
             height: 315px;
+            visibility: none;
         }
         .img-container {
             display: flex;
@@ -25,6 +28,12 @@
         }
         img[alt="street"] {
             box-shadow: 2px 2px 4px rgba(100, 0, 0, 0.9);
+        }
+
+        @media (max-width: 900px) {
+            .mussar-container {
+                width: auto;
+            }
         }
     </style>
 </head>
