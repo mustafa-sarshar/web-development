@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/global_style_1.css">
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
-    <title>PyScript</title>
+    <title>PyScript - REPL</title>
     <style>
     </style>
 </head>
@@ -17,24 +17,12 @@
     <hr>
     <main>
         <div class="mussar-container">
-            <py-script>
-                print("This is done via PyScript !!! 😊")
-                print("That's crazy 👍")
-            </py-script>
-            <p>
-                Today is <b><u><label id="lbl-date"></label></u></b>
-            </p>
-            <p>
-                It is now <b><u><label id="lbl-time"></label></u></b> o'clock
-            </p>
-            
-            <py-script>
-                from datetime import datetime, date
-                pyscript.write("lbl-date", date.today().strftime("%A %B %d, %Y"))
-                pyscript.write("lbl-time", datetime.now().strftime("%H:%M:%S"))
-            </py-script>
+            <h1>REPL in the Browser 😱</h1>
+            <py-repl id="my-repl" auto-generate=true>
+                print("Hello World!!!")   # Press Shift + Enter to run the code
+            </py-repl>
         </div>
-    </main>    
+    </main>
     <footer>
         <div class="mussar-footer">
             <p></p>
