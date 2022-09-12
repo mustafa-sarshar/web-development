@@ -6,34 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
     <link rel="stylesheet" href="../../assets/global_style_1.css">
-    <title>PyScript</title>
+    <py-env>
+        - paths:
+            - ./utils/modules.py
+        - numpy
+    </py-env>
+    <title>PyScript - Import Files, Modules, and Libraries</title>
     <style>
     </style>
 </head>
 <body>
     <header>
-        <h1><a href="https://www.freecodecamp.org/news/pyscript-python-front-end-framework/" target="_blank">PyScript Simple Code Example</a></h1>
+        <h1><a href="https://www.freecodecamp.org/news/pyscript-python-front-end-framework/" target="_blank">PyScript - Import Files, Modules, and Libraries</a></h1>
     </header>
     <hr>
     <main>
         <div class="mussar-container">
-            <py-script>
-                print("This is done via PyScript !!! 😊")
-                print("That's crazy 👍")
-            </py-script>
+            <h1>Let's get the date and time information.</h1>
             <p>
                 Today is <b><u><label id="lbl-date"></label></u></b>
             </p>
             <p>
                 It is now <b><u><label id="lbl-time"></label></u></b> o'clock
             </p>
+            <br>
+            <hr>
             <py-script>
-                from datetime import datetime, date
-                pyscript.write("lbl-date", date.today().strftime("%A %B %d, %Y"))
-                pyscript.write("lbl-time", datetime.now().strftime("%H:%M:%S"))
+                import numpy as np
+                my_arr = np.array([1, 2, 3, 4, 5])
+                print("My Numpy Array:", my_arr)
             </py-script>
         </div>
-    </main>    
+        <py-script>
+            from modules import get_current_date, get_current_time
+            pyscript.write("lbl-date", get_current_date())
+            pyscript.write("lbl-time", get_current_time())
+        </py-script>
+    </main>
     <footer>
         <div class="mussar-footer">
             <p></p>

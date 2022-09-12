@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/global_style_1.css">
-    <title>CSS FORM</title>
+    <title>CSS FORMS</title>
     <style>
         .form-container {
             border-radius: 5px;
@@ -21,6 +21,18 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .form-container textarea {
+            width: 100%;
+            height: 120px;
+            padding: 12px 20px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            resize: none;
+            font-family: Arial, Helvetica, sans-serif;
         }
         .form-container input[type=submit] {
             width: 100%;
@@ -33,18 +45,125 @@
             cursor: pointer;
             font-weight: bold;
             letter-spacing: 2px;
+            transition: background-color 0.4s ease-in-out;
         }
         .form-container input[type=submit]:hover {
             background-color: rgba(0, 0, 0, 0.5);
         }
-        .form-container * {
-            text-transform: capitalize;
+        .search-container {
+            border-radius: 5px;
+            background-color: #fffeea;
+            padding: 20px;
         }
+        .search-container input[type=text] {
+            display: flex;
+            margin: auto;
+            width: 60%;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url("../../assets/icons/free-search-icon-3076-thumb.png");
+            background-position: 10px 5px;
+            background-size: 30px 30px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 50px;
+            transition: width 0.4s ease-in-out;
+        }
+        .search-container input[type=text]:focus {
+            width: 65%;
+        }
+        .search-container input[type=submit] {
+            display: flex;
+            margin: 10px auto;
+            background-color: rgb(106, 107, 47);
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: background-color 0.4s ease-in-out;
+        }
+        .search-container input[type=submit]:hover {
+            background-color: rgb(163, 151, 151);
+        }
+        .search-container h2 {
+            text-align: center;
+        }
+
+        .responsive-form-container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        .responsive-form-container * {
+            box-sizing: border-box;
+        }
+        .responsive-form-container input[type="email"],
+        .responsive-form-container input[type="password"],
+        .responsive-form-container textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .responsive-form-container label {
+            padding: 12px 12px 12px 0;
+            display: inline-block;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .responsive-form-container input[type=submit] {
+            background-color: #909b97;
+            color: black;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+            margin-top: .5em;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+        .responsive-form-container input[type=submit]:hover {
+            background-color: #7e8b86;
+        }
+        /* Clear floats after the columns */
+        .responsive-form-container div[class="row"]:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .responsive-form-container div[class="col-25"] * {
+            float: left;
+            width: 25%;
+            margin-top: 6px;
+        }
+        .responsive-form-container div[class="col-75"] * {
+            float: left;
+            width: 75%;
+            margin-top: 6px;
+        }
+        /* Responsive layout - when the screen is less than 600px wide,
+        make the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+            .responsive-form-container div[class="col-25"] *,
+            .responsive-form-container div[class="col-75"] *,
+            .responsive-form-container input[type=submit] {
+                width: 100%;
+                margin-top: 0;
+            }
+}
+        
     </style>
 </head>
 <body>
     <header>
-        <h1><a href="https://www.w3schools.com/css/css_form.asp" target="_blank">CSS FORM</a></h1>
+        <h1><a href="https://www.w3schools.com/css/css_form.asp" target="_blank">CSS FORMS</a></h1>
     </header>
     <hr>
     <main>
@@ -59,14 +178,56 @@
 
                     <label for="gender">Gender</label>
                     <select id="gender" name="gender">
-                        <option value="female">female</option>
-                        <option value="male">male</option>
-                        <option value="diverse">diverse</option>
-                    </select>  
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                        <option value="diverse">Diverse</option>
+                    </select>
+                    <label for="bio">Bio:</label>
+                    <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Tell us about yourself"></textarea>
                     <input type="submit" value="Submit">
                 </form>
             </div>
             <br><hr><br>
+            <div class="search-container">
+                <h2>Search for something in Google</h2>
+                <form action="https://google.com/search" method="get" target="_blank">
+                    <input type="text" name="q" id="q" placeholder="search word here">
+                    <input type="submit" value="Google it 😊">
+                </form>
+            </div>
+            <br><hr><br>
+            <div class="responsive-form-container">
+                <form action="#" method="get">
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="email">Email:</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="email" name="email" id="email" placeholder="Your email">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="password">Password:</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="password" name="password" id="password" placeholder="Your password">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="bio">Bio:</label>
+                        </div>
+                        <div class="col-75">
+                            <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Tell us about yourself ..."></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="submit" value="Log In">
+                    </div>
+                </form>
+            </div>
+            <br><br><br><br>
         </div>
     </main>
     <footer>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS Counters</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .div-counter-automatic-numbering {
+            counter-reset: counter-automatic-numbering;
+        }
+        .div-counter-automatic-numbering h2::after {
+            counter-increment: counter-automatic-numbering;
+            content: " " counter(counter-automatic-numbering) ": (via counters)";
+        }
+        .div-nesting-counters {
+            counter-reset: counter-main-title;
+        }
+        .div-nesting-counters h2 {
+            counter-reset: counter-sub-title;
+        }
+        .div-nesting-counters h2::after {
+            counter-increment: counter-main-title;
+            content: " " counter(counter-main-title) ":";
+        }
+        .div-nesting-counters h3::after {
+            counter-increment: counter-sub-title;
+            content: " " counter(counter-main-title) "." counter(counter-sub-title) ":";
+        }
+
+        .div-nesting-counters-list {
+            counter-reset: counter-ol-list;
+        }
+        .div-nesting-counters-list ol {
+            counter-increment: counter-ol-list;
+            counter-reset: counter-li-list;
+            list-style-type: none;
+        }
+        .div-nesting-counters-list li::before {
+            counter-increment: counter-li-list;
+            content: counters(counter-li-list, ".") " > ";
+        }
+        .div-nesting-counters-list li::after {
+            content: " (" counter(counter-li-list) ")";
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css_counters.asp" target="_blank">CSS Counters</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <div class="div-counter-automatic-numbering">
+                <h1>Automatic Numbering With Counters</h1>
+                <h2>Title</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea eos quod sequi quo eveniet enim animi, vel libero obcaecati fuga, consequatur tempore autem quam voluptatem nam. Perferendis accusamus iure beatae.</p>
+                <h2>Title</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea eos quod sequi quo eveniet enim animi, vel libero obcaecati fuga, consequatur tempore autem quam voluptatem nam. Perferendis accusamus iure beatae.</p>
+                <h2>Title</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea eos quod sequi quo eveniet enim animi, vel libero obcaecati fuga, consequatur tempore autem quam voluptatem nam. Perferendis accusamus iure beatae.</p>
+                <br><hr><br>
+            </div>
+            <div class="div-nesting-counters">
+                <h1>Nesting Counters</h1>
+                <h2>Main Title</h2>
+                <h3>Sub-title</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <h3>Sub-title</h3>
+                <p>Explicabo, alias incidunt tempore enim modi eum. Nulla illum officia quo quos ducimus.</p>
+                <h3>Sub-title</h3>
+                <p>Deleniti reprehenderit at cum voluptatum laudantium libero dolore molestiae. Amet eveniet illum voluptatum expedita deserunt?</p>
+                <h2>Main Title</h2>
+                <h3>Sub-title</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <h3>Sub-title</h3>
+                <p>Explicabo, alias incidunt tempore enim modi eum. Nulla illum officia quo quos ducimus.</p>
+                <h3>Sub-title</h3>
+                <p>Deleniti reprehenderit at cum voluptatum laudantium libero dolore molestiae. Amet eveniet illum voluptatum expedita deserunt?</p>
+                <h2>Main Title</h2>
+                <h3>Sub-title</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <h3>Sub-title</h3>
+                <p>Explicabo, alias incidunt tempore enim modi eum. Nulla illum officia quo quos ducimus.</p>
+                <h3>Sub-title</h3>
+                <p>Deleniti reprehenderit at cum voluptatum laudantium libero dolore molestiae. Amet eveniet illum voluptatum expedita deserunt?</p>
+            </div>
+            <br><hr><br>
+            <div class="div-nesting-counters-list">
+                <h1>Nesting Counters for List</h1>
+                <ol>
+                    <li>Item</li>
+                    <li>Item</li>
+                    <ol>
+                        <li>Sub-Item</li>
+                        <li>Sub-Item</li>
+                        <li>Sub-Item</li>
+                        <li>Sub-Item</li>
+                        <li>Sub-Items</li>
+                        <ol>
+                            <li>Sub-sub-Item</li>
+                            <li>Sub-sub-Item</li>
+                            <li>Sub-sub-Item</li>
+                            <li>Sub-sub-Item</li>
+                        </ol>
+                    </ol>
+                    <li>Sub-sub-Item</li>
+                    <li>Sub-sub-Item</li>
+                </ol>
+            </div>
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+</body>
+</html>
