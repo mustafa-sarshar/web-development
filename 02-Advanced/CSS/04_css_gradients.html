@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS Gradients</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            border-bottom: 1px solid;
+        }
+        h3 {
+            text-align: center;
+        }
+        .style-and-shape-settings {
+            display: flex;
+            width: 100%;
+            height: 100px;
+            margin: 10px auto;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 1px 1px 2px black;
+        }
+        #linear-gradient1 {
+            background-image: linear-gradient(red, yellow);
+        }
+        #linear-gradient2 {
+            background-image: linear-gradient(to top, red, yellow);
+        }
+        #linear-gradient3 {
+            background-image: linear-gradient(to right, red, yellow);
+        }
+        #linear-gradient4 {
+            background-image: linear-gradient(to left, red, yellow);
+        }
+        #linear-gradient5 {
+            background-image: linear-gradient(to right bottom, red, yellow);    /* diagonal */
+        }
+        #linear-gradient6 {
+            background-image: linear-gradient(10deg, red, yellow);              /* via angle */
+        }
+        #linear-gradient6:hover {
+            background-image: linear-gradient(25deg, red, yellow);
+        }
+        #linear-gradientRainbow {
+            background-image: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+        }
+        #linear-gradientRainbow:hover {
+            background-image: linear-gradient(135deg, red, orange, yellow, green, blue, indigo, violet);
+        }
+        #linear-gradient7 {
+            background-image: linear-gradient(to left, rgba(128, 128, 128, 0.1), gray, black, gray, rgba(128, 128, 128, 0.1));
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css3_gradients.asp" target="_blank">CSS Gradients</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <h2>Linear Gradients</h2>
+            <h3>Simple Linear Gradients</h3>
+            <div class="style-and-shape-settings" id="linear-gradient1"></div>
+            <div class="style-and-shape-settings" id="linear-gradient2"></div>
+            <div class="style-and-shape-settings" id="linear-gradient3"></div>
+            <div class="style-and-shape-settings" id="linear-gradient4"></div>
+            <div class="style-and-shape-settings" id="linear-gradient5"></div>
+            <div class="style-and-shape-settings" id="linear-gradient6">Touch ME</div>
+            <hr>
+            <h3>Rainbow</h3>
+            <div class="style-and-shape-settings" id="linear-gradientRainbow">Touch the Rainbow</div>
+            <hr>
+            <h3>Using Transparency</h3>
+            <div class="style-and-shape-settings" id="linear-gradient7"></div>
+            <hr>
+            <h3>Repeating a linear-gradient</h3>
+            <div class="style-and-shape-settings" id="linear-gradient7"></div>
+            <hr>
+            <h2>Radial Gradients</h2>
+            <div class="style-and-shape-settings" id="radial-gradient1"></div>
+            <hr>
+            <h2>Conical Gradients</h2>
+            <div class="style-and-shape-settings" id="conic-gradient1"></div>
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+</body>
+</html>
