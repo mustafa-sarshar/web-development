@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS Border Image</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        .clearfix {
+            position: relative;
+            margin: auto;
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .shape-and-style-element {
+            margin: 5px;
+            float: left;
+            width: 200px;
+            height: 200px;
+        }
+        .shape-and-style-element:hover {
+            outline: 1px dashed rgba(0, 0, 0, 0.3);
+            outline-offset: 10px;
+        }
+        #image1 {
+            border: 10px solid transparent;
+            border-image: url("https://www.w3schools.com/css/border.png");
+        }
+
+        #imageSlice1 {
+            border: 10px solid transparent;
+            border-image: url("https://www.w3schools.com/css/border.png") 50 round;
+        }
+        #imageSlice2 {
+            border: 10px solid transparent;
+            border-image: url("https://www.w3schools.com/css/border.png") 20% round;
+        }
+        #imageSlice3 {
+            border: 10px solid transparent;
+            border-image: url("https://www.w3schools.com/css/border.png") 30% round;
+        }
+
+        #imageOpt1 {
+            border: 10px solid transparent;
+            border-image: url("https://www.w3schools.com/css/border.png") 30 repeat;
+        }
+        #imageOpt2 {
+            border: 10px solid transparent;
+            border-image: url("https://www.w3schools.com/css/border.png") 20 repeat;
+        }
+        #imageOpt3 {
+            border: 10px solid transparent;
+            border-image: url("https://www.w3schools.com/css/border.png") 10 round;
+        }
+        #imageOpt4 {
+            border: 10px solid transparent;
+            border-image: url("https://www.w3schools.com/css/border.png") 10 stretch;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css3_borders.asp" target="_blank">CSS Border Image</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <h2>Border Image</h2>
+            <div class="clearfix">
+                <img src="https://picsum.photos/id/1/200/300" alt="" class="shape-and-style-element" id="image1">
+            </div>
+            <hr>
+            <h2>Border Image - Different Slice Values</h2>
+            <div class="clearfix">
+                <img src="https://picsum.photos/id/12/200/300" alt="" class="shape-and-style-element" id="imageSlice1">
+                <img src="https://picsum.photos/id/22/200/300" alt="" class="shape-and-style-element" id="imageSlice2">
+                <img src="https://picsum.photos/id/32/200/300" alt="" class="shape-and-style-element" id="imageSlice3">
+            </div>
+            <hr>
+            <h2>Border Image - Different Options</h2>
+            <div class="clearfix">
+                <img src="https://picsum.photos/id/2/200/300" alt="" class="shape-and-style-element" id="imageOpt1">
+                <img src="https://picsum.photos/id/3/200/300" alt="" class="shape-and-style-element" id="imageOpt2">
+                <img src="https://picsum.photos/id/4/200/300" alt="" class="shape-and-style-element" id="imageOpt3">
+                <img src="https://picsum.photos/id/4/200/300" alt="" class="shape-and-style-element" id="imageOpt4">
+            </div>
+        </div>
+    </main>
+    <br><br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p>Border Image Retrieved from <a href="https://www.w3schools.com/css/css3_border_images.asp" target="_blank">w3schools.com</a></p>
+            <p>Images Retrieved from <a href="https://picsum.photos/" target="_blank">picsum.photos</a></p>
+            <p></p>
+        </div>
+    </footer>
+</body>
+</html>
