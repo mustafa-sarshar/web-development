@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS Box Shadows</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        h1 {
+            text-align: center;
+            border-bottom: 1px solid;
+            margin-top: 40px;
+        }
+        .style-and-shape-settings {
+            display: flex;
+            width: 100%;
+            height: 100px;
+            margin: 10px 10px;
+            align-items: center;
+            justify-content: center;            
+            text-shadow: -1px 0 black, 1px 0 black, 0 1px black, 0 -1px black;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+        .groupped-elements {
+            display: flex;
+            margin: 0 auto;
+        }
+        .groupped-elements::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        #boxShadow1 {
+            color: blue;
+            background-color: red;
+            box-shadow: 10px 10px black;
+        }
+        #boxShadow2 {
+            color: white;
+            background-color: rgb(0, 81, 255);
+            box-shadow: 10px 10px black, 20px 20px 30px black;
+        }
+        #boxShadow3 {
+            color: rebeccapurple;
+            background-color: rgb(255, 251, 0);
+            box-shadow: 10px 10px rgba(0, 0, 0, 0.5), 20px 20px 30px rgba(0, 0, 0, 0.9), 25px 25px 15px gray;
+        }
+        #boxShadow4 {
+            color: rebeccapurple;
+            background-color: rgb(0, 255, 136);
+            box-shadow: 10px 10px 15px 5px darkgreen;
+        }
+        #imageCard {
+            width: 50%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin: auto;
+        }
+        #imageCard img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css3_shadows_box.asp" target="_blank">CSS Box Shadows</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <h1>Simple Box Shadows</h1>
+            <div class="groupped-elements">
+                <div class="style-and-shape-settings" id="boxShadow1">One Shadow</div>
+                <div class="style-and-shape-settings" id="boxShadow2">2 Shadows</div>
+                <div class="style-and-shape-settings" id="boxShadow3">3 Shadows</div>
+            </div>
+            <hr>
+            <h1>Box Shadow with Spreading Effect</h1>
+            <div class="style-and-shape-settings" id="boxShadow4">Shadow + Spreading</div>
+            <hr>
+            <h1>Image Card</h1>
+            <div id="imageCard">
+                <img src="https://images.unsplash.com/photo-1657664043009-c4975cb4eed3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="">
+            </div>
+            <hr>
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p>
+                Photo by <a href="https://unsplash.com/@oppofindx5pro?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">OPPO Find X5 Pro</a> on <a href="https://unsplash.com/s/photos/nature?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+            </p>
+            <p></p>
+        </div>
+    </footer>
+</body>
+</html>
