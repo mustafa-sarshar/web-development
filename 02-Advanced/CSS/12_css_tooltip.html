@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS Tooltip</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+        }
+        .tooltip-basic {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+        }
+        .tooltip-basic .tooltip-basic-text {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 2px 0;
+            margin: 0 10px;
+
+            /* Position the tooltip-basic- */
+            position: absolute;
+            z-index: 1;
+        }
+        .tooltip-basic:hover .tooltip-basic-text {
+            visibility: visible;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css_tooltip.asp" target="_blank">CSS Tooltip</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <h2>Basic Tooltip</h2>
+            <div class="tooltip-basic">
+                Hover over me to see the tooltip
+                <span class="tooltip-basic-text">This is a cool tooltip.</span>
+                asdadsasd
+            </div>
+            <hr>
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+</body>
+</html>

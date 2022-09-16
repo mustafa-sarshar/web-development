@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS Transitions</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            border-bottom: 1px solid black;
+        }
+        .perpective-3D {
+            transform-style: preserve-3d;
+            perspective: 180px;
+        }
+        .perpective-3D * {
+            cursor: pointer;
+        }
+        .groupped-elements {
+            display: flex;
+            margin: 0 auto;
+        }
+        .groupped-elements::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .box {
+            display: flex;
+            width: 100%;
+            height: 100px;
+            margin: 10px auto;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            border-radius: 5px;
+            color: white;
+        }
+        .box:hover {
+            opacity: 0.7;
+            outline: 1px dashed black;
+            outline-offset: 10px;
+        }
+        .circle {
+            display: flex;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            color: white;
+            margin: 10px auto;
+        }
+        .circle:hover {
+            opacity: 0.7;
+            outline: 1px dashed black;
+            outline-offset: 10px;
+            height: 200px;
+        }
+        .triangle {
+            display: flex;
+            margin: auto;
+            width: 1px;
+            height: 50;
+            border-style: inset;
+            border-width: 100px 100px 100px 0;
+            border-color: transparent transparent #007bff transparent;
+            transition: all ease-in-out 1s;
+        }
+        .triangle:hover {
+            width: 1000px;
+        }
+
+        #rotation {
+            background-color: black;
+            transition: all 1s;
+        }
+        #rotation:hover {
+            transform: rotate(180deg);            
+        }
+        #translation {
+            background-color: darkkhaki;
+            transition: all 1s;
+        }
+        #translation:hover {
+            transform: translateY(20px);
+        }
+        #skewness {
+            background-color: darkblue;
+            transition: all 1s;
+        }
+        #skewness:hover {
+            transform: skewX(45deg);
+        }
+        #rot-trans {
+            background-color: darkcyan;
+            transition: all 1s;
+        }
+        #rot-trans:hover {
+            transform: rotate(90deg) translateZ(50px);
+        }
+
+        #timing-linear {
+            background-color: black;
+            transition: all 1s linear;
+        }
+        #timing-ease {
+            background-color: darkblue;
+            transition: all 1s ease;
+        }
+        #timing-ease-in {
+            background-color: darkgreen;
+            transition: all 1s ease-in;
+        }
+        #timing-ease-out {
+            background-color: darkcyan;
+            transition: all 1s ease-out;
+        }
+        #timing-ease-in-out {
+            background-color: brown;
+            transition: all 1s ease-in-out;
+        }
+
+        #delay-none {            
+            transition-delay: 0s;
+        }
+        #delay-1s {
+            transition-delay: 1s;
+        }
+        #delay-2s {
+            transition-delay: 2s;
+            transition-timing-function: ;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css3_transitions.asp" target="_blank">CSS Transitions</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <p>"hover over objects please!"</p>
+            <h2>Transform + Transition</h2>
+            <div class="perpective-3D groupped-elements">
+                <div class="box" id="rotation">Rotation</div>
+                <div class="box" id="translation">Translation</div>
+            </div>
+            <div class="perpective-3D groupped-elements">
+                <div class="box" id="skewness">Skewness</div>
+                <div class="box" id="rot-trans">Rot + Trans</div>
+            </div>
+            <hr>
+            <h2>Different Timings</h2>
+            <div class="perpective-3D groupped-elements">
+                <div class="circle" id="timing-linear">Linear</div>
+                <div class="circle" id="timing-ease">Ease</div>
+                <div class="circle" id="timing-ease-in">Ease In</div>
+                <div class="circle" id="timing-ease-out">Ease Out</div>
+                <div class="circle" id="timing-ease-in-out">Ease In Out</div>
+            </div>
+            <hr>
+            <h2>Different Delays</h2>
+            <div class="perpective-3D groupped-elements">
+                <div class="triangle" id="delay-none">none</div>
+                <div class="triangle" id="delay-1s">1s</div>
+                <div class="triangle" id="delay-2s">2s</div>
+            </div>
+            <hr>
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+</body>
+</html>

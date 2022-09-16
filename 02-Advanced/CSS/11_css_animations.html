@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS Animations</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            border-bottom: 1px solid black;
+        }
+        .perpective-3D {
+            transform-style: preserve-3d;
+            perspective: 180px;
+        }
+        .perpective-3D * {
+            cursor: pointer;
+        }
+        .groupped-elements {
+            display: flex;
+            margin: 0 auto;
+        }
+        .groupped-elements::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .box {
+            display: flex;
+            width: 100%;
+            height: 100px;
+            margin: 10px auto;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            border-radius: 5px;
+            color: white;
+        }
+        .box:hover {
+            opacity: 0.7;
+            outline: 1px dashed black;
+            outline-offset: 10px;
+        }
+
+        @keyframes color-black-to-gray {
+            from {
+                background-color: black;
+            }
+            to {
+                background-color: gray;
+            }
+        }
+        @keyframes color-multi {
+            0% {
+                background-color: black;
+            }
+            10% {
+                background-color: gray;
+                color: black;
+            }
+            50% {
+                background-color: darkgray;
+            }
+            90% {
+                background-color: white;
+                color: black;
+            }
+        }
+        .animation-color {
+            background-color: black;
+            animation-iteration-count: infinite;
+        }
+        #animationColor1 {
+            animation-duration: 10s;
+            animation-name: color-black-to-gray;
+            
+        }
+        
+        #animationColor2 {
+            animation-name: color-multi;
+            animation-duration: 5s;
+        }
+        @keyframes sliding-left-right {
+            from {
+                left: 0;
+                background-color: lightblue;
+                color: black;
+            }
+            to {
+                left: calc(100% - 200px);
+                background-color: darkblue;
+                color: white;
+                width: 200px;
+            }
+        }
+        #animationColorSizeDis {
+            position: relative;
+            margin-left: 0;
+            width: 140px;
+            top: 0;
+            padding: 10px;
+            background-color: blue;
+            animation-name: sliding-left-right;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes stretch-vertically {
+            0% {
+                height: 100px;
+                opacity: 1;
+            }
+            50% {
+                height: 200px;
+                opacity: 0.1;
+            }
+        }
+        .animation-delay {
+            width: 9%;
+            top: 0;
+            padding: 10px;
+            animation-name: stretch-vertically;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in;
+            writing-mode: vertical-rl;
+            font-size: 15px;
+        }
+        #animationDelay0 {
+            background-color: black;
+            animation-delay: 0s;
+        }
+        #animationDelay1 {
+            background-color: black;
+            animation-delay: 1s;
+        }
+        #animationDelay2 {
+            background-color: black;
+            animation-delay: 2s;
+        }
+        #animationDelay3 {
+            background-color: black;
+            animation-delay: 3s;
+        }
+        #animationDelay4 {
+            background-color: black;
+            animation-delay: 4s;
+        }
+        #animationDelay5 {
+            background-color: black;
+            animation-delay: 5s;
+        }
+        #animationDelay6 {
+            background-color: black;
+            animation-delay: 6s;
+        }
+        #animationDelay7 {
+            background-color: black;
+            animation-delay: 7s;
+        }
+        #animationDelay8 {
+            background-color: black;
+            animation-delay: 8s;
+        }
+        #animationDelay9 {
+            background-color: black;
+            animation-delay: 9s;
+        }
+        #animationDelay10 {
+            background-color: black;
+            animation-delay: 10s;
+        }
+        @keyframes dispalcement-vertically {
+            0% {
+                top: 0;
+                opacity: 1;
+            }
+            50% {
+                top: calc(100% - 120px);
+                opacity: 0.8;
+                transform: scaleX(1.5) skewX(10deg);
+            }
+        }
+        .animation-timingFunc {
+            position: relative;
+            width: 9%;
+            height: 120px;
+            top: 0;
+            padding: 10px;
+            animation-name: dispalcement-vertically;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            writing-mode: vertical-rl;
+            font-size: 15px;
+            background-color: blue;
+        }
+        #animationTimingFuncLinear {
+            animation-timing-function: linear;
+        }
+        #animationTimingFuncEase {
+            animation-timing-function: ease;
+        }
+        #animationTimingFuncEaseAlt {
+            animation-timing-function: ease;
+            animation-direction: alternate;
+        }
+        #animationTimingFuncEaseIn {
+            animation-timing-function: ease-in;
+        }
+        #animationTimingFuncEaseOut {
+            animation-timing-function: ease-out;
+        }
+        #animationTimingFuncEaseInOut {
+            animation-timing-function: ease-in-out;
+        }
+        @keyframes displacement-horizontally {
+            from {
+                left: 0;
+                opacity: 1;
+            }
+            to {
+                left: calc(100% - 100px);
+                opacity: .8;
+            }
+        }
+        .animation-fillMode {
+            position: relative;
+            margin: 2px 0;
+            left: 0;
+            width: 100px;
+            height: 25px;
+            animation-name: displacement-horizontally;
+            animation-duration: 2s;
+            font-size: 15px;
+            background-color: blue;
+            animation-timing-function: ease;
+        }
+        #animationFillModeNormal {
+            animation-fill-mode: normal;
+        }
+        #animationFillModeForwards {
+            animation-fill-mode: forwards;
+        }
+        #animationFillModeBackwards {
+            animation-fill-mode: backwards;
+        }
+        #animationFillModeBoth {
+            animation-fill-mode: both;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css3_transitions.asp" target="_blank">CSS Animations</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <p>"hover over objects please!"</p>
+            <h2>Color Changing</h2>
+            <div class="perpective-3D groupped-elements">
+                <div class="box animation-color" id="animationColor1">10sec. animation - black to gray</div>
+            </div>
+            <div class="perpective-3D groupped-elements">
+                <div class="box animation-color" id="animationColor2">5sec. animation - multi color</div>
+            </div>
+            <hr>
+            <h2>Color + Size + Displacement</h2>
+            <div class="perpective-3D groupped-elements">
+                <div class="box" id="animationColorSizeDis">Sliding left and right</div>
+            </div>
+            <hr>
+            <h2>Different Delays</h2>
+            <div class="perpective-3D groupped-elements" style="height: 230px;">
+                <div class="box animation-delay" id="animationDelay0">No Delay</div>
+                <div class="box animation-delay" id="animationDelay1">1s Delay</div>
+                <div class="box animation-delay" id="animationDelay2">2s Delay</div>
+                <div class="box animation-delay" id="animationDelay3">3s Delay</div>
+                <div class="box animation-delay" id="animationDelay4">4s Delay</div>
+                <div class="box animation-delay" id="animationDelay5">5s Delay</div>
+                <div class="box animation-delay" id="animationDelay6">6s Delay</div>
+                <div class="box animation-delay" id="animationDelay7">7s Delay</div>
+                <div class="box animation-delay" id="animationDelay8">8s Delay</div>
+                <div class="box animation-delay" id="animationDelay9">9s Delay</div>
+                <div class="box animation-delay" id="animationDelay10">10s Delay</div>
+            </div>
+            <hr>
+            <h2>Different Timing Functions</h2>
+            <div class="perpective-3D groupped-elements" style="height: 400px;">
+                <div class="box animation-timingFunc" id="animationTimingFuncLinear">Linear</div>
+                <div class="box animation-timingFunc" id="animationTimingFuncEase">Ease</div>
+                <div class="box animation-timingFunc" id="animationTimingFuncEaseAlt">Ease (alt)</div>
+                <div class="box animation-timingFunc" id="animationTimingFuncEaseIn">Ease In</div>
+                <div class="box animation-timingFunc" id="animationTimingFuncEaseOut">Ease Out</div>
+                <div class="box animation-timingFunc" id="animationTimingFuncEaseInOut">Ease In Out</div>
+            </div>
+            <hr>
+            <h2>Different Fill Modes</h2>
+            <div class="perpective-3D">
+                <div class="box animation-fillMode" id="animationFillModeNormal">Normal</div>
+                <div class="box animation-fillMode" id="animationFillModeForwards">Forwards</div>
+                <div class="box animation-fillMode" id="animationFillModeBackwards">backwards</div>
+                <div class="box animation-fillMode" id="animationFillModeBoth">Both</div>
+            </div>
+            <hr>
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+</body>
+</html>
