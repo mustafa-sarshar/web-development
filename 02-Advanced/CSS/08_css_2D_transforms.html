@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS 2D Transforms</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            border-bottom: 1px solid black;
+        }
+        .groupped-elements {
+            display: flex;
+            margin: 0 auto;
+        }
+        .groupped-elements::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .box {
+            display: flex;
+            width: 50%;
+            height: 100px;
+            margin: 10px auto;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: -1px 0 green, 1px 0 green, 0 1px green, 0 -1px green;
+            border-radius: 5px;
+        }
+        .box:hover {
+            opacity: 0.6;
+        }
+
+        #translate1 {
+            background-color: black;
+        }
+        #translate1:hover {            
+            transform: translate(10px, 10px);
+        }
+
+        #rotate1 {
+            background-color: darkgray;
+        }
+        #rotate1:hover {
+            transform: rotate(10deg);
+        }
+        #rotate2 {
+            background-color: darkgray;
+        }
+        #rotate2:hover {
+            transform: rotate(-10deg);
+        }
+
+        #scale1 {
+            background-color: darkblue;
+        }
+        #scale1:hover {
+            transform: scale(1.1, 1.1);
+        }
+        #scale2 {
+            background-color: darkblue;
+        }
+        #scale2:hover {
+            transform: scale(0.9, 0.9);
+        }
+        #scale3 {
+            background-color: darkblue;
+        }
+        #scale3:hover {
+            transform: scaleY(1.1);
+        }
+        #scale4 {
+            background-color: darkblue;
+        }
+        #scale4:hover {
+            transform: scaleX(1.1);
+        }
+
+        #skew1 {
+            background-color: darkmagenta;
+        }
+        #skew1:hover {
+            transform: skew(5deg, 5deg);
+        }
+        #skew2 {
+            background-color: darkmagenta;
+        }
+        #skew2:hover {
+            transform: skew(-5deg, -5deg);
+        }
+        #skew3 {
+            background-color: darkmagenta;
+        }
+        #skew3:hover {
+            transform: skewY(5deg);
+        }
+        #skew4 {
+            background-color: darkmagenta;
+        }
+        #skew4:hover {
+            transform: skewX(5deg);
+        }
+        #matrix1 {
+            background-color: blueviolet;
+        }
+        #matrix1:hover {  /* matrix(scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY()) */
+            transform: matrix(1.1, 0, 0, 1.1, 0, -10);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css3_2dtransforms.asp" target="_blank">CSS 2D Transforms</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <p>"hover over objects please!"</p>
+            <h2>Translate</h2>
+            <div class="box" id="translate1">Translate</div>
+            <hr>
+            <h2>Rotate</h2>
+            <div class="box" id="rotate1">Rotate (+)</div>
+            <div class="box" id="rotate2">Rotate (-)</div>
+            <hr>
+            <h2>Scale</h2>
+            <div class="box" id="scale1">Scale (+)</div>
+            <div class="box" id="scale2">Scale (-)</div>
+            <div class="box" id="scale3">ScaleY (+)</div>
+            <div class="box" id="scale4">ScaleX (+)</div>
+            <hr>
+            <h2>Skew</h2>
+            <div class="box" id="skew1">Skew (+)</div>
+            <div class="box" id="skew2">Skew (-)</div>
+            <div class="box" id="skew3">SkewY (+)</div>
+            <div class="box" id="skew4">SkewX (+)</div>
+            <hr>
+            <h2>Matrix</h2>
+            <div class="box" id="matrix1">Matrix</div>
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+</body>
+</html>

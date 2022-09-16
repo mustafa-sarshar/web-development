@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS Text Effects</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            border-bottom: 1px solid;
+            margin-top: 40px;
+        }
+        h3 {
+            text-align: center;
+        }
+        .mussar-container p {
+            border: 1px solid;
+            padding: 10px;
+            width: 60%;
+            margin: 10px auto;            
+        }
+        .no-wrap {
+            white-space: nowrap;
+        }
+        .overflow-clip {
+            text-overflow: clip;
+            overflow: hidden;
+        }
+        .overflow-ellipsis {
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .interactive:hover {
+            overflow: visible;
+        }
+        .wrap-normal {
+            word-wrap: normal;
+        }
+        .wrap-break-word {
+            word-wrap: break-word;
+        }
+        .no-word-break {
+            word-break: keep-all;
+        }
+        .word-break {
+            word-break: break-all;
+        }
+        .horizontal-tb {
+            writing-mode: horizontal-tb;
+        }
+        .vertical-rl {
+            writing-mode: vertical-rl;
+        }
+        .vertical-lr {
+            writing-mode: vertical-lr;
+        }
+        .sideways-lr {
+            writing-mode: sideways-lr;
+        }
+        .sideways-rl {
+            writing-mode: sideways-rl;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css3_text_effects.asp" target="_blank">CSS Text Effects</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <h2>Text Overflow</h2>
+            <h3>No-Wrap, Clip, no Hidding</h3>
+            <p class="no-wrap">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas pariatur aut, eos inventore cumque distinctio maxime fuga odit sunt ipsa dignissimos iure. Voluptates totam tempora ipsam dolore repudiandae nam quasi.
+            </p>
+            <hr>
+            <h3>No-Wrap, Clip, Hidding</h3>
+            <p class="no-wrap overflow-clip">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas pariatur aut, eos inventore cumque distinctio maxime fuga odit sunt ipsa dignissimos iure. Voluptates totam tempora ipsam dolore repudiandae nam quasi.
+            </p>
+            <hr>
+            <h3>No-Wrap, Ellipsis, Hidding</h3>
+            <p class="no-wrap overflow-ellipsis ">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet sequi facilis eum, laboriosam commodi quo, architecto inventore at expedita, quis hic! Voluptate tenetur recusandae praesentium, ipsa corporis laborum eaque libero?
+            </p>
+            <hr>
+            <h3>No-Wrap, Ellipsis, Interactive (hover over it)</h3>
+            <p class="no-wrap overflow-ellipsis interactive">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet sequi facilis eum, laboriosam commodi quo, architecto inventore at expedita, quis hic! Voluptate tenetur recusandae praesentium, ipsa corporis laborum eaque libero?
+            </p>
+            <hr>
+            <h3>No Word Wrapping vs. Word Wrapping</h3>
+            <p class="wrap-normal">
+                asdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasd
+            </p>
+            <p class="wrap-break-word">
+                asdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasd
+            </p>
+            <hr>
+            <h3>No Word Breaking vs. Word Breaking </h3>
+            <p class="no-word-break">
+                asdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasd
+            </p>
+            <p class="word-break">
+                asdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasdasdasdadasdasdadasdasdsadasdasdasdadadasdasdasdadadadasdasd
+            </p>
+            <hr>
+            <h3>Writing Mode</h3>
+            <p class="horizontal-tb">
+                Horizontal Line Top Bottom
+            </p>
+            <p class="vertical-rl">
+                Vertical Line Right Left
+            </p>
+            <p class="vertical-lr">
+                Vertical Line Left Right
+            </p>
+            <p class="sideways-rl">
+                Sideways Line Right Left
+            </p>
+            <p class="sideways-lr">
+                Sideways Line Left Right
+            </p>
+            <hr>
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+</body>
+</html>

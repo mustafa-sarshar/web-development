@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS 3D Transforms</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .mussar-container {
+            transform-style: preserve-3d;
+            perspective: 180px;
+        }
+        h2 {
+            text-align: center;
+            border-bottom: 1px solid black;
+        }
+        .groupped-elements {
+            display: flex;
+            margin: 0 auto;
+        }
+        .groupped-elements::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .box {
+            display: flex;
+            width: 50%;
+            height: 100px;
+            margin: 10px auto;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: -1px 0 green, 1px 0 green, 0 1px green, 0 -1px green;
+            border-radius: 5px;
+        }
+        .box:hover {
+            opacity: 0.6;
+        }
+
+        #translateX {
+            background-color: black;
+        }
+        #translateX:hover {
+            transform: translateX(10px);
+        }
+        #translateY {
+            background-color: black;
+        }
+        #translateY:hover {
+            transform: translateY(10px);
+        }
+        #translateZ {
+            background-color: black;
+        }
+        #translateZ:hover {
+            transform: translateZ(10px);
+        }
+
+        #rotateX {
+            background-color: darkgray;
+        }
+        #rotateX:hover {
+            transform: rotateX(-50deg);
+        }
+        #rotateY {
+            background-color: darkgray;
+        }
+        #rotateY:hover {
+            transform: rotateY(-50deg);
+        }
+        #rotateZ {
+            background-color: darkgray;
+        }
+        #rotateZ:hover {
+            transform: rotateZ(-50deg);
+        }
+
+        #scaleX {
+            background-color: darkblue;
+        }
+        #scaleX:hover {
+            transform: scaleX(1.5);
+        }
+        #scaleY {
+            background-color: darkblue;
+        }
+        #scaleY:hover {
+            transform: scaleY(1.5);
+        }
+        #scaleZ {
+            background-color: darkblue;
+        }
+        #scaleZ:hover {
+            transform: scaleZ(1.5);
+        }
+
+        #skewX {
+            background-color: darkmagenta;
+        }
+        #skewX:hover {
+            transform: skewX(-10deg);
+        }
+        #skewY {
+            background-color: darkmagenta;
+        }
+        #skewY:hover {
+            transform: skewY(-10deg);
+        }
+        #skewZ {
+            background-color: darkmagenta;
+        }
+        #skewZ:hover {
+            transform: skewZ(-10deg);
+        }
+
+        .box2 {
+            display: flex;
+            width: 100px;
+            height: 100px;
+            margin: 10px auto;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: -1px 0 green, 1px 0 green, 0 1px green, 0 -1px green;
+            border-radius: 5px;
+            background-color: black;
+        }
+        .box2:hover {
+            opacity: 0.6;
+            transform: rotateX(30deg);
+        }
+        .perspective-none {
+            float: left;
+            width: 100%;
+            perspective: none;
+        }
+        .perspective-150px {
+            float: left;
+            width: 100%;
+            perspective: 150px;
+        }
+        .perspective-3em {
+            float: left;
+            width: 100%;
+            perspective: 3em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css3_3dtransforms.asp" target="_blank">CSS 3D Transforms</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <p>"hover over objects please!"</p>
+            <h2>Translate</h2>
+            <div class="box" id="translateX">TranslateX (+)</div>
+            <div class="box" id="translateY">TranslateY (+)</div>
+            <div class="box" id="translateZ">TranslateZ (+)</div>
+            <hr>
+            <h2>Rotate</h2>
+            <div class="box" id="rotateX">RotateX (-)</div>
+            <div class="box" id="rotateY">RotateY (-)</div>
+            <div class="box" id="rotateZ">RotateZ (-)</div>
+            <hr>
+            <h2>Scale</h2>
+            <div class="box" id="scaleX">ScaleX (+)</div>
+            <div class="box" id="scaleY">ScaleY (+)</div>
+            <div class="box" id="scaleZ">ScaleZ (+)</div>
+            <hr>
+            <h2>Skew</h2>
+            <div class="box" id="skewX">SkewX (-)</div>
+            <div class="box" id="skewY">SkewY (-)</div>
+            <div class="box" id="skewZ">SkewZ (-)</div>
+            <hr>
+            <h2>Different Perspectives</h2>
+            <div class="groupped-elements">
+                <div class="perspective-none">
+                    <div class="box2">None</div>
+                </div>
+                <div class="perspective-150px">
+                    <div class="box2">150px</div>
+                </div>
+                <div class="perspective-3em">
+                    <div class="box2">3em</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+</body>
+</html>
