@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS Multiple Columns</title>
+    <style>
+        h2 {
+            text-align: center;
+            border-bottom: 1px dashed;
+        }
+        h3 {
+            text-align: center;
+            border-bottom: 1px solid darkred;
+        }
+        p {
+            text-indent: 1em;
+        }
+        p::first-letter {
+            font-size: 150%;
+            color: darkred;
+            font-weight: bold;
+        }
+        hr {
+            width: 75%;
+        }
+        .columns-3 {
+            column-count: 3;
+        }
+        .column-gap-40 {
+            column-gap: 40px;
+        }
+        .column-rule-style-solid {
+            column-rule-style: solid;
+        }
+        .column-rule-style-dashed {
+            column-rule-style: dashed;
+        }
+        .column-rule-width-2 {
+            column-rule-width: 2px;
+        }
+        .column-rule-width-10 {
+            column-rule-width: 10px;
+        }
+        .column-rule-color-lightBlue {
+            column-rule-color: darkgray
+        }
+        .column-span-all {
+            column-span: all;
+        }
+        .column-width-50 p {
+            column-width: 50px;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css3_multiple_columns.asp" target="_blank">CSS Multiple Columns</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <h2>Simple Example</h2>
+            <div class="columns-3 column-gap-40">
+                <h3>NEWS - 1</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, veniam quidem! Iusto fugiat eos vel doloremque! Sint tempore provident iste libero officia voluptas optio id, in pariatur itaque praesentium porro. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis eaque autem tenetur quos, magni aperiam tempora, non praesentium dolorem facere est assumenda fugit! Sint commodi nulla enim dicta? Doloribus, impedit. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi ipsum asperiores tempore maxime at doloremque rem excepturi doloribus mollitia dolorum quaerat id quas itaque cum quisquam, eligendi sed! Voluptates, laudantium?
+                </p>
+            </div>
+            <hr>
+            <h2>Solid Column Saparators</h2>
+            <div class="columns-3 column-gap-40 column-rule-style-solid">
+                <h3>NEWS - 2</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, veniam quidem! Iusto fugiat eos vel doloremque! Sint tempore provident iste libero officia voluptas optio id, in pariatur itaque praesentium porro. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis eaque autem tenetur quos, magni aperiam tempora, non praesentium dolorem facere est assumenda fugit! Sint commodi nulla enim dicta? Doloribus, impedit. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi ipsum asperiores tempore maxime at doloremque rem excepturi doloribus mollitia dolorum quaerat id quas itaque cum quisquam, eligendi sed! Voluptates, laudantium?
+                </p>
+            </div>
+            <hr>
+            <h2>Think Column Separators + Spanned All </h2>
+            <div class="columns-3 column-gap-40 column-rule-style-solid column-rule-width-10">
+                <h3 class="column-span-all">NEWS - 3</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, veniam quidem! Iusto fugiat eos vel doloremque! Sint tempore provident iste libero officia voluptas optio id, in pariatur itaque praesentium porro. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis eaque autem tenetur quos, magni aperiam tempora, non praesentium dolorem facere est assumenda fugit! Sint commodi nulla enim dicta? Doloribus, impedit. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi ipsum asperiores tempore maxime at doloremque rem excepturi doloribus mollitia dolorum quaerat id quas itaque cum quisquam, eligendi sed! Voluptates, laudantium?
+                </p>
+            </div>
+            <hr>
+            <h2>Spanned All</h2>
+            <div class="columns-3 column-gap-40 column-rule-style-dashed column-rule-width-2 column-rule-color-lightBlue">
+                <h3 class="column-span-all">NEWS - 4</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, veniam quidem! Iusto fugiat eos vel doloremque! Sint tempore provident iste libero officia voluptas optio id, in pariatur itaque praesentium porro. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis eaque autem tenetur quos, magni aperiam tempora, non praesentium dolorem facere est assumenda fugit! Sint commodi nulla enim dicta? Doloribus, impedit. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi ipsum asperiores tempore maxime at doloremque rem excepturi doloribus mollitia dolorum quaerat id quas itaque cum quisquam, eligendi sed! Voluptates, laudantium?
+                </p>
+            </div>
+            <hr>
+            <h2>Spanned All + Fixed Thin Columns</h2>
+            <div class="columns-3 column-gap-40 column-rule-style-dashed column-rule-width-2 column-rule-color-lightBlue column-width-50">
+                <h3 class="column-span-all">NEWS - 5</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, veniam quidem! Iusto fugiat eos vel doloremque! Sint tempore provident iste libero officia voluptas optio id, in pariatur itaque praesentium porro. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis eaque autem tenetur quos, magni aperiam tempora, non praesentium dolorem facere est assumenda fugit! Sint commodi nulla enim dicta? Doloribus, impedit. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi ipsum asperiores tempore maxime at doloremque rem excepturi doloribus mollitia dolorum quaerat id quas itaque cum quisquam, eligendi sed! Voluptates, laudantium?
+                </p>
+            </div>
+        </div>
+    </main>
+    <br><br><br><br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+</body>
+</html>

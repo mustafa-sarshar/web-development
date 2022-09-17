@@ -25,7 +25,7 @@ header nav ul li a {
 hr {
     border: 0;
     height: 2px;
-    margin: 20px 0;
+    margin: 20px auto;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, .75), rgba(0, 0, 0, 0));
 }
 
