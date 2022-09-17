@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS Image Reflections</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            border-bottom: 1px dashed;
+        }
+        .image-container {
+            display: block;
+        }
+        .image-container::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .box-reflect-right {
+            -webkit-box-reflect: right 1px;
+        }
+        .box-reflect-right-gradient {
+            -webkit-box-reflect: right 1px linear-gradient(to right, rgba(0,0,0,0.0), rgba(0,0,0,0.4));
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css3_image_reflection.asp" target="_blank">CSS Image Reflections</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <h2>Simple Reflections</h2>
+            <div class="image-container">
+                <img class="box-reflect-right" src="https://picsum.photos/id/1/200/300" alt="">
+            </div>
+            <hr>
+            <h2>Reflection w/ Visual Effects</h2>
+            <div class="image-container">
+                <img class="box-reflect-right-gradient" src="https://picsum.photos/id/9/200/300" alt="">
+            </div>
+            <hr>
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p>Photos retrieved from <a href="https://picsum.photos/images" target="_blank" rel="noopener noreferrer">picsum.photos</a></p>
+            <p></p>
+        </div>
+    </footer>
+</body>
+</html>

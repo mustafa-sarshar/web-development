@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS Masking</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            border-bottom: 1px dashed;
+        }
+        .image-container {
+            position: relative;
+            display: block;
+            margin: auto;
+        }
+        .image-container::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .image-container img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .image-container img::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .mask1 {
+            -webkit-mask-image: url("../../assets/icons/icons8-binoculars-500.png");
+            mask-image: url("../../assets/icons/icons8-binoculars-500.png");
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+        }
+        .mask2 {
+            -webkit-mask-image: url("../../assets/icons/icons8-binoculars-50.png");
+            mask-image: url("../../assets/icons/icons8-binoculars-50.png");
+            -webkit-mask-repeat: repeat;
+            mask-repeat: repeat;
+        }
+        .mask3 {
+            -webkit-mask-image: linear-gradient(black, transparent);
+            mask-image: linear-gradient(black, transparent);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css3_masking.asp" target="_blank">CSS Masking</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <h2>Original Image</h2>
+            <div class="image-container">
+                <div>
+                    <img src="https://i.picsum.photos/id/100/2500/1656.jpg?hmac=gWyN-7ZB32rkAjMhKXQgdHOIBRHyTSgzuOK6U0vXb1w" alt="" width="2500" height="1656">
+                </div>
+            </div>
+            <h2>Mask</h2>
+            <div class="image-container">
+                <div class="mask1">
+                    <img src="https://i.picsum.photos/id/100/2500/1656.jpg?hmac=gWyN-7ZB32rkAjMhKXQgdHOIBRHyTSgzuOK6U0vXb1w" alt="" width="2500" height="1656">
+                </div>
+            </div>
+            <hr>
+            <h2>Mask - Repeat</h2>
+            <div class="image-container">
+                <div class="mask2">
+                    <img src="https://i.picsum.photos/id/100/2500/1656.jpg?hmac=gWyN-7ZB32rkAjMhKXQgdHOIBRHyTSgzuOK6U0vXb1w" alt="" width="2500" height="1656">
+                </div>
+            </div>
+            <hr>
+            <h2>Gradients as the Mask Layer</h2>
+            <div class="image-container">
+                <div class="mask3">
+                    <img src="https://i.picsum.photos/id/100/2500/1656.jpg?hmac=gWyN-7ZB32rkAjMhKXQgdHOIBRHyTSgzuOK6U0vXb1w" alt="" width="2500" height="1656">
+                </div>
+            </div>
+            <hr>
+            <h2>SVG as the Mask Layer</h2>
+            <div class="image-container">
+                <div class="mask4">
+                    <svg width="100%" height="100%">
+                        <mask id="svgmask1">
+                          <polygon fill="#ffffff" points="200 0, 200 200, 400 0, 400 400"></polygon>
+                        </mask>
+                        <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://i.picsum.photos/id/100/2500/1656.jpg?hmac=gWyN-7ZB32rkAjMhKXQgdHOIBRHyTSgzuOK6U0vXb1w" mask="url(#svgmask1)"></image>
+                      </svg>
+                </div>
+                <hr>
+                <div class="mask4">
+                    <svg width="100%" height="100%">
+                        <mask id="svgmask2">
+                            <circle fill="#ffffff" cx="10%" cy="20%" r="5%"></circle>
+                            <circle fill="#ffffff" cx="50%" cy="50%" r="20%"></circle>
+                            <circle fill="#ffffff" cx="75%" cy="80%" r="10%"></circle>
+                          </mask>
+                        <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://i.picsum.photos/id/100/2500/1656.jpg?hmac=gWyN-7ZB32rkAjMhKXQgdHOIBRHyTSgzuOK6U0vXb1w" mask="url(#svgmask2)"></image>
+                      </svg>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </main>
+    <br><br><br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <a target="_blank" href="https://icons8.com/icon/7698/binoculars">Binoculars</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+            <p>Photos retrieved from <a href="https://picsum.photos/images" target="_blank" rel="noopener noreferrer">picsum.photos</a></p>
+            <p></p>
+        </div>
+    </footer>
+</body>
+</html>

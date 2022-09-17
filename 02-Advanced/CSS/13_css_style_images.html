@@ -14,83 +14,89 @@
             text-align: center;
             border-bottom: 1px dashed;
         }
-        .groupped-elements {
+        .grouped-elements {
             display: table;
             margin: 0 auto;
         }
-        .groupped-elements::after {
+        .grouped-elements::after {
             content: "";
             display: table;
             clear: both;
         }
-        .groupped-elements img {
+        .grouped-elements img {
             width: 120px;
             margin: auto;
             padding: 5px 10px;
         }
-        .groupped-elements .centered {
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .groupped-elements .text-centered {
-            text-align: center;
-        }
-        .groupped-elements .border-round {
+        .border-round {
             border-radius: 20px;
         }
-        .groupped-elements .border-circle {
+        .border-circle {
             border-radius: 50%;
         }
-        .groupped-elements .border-creative {
+        .border-creative {
             border-radius: 10px 100px 2px 100px;
         }
-        .groupped-elements .clip-triangle {
+        .clip-triangle {
             clip-path: polygon(50% 0, 10% 100%, 100% 100%);
         }
-        .groupped-elements .clip-rhombus {
+        .clip-rhombus {
             clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
         }
-        .groupped-elements .clip-ellipse {
+        .clip-ellipse {
             clip-path: ellipse(30% 45% at 50% 50%);
         }
-        .groupped-elements .thumbnail {
+        .thumbnail {
             border: 1px solid rgb(148, 138, 138);
             border-radius: 5px;
             padding: 5px;
             cursor: pointer;
         }
-        .groupped-elements .thumbnail:hover {
+        .thumbnail:hover {
             box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
         }
-        .groupped-elements .filter-grayscale {
+        .filter-grayscale {
             filter: grayscale(100%);
         }
-        .groupped-elements .filter-blur {
+        .filter-blur {
             filter: blur(2px);
         }
-        .groupped-elements .filter-brightness {
+        .filter-brightness {
             filter: brightness(200%);
         }
-        .groupped-elements .filter-contrast {
+        .filter-contrast {
             filter: contrast(180%);
         }
-        .groupped-elements .filter-hue-rotate {
+        .filter-hue-rotate {
             filter: hue-rotate(180deg);
         }
-        .groupped-elements .filter-invert {
+        .filter-invert {
             filter: invert(100%);
         }
-        .groupped-elements .filter-opacity {
+        .filter-opacity {
             filter: opacity(50%);
         }
-        .groupped-elements .filter-saturate {
+        .filter-saturate {
             filter: saturate(7);
         }
-        .groupped-elements .filter-sepia {
+        .filter-sepia {
             filter: sepia(100%);
         }
-        .groupped-elements .filter-drop-shadow {
+        .filter-drop-shadow {
             filter: drop-shadow(8px 8px 10px green);
+        }
+        .image-filters-container {
+            display: table;
+            margin: 0 auto;
+        }
+        .image-filters-container::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .image-filters-container .image-container {
+            text-align: center;
+            float: left;
         }
     </style>
 </head>
@@ -102,71 +108,71 @@
     <main>
         <div class="mussar-container">
             <h2>Image with Different Borders</h2>
-            <div class="groupped-elements">
+            <div class="grouped-elements">
                 <img class="border-round" src="https://picsum.photos/id/1/100/200" alt="">
                 <img class="border-circle" src="https://picsum.photos/id/2/100/200" alt="">
                 <img class="border-creative" src="https://picsum.photos/id/3/100/200" alt="">
             </div>
             <hr>
             <h2>Clip Images</h2>
-            <div class="groupped-elements">
+            <div class="grouped-elements">
                 <img class="clip-triangle" src="https://picsum.photos/id/10/100/200" alt="">
                 <img class="clip-rhombus" src="https://picsum.photos/id/11/100/200" alt="">
                 <img class="clip-ellipse" src="https://picsum.photos/id/12/100/200" alt="">
             </div>
             <hr>
             <h2>Thumbnail Images</h2>
-            <div class="groupped-elements">
+            <div class="grouped-elements">
                 <img class="thumbnail" src="https://picsum.photos/id/20/100/200" alt="">
                 <img class="thumbnail" src="https://picsum.photos/id/21/100/200" alt="">
             </div>
             <h2>Image Filters</h2>
-            <div class="groupped-elements">
-                <div class="text-centered">
+            <div class="image-filters-container">
+                <div class="image-container">
                     <img class="thumbnail" src="https://picsum.photos/id/1011/100/200" alt="">
                     <h4>normal</h4>
                 </div>
-                <div class="text-centered">
+                <div class="image-container">
                     <img class="thumbnail filter-grayscale" src="https://picsum.photos/id/1011/100/200" alt="">
                     <h4>grayscale</h4>
                 </div>
-                <div class="text-centered">
+                <div class="image-container">
                     <img class="thumbnail filter-blur" src="https://picsum.photos/id/1011/100/200" alt="">
                     <h4>blur</h4>
                 </div>
-                <div class="text-centered">
+                <div class="image-container">
                     <img class="thumbnail filter-brightness" src="https://picsum.photos/id/1011/100/200" alt="">
                     <h4>brightness</h4>
                 </div>
-                <div class="text-centered">
+                <div class="image-container">
                     <img class="thumbnail filter-contrast" src="https://picsum.photos/id/1011/100/200" alt="">
                     <h4>contrast</h4>
                 </div>
-                <div class="text-centered">
+                <div class="image-container">
                     <img class="thumbnail filter-hue-rotate" src="https://picsum.photos/id/1011/100/200" alt="">
                     <h4>hue-rotate</h4>
                 </div>
-                <div class="text-centered">
+                <div class="image-container">
                     <img class="thumbnail filter-invert" src="https://picsum.photos/id/1011/100/200" alt="">
                     <h4>invert</h4>
                 </div>
-                <div class="text-centered">
+                <div class="image-container">
                     <img class="thumbnail filter-opacity" src="https://picsum.photos/id/1011/100/200" alt="">
                     <h4>opacity</h4>
                 </div>
-                <div class="text-centered">
+                <div class="image-container">
                     <img class="thumbnail filter-saturate" src="https://picsum.photos/id/1011/100/200" alt="">
                     <h4>saturate</h4>
                 </div>
-                <div class="text-centered">
+                <div class="image-container">
                     <img class="thumbnail filter-sepia" src="https://picsum.photos/id/1011/100/200" alt="">
                     <h4>sepia</h4>
                 </div>
-                <div class="text-centered">
+                <div class="image-container">
                     <img class="thumbnail filter-drop-shadow" src="https://picsum.photos/id/1011/100/200" alt="">
                     <h4>drop-shadow</h4>
                 </div>
-            </div>
+            </div>            
             <hr>
         </div>
     </main>
