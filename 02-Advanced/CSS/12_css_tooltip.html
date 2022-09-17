@@ -9,33 +9,68 @@
     <style>
         * {
             box-sizing: border-box;
-        }
-        h2 {
             text-align: center;
         }
-        .tooltip-basic {
+        .tooltip-container {
             position: relative;
             display: inline-block;
-            border-bottom: 1px dotted black;
+            border-bottom: 1px dotted blue;
         }
-        .tooltip-basic .tooltip-basic-text {
-            visibility: hidden;
+        .tooltip-container .tooltip-text {
+            opacity: 0;             /* visibility: hidden; */
             width: 120px;
-            background-color: black;
+            background-color: darkblue;
             color: #fff;
             text-align: center;
             border-radius: 6px;
-            padding: 2px 0;
-            margin: 0 10px;
+            padding: 5px;
+            margin: 0;
 
-            /* Position the tooltip-basic- */
+            /* Position the tooltip-container- */
             position: absolute;
-            z-index: 1;
+            z-index: 1;            
         }
-        .tooltip-basic:hover .tooltip-basic-text {
-            visibility: visible;
+        .tooltip-container:hover .tooltip-text {
+            opacity: 1;             /* visibility: visible; */            
         }
-
+        .tooltip-position-right {
+            top: -50%;
+            left: 105%;
+        }
+        .tooltip-position-left {
+            top: -50%;
+            right: 105%;
+        }
+        .tooltip-position-top {
+            bottom: 150%;
+            left: calc(100% / 2 - 120px / 2);
+        }
+        .tooltip-position-bottom {
+            top: 150%;
+            left: calc(100% / 2 - 120px / 2);
+        }
+        .tooltip-arrow::after {
+            content: "";
+            position: absolute;            
+            border-style: solid;
+        }
+        .tooltip-arrow-bottom::after {            
+            top: 100%;
+            left: 50%;
+            border-width: 10px;
+            margin-left: -10px;            
+            border-color: darkblue transparent transparent transparent;
+        }
+        .tooltip-arrow-right::after {
+            top: 50%;
+            left: 100%;
+            border-width: 10px;
+            margin-top: -10px;
+            border-color: transparent transparent transparent darkblue;
+        }
+        .add-transition {
+            transition: all 2s ease-out;
+        }
     </style>
 </head>
 <body>
@@ -46,10 +81,51 @@
     <main>
         <div class="mussar-container">
             <h2>Basic Tooltip</h2>
-            <div class="tooltip-basic">
+            <div class="tooltip-container">
                 Hover over me to see the tooltip
-                <span class="tooltip-basic-text">This is a cool tooltip.</span>
-                asdadsasd
+                <span class="tooltip-text">This is a cool tooltip.</span>
+            </div>
+            <hr>
+            <h2>Tooltip - Right</h2>
+            <div class="tooltip-container">
+                Hover over me to see the tooltip
+                <span class="tooltip-text tooltip-position-right">Tooltip on the Right</span>
+            </div>
+            <hr>
+            <h2>Tooltip - Left</h2>
+            <div class="tooltip-container">
+                Hover over me to see the tooltip
+                <span class="tooltip-text tooltip-position-left">Tooltip on the Left</span>
+            </div>
+            <hr>
+            <h2>Tooltip - Top</h2>
+            <div class="tooltip-container">
+                Hover over me to see the tooltip
+                <span class="tooltip-text tooltip-position-top">Tooltip on the Top</span>
+            </div>
+            <hr>
+            <h2>Tooltip - Bottom</h2>
+            <div class="tooltip-container">
+                Hover over me to see the tooltip
+                <span class="tooltip-text tooltip-position-bottom">Tooltip on the Bottom</span>
+            </div>
+            <hr>
+            <h2>Tooltip - Top - w/ Arrow</h2>
+            <div class="tooltip-container">
+                Hover over me to see the tooltip
+                <span class="tooltip-text tooltip-position-top tooltip-arrow tooltip-arrow-bottom">Tooltip on the Top w/ Arrow</span>
+            </div>
+            <hr>
+            <h2>Tooltip - Left - w/ Arrow</h2>
+            <div class="tooltip-container">
+                Hover over me to see the tooltip
+                <span class="tooltip-text tooltip-position-left tooltip-arrow tooltip-arrow-right">Tooltip on the Top w/ Arrow</span>
+            </div>
+            <hr>
+            <h2>Tooltip - Left - w/ Arrow w/ Transition</h2>
+            <div class="tooltip-container">
+                Hover over me to see the tooltip
+                <span class="tooltip-text tooltip-position-left tooltip-arrow tooltip-arrow-right add-transition">Tooltip on the Top w/ Arrow</span>
             </div>
             <hr>
         </div>

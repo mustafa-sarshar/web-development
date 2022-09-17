@@ -15,10 +15,11 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.2);
         }
         .clearfix {
-            position: relative;
-            margin: auto;
-            content: "";
+            margin: auto;            
             display: table;
+        }
+        .clearfix::after {
+            content: "";
             clear: both;
         }
         .shape-and-style-element {
