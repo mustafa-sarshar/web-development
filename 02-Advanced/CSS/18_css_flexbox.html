@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/global_style_1.css">
+    <title>CSS Flexbox</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            border-bottom: 1px solid;
+        }
+        .flexbox-container {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: rgba(128, 128, 128, 0.1);
+            padding: 1em;
+            justify-content: center;
+            align-items: center;            
+        }
+        .flex-direction-column {
+            flex-direction: column;
+        }
+        .align-items-stretch {
+            align-items: stretch;
+        }
+        .flex-basis-100 {
+            flex-basis: 100px;
+        }
+        .box-number {
+            background-color: aqua;
+            padding: 1em;
+            font-size: 2em;
+            text-align: center;
+            margin: .5em;
+            line-height: 1em;
+        }
+        .box-number-stretch {
+            background-color: aquamarine;
+            width: 2em;
+            font-size: 2em;
+            text-align: center;
+            margin: .5em;
+            line-height: 1em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/css/css3_flexbox.asp" target="_blank">CSS Flexbox</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <h2>Flex - Horizontally Stacked</h2>
+            <div class="flexbox-container">
+                <div class="box-number">1</div>
+                <div class="box-number">2</div>
+                <div class="box-number">3</div>
+                <div class="box-number">4</div>
+                <div class="box-number">5</div>
+            </div>
+            <hr>
+            <div class="flexbox-container">
+                <div class="box-number">1</div>
+                <div class="box-number">2</div>
+                <div class="box-number">3</div>
+                <div class="box-number">4</div>
+                <div class="box-number">5</div>
+                <div class="box-number">6</div>
+                <div class="box-number">7</div>
+                <div class="box-number">8</div>
+                <div class="box-number">9</div>
+                <div class="box-number">10</div>
+                <div class="box-number">11</div>
+                <div class="box-number">12</div>
+                <div class="box-number">13</div>
+                <div class="box-number">14</div>
+                <div class="box-number">15</div>
+                <div class="box-number">16</div>
+                <div class="box-number">17</div>
+                <div class="box-number">18</div>
+                <div class="box-number">19</div>
+                <div class="box-number">20</div>
+            </div>
+            <hr>
+            <div class="flexbox-container align-items-stretch">
+                <div class="box-number">1</div>
+                <div class="box-number">2</div>
+                <div class="box-number">3</div>
+                <div class="box-number">4</div>
+                <div class="box-number">5</div>
+                <div class="box-number">6</div>
+                <div class="box-number">7</div>
+                <div class="box-number">8</div>
+                <div class="box-number">9</div>
+                <div class="box-number">10</div>
+                <div class="box-number">11</div>
+                <div class="box-number">12</div>
+                <div class="box-number">13</div>
+                <div class="box-number">14</div>
+                <div class="box-number">15</div>
+                <div class="box-number">16</div>
+                <div class="box-number">17</div>
+                <div class="box-number">18</div>
+                <div class="box-number">19</div>
+                <div class="box-number">20</div>
+            </div>
+            <hr>
+            <div class="flexbox-container align-items-stretch">
+                <div class="box-number-stretch">1</div>
+                <div class="box-number-stretch">2</div>
+                <div class="box-number-stretch">3</div>
+                <div class="box-number-stretch">4</div>
+                <div class="box-number-stretch flex-basis-100">5</div>
+                <div class="box-number-stretch">6</div>
+                <div class="box-number-stretch">7</div>
+                <div class="box-number-stretch">8</div>
+                <div class="box-number-stretch">9</div>
+                <div class="box-number-stretch flex-basis-100">10</div>
+                <div class="box-number-stretch">11</div>
+                <div class="box-number-stretch">12</div>
+                <div class="box-number-stretch">13</div>
+                <div class="box-number-stretch">14</div>
+                <div class="box-number-stretch flex-basis-100">15</div>
+                <div class="box-number-stretch">16</div>
+                <div class="box-number-stretch">17</div>
+                <div class="box-number-stretch">18</div>
+                <div class="box-number-stretch">19</div>
+                <div class="box-number-stretch">20</div>
+            </div>
+            <hr>
+            <h2>Flex - Vertically Stacked</h2>
+            <div class="flexbox-container flex-direction-column">
+                <div class="box-number">1</div>
+                <div class="box-number">2</div>
+                <div class="box-number">3</div>
+                <div class="box-number">4</div>
+                <div class="box-number">5</div>
+            </div>
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+</body>
+</html>
