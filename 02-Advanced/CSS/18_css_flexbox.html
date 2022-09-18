@@ -26,6 +26,8 @@
             flex-direction: column;
         }
         .align-items-stretch {
+            margin: 0;
+            padding: 0;
             align-items: stretch;
         }
         .flex-basis-100 {
@@ -46,6 +48,21 @@
             text-align: center;
             margin: .5em;
             line-height: 1em;
+        }
+        .align-self-centered {
+            margin: 0;
+            padding: 0;
+            align-self: center;
+        }
+        .align-self-start {
+            margin: 0;
+            padding: 0;
+            align-self: flex-start;
+        }
+        .align-self-end {
+            margin: 0;
+            padding: 0;
+            align-self: flex-end;
         }
     </style>
 </head>
@@ -88,22 +105,22 @@
                 <div class="box-number">20</div>
             </div>
             <hr>
-            <div class="flexbox-container align-items-stretch">
+            <div class="flexbox-container">
                 <div class="box-number">1</div>
                 <div class="box-number">2</div>
                 <div class="box-number">3</div>
                 <div class="box-number">4</div>
-                <div class="box-number">5</div>
+                <div class="box-number align-self-start">5</div>
                 <div class="box-number">6</div>
                 <div class="box-number">7</div>
                 <div class="box-number">8</div>
                 <div class="box-number">9</div>
-                <div class="box-number">10</div>
+                <div class="box-number align-self-centered">10</div>
                 <div class="box-number">11</div>
                 <div class="box-number">12</div>
                 <div class="box-number">13</div>
                 <div class="box-number">14</div>
-                <div class="box-number">15</div>
+                <div class="box-number align-self-end">15</div>
                 <div class="box-number">16</div>
                 <div class="box-number">17</div>
                 <div class="box-number">18</div>
