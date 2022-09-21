@@ -2,6 +2,18 @@
 	Block Element Modifier (BEM):
 		i.e Block__Element--Modifier
 */
+
+/* place the color names and their values here */
+/*
+Colors used
+
+Text Color (Dark Gray): #2b2b2b;
+Primary Color (Purple): #357b70;
+Secondary Color (Orange): #e0b354;
+
+*/
+
+
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
@@ -95,19 +107,23 @@ table  {
 	border-collapse: collapse;
 	border-bottom: 1px solid rgba(128, 128, 128, 0.4);
 }
+
 table caption {
 	text-decoration: underline;
 	padding-bottom: 1ch;
 }
+
 table td {
 	text-align: center;
 }
+
 th[scope="col"] {
 	text-align: center;
 	background-color: rgba(128, 128, 128, 0.2);
 	padding: 0 2ch;
 	border-bottom: 1px solid rgba(128, 128, 128, 0.4);
 }
+
 th[scope="row"] {
 	text-align: left;
 	background-color: rgba(128, 128, 128, 0.4);
