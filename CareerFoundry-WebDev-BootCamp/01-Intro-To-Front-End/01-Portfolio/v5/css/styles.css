@@ -1,0 +1,182 @@
+/* Naming Convention:
+	Block Element Modifier (BEM):
+		i.e Block__Element--Modifier
+*/
+
+/* place the color names and their values here */
+/*
+Colors used
+
+Title Shadow (Gray): #808080;
+IMAGE Multi Shadows (Black + Blue): #00000080 + #060649cc;
+ICON/SVG Shadow (Light Gray): #0000004d;
+
+Hyperlinks Normal Color (Green): #357b70;
+Hyperlinks Visited Color (Green): #05676e;
+Hyperlinks Activated Color (Light Green): #489c79;
+
+Button Text Color (Dark Gray): #2b2b2b;
+Botton Primary BG Color (Purple): #357b70;
+Button Secondary BG Color (Orange): #e0b354;
+Button Secondary Shadow (Gray): #00000080;
+
+Table/TH BG Color (Gray): #80808033;
+Border Color (Gray): #80808066;
+*/
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;        /* Sets the font size to 16px */
+    line-height: 1.6;       /* Sets the line-height to 1.6 */
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+	text-shadow: 1px 1px 4px #808080;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+a {
+    color: #357b70;
+}
+
+a:visited {
+	color: #05676e;		/* visited link */
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;	/* No underlining when hovering over a link */
+}
+
+a:active {
+	color: #489c79;		/* selected link */
+}
+
+button { 
+	border: none;			/* overwrites browser defaults and resets the border */
+	font-family: inherit;	/* takes the font from the outer container */
+	background-color: #357b70;	/* styles the background color, font color, and text decoration (underline, etc.) of the button */
+	color: white;
+	text-decoration: none;	/* adds spacing to the button (this will be discussed more in-depth later) */
+	padding: 10px;
+	border-radius: 3px;		/* gives the button a bottom border with a width of 3px, a type of solid, and a color in RGBA format */	
+	border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+button:hover, 
+button:focus {	
+	cursor: pointer;		/* lets the mouse appear as a hand when hovering over the button */
+	opacity: 0.8;			/* reduces the opacity of the button to 80% */
+}
+
+button:active {
+	transform: scale(.98);	/* shrinks the size of the button when activated */
+	font-weight: bold;		/* thickens the font of the button when activated */
+}
+
+.button__secondary {
+	background-color: #e0b354;
+	color: #2b2b2b;
+}
+
+.button__secondary--shadowed {
+	background-color: #e0b354;
+	color: #2b2b2b;
+	box-shadow: 2px 4px 8px #00000080;
+}
+
+.navigation-list__item--active {
+	text-decoration: none;
+}
+
+img[alt="Twitter"]:hover,
+img[alt="GitHub"]:hover,
+img[alt="LinkedIn"]:hover,
+img[alt="ResearchGate"]:hover {
+	box-shadow: 1px 1px 2px 2px #0000004d;
+}
+
+table  {
+	border-collapse: collapse;
+	border-bottom: 1px solid #80808066;
+}
+
+table caption {
+	text-decoration: underline;
+	padding-bottom: 1ch;
+}
+
+table td {
+	text-align: center;
+}
+
+th[scope="col"] {
+	text-align: center;
+	background-color: #80808033;
+	padding: 0 2ch;
+	border-bottom: 1px solid #80808066;
+}
+
+th[scope="row"] {
+	text-align: left;
+	background-color: #80808033;
+	padding: 0 4ch;
+}
+
+.header__title {  
+  margin: 0 auto;		/* No spacing to top and bottom and auto-spacing to left and right, which centers the container horizontally */
+}
+
+.navigation__logo {
+	position: relative;
+	top: 20px;
+	left: 20px;
+}
+
+.page-footer {
+	clear: both;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.social-media {
+}
+
+.profile {
+	max-width: 700px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.profile__portrait {
+  	float: left;
+	max-width: 150px;
+	margin-right: 40px;
+	width: 100%;
+	border-radius: 50%;
+}
+
+.profile__portrait--shadowed {
+	box-shadow: 1px 1px 4px 1px #00000080, 2px 2px 4px 1px #060649cc;
+}
+
+.page-header {
+	
+}
