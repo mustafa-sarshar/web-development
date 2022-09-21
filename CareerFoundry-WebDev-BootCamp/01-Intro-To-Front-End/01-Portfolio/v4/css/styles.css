@@ -1,0 +1,115 @@
+/* Naming Convention:
+	Block Element Modifier (BEM):
+		i.e Block__Element--Modifier
+*/
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;        /* Sets the font size to 16px */
+    line-height: 1.6;       /* Sets the line-height to 1.6 */
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+	text-shadow: 1px 1px 4px gray;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+a {
+    color: #357b70;
+}
+
+a:visited {
+	color: #05676e;		/* visited link */
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;	/* No underlining when hovering over a link */
+}
+
+a:active {
+	color: #489c79;		/* selected link */
+}
+
+button { 
+	border: none;			/* overwrites browser defaults and resets the border */
+	font-family: inherit;	/* takes the font from the outer container */
+	background-color: #357b70;	/* styles the background color, font color, and text decoration (underline, etc.) of the button */
+	color: white;
+	text-decoration: none;	/* adds spacing to the button (this will be discussed more in-depth later) */
+	padding: 10px;
+	border-radius: 3px;		/* gives the button a bottom border with a width of 3px, a type of solid, and a color in RGBA format */	
+	border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+button:hover, 
+button:focus {	
+	cursor: pointer;		/* lets the mouse appear as a hand when hovering over the button */
+	opacity: 0.8;			/* reduces the opacity of the button to 80% */
+}
+
+button:active {
+	transform: scale(.98);	/* shrinks the size of the button when activated */
+	font-weight: bold;		/* thickens the font of the button when activated */
+}
+
+.button__secondary {
+	background-color: #e0b354;
+	color: #2b2b2b;
+}
+
+.button__secondary--shadowed {
+	background-color: #e0b354;
+	color: #2b2b2b;
+	box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.navigation-list__item--active {
+	text-decoration: none;
+}
+
+.img__portfolio--shadowed {
+	box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.5), 2px 2px 4px 1px rgba(6, 6, 73, 0.8);
+}
+
+
+img[alt="Twitter"]:hover,
+img[alt="GitHub"]:hover,
+img[alt="LinkedIn"]:hover,
+img[alt="ResearchGate"]:hover {
+	box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+table  {
+	border-collapse: collapse;
+	border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+}
+table caption {
+	text-decoration: underline;
+	padding-bottom: 1ch;
+}
+table td {
+	text-align: center;
+}
+th[scope="col"] {
+	text-align: center;
+	background-color: rgba(128, 128, 128, 0.2);
+	padding: 0 2ch;
+	border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+}
+th[scope="row"] {
+	text-align: left;
+	background-color: rgba(128, 128, 128, 0.4);
+	padding: 0 4ch;
+}
