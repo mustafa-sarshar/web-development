@@ -7,10 +7,17 @@
 /*
 Colors used
 
-Text Color (Dark Gray): #2b2b2b;
-Primary Color (Purple): #357b70;
-Secondary Color (Orange): #e0b354;
+Title Shadow (Gray): #808080;
+IMG Multi Shadows (Black + Blue): #00000080 + #060649cc;
+ICON/SVG Shadow (Light Gray): #0000004d;
 
+Button Text Color (Dark Gray): #2b2b2b;
+Botton Primary BG Color (Purple): #357b70;
+Button Secondary BG Color (Orange): #e0b354;
+Button Secondary Shadow (Gray): #00000080;
+
+Table/TH BG Color (Gray): #80808033;
+Border Color (Gray): #80808066;
 */
 
 
@@ -24,7 +31,7 @@ body {
 h1 {
     font-size: 30px;
     font-weight: 700;
-	text-shadow: 1px 1px 4px gray;
+	text-shadow: 1px 1px 4px #808080;
 }
 
 h2 {
@@ -84,7 +91,7 @@ button:active {
 .button__secondary--shadowed {
 	background-color: #e0b354;
 	color: #2b2b2b;
-	box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+	box-shadow: 2px 4px 8px #00000080;
 }
 
 .navigation-list__item--active {
@@ -92,7 +99,7 @@ button:active {
 }
 
 .img__portfolio--shadowed {
-	box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.5), 2px 2px 4px 1px rgba(6, 6, 73, 0.8);
+	box-shadow: 1px 1px 4px 1px #00000080, 2px 2px 4px 1px #060649cc;
 }
 
 
@@ -100,12 +107,12 @@ img[alt="Twitter"]:hover,
 img[alt="GitHub"]:hover,
 img[alt="LinkedIn"]:hover,
 img[alt="ResearchGate"]:hover {
-	box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.3);
+	box-shadow: 1px 1px 2px 2px #0000004d;
 }
 
 table  {
 	border-collapse: collapse;
-	border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+	border-bottom: 1px solid #80808066;
 }
 
 table caption {
@@ -119,13 +126,13 @@ table td {
 
 th[scope="col"] {
 	text-align: center;
-	background-color: rgba(128, 128, 128, 0.2);
+	background-color: #80808033;
 	padding: 0 2ch;
-	border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+	border-bottom: 1px solid #80808066;
 }
 
 th[scope="row"] {
 	text-align: left;
-	background-color: rgba(128, 128, 128, 0.4);
+	background-color: #80808033;
 	padding: 0 4ch;
 }
