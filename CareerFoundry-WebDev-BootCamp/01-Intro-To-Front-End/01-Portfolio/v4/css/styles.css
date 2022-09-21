@@ -8,8 +8,12 @@
 Colors used
 
 Title Shadow (Gray): #808080;
-IMG Multi Shadows (Black + Blue): #00000080 + #060649cc;
+IMAGE Multi Shadows (Black + Blue): #00000080 + #060649cc;
 ICON/SVG Shadow (Light Gray): #0000004d;
+
+Hyperlinks Normal Color (Green): #357b70;
+Hyperlinks Visited Color (Green): #05676e;
+Hyperlinks Activated Color (Light Green): #489c79;
 
 Button Text Color (Dark Gray): #2b2b2b;
 Botton Primary BG Color (Purple): #357b70;
