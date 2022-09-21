@@ -19,6 +19,11 @@
 	-->
 
     <title>Mustafa Sarshar - About Me</title>
+    <style>
+        .indent-paragraph-4ch {
+            text-indent: 4ch;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,23 +33,24 @@
             <img src="./img/mussar_logo.ico"
                 alt="Personal logo of Mustafa Sarshar, written as muSSar, which is an abreviation for his first and last name"
                 width="200px" height="70px">
-            <ul>
-                <li>
-                    <a href="./index.html" target="_self">Home</a>
+            <ul role="menubar">
+                <li role="presentation">
+                    <a href="./index.html" target="_self" role="menuitem">Home</a>
                 </li>
-                <li>
-                    <a href="./about.html" target="_self">About Me</a>
+                <li role="presentation">
+                    <a href="./about.html" target="_self" role="menuitem">About Me</a>
                 </li>
-                <li>
-                    <a href="./contact.html" target="_self">Contact</a>
+                <li role="presentation">
+                    <a href="./contact.html" target="_self" role="menuitem">Contact</a>
                 </li>
             </ul>
         </nav>
     </header>
+    <hr>
     <main>
         <h1>About me</h1>
         <div>
-            <p>
+            <p class="indent-paragraph-4ch">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam doloribus, excepturi quia molestiae
                 adipisci
                 ut numquam fugit totam dolorum aliquid, nesciunt alias dolore. Quam quasi sequi odio porro, quod ut.
@@ -58,7 +64,43 @@
                 odit!
             </p>
         </div>
+        <hr>
+        <div>
+            <table>
+                <caption><strong>A short summary of my programming skills</strong></caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Skills</th scope="col">
+                        <th scope="col">Years of Experience</th scope="col">
+                        <th scope="col">Level of Expertise</th scope="col">
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Python</th>
+                        <td>3</td>
+                        <td>Advanced</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">HTML</th>
+                        <td>1</td>
+                        <td>Intermediate</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">CSS</th>
+                        <td>1</td>
+                        <td>Intermediate</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">JavaScript</th>
+                        <td>1</td>
+                        <td>Beginner</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </main>
+    <hr>
     <footer>
         <p>Find me on</p>
         <!-- All Icons retrieved from https://www.iconfinder.com -->

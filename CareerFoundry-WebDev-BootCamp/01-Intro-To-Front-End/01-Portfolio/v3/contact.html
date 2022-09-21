@@ -28,19 +28,20 @@
 			<img src="./img/mussar_logo.ico"
 				alt="Personal logo of Mustafa Sarshar, written as muSSar, which is an abreviation for his first and last name"
 				width="200px" height="70px">
-			<ul>
-				<li>
-					<a href="./index.html" target="_self">Home</a>
+			<ul role="menubar">
+				<li role="presentation">
+					<a href="./index.html" target="_self" role="menuitem">Home</a>
 				</li>
-				<li>
-					<a href="./about.html" target="_self">About Me</a>
+				<li role="presentation">
+					<a href="./about.html" target="_self" role="menuitem">About Me</a>
 				</li>
-				<li>
-					<a href="./contact.html" target="_self">Contact</a>
+				<li role="presentation">
+					<a href="./contact.html" target="_self" role="menuitem">Contact</a>
 				</li>
 			</ul>
 		</nav>
 	</header>
+	<hr>
 	<main>
 		<h1>Contact</h1>
 		<div>
@@ -49,24 +50,25 @@
 			00000 City<br>
 			Country<br>
 			<br>
-			Tel: <a href="tel:+49 00 0000 0000">+49 00 0000 0000</a><br>
+			Tel: <a href="tel:+49-00-0000-0000">+49-00-0000-0000</a><br>
 			Skype: <a href="skype:live:.cid.c444bcb1b0869973">Mustafa Sarshar</a><br>
 			E-Mail: <a href="mailto:musti.sar4@gmail.com">musti.sar4@gmail.com</a><br>
 			<a href="mailto:musti.sar4@gmail.com">Contact Me</a> 😀
 		</div>
-		<form action="" method="post" id="form-contact">
-			<label class="label-standard">E-mail: </label>
-			<input type="email" required>
-
-			<label class="label-standard">Telephone: </label>
-			<input type="tel" pattern="[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}" placeholder="+##(##)####-####">
-
-			<label class="label-standard">Message: </label>
-			<textarea maxlength="240" required></textarea>
-
+		<hr>
+		<form action="#" method="get" id="form-contact">
+			<label for="email" class="label-standard">E-mail: </label>
+			<input type="email" id="email" name="email" placeholder="myemail@mail.com" required><br>
+			<label for="tel" class="label-standard">Telephone: </label>
+			<input type="tel" id="tel" name="tel" pattern="\d{3}[\-]\d{3}[\-]\d{4}" placeholder="###-###-####"
+				required><br>
+			<label for="message" class="label-standard">Message: </label><br>
+			<textarea id="message" name="message" maxlength="240" placeholder="write your message here please!"
+				required></textarea><br>
 			<input type="submit" value="Send message">
 		</form>
 	</main>
+	<hr>
 	<footer>
 		<p>Find me on</p>
 		<!-- All Icons retrieved from https://www.iconfinder.com -->
