@@ -101,8 +101,17 @@ button:active {
 	box-shadow: 2px 4px 8px #00000080;
 }
 
+.navigation-list {
+	list-style-type: none;
+}
+
 .navigation-list__item--active {
 	text-decoration: none;
+}
+
+.navigation-list li {
+	display: inline-block;
+	margin-left: 15px;
 }
 
 img[alt="Twitter"]:hover,
@@ -178,5 +187,16 @@ th[scope="row"] {
 }
 
 .page-header {
-	
+	display: flex;
+	width: 100%;
+	padding: 20px;
+}
+
+.page-header__item {
+	flex: 0 1 200px;
+}
+
+.page-header__item:last-child {
+	flex-grow: 1;
+	text-align: right;
 }
