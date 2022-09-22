@@ -1,0 +1,276 @@
+/* Naming Convention:
+	Block Element Modifier (BEM):
+		i.e Block__Element--Modifier
+*/
+
+/* --------------------- C O L O R S --------------------- */
+/*
+
+Navigation Bar/Footer BG Color (Light Dark): #e0e0e0;
+
+Title Shadow (Gray): #808080;
+IMAGE Multi Shadows (Black + Blue): #00000080 + #060649cc;
+ICON/SVG Shadow (Light Gray): #0000004d;
+
+Hyperlinks Normal Color (Dark Green): #006400;
+Hyperlinks Visited Color (Green): #05676e;
+Hyperlinks Activated Color (Light Green): #489c79;
+
+Table/TH BG Color (Gray): #80808033;
+
+Border Color (Gray): #80808066;
+*/
+
+/* ----------------- U N I V E R S A L S ----------------- */
+
+* {
+	box-sizing: border-box;
+}
+
+/* ----------------------- T A G S ----------------------- */
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;        /* Sets the font size to 16px */
+    line-height: 1.6;       /* Sets the line-height to 1.6 */
+}
+
+img[alt="Twitter"]:hover,
+img[alt="GitHub"]:hover,
+img[alt="LinkedIn"]:hover,
+img[alt="ResearchGate"]:hover {
+	box-shadow: 1px 1px 2px 2px #0000004d;
+}
+
+a {
+    color: #006400;
+}
+
+a:visited {
+	color: #05676e;		/* visited link */
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;	/* No underlining when hovering over a link */
+}
+
+a:active {
+	color: #489c79;		/* selected link */
+}
+
+/* ---------------------- C L A S S E S ---------------------- */
+
+/* --- P A G E		H E A D E R --- */
+.page-header {
+	position: fixed;
+	top: 0;
+	display: flex;
+	width: 100%;
+	height: fit-content;
+	border-bottom: 1px solid #80808066;
+	background-color: #e0e0e0;
+	padding: 10px 20px;
+}
+
+.page-header__item {
+	flex: 0 1 200px;
+}
+
+.page-header__item:last-child {
+	flex-grow: 1;
+	text-align: right;
+}
+
+.navigation-list {
+	list-style-type: none;
+}
+
+.navigation-list__item--active {
+	text-decoration: none;
+}
+
+.navigation-list li {
+	display: inline-block;
+	margin-left: 15px;
+}
+
+/* --- P A G E		F O O T E R --- */
+.page-footer {
+	clear: both;
+	display: flex;
+	position: fixed;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	flex-direction: column;
+	text-align: center;
+	border-top: 1px solid #80808066;
+	width: 100%;
+	background-color: #e0e0e0;
+	z-index: 1000;
+}
+
+.social-media {
+	margin: 10px;
+}
+
+/* --- P A G E		M A I N --- */
+.page-main {
+	margin: 0 auto;
+	max-width: 1000px;
+	padding-bottom: 120px;
+	padding-top: 90px;
+}
+
+.page-main__title {
+	text-align: center;
+	font-size: 30px;
+    font-weight: 700;
+	text-shadow: 1px 1px 4px #808080;
+}
+
+/* --- P A G E - E L E M E N T -		H O M E --- */
+.profile {
+	max-width: 600px;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.profile__portrait {
+  	float: left;
+	max-width: 150px;
+	margin-right: 40px;
+	width: 100%;
+	border-radius: 50%;
+}
+
+.profile__portrait--shadowed {
+	box-shadow: 1px 1px 4px 1px #00000080, 2px 2px 4px 1px #060649cc;
+}
+
+.profile__text {
+	text-align: center;
+}
+
+.profile__mycodes {
+	display: block;
+	clear: both;
+	border-top: 1px solid #80808066;
+	text-align: center;
+	margin-top: 5ch;
+}
+
+/* --- P A G E - E L E M E N T -		C O N T A C T --- */
+
+.contact-form {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.contact-form * {
+	width: 100%;
+	padding: 5px 10px;
+	margin: 0 10px;
+}
+
+.contact-form textarea {
+	resize: none;
+	height: 100px;
+}
+
+.contact-info {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-evenly;
+	width: 90%;
+}
+
+.contact-info__address address,
+.contact-info__info article {
+	padding-left: 4ch;
+}
+
+/* --- P A G E - E L E M E N T -		M Y - W O R K S --- */
+.page-main__works {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+}
+
+/* start grid fallback */
+.project-list__item{
+	display: inline-block;
+	width: 33%;
+}
+/* end grid fallback */
+
+@supports (display: grid) {
+	.project-list {
+		display: grid;
+		/* grid-template-columns: 300px 300px 300px; fractions are better than pixels - they are responsive */
+		grid-template-columns: repeat(3, 1fr);
+		grid-gap: 10px;
+		margin: 0;
+	}
+}
+
+.project-list__item {
+  	background-color: lightgray;
+	width: auto;
+	min-height: auto;
+	margin: 0;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.project-list__item:last-child {
+	grid-column: 3 / 3;
+	grid-row: 1 / 3;
+}
+
+/* --- P A G E - E L E M E N T -		A B O U T - M E --- */
+.about-me {
+	width: 90%;
+	margin: 0 auto;
+}
+.about-me__text {
+	text-align: justify;
+	text-indent: 4ch;
+}
+
+.about-me__text::first-letter {
+	font-size: 140%;
+	font-weight: bold;
+	color: darkred;
+}
+
+.skills-table  {
+	border-collapse: collapse;
+	border-bottom: 1px solid #80808066;
+	margin: 20px auto;
+}
+
+.skills-table__title {
+	text-decoration: underline;
+	padding-bottom: 1ch;
+}
+
+.skills-table td {
+	text-align: center;
+}
+
+.skills-table th[scope="col"] {
+	text-align: center;
+	background-color: #80808033;
+	padding: 0 2ch;
+	border-bottom: 1px solid #80808066;
+}
+
+.skills-table th[scope="row"] {
+	text-align: left;
+	background-color: #80808033;
+	padding: 0 4ch;
+}
