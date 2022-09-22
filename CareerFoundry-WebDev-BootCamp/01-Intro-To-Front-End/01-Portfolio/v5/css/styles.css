@@ -208,14 +208,14 @@ a:active {
 /* end grid fallback */
 
 @supports (display: grid) {
- .project-list {
-	display: grid;
-	/* grid-template-columns: 300px 300px 300px; fractions are better than pixels - they are responsive */
-	grid-template-columns: repeat(3, 1fr);
-	grid-gap: 10px;
-	margin: 0;
-
- }
+	.project-list {
+		display: grid;
+		/* grid-template-columns: 300px 300px 300px; fractions are better than pixels - they are responsive */
+		grid-template-columns: repeat(3, 1fr);
+		grid-gap: 10px;
+		margin: 0;
+	}
+}
 
 .project-list__item {
   	background-color: lightgray;
