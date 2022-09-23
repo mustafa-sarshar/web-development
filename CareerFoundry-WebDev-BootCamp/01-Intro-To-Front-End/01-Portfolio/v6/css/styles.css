@@ -28,6 +28,8 @@ Keyframe color-change (sun) : #fcffad -> #f76414 -> #f76414
 ContactForm Label (Dark Green): #006400;
 ContactForm Input Focused (Green): #489c79;
 
+Dark Text Shadow Color (Black): #000000
+
 /* ----------------- U N I V E R S A L S ----------------- */
 
 * {
@@ -48,6 +50,10 @@ img[alt="GitHub"]:hover,
 img[alt="LinkedIn"]:hover,
 img[alt="ResearchGate"]:hover {
 	box-shadow: 1px 1px 2px 2px #0000004d;
+}
+
+hr {
+	color: #80808066;
 }
 
 /* ---------------------- C L A S S E S ---------------------- */
@@ -239,7 +245,7 @@ a,
 	max-width: 600px;
 	width: 100%;
 	height: 100%;
-	margin: 50px auto;
+	margin: 3ch auto;
 }
 
 .profile__portrait {
@@ -270,9 +276,9 @@ a,
 .profile__mycodes {
 	display: block;
 	clear: both;
-	border-top: 1px solid #80808066;
+	width: fit-content;
 	text-align: center;
-	margin-top: 5ch;
+	margin: 1ch auto;
 	color: #006400;
 	transition: all .5s linear;
 }
@@ -380,7 +386,7 @@ a,
 .project-list__item {
 	display: inline-block;
 	width: 33%;
-	transition: all .5s ease-in-out;
+	transition: all .4s ease-in-out;
 }
 /* end grid fallback */
 
@@ -426,7 +432,7 @@ a,
 
 .project-list__item:hover {
 	filter: brightness(95%);
-	box-shadow: 1px 1px 2px black;
+	box-shadow: 1px 1px 2px #000000;
 }
 
 /* M E D I A - Q U E R Y */
