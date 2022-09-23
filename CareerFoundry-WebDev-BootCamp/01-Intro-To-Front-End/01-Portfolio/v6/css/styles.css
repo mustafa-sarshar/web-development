@@ -162,7 +162,7 @@ a,
 	}
 }
 
-@media all and (max-width: 420px) {
+@media all and (max-width: 440px) {
 	.navigation-list {
 		display: flex;
 		flex-direction: column;
@@ -222,7 +222,7 @@ a,
 	}
 }
 
-@media all and (max-width: 420px) {
+@media all and (max-width: 440px) {
 	.page-main {
 		padding-top: 220px;
 	}
@@ -339,18 +339,25 @@ a,
 .contact-info {
 	display: flex;
 	flex-flow: row wrap;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	width: 90%;
+	margin: 0 auto;
 }
 
 .contact-info__address address,
 .contact-info__info article {
-	padding-left: 4ch;
+	padding-left: 2ch;
 }
 
 .contact-info__address strong,
 .contact-info__info strong {
 	color: #006400;
+}
+
+@media all and (max-width: 440px) {
+	.contact-info {
+		justify-content: start;
+	}
 }
 
 /* --- P A G E - E L E M E N T -		M Y - W O R K S --- */
@@ -408,7 +415,7 @@ a,
 }
 
 /* M E D I A - Q U E R Y */
-@media all and (max-width: 420px) {
+@media all and (max-width: 440px) {
 	.project-list {
 		grid-template-columns: repeat(1, 1fr);
 		grid-gap: 5px;
@@ -418,7 +425,7 @@ a,
 	}
 }
 
-@media all and (min-width: 420px) and (max-width: 630px) {
+@media all and (min-width: 440px) and (max-width: 630px) {
 	.project-list {
 		grid-template-columns: repeat(2, 1fr);
 		grid-gap: 7px;
