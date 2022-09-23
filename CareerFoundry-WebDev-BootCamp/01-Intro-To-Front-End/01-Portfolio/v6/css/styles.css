@@ -63,6 +63,7 @@ a:active {
 /* ---------------------- C L A S S E S ---------------------- */
 
 /* --- P A G E		H E A D E R --- */
+
 .page-header {
 	position: fixed;
 	top: 0;
@@ -97,6 +98,7 @@ a:active {
 }
 
 /* --- P A G E		F O O T E R --- */
+
 .page-footer {
 	clear: both;
 	display: flex;
@@ -117,6 +119,7 @@ a:active {
 }
 
 /* --- P A G E		M A I N --- */
+
 .page-main {
 	margin: 0 auto;
 	max-width: 1000px;
@@ -132,6 +135,7 @@ a:active {
 }
 
 /* --- P A G E - E L E M E N T -		H O M E --- */
+
 .profile {
 	max-width: 600px;
 	width: 100%;
