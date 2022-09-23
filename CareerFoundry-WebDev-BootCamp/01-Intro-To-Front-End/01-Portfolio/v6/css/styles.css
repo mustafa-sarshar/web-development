@@ -348,8 +348,8 @@ a,
 	padding-left: 4ch;
 }
 
-.contact-info__address:first-child,
-.contact-info__info:first-child {
+.contact-info__address strong,
+.contact-info__info strong {
 	color: #006400;
 }
 
