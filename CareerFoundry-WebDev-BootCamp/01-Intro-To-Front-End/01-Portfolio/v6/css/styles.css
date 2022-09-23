@@ -348,6 +348,11 @@ a,
 	padding-left: 4ch;
 }
 
+.contact-info__address:first-child,
+.contact-info__info:first-child {
+	color: #006400;
+}
+
 /* --- P A G E - E L E M E N T -		M Y - W O R K S --- */
 .page-main__works {
 	width: 100%;
