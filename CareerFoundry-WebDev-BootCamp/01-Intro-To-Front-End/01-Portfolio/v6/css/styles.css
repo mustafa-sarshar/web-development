@@ -22,7 +22,11 @@ Button Text Color (Light Green): #90ee90;
 Table/TH BG Color (Gray): #80808033;
 
 Border Color (Gray): #80808066;
-*/
+
+Keyframe color-change (sun) : #fcffad -> #f76414 -> #f76414
+
+ContactForm Label (Dark Green): #006400;
+ContactForm Input Focused (Green): #489c79;
 
 /* ----------------- U N I V E R S A L S ----------------- */
 
@@ -116,6 +120,8 @@ img[alt="ResearchGate"]:hover {
 
 .navigation-list__item--active {
 	text-decoration: none;
+	font-weight: bold;
+	text-shadow: 1px 1px 4px #808080;
 }
 
 .navigation-list li {
@@ -123,9 +129,9 @@ img[alt="ResearchGate"]:hover {
 	margin-left: 15px;
 }
 
+a,
 .navigation-list a {
     color: #006400;
-	transition: all .5s linear;
 }
 
 .navigation-list a:visited {
@@ -139,6 +145,36 @@ img[alt="ResearchGate"]:hover {
 
 .navigation-list a:active {
 	color: #489c79;		/* selected link */
+}
+
+@media all and (max-width: 630px) {
+	.page-header {
+		display: block;
+		text-align: center;
+	}
+	.navigation-list {
+		text-align: center;
+		margin: auto;
+		padding: 0;
+	}
+	.navigation-list li {
+		margin: 5px 10px;
+	}
+}
+
+@media all and (max-width: 420px) {
+	.navigation-list {
+		display: flex;
+		flex-direction: column;
+	}
+	.navigation-list li {
+		margin: 1px 0;
+		border-bottom: 1px solid #80808066;
+	}
+	.navigation-list__item {		
+		padding: 5px;
+		text-decoration: none;
+	}
 }
 
 /* --- P A G E		F O O T E R --- */
@@ -167,8 +203,10 @@ img[alt="ResearchGate"]:hover {
 .page-main {
 	margin: 0 auto;
 	max-width: 1000px;
-	padding-bottom: 120px;
-	padding-top: 90px;
+	width: 100%;
+	padding: 90px 10px 120px 10px;
+	/* padding-bottom: 120px;
+	padding-top: 90px; */
 }
 
 .page-main__title {
@@ -178,13 +216,25 @@ img[alt="ResearchGate"]:hover {
 	text-shadow: 1px 1px 4px #808080;
 }
 
+@media all and (max-width: 630px) {
+	.page-main {
+		padding-top: 120px;
+	}
+}
+
+@media all and (max-width: 420px) {
+	.page-main {
+		padding-top: 220px;
+	}
+}
+
 /* --- P A G E - E L E M E N T -		H O M E --- */
 
 .profile {
 	max-width: 600px;
 	width: 100%;
 	height: 100%;
-	margin: 0 auto;
+	margin: 50px auto;
 }
 
 .profile__portrait {
@@ -193,6 +243,14 @@ img[alt="ResearchGate"]:hover {
 	margin-right: 40px;
 	width: 100%;
 	border-radius: 50%;
+	transition: all .5s ease;
+}
+
+.profile__title {
+	text-align: center;
+	font-size: 30px;
+    font-weight: 700;
+	text-shadow: 1px 1px 4px #808080;
 }
 
 .profile__portrait--shadowed {
@@ -201,6 +259,7 @@ img[alt="ResearchGate"]:hover {
 
 .profile__text {
 	text-align: center;
+	transition: all .5s ease;
 }
 
 .profile__mycodes {
@@ -209,6 +268,36 @@ img[alt="ResearchGate"]:hover {
 	border-top: 1px solid #80808066;
 	text-align: center;
 	margin-top: 5ch;
+	color: #006400;
+	transition: all .5s linear;
+}
+.profile__mycodes:hover {
+	color: black;
+	border-top: none;
+	transform: scaleX(1.1);
+}
+
+@media all and (max-width: 630px) {
+	.profile {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: auto auto;
+		justify-content: center;
+		align-content: center;
+		align-items: center;
+	}
+	.profile__title {
+		margin-right: auto;
+	}
+	.profile__portrait {
+		margin-left: auto;
+		transform: scale(.9);
+	}
+	.profile__text {
+		margin: 10px auto;
+		grid-column: 1 / span 2;
+		font-size: large;
+	}
 }
 
 /* --- P A G E - E L E M E N T -		C O N T A C T --- */
@@ -222,6 +311,24 @@ img[alt="ResearchGate"]:hover {
 	width: 100%;
 	padding: 5px 10px;
 	margin: 0 10px;
+}
+
+.contact-form label {
+	color: #006400;
+}
+
+.contact-form input,
+.contact-form textarea {
+	outline: none;
+	border: 1px solid #006400;
+	border-radius: 3px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+	outline: 1px solid #489c79;
+	border: 1px solid #489c79;
+	border-radius: 3px;	
 }
 
 .contact-form textarea {
@@ -272,6 +379,22 @@ img[alt="ResearchGate"]:hover {
 	margin: 0;
 	padding: 10px;
 	border-radius: 5px;
+	text-align: justify;
+}
+
+.project-list__item h2 {
+	color: #006400;
+}
+
+.project-list__item p {
+	text-indent: 4ch;
+	word-wrap: break-word;
+  	overflow-wrap: break-word;
+}
+.project-list__item p::first-letter {
+	color: #006400;
+	font-size: large;
+	font-weight: bold;
 }
 
 .project-list__item:last-child {
@@ -280,7 +403,7 @@ img[alt="ResearchGate"]:hover {
 }
 
 /* M E D I A - Q U E R Y */
-@media all and (max-width: 500px) {
+@media all and (max-width: 420px) {
 	.project-list {
 		grid-template-columns: repeat(1, 1fr);
 		grid-gap: 5px;
@@ -290,7 +413,7 @@ img[alt="ResearchGate"]:hover {
 	}
 }
 
-@media all and (min-width: 500px) and (max-width: 750px) {
+@media all and (min-width: 420px) and (max-width: 630px) {
 	.project-list {
 		grid-template-columns: repeat(2, 1fr);
 		grid-gap: 7px;
@@ -300,7 +423,7 @@ img[alt="ResearchGate"]:hover {
 	}
 }
 
-@media all and (max-width: 750px) {
+@media all and (max-width: 630px) {
 	.project-list__item:last-child {
 		grid-column: auto / auto;
 		grid-row: auto / auto;
@@ -318,9 +441,9 @@ img[alt="ResearchGate"]:hover {
 }
 
 .about-me__text::first-letter {
-	font-size: 140%;
+	color: #006400;
+	font-size: large;
 	font-weight: bold;
-	color: darkred;
 }
 
 .skills-table  {
@@ -371,7 +494,7 @@ img[alt="ResearchGate"]:hover {
 	font-weight: normal;
 }
 
-@keyframes color-change {
+@keyframes color-change__sun {
 	0% {
 		fill: #edc655;
 	}
@@ -380,6 +503,33 @@ img[alt="ResearchGate"]:hover {
 	}
 	100% {
 		fill: #f76414;
+	}
+}
+
+@keyframes opacity-change__grass {
+	0% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes brightness-change__horse {
+	0% {
+		filter: brightness(1%);
+	}
+	100% {
+		filter: brightness(100%);
+	}
+}
+
+@keyframes blur-change__bubble {
+	0% {
+		filter: blur(0);
+	}
+	100% {
+		filter: blur(10px);
 	}
 }
 
@@ -401,29 +551,58 @@ img[alt="ResearchGate"]:hover {
 	}
 }
 
-.sun {
+.berlin-animation__sun {
 	animation-duration: 4s;
-	animation-name: color-change;
+	animation-name: color-change__sun;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
 	animation-timing-function: linear;
 	/* animation: 4s color-change infinite alternate linear; */
 }
 
-.cloud-front {
+.berlin-animation__cloud-front {
 	animation-duration: 30s;
 	animation-name: cloud-move;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
-	animation-timing-function: linear;
-	/* animation: 30s cloud-move infinite alternate linear; */
+	animation-timing-function: ease-in-out;
+	/* animation: 30s cloud-move infinite alternate ease-in-out; */
 }
 
-.cloud-back {
+.berlin-animation__cloud-back {
 	animation-duration: 34s;
 	animation-name: cloud-move-reverse;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
-	animation-timing-function: linear;
-  	/* animation: 34s cloud-move-reverse infinite alternate linear; */
+	animation-timing-function: ease-in-out;
+  	/* animation: 34s cloud-move-reverse infinite alternate ease-in-out; */
+}
+
+.berlin-animation__grass {
+	animation-duration: 1s;
+	animation-name: opacity-change__grass;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: ease-in-out;
+  	/* animation: 34s opacity-change__grass infinite alternate linear; */
+}
+
+.berlin-animation__horse-left {
+	transform-origin: center center;
+	animation-duration: 1s;
+	animation-name: brightness-change__horse;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: ease-in-out;
+  	/* animation: 34s brightness-change__horse infinite alternate linear; */
+}
+
+.berlin-animation__tower-bubble {
+	transform-origin: center center;
+	animation-duration: 2s;
+	animation-name: blur-change__bubble;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: ease-in;
+  	/* animation: 34s blur-change__bubble infinite alternate linear; */
 }
