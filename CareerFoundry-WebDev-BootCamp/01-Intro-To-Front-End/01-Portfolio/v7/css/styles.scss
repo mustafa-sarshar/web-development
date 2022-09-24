@@ -1,0 +1,32 @@
+$primary-color: #001100;
+$primary-color-darker: darken($primary-color, 20%);
+$primary-color-lighter: lighten($primary-color, 10%);
+
+a {
+    color: $primary-color;
+}
+
+.bg-darker {
+    background-color: $primary-color-darker;
+}
+
+.bg-lighter {
+    background-color: $primary-color-lighter;
+}
+
+%button-shared {
+    border: none;
+    display: inline-block;
+    font-family: inherit;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 3px;
+    transition: 0.2s opacity;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+.button {
+    @extend %button-shared;
+    background-color: $primary-color;
+}
