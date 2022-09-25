@@ -4,31 +4,40 @@
 */
 
 /* --------------------- C O L O R S --------------------- */
-/*
+:root {
+	--font-family__body: "Lato", sans-serif;
 
-Navigation Bar/Footer BG Color (Light Dark): #e0e0e0;
+	--color__paragraph__first-letter-capitalized: #006400;
 
-Title Shadow (Gray): #808080;
-IMAGE Multi Shadows (Black + Blue): #00000080 + #060649cc;
-ICON/SVG Shadow (Light Gray): #0000004d;
+	--color__header-footer__bg: #e0e0e0;
 
-Hyperlinks Normal Color (Dark Green): #006400;
-Hyperlinks Visited Color (Green): #05676e;
-Hyperlinks Activated Color (Light Green): #489c79;
+	--color__title--shadowed: #808080;
+	--color__icon-svg--shadowed: #0000004d;
+	--color__profile__portrait--shadowed-1: #00000080;
+	--color__profile__portrait--shadowed-2: #060649cc;
+	--color__profile__portrait__title: #006400;
 
-Button BG Color (Dark Green): #006400;
-Button Text Color (Light Green): #90ee90;
+	--color__hyperlinks--normal: #006400;
+	--color__hyperlinks--visited: #05676e;
+	--color__hyperlinks--activated: #489c79;
 
-Table/TH BG Color (Gray): #80808033;
+	--color__button__bg: #006400;
+	--color__button__text: #90ee90;
 
-Border Color (Gray): #80808066;
+	--color__table-th--highlighted: #80808033;
 
-Keyframe color-change (sun) : #fcffad -> #f76414 -> #f76414
+	--color__border: #80808066;
 
-ContactForm Label (Dark Green): #006400;
-ContactForm Input Focused (Green): #489c79;
+	--color__animation-sun--0: #edc655;
+	--color__animation-sun--50: #fcffad;
+	--color__animation-sun--100: #f76414;
 
-Dark Text Shadow Color (Black): #000000
+	--color__contact-form__label: #006400;
+	--color__contact-form__input--focused: #489c79;
+	--color__contact-form__element-border: #006400;
+
+	--color__text--shadowed: #000000;
+}
 
 /* ----------------- U N I V E R S A L S ----------------- */
 
@@ -39,7 +48,7 @@ Dark Text Shadow Color (Black): #000000
 /* ----------------------- T A G S ----------------------- */
 
 body {
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-family__body);
     font-weight: 400;
     font-size: 16px;        /* Sets the font size to 16px */
     line-height: 1.6;       /* Sets the line-height to 1.6 */
@@ -49,11 +58,11 @@ img[alt="Twitter"]:hover,
 img[alt="GitHub"]:hover,
 img[alt="LinkedIn"]:hover,
 img[alt="ResearchGate"]:hover {
-	box-shadow: 1px 1px 2px 2px #0000004d;
+	box-shadow: 1px 1px 2px 2px var(--color__icon-svg--shadowed);
 }
 
 hr {
-	color: #80808066;
+	color: var(--color__border);
 }
 
 /* ---------------------- C L A S S E S ---------------------- */
@@ -65,11 +74,11 @@ hr {
 	display: inline-block;
 	font-family: inherit;
 	background-color: #006400;
-	color: #90ee90;
+	color: var(--color__button__text);
 	text-decoration: none;
 	padding: 10px;
 	border-radius: 3px;
-	border-bottom: 2px solid #80808066;
+	border-bottom: 2px solid var(--color__border);
 	/* transition-duration: .2s;
 	transition-property: opacity; */
 	transition: .5s opacity ease-in-out 0s;
@@ -86,17 +95,6 @@ hr {
 	font-weight: bold;		/* thickens the font of the button when activated */
 }
 
-.button__secondary {
-	background-color: #e0b354;
-	color: #2b2b2b;
-}
-
-.button__secondary--shadowed {
-	background-color: #e0b354;
-	color: #2b2b2b;
-	box-shadow: 2px 4px 8px #00000080;
-}
-
 /* --- P A G E		H E A D E R --- */
 
 .page-header {
@@ -105,8 +103,8 @@ hr {
 	display: flex;
 	width: 100%;
 	height: fit-content;
-	border-bottom: 1px solid #80808066;
-	background-color: #e0e0e0;
+	border-bottom: 1px solid var(--color__border);
+	background-color: var(--color__header-footer__bg);
 	padding: 10px 20px;
 	z-index: 999;
 }
@@ -127,7 +125,7 @@ hr {
 .navigation-list__item--active {
 	text-decoration: none;
 	font-weight: bold;
-	text-shadow: 1px 1px 4px #808080;
+	text-shadow: 1px 1px 4px var(--color__title--shadowed);
 }
 
 .navigation-list li {
@@ -137,11 +135,11 @@ hr {
 
 a,
 .navigation-list a {
-    color: #006400;
+    color: var(--color__hyperlinks--normal);
 }
 
 .navigation-list a:visited {
-	color: #05676e;		/* visited link */
+	color: var(--color__hyperlinks--visited);		/* visited link */
 }
 
 .navigation-list a:hover,
@@ -150,7 +148,7 @@ a,
 }
 
 .navigation-list a:active {
-	color: #489c79;		/* selected link */
+	color: var(--color__hyperlinks--activated);		/* selected link */
 }
 
 @media all and (max-width: 630px) {
@@ -175,7 +173,7 @@ a,
 	}
 	.navigation-list li {
 		margin: 1px 0;
-		border-bottom: 1px solid #80808066;
+		border-bottom: 1px solid var(--color__border);
 	}
 	.navigation-list__item {		
 		padding: 5px;
@@ -194,9 +192,9 @@ a,
 	transform: translateX(-50%);
 	flex-direction: column;
 	text-align: center;
-	border-top: 1px solid #80808066;
+	border-top: 1px solid var(--color__border);
 	width: 100%;
-	background-color: #e0e0e0;
+	background-color: var(--color__header-footer__bg);
 	z-index: 1000;
 }
 
@@ -219,12 +217,12 @@ a,
 	text-align: center;
 	font-size: 30px;
     font-weight: 700;
-	text-shadow: 1px 1px 4px #808080;
+	text-shadow: 1px 1px 4px var(--color__title--shadowed);
 	transition: all .5s ease-in-out;
 }
 
 .page-main__title:hover {
-	text-shadow: 1px 1px 5px black;
+	text-shadow: 1px 1px 5px var(--color__text--shadowed);
 }
 
 @media all and (max-width: 630px) {
@@ -261,11 +259,11 @@ a,
 	text-align: center;
 	font-size: 30px;
     font-weight: 700;
-	text-shadow: 1px 1px 4px #808080;
+	text-shadow: 1px 1px 4px var(--color__title--shadowed);
 }
 
 .profile__portrait--shadowed {
-	box-shadow: 1px 1px 4px 1px #00000080, 2px 2px 4px 1px #060649cc;
+	box-shadow: 1px 1px 4px 1px var(--color__profile__portrait--shadowed-1), 2px 2px 4px 1px var(--color__profile__portrait--shadowed-2);
 }
 
 .profile__text {
@@ -279,7 +277,7 @@ a,
 	width: fit-content;
 	text-align: center;
 	margin: 1ch auto;
-	color: #006400;
+	color: var(--color__hyperlinks--normal);
 	transition: all .5s linear;
 }
 .profile__mycodes:hover {
@@ -325,20 +323,20 @@ a,
 }
 
 .contact-form label {
-	color: #006400;
+	color: var(--color__contact-form__label);
 }
 
 .contact-form input,
 .contact-form textarea {
 	outline: none;
-	border: 1px solid #006400;
+	border: 1px solid var(--color__contact-form__element-border);
 	border-radius: 3px;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-	outline: 1px solid #489c79;
-	border: 1px solid #489c79;
+	outline: 1px solid var(--color__contact-form__input--focused);
+	border: 1px solid var(--color__border);
 	border-radius: 3px;	
 }
 
@@ -362,7 +360,7 @@ a,
 
 .contact-info__address strong,
 .contact-info__info strong {
-	color: #006400;
+	color: var(--color__contact-form__label);
 }
 
 @media all and (max-width: 440px) {
@@ -410,7 +408,7 @@ a,
 }
 
 .project-list__item h2 {
-	color: #006400;
+	color: var(--color__profile__portrait__title);
 }
 
 .project-list__item p {
@@ -420,7 +418,7 @@ a,
 }
 
 .project-list__item p::first-letter {
-	color: #006400;
+	color: var(--color__paragraph__first-letter-capitalized);
 	font-size: large;
 	font-weight: bold;
 }
@@ -432,7 +430,7 @@ a,
 
 .project-list__item:hover {
 	filter: brightness(95%);
-	box-shadow: 1px 1px 2px #000000;
+	box-shadow: 1px 1px 2px var(--color__text--shadowed)
 }
 
 /* M E D I A - Q U E R Y */
@@ -474,14 +472,14 @@ a,
 }
 
 .about-me__text::first-letter {
-	color: #006400;
+	color: var(--color__paragraph__first-letter-capitalized);
 	font-size: large;
 	font-weight: bold;
 }
 
 .skills-table  {
 	border-collapse: collapse;
-	border-bottom: 1px solid #80808066;
+	border-bottom: 1px solid var(--color__border);
 	margin: 20px auto;
 }
 
@@ -496,14 +494,14 @@ a,
 
 .skills-table th[scope="col"] {
 	text-align: center;
-	background-color: #80808033;
+	background-color: var(--color__table-th--highlighted);
 	padding: 0 2ch;
-	border-bottom: 1px solid #80808066;
+	border-bottom: 1px solid var(--color__border);
 }
 
 .skills-table th[scope="row"] {
 	text-align: left;
-	background-color: #80808033;
+	background-color: var(--color__table-th--highlighted);
 	padding: 0 4ch;
 }
 
@@ -514,12 +512,12 @@ a,
 
 .about-me__animation-title {
 	text-align: center;
-	border-bottom: 1px solid #80808066;
+	border-bottom: 1px solid var(--color__border);
 }
 
 .about-me__animation-title a {
 	text-decoration: none;
-	color: #006400;
+	color: var(--color__hyperlinks--normal);
 	transition: all .5s ease-in-out;
 }
 
@@ -529,13 +527,13 @@ a,
 
 @keyframes color-change__sun {
 	0% {
-		fill: #edc655;
+		fill: var(--color__animation-sun--0);
 	}
 	50% {
-		fill: #fcffad;
+		fill: var(--color__animation-sun--50);
 	}
 	100% {
-		fill: #f76414;
+		fill: var(--color__animation-sun--100);
 	}
 }
 

@@ -10,33 +10,6 @@
 		i.e Block__Element--Modifier
 */
 
-/* --------------------- C O L O R S --------------------- */
-/*
-
-Navigation Bar/Footer BG Color (Light Dark): #e0e0e0;
-
-Title Shadow (Gray): #808080;
-IMAGE Multi Shadows (Black + Blue): #00000080 + #060649cc;
-ICON/SVG Shadow (Light Gray): #0000004d;
-
-Hyperlinks Normal Color (Dark Green): #006400;
-Hyperlinks Visited Color (Green): #05676e;
-Hyperlinks Activated Color (Light Green): #489c79;
-
-Button BG Color (Dark Green): #006400;
-Button Text Color (Light Green): #90ee90;
-
-Table/TH BG Color (Gray): #80808033;
-
-Border Color (Gray): #80808066;
-
-Keyframe color-change (sun) : #fcffad -> #f76414 -> #f76414
-
-ContactForm Label (Dark Green): #006400;
-ContactForm Input Focused (Green): #489c79;
-
-Dark Text Shadow Color (Black): #000000
-
 /* ----------------- U N I V E R S A L S ----------------- */
 
 * {
@@ -53,9 +26,21 @@ body {
     line-height: 1.6;       /* Sets the line-height to 1.6 */
 }
 
-img[alt="Twitter"]:hover,
-img[alt="GitHub"]:hover,
-img[alt="LinkedIn"]:hover,
+img[alt="Twitter"]:hover {
+	-webkit-box-shadow: 1px 1px 2px 2px #0000004d;
+	        box-shadow: 1px 1px 2px 2px #0000004d;
+}
+
+img[alt="GitHub"]:hover {
+	-webkit-box-shadow: 1px 1px 2px 2px #0000004d;
+	        box-shadow: 1px 1px 2px 2px #0000004d;
+}
+
+img[alt="LinkedIn"]:hover {
+	-webkit-box-shadow: 1px 1px 2px 2px #0000004d;
+	        box-shadow: 1px 1px 2px 2px #0000004d;
+}
+
 img[alt="ResearchGate"]:hover {
 	-webkit-box-shadow: 1px 1px 2px 2px #0000004d;
 	        box-shadow: 1px 1px 2px 2px #0000004d;
@@ -97,18 +82,6 @@ hr {
 	    -ms-transform: scale(.98);
 	        transform: scale(.98);	/* shrinks the size of the button when activated */
 	font-weight: bold;		/* thickens the font of the button when activated */
-}
-
-.button__secondary {
-	background-color: #e0b354;
-	color: #2b2b2b;
-}
-
-.button__secondary--shadowed {
-	background-color: #e0b354;
-	color: #2b2b2b;
-	-webkit-box-shadow: 2px 4px 8px #00000080;
-	        box-shadow: 2px 4px 8px #00000080;
 }
 
 /* --- P A G E		H E A D E R --- */
@@ -157,7 +130,10 @@ hr {
 	margin-left: 15px;
 }
 
-a,
+a {
+    color: #006400;
+}
+
 .navigation-list a {
     color: #006400;
 }
@@ -260,7 +236,7 @@ a,
 }
 
 .page-main__title:hover {
-	text-shadow: 1px 1px 5px black;
+	text-shadow: 1px 1px 5px #000000;
 }
 
 @media all and (max-width: 630px) {
@@ -403,17 +379,27 @@ a,
 	color: #006400;
 }
 
-.contact-form input,
+.contact-form input {
+	outline: none;
+	border: 1px solid #006400;
+	border-radius: 3px;
+}
+
 .contact-form textarea {
 	outline: none;
 	border: 1px solid #006400;
 	border-radius: 3px;
 }
 
-.contact-form input:focus,
+.contact-form input:focus {
+	outline: 1px solid #489c79;
+	border: 1px solid #80808066;
+	border-radius: 3px;	
+}
+
 .contact-form textarea:focus {
 	outline: 1px solid #489c79;
-	border: 1px solid #489c79;
+	border: 1px solid #80808066;
 	border-radius: 3px;	
 }
 
@@ -441,7 +427,10 @@ a,
 	padding-left: 2ch;
 }
 
-.contact-info__address strong,
+.contact-info__address strong {
+	color: #006400;
+}
+
 .contact-info__info strong {
 	color: #006400;
 }
@@ -525,7 +514,7 @@ a,
 	-webkit-filter: brightness(95%);
 	        filter: brightness(95%);
 	-webkit-box-shadow: 1px 1px 2px #000000;
-	        box-shadow: 1px 1px 2px #000000;
+	        box-shadow: 1px 1px 2px #000000
 }
 
 /* M E D I A - Q U E R Y */
