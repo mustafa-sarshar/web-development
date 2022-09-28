@@ -4,9 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS Reset / Normalize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="../../assets/global_style_2.css">
     <style>
-        figure {
+        h2, figure {
+            text-align: center;
+        }
+        .figure-container {
+            text-align: center;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .picture-container {
             text-align: center;
         }
     </style>
@@ -14,14 +26,15 @@
 </head>
 <body>
     <header class="mussar__header">
-        <h1><a href="https://www.w3schools.com/html/html_images_imagemap.asp" target="_blank" rel="noopener noreferrer">HTML
+        <h1><a href="https://www.w3schools.com/html/html_images_imagemap.asp" target="_blank"
+                rel="noopener noreferrer">HTML
                 Images</a></h1>
     </header>
     <main class="mussar__main">
-        <h1>GOATs in Basketball</h1>
         <h2>MJ ist the GOAT</h2>
         <figure>
-            <img src="./assets/Michael_Jordan_in_2014.jpg" alt="Michael Jordan in 2014" width="330" height="471" loading="lazy">
+            <img src="./assets/Michael_Jordan_in_2014.jpg" alt="Michael Jordan in 2014" width="330" height="471"
+                loading="lazy">
             <figcaption>
                 Micheal Jordan, the GOAT
             </figcaption>
@@ -41,14 +54,69 @@
             <a href="https://en.wikipedia.org/wiki/Kobe_Bryant" target="_self">Read more about him...</a>
         </p>
         <hr class="mussar__hr">
-        <figure>
-            <img src="https://picsum.photos/id/237/300/300" alt="">
-        </figure>
+        <h2>Map Players in Dream Team Photo</h2>
+        <div class="figure-container">
+            <figure>
+                <img src="https://library.sportingnews.com/styles/crop_style_16_9_desktop/s3/2021-08/dream-team-usa-basketball_48z4ni43dy041mf3vrs2ps4fu.jpg?itok=ji_8RgzR"
+                    alt="" width="550" usemap="#dream-team-map">
+                <map name="dream-team-map">
+                    <!-- Players Standing Left to Right -->
+                    <area shape="circle" coords="180, 75, 25" href="https://en.wikipedia.org/wiki/Michael_Jordan"
+                        alt="Michael Jordan" target="_blank" title="Michael Jordan">
+                    <area shape="circle" coords="230, 70, 25" href="https://en.wikipedia.org/wiki/Larry_Bird"
+                        alt="Larry Bird" target="_blank" title="Larry Bird">
+                    <area shape="circle" coords="280, 80, 25" href="https://en.wikipedia.org/wiki/Magic_Johnson"
+                        alt="Magic Johnson" target="_blank" title="Magic Johnson">
+                    <area shape="circle" coords="325, 85, 25" href="https://en.wikipedia.org/wiki/Chris_Mullin"
+                        alt="Chris Mullin" target="_blank" title="Chris Mullin">
+                    <area shape="circle" coords="380, 80, 25" href="https://en.wikipedia.org/wiki/Clyde_Drexler"
+                        alt="Clyde Drexler" target="_blank" title="Clyde Drexler">
+                    <area shape="circle" coords="430, 85, 25" href="https://en.wikipedia.org/wiki/John_Stockton"
+                        alt="John Stockton" target="_blank" title="John Stockton">
+                    <!-- Players Sitting Left to Right -->
+                    <area shape="circle" coords="100, 165, 25" href="https://en.wikipedia.org/wiki/Scottie_Pippen"
+                        alt="Scottie Pippen" target="_blank" title="Scottie Pippen">
+                    <area shape="circle" coords="162, 155, 25" href="https://en.wikipedia.org/wiki/Christian_Laettner"
+                        alt="Christian Laettner" target="_blank" title="Christian Laettner">
+                    <area shape="circle" coords="225, 155, 25" href="https://en.wikipedia.org/wiki/Patrick_Ewing"
+                        alt="Patrick Ewing" target="_blank" title="Patrick Ewing">
+                    <area shape="circle" coords="330, 150, 25" href="https://en.wikipedia.org/wiki/David_Robinson"
+                        alt="David Robinson" target="_blank" title="David Robinson">
+                    <area shape="circle" coords="380, 155, 25" href="https://en.wikipedia.org/wiki/Karl_Malone"
+                        alt="Karl Malone" target="_blank" title="Karl Malone">
+                    <area shape="circle" coords="440, 160, 25" href="https://en.wikipedia.org/wiki/Charles_Barkley"
+                        alt="Charles Barkley" target="_blank" title="Charles Barkley">
+                </map>
+                <figcaption>
+                    Click on players to read more about them in Wikipedia.org
+                </figcaption>
+            </figure>
+        </div>
+        <hr class="mussar__hr">
+        <h2>Picture Element</h2>
+        <div class="picture-container">
+            <picture>
+                <source media="(min-width: 1000px)" srcset="https://cdn.nba.com/headshots/nba/latest/1040x760/977.png">
+                <source media="(min-width: 850px)" srcset="https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png">
+                <img src="https://cdn.nba.com/headshots/nba/latest/1040x760/893.png" alt="Michael Jordan" style="width: 300px; text-align: center;">
+                <figcaption>
+                    Change the size of the browser to see different images
+                </figcaption>
+            </picture>
+        </div>
     </main>
-    <br><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
     <footer class="mussar__footer">
         <p>
-            Images retrieved from <a href="https://en.wikipedia.org/" target="_blank" rel="noopener noreferrer"></a>
+            Images (<a href="https://en.wikipedia.org/wiki/Michael_Jordan" target="_blank"
+                rel="noopener noreferrer">Michael</a>, <a href="https://en.wikipedia.org/wiki/Kobe_Bryant"
+                target="_blank" rel="noopener noreferrer">Kobe</a>) are retrieved from <a
+                href="https://www.wikipedia.org/" target="_blank" rel="noopener noreferrer">Wikipedia.org</a>
+        </p>
+        <p>
+            The Dream Team image is retrieved from <a
+                href="https://www.sportingnews.com/us/nba/news/dream-team-roster-history-usa-1992-olympics/4o78v2slilky1inrskk8h6wkb"
+                target="_blank" rel="noopener noreferrer">Sportingnews.com</a>
         </p>
         <p></p>
     </footer>

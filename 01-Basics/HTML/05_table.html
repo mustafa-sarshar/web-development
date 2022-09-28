@@ -4,15 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tables</title>
+    <!-- CSS Reset / Normalize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../../assets/global_style_2.css">
+    <title>HTML - Tables</title>
     <style>
-        table, thead, tr, th, td, caption {
+        section table {
+            margin: 10px auto;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        table,
+        thead,
+        tr,
+        th,
+        td,
+        caption {
             border: 1px solid rgb(9, 9, 9);
-            font-family:'Courier New', Courier, monospace;
+            font-family: 'Courier New', Courier, monospace;
             border-collapse: collapse;
             padding: .5rem;
         }
-        table caption {
+    
+        .table-style-1 caption {
             background-color: darkgray;
             color: white;
             font-weight: bold;
@@ -20,103 +39,203 @@
             letter-spacing: 5px;
             font-family: serif;
         }
+        .table-style-2 {
+            max-width: fit-content;
+            width: 100%;
+            border: none;
+        }
+        .table-style-2 * {
+            border: none;
+        }
+        .table-style-2 thead tr {
+            background-color: darkgray;
+            color: white;
+            letter-spacing: 2px;
+        }
+        .table-style-2 thead th {
+            padding: 10px 15px;
+            border: 1px solid white;
+        }
+        .table-style-2 tbody {
+            border: 1px solid white;
+        }
+        .table-style-2 tbody th {
+            border-right: 1px dashed white;
+            font-style: italic;
+        }
+        .table-style-2 tr:nth-child(even) {
+            background-color: rgba(175, 199, 199, 0.8);
+        }
+        .table-style-2 td:nth-child(even) {
+            background-color: rgba(175, 199, 199, 0.35);
+        }
     </style>
 </head>
 <body>
-    <section>
-        <h2>A simple example</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th scope="col">Col 1</th>
-                    <th scope="col">Col 2</th>
-                    <th scope="col">Col 3</th>
-                    <th scope="col">Col 4</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Data 1</td>
-                    <td>Data 2</td>
-                    <td>Data 3</td>
-                    <td>Data 4</td>
-                </tr>
-                <tr>
-                    <td>Data 1</td>
-                    <td>Data 2</td>
-                    <td>Data 3</td>
-                    <td>Data 4</td>
-                </tr>
-                <tr>
-                    <td>Data 1</td>
-                    <td>Data 2</td>
-                    <td>Data 3</td>
-                    <td>Data 4</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <br><br><br>
-    <section>
-        <h2>My Daily Schedule</h2>
-        <table>
-            <caption>Daily Schedule</caption>
-            <thead>
-                <tr>
-                    <th>&nbsp;</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Activity</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">Morning</th>
-                    <td>
-                        <time datetime="08:00">8am</time>-<time datetime="11:00">11am</time>
-                    </td>
-                    <td>
-                        Write code
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Break</th>
-                    <td>
-                        <time datetime="11:00">11am</time>-<time datetime="12:00">12pm</time>
-                    </td>
-                    <td>
-                        Eat lunch
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Afternoon</th>
-                    <td>
-                        <time datetime="12:00">12pm</time>-<time datetime="17:00">5pm</time>
-                    </td>
-                    <td>
-                        Study for other courses
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3" style="text-align: center; background-color: lightgray; font-weight: bold">Happy after work time 😄</td>
-                </tr>
-                <tr>
-                    <th scope="row">Evening</th>
-                    <td rowspan="2">Rest of the day</td>
-                    <td>Sport & Fitness</td>
-                </tr>
-                <tr>
-                    <th scope="row">Night</th>
-                    <td>Sleep</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3" style="text-align: center; background-color: lightgray; font-weight: bold">
-                        That's it. 😏
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
-    </section>
+    <header class="mussar__header">
+        <h1><a href="https://www.w3schools.com/html/html_table_borders.asp" target="_blank" rel="noopener noreferrer">HTML
+                Tables</a></h1>
+    </header>
+    <main class="mussar__main">
+        <section>
+            <h2>A simple example</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Col 1</th>
+                        <th scope="col">Col 2</th>
+                        <th scope="col">Col 3</th>
+                        <th scope="col">Col 4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <hr class="mussar__hr">
+        <section>
+            <h2>My Daily Schedule</h2>
+            <table class="table-style-1">
+                <caption>Daily Schedule</caption>
+                <thead>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Activity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Morning</th>
+                        <td>
+                            <time datetime="08:00">8am</time>-<time datetime="11:00">11am</time>
+                        </td>
+                        <td>
+                            Write code
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Break</th>
+                        <td>
+                            <time datetime="11:00">11am</time>-<time datetime="12:00">12pm</time>
+                        </td>
+                        <td>
+                            Eat lunch
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Afternoon</th>
+                        <td>
+                            <time datetime="12:00">12pm</time>-<time datetime="17:00">5pm</time>
+                        </td>
+                        <td>
+                            Study for other courses
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: center; background-color: lightgray; font-weight: bold">Happy after
+                            work time 😄</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Evening</th>
+                        <td rowspan="2">Rest of the day</td>
+                        <td>Sport & Fitness</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Night</th>
+                        <td>Sleep</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" style="text-align: center; background-color: lightgray; font-weight: bold">
+                            That's it. 😏
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+        <hr class="mussar__hr">
+        <section>
+            <h2>Alternative Colors for Rows</h2>
+            <table class="table-style-2">
+                <thead>
+                    <tr>
+                        <th scope="col">Column 1</th>
+                        <th scope="col">Column 2</th>
+                        <th scope="col">Column 3</th>
+                        <th scope="col">Column 4</th>
+                        <th scope="col">Column 5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Row 1</th>
+                        <td>Cell 1/1</td>
+                        <td>Cell 1/2</td>
+                        <td>Cell 1/3</td>
+                        <td>Cell 1/4</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Row 2</th>
+                        <td>Cell 2/1</td>
+                        <td>Cell 2/2</td>
+                        <td>Cell 2/3</td>
+                        <td>Cell 2/4</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Row 3</th>
+                        <td>Cell 3/1</td>
+                        <td>Cell 3/2</td>
+                        <td>Cell 3/3</td>
+                        <td>Cell 3/4</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Row 4</th>
+                        <td>Cell 4/1</td>
+                        <td>Cell 4/2</td>
+                        <td>Cell 4/3</td>
+                        <td>Cell 4/4</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Row 5</th>
+                        <td>Cell 5/1</td>
+                        <td>Cell 5/2</td>
+                        <td>Cell 5/3</td>
+                        <td>Cell 5/4</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Row 6</th>
+                        <td>Cell 6/1</td>
+                        <td>Cell 6/2</td>
+                        <td>Cell 6/3</td>
+                        <td>Cell 6/4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <br><br><br><br><br>
+    <footer class="mussar__footer">
+        <p></p>
+    </footer>
 </body>
 </html>
