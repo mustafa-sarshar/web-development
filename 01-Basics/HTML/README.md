@@ -1,5 +1,6 @@
 Thanks to:
 - [freeCodeCamp.org](https://www.youtube.com/watch?v=kUMe1FH4CHE) (accessed on 20.08.2022)
+- [w3schools.com](https://www.w3schools.com/html/default.asp) (accessed on 20.08.2022)
 
 Photos:
 - wikipedia.org

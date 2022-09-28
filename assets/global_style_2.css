@@ -1,0 +1,53 @@
+.mussar__header h1:hover {
+  background-color: lightgray;
+}
+.mussar__header h1 a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+.mussar__header h1 nav {
+  background-color: darkgray;
+}
+.mussar__header h1 nav ul {
+  padding: 10px;
+  text-align: center;
+}
+.mussar__header h1 nav ul li {
+  display: inline;
+  margin: 0 30px;
+}
+.mussar__header h1 nav ul li a {
+  text-decoration: none;
+}
+.mussar__main {
+  margin: auto;
+  position: relative;
+  justify-content: center;
+  background-color: lightgray;
+  width: 80%;
+  padding: 1em;
+}
+.mussar__footer {
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: bisque;
+  color: black;
+  z-index: 1000;
+  padding: 10px;
+}
+.mussar__footer p {
+  text-align: center;
+}
+.mussar__footer p:last-child::after {
+  content: "COPY RIGHT";
+}
+.mussar__hr {
+  border: 0;
+  height: 2px;
+  margin: 20px auto;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}/*# sourceMappingURL=global_style_2.css.map */
