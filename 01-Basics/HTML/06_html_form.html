@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forms</title>
+    <!-- CSS Reset / Normalize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../../assets/global_style_2.css">
+    <title>HTML - TITLE</title>
 </head>
 <body>
-    <article>
+    <header class="mussar__header">
+        <h1><a href="#" target="_blank" rel="noopener noreferrer">HTML
+                TITLE</a></h1>
+    </header>
+    <main class="mussar__main">
         <h1>Welcome to our website</h1>
         <section>
             <h3>Registration Form</h3>
@@ -17,7 +26,8 @@
                     <legend><strong>Required personal info</strong></legend>
                     <p>
                         <label for="fname">First Name:</label>
-                        <input type="text" id="fname" name="fname" placeholder="first name" autocomplete="on" required autofocus>
+                        <input type="text" id="fname" name="fname" placeholder="first name" autocomplete="on" required
+                            autofocus>
                     </p>
                     <p>
                         <label for="lname">Last Name:</label>
@@ -29,7 +39,8 @@
                     </p>
                     <p>
                         <label for="phone">Phone:</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+49-123-555-5555" autocomplete="on" pattern="[+]{1}[0-9]{2}-[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                        <input type="tel" id="phone" name="phone" placeholder="+49-123-555-5555" autocomplete="on"
+                            pattern="[+]{1}[0-9]{2}-[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                     </p>
                     <p>
                         <label for="pass">Password:</label>
@@ -77,7 +88,7 @@
                             <option value="employee"></option>
                             <option value="employer"></option>
                         </datalist>
-                    </p>                    
+                    </p>
                     <p>
                         <label for="decade">What is your favorite decade?</label>
                         <input type="number" id="decade" name="decade" min="1900" max="2020" step="10" placeholder="1990">
@@ -105,6 +116,11 @@
                 </p>
             </form>
         </section>
-    </article>
+    </main>
+    <br><br><br><br><br>
+    <footer class="mussar__footer">
+        <p></p>
+    </footer>
+
 </body>
 </html>
