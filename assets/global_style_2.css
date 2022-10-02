@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .mussar__header h1:hover {
   background-color: lightgray;
 }
