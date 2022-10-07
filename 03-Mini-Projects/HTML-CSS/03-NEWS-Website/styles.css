@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+.page-header {
+  background-color: lightgray;
+  height: 100px;
+}
+.page-main {
+  background-color: lightgray;
+}
+.page-main__container {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+.page-footer {
+  background-color: lightgray;
+  text-align: center;
+}
+.page__section {
+  background-color: darkgreen;
+  margin: 5px;
+}
+.page__article {
+  background-color: lightblue;
+  height: 30px;
+  width: 100px;
+  margin: 5px;
+}
+
+.navbar {
+  background-color: gray;
+  float: right;
+}
+.navbar__item {
+  float: left;
+  padding: 10px;
+}/*# sourceMappingURL=styles.css.map */

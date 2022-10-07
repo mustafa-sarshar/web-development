@@ -1,0 +1,55 @@
+$color-page-header: lightgray;
+$color-page-main: lightgray;
+$color-page-footer: lightgray;
+
+$color-sections: darkgreen;
+$color-article: lightblue;
+
+* {
+    box-sizing: border-box;
+}
+
+.page {
+
+    &-header {
+        background-color: $color-page-header;
+        height: 100px;
+    }
+
+    &-main {
+        background-color: $color-page-main;
+
+        &__container {
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+    }
+
+    &-footer {
+        background-color: $color-page-footer;
+        text-align: center;
+    }
+
+    &__section {
+        background-color: $color-sections;
+        margin: 5px;
+    }
+
+    &__article {
+        background-color: $color-article;
+        height: 30px;
+        width: 100px;
+        margin: 5px;
+    }
+}
+
+.navbar {
+    background-color: gray;
+    float: right;
+    &__item {
+        float: left;
+        padding: 10px;
+    }
+}
+
+    
