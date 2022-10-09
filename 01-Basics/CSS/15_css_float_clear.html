@@ -114,7 +114,7 @@
             display: flow-root;  /* overflow: auto; */
         }
         .photo-container .photo-box {
-            width: 33.3%;
+            width: calc(100% / 3);
             float: left;
             padding: 1rem;
         }
@@ -130,17 +130,18 @@
             float: left;
             margin-right: 1rem;
             margin-top: 0;
+            width: 100px;
             transition: all .2s ease-in-out;
         }
         @media all and (max-width:700px) {
             .photo-container .photo-box {
-                width: 50%;
+                width: calc(100% / 2);
             }
             .photo-container .photo-box img {
-                transform: scale(0.8);
+                width: 80px;
             }
             .photo-container .photo-box p {
-                font-size: .8rem;
+                font-size: 1rem;
             }
             .photo-container .photo-box:nth-child(3) {
                 width: 100%;
@@ -151,10 +152,10 @@
                 width: 100%;
             }
             .photo-container .photo-box img {
-                transform: scale(1);
+                width: 120px;
             }
             .photo-container .photo-box p {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -248,6 +249,7 @@
     <br><br><br><br><br>
     <footer>
         <div class="mussar-footer">
+            Photos are retrieved from <a href="https://picsum.photos/images" target="_blank" rel="noopener noreferrer">Lorem Picsum</a>
             <p></p>
         </div>
     </footer>
