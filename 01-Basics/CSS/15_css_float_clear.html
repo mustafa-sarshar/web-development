@@ -12,9 +12,7 @@
             display: flex;
         }
         .div-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: relative;
             color: white;
             text-transform: uppercase;
             box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -25,6 +23,12 @@
             border-radius: 5px;
             outline: 2px green solid;
             outline-offset: 5px;
+        }
+        .div-box > span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         .div-small-box {
             width: fit-content;
@@ -84,19 +88,25 @@
             text-indent: 2em;
         }
         .text-container {
-            display: flex;
-            flex-wrap: nowrap;
             background-color: darkgray;
             padding: 5px;
+            display: flow-root;  /* overflow: auto; */
         }
         .textbox {
+            float: left;
             background-color: #f1f1f1;
-            width: 50%;
-            margin: 5px;
+            width: 46%;
+            height: 150px;
+            margin: .2rem 5px;
             padding: 10px;
             text-indent: 1em;
             text-align: justify;
             line-height: 1em;
+        }
+        .clearfix {
+            display: table;
+            content: "";
+            clear: both;
         }
     </style>
 </head>
@@ -107,9 +117,9 @@
     <hr>
     <main>
         <div class="mussar-container">
-            <div class="div-box float-left">LEFT</div>
-            <div class="div-box float-none">NONE</div>
-            <div class="div-box float-right">RIGHT</div>
+            <div class="div-box float-left"><span>LEFT</span></div>
+            <div class="div-box float-none"><span>NONE</span></div>
+            <div class="div-box float-right"><span>RIGHT</span></div>
         </div>
         <hr>
         <div class="div-small-box float-left">ABC</div>
@@ -137,13 +147,14 @@
         </div>
         <div class="text-container">
             <div class="textbox">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut blanditiis quae nam voluptatibus deserunt, distinctio praesentium neque quisquam similique hic, et itaque, enim assumenda nobis sed laudantium a dolorem. Quidem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto dignissimos sapiente aliquid quibusdam vitae! Aut dolor totam laborum nisi, voluptas explicabo nesciunt quaerat odio impedit quibusdam, expedita amet, ipsam corrupti.
+                1Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut blanditiis quae nam voluptatibus deserunt, distinctio praesentium neque quisquam similique hic, et itaque, enim assumenda nobis sed laudantium a dolorem. Quidem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto dignissimos sapiente aliquid quibusdam vitae! Aut dolor totam laborum nisi, voluptas explicabo nesciunt quaerat odio impedit quibusdam, expedita amet, ipsam corrupti.
             </div>
             <div class="textbox">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut blanditiis quae nam voluptatibus deserunt, distinctio praesentium neque quisquam similique hic, et itaque, enim assumenda nobis sed laudantium a dolorem. Quidem.
+                2Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut blanditiis quae nam voluptatibus deserunt, distinctio praesentium neque quisquam similique hic, et itaque, enim assumenda nobis sed laudantium a dolorem. Quidem.
             </div>
-            
+            <div class="clearfix"></div>
         </div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione delectus, velit cum quas quo aliquam, inventore explicabo voluptatum ex porro veniam tenetur voluptate nostrum similique ad modi! Numquam, iste esse.</p>
     </main>
     <br><br><br><br><br>
     <footer>

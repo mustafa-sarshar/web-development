@@ -107,7 +107,8 @@ a:hover {
 }
 
 .projects-img-wrapper img:hover {
-    filter: brightness(.75);
+    -webkit-filter: brightness(.75);
+            filter: brightness(.75);
     box-shadow: 0 8px 12px 0 rgba(34, 60, 80, 0.2);
 }
 

@@ -101,6 +101,23 @@
             padding: 2px 5px;
             white-space: nowrap;
         }
+        .table-as-container {
+            margin: 0 auto;
+        }
+        .table-as-container table {
+            border: 1px solid;
+            width: 100%;
+        }
+        .table-as-container .table__item {
+            /* border: 1px solid; */
+            text-align: center;
+            padding: .5rem;
+        }
+        .table-as-container .table__item img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -274,11 +291,46 @@
                     </tbody>
                 </table>
             </div>
+            <hr>
+            <div class="table-as-container">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="table__item">
+                                <img src="https://picsum.photos/id/237/250/250" alt="" width="50" height="50">
+                                <hr>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                </p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="table__item">
+                                <img src="https://picsum.photos/id/400/250/250" alt="" width="50" height="50">
+                                <hr>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                </p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="table__item">
+                                <img src="https://picsum.photos/id/500/250/250" alt="" width="50" height="50">
+                                <hr>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </main>    
     <hr>
     <br><br><br>
     <footer class="mussar-footer">
+        Photos retrieved from <a href="https://picsum.photos/" target="_blank" rel="noopener noreferrer">Lorem Picsum</a>
         <p></p>
     </footer>
 </body>
