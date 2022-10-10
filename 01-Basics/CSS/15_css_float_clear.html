@@ -10,9 +10,13 @@
         * {
             box-sizing: border-box;
         }
+        .clearfix {
+            display: table;
+            content: "";
+            clear: both;
+        }
         .mussar-container {
             padding: 10px;
-            display: flex;
         }
         .div-box {
             position: relative;
@@ -51,18 +55,23 @@
             padding: 30px 15px;
             margin: 15px;
         }
+        .block-abc,
+        .float-options {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid #80808059;
+            border-radius: 10px;
+            /* overflow: auto; */
+        }
         .float-left {
             float: left;
-            clear: both;
         }
         .float-right {
             float: right;
         }
         .float-none {
             float: none;
-        }
-        .clear-both {
-            clear: both;
         }
         .block-rainbow {
             border: 2px solid green;
@@ -103,12 +112,16 @@
             width: 50%;
             float: left;
             padding: 1rem;
+            border-bottom: 1px solid;
         }
-        .clearfix {
-            display: table;
-            content: "";
-            clear: both;
+        @media all and (max-width:550px) {
+            .textbox {
+                width: 100%;
+                float: left;
+                padding: 1rem;
+            }
         }
+
         .photo-container {
             background-color: #e0ffff6b;
             display: flow-root;  /* overflow: auto; */
@@ -135,7 +148,7 @@
         }
         @media all and (max-width:700px) {
             .photo-container .photo-box {
-                width: calc(100% / 2);
+                width: 50%;
             }
             .photo-container .photo-box img {
                 width: 80px;
@@ -158,6 +171,52 @@
                 font-size: 1.1rem;
             }
         }
+        .numberbox-container {
+            width: 100%;
+            height: 100vw;
+        }
+        .numberbox-container * {
+            box-sizing: border-box;
+        }
+        .numberbox {
+            box-sizing: border-box;
+            float: left;
+            text-align: center;
+            width: calc(100% / 3);
+            height: calc(100vw / 4);
+            position: relative;
+            padding: .4vw;
+        }
+        .numberbox:hover {
+            box-shadow: 1px 1px 4px black;
+        }
+        .numberbox__box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 98%;
+            max-width: 200px;
+            height: 98%;
+            max-height: 200px;
+            background-color: #c5a333;
+            opacity: 1;
+            transition: all .2s ease-in-out .1s;
+            margin: auto;
+        }
+        .numberbox__number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 7vw;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -webkit-touch-callout : none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
     </style>
 </head>
 <body>
@@ -167,84 +226,160 @@
     <hr>
     <main>
         <div class="mussar-container">
-            <div class="div-box float-left"><span>LEFT</span></div>
-            <div class="div-box float-none"><span>NONE</span></div>
-            <div class="div-box float-right"><span>RIGHT</span></div>
-        </div>
-        <hr>
-        <div class="div-small-box float-left">ABC</div>
-        <div class="clear-both">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi officiis consectetur amet doloribus deserunt, eveniet cumque ad laboriosam laborum impedit eius quod non possimus distinctio optio ea modi mollitia at!
-        </div>
-        <hr>
-        <div class="block-rainbow">
-            <div class="div-fancy-box float-right">RAINBOW</div>
-            <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit sit enim cupiditate aut.
-            </p>
-        </div>
-        <hr>
-        <div class="block-vertical-boxes">
-            <div class="boxes">
-                <div class="vertical-box" style="background-color:#bbb"></div>
-                <div class="vertical-box" style="background-color:rgb(136, 130, 130)"></div>
-                <div class="vertical-box" style="background-color:rgb(86, 86, 86)"></div>
-            </div>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolorum harum quas dolorem sequi! Minus nulla corporis ex itaque incidunt saepe ad fugiat in vel culpa similique, perferendis corrupti placeat.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, illum! Voluptate possimus repellendus unde autem, sint suscipit ducimus nam corrupti voluptates atque molestiae ipsam ullam aliquam? Eius animi quae quasi!
-            </p>
-        </div>
-        <hr>
-        <div class="text-container">
-            <div class="textbox">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ut soluta doloribus quaerat nisi ipsum quasi tempora expedita minus modi dignissimos illo quas voluptas, eveniet dolore facere fugiat, blanditiis adipisci.
-                </p>
-                <a href="#" target="_blank" rel="noopener noreferrer">more...</a>
-            </div>
-            <div class="textbox">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ut soluta doloribus quaerat nisi ipsum quasi
-                    tempora expedita minus modi dignissimos illo quas voluptas, eveniet dolore facere fugiat, blanditiis adipisci.
-                </p>
-                <a href="#" target="_blank" rel="noopener noreferrer">more...</a>
+            <div class="float-options">
+                <div class="div-box float-left"><span>LEFT</span></div>
+                <div class="clearfix"></div>
+                <div class="div-box float-none"><span>NONE</span></div>
+                <div class="clearfix"></div>
+                <div class="div-box float-right"><span>RIGHT</span></div>
+                <div class="clearfix"></div>
             </div>
             <div class="clearfix"></div>
-        </div>
-        <hr>
-        <div class="photo-container">
-            <div class="photo-box">
-                <img src="https://picsum.photos/id/1/100/100" alt="">
-                <p>
-                    111 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ut soluta doloribus quaerat nisi ipsum
-                    quasi tempora expedita minus modi dignissimos illo quas voluptas, eveniet dolore facere fugiat, blanditiis
-                    adipisci.
-                </p>
-                <a href="#" target="_blank" rel="noopener noreferrer">more...</a>
-            </div>
-            <div class="photo-box">
-                <img src="https://picsum.photos/id/2/100/100" alt="">
-                <p>
-                    222 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ut soluta doloribus quaerat nisi ipsum
-                    quasi
-                    tempora expedita minus modi dignissimos illo quas voluptas, eveniet dolore facere fugiat, blanditiis
-                    adipisci.
-                </p>
-                <a href="#" target="_blank" rel="noopener noreferrer">more...</a>
-            </div>
-            <div class="photo-box">
-                <img src="https://picsum.photos/id/3/100/100" alt="">
-                <p>
-                    333 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ut soluta doloribus quaerat nisi ipsum
-                    quasi
-                    tempora expedita minus modi dignissimos illo quas voluptas, eveniet dolore facere fugiat, blanditiis
-                    adipisci.
-                </p>
-                <a href="#" target="_blank" rel="noopener noreferrer">more...</a>
-            </div>
+
             <div class="clearfix"></div>
-        </div>
+            <hr>
+            <div class="block-abc">
+                <div class="div-small-box float-left">ABC</div>
+                <div class="clearfix"></div>
+                <div>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi officiis consectetur amet doloribus deserunt, eveniet cumque ad laboriosam laborum impedit eius quod non possimus distinctio optio ea modi mollitia at!
+                </div>
+            </div>
+            <hr>
+            <div class="block-rainbow">
+                <div class="div-fancy-box float-right">RAINBOW</div>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit sit enim cupiditate aut.
+                </p>
+            </div>
+            <hr>
+            <div class="block-vertical-boxes">
+                <div class="boxes">
+                    <div class="vertical-box" style="background-color:#bbb"></div>
+                    <div class="vertical-box" style="background-color:rgb(136, 130, 130)"></div>
+                    <div class="vertical-box" style="background-color:rgb(86, 86, 86)"></div>
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolorum harum quas dolorem sequi! Minus nulla corporis ex itaque incidunt saepe ad fugiat in vel culpa similique, perferendis corrupti placeat.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, illum! Voluptate possimus repellendus unde autem, sint suscipit ducimus nam corrupti voluptates atque molestiae ipsam ullam aliquam? Eius animi quae quasi!
+                </p>
+            </div>
+            <hr>
+            <h2>Responsive Float Containers</h2>
+            <div class="text-container">
+                <div class="textbox">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ut soluta doloribus quaerat nisi ipsum quasi tempora expedita minus modi dignissimos illo quas voluptas, eveniet dolore facere fugiat, blanditiis adipisci.
+                    </p>
+                    <a href="#" target="_blank" rel="noopener noreferrer">more...</a>
+                </div>
+                <div class="textbox">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ut soluta doloribus quaerat nisi ipsum quasi
+                        tempora expedita minus modi dignissimos illo quas voluptas, eveniet dolore facere fugiat, blanditiis adipisci.
+                    </p>
+                    <a href="#" target="_blank" rel="noopener noreferrer">more...</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <hr>
+            <div class="photo-container">
+                <div class="photo-box">
+                    <img src="https://picsum.photos/id/1/100/100" alt="">
+                    <p>
+                        111 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ut soluta doloribus quaerat nisi ipsum
+                        quasi tempora expedita minus modi dignissimos illo quas voluptas, eveniet dolore facere fugiat, blanditiis
+                        adipisci.
+                    </p>
+                    <a href="#" target="_blank" rel="noopener noreferrer">more...</a>
+                </div>
+                <div class="photo-box">
+                    <img src="https://picsum.photos/id/2/100/100" alt="">
+                    <p>
+                        222 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ut soluta doloribus quaerat nisi ipsum
+                        quasi
+                        tempora expedita minus modi dignissimos illo quas voluptas, eveniet dolore facere fugiat, blanditiis
+                        adipisci.
+                    </p>
+                    <a href="#" target="_blank" rel="noopener noreferrer">more...</a>
+                </div>
+                <div class="photo-box">
+                    <img src="https://picsum.photos/id/3/100/100" alt="">
+                    <p>
+                        333 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ut soluta doloribus quaerat nisi ipsum
+                        quasi
+                        tempora expedita minus modi dignissimos illo quas voluptas, eveniet dolore facere fugiat, blanditiis
+                        adipisci.
+                    </p>
+                    <a href="#" target="_blank" rel="noopener noreferrer">more...</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <hr>
+            <h2>Number boxes</h2>
+            <div class="numberbox-container">
+                <div class="numberbox">
+                    <div class="numberbox__box">
+                        <span class="numberbox__number">1</span>
+                    </div>
+                </div>
+                <div class="numberbox">
+                    <div class="numberbox__box">
+                        <span class="numberbox__number">2</span>
+                    </div>
+                </div>
+                <div class="numberbox">
+                    <div class="numberbox__box">
+                        <span class="numberbox__number">3</span>
+                    </div>
+                </div>
+                <div class="numberbox">
+                    <div class="numberbox__box">
+                        <span class="numberbox__number">4</span>
+                    </div>
+                </div>
+                <div class="numberbox">
+                    <div class="numberbox__box">
+                        <span class="numberbox__number">5</span>
+                    </div>
+                </div>
+                <div class="numberbox">
+                    <div class="numberbox__box">
+                        <span class="numberbox__number">6</span>
+                    </div>
+                </div>
+                <div class="numberbox">
+                    <div class="numberbox__box">
+                        <span class="numberbox__number">7</span>
+                    </div>
+                </div>
+                <div class="numberbox">
+                    <div class="numberbox__box">
+                        <span class="numberbox__number">8</span>
+                    </div>
+                </div>
+                <div class="numberbox">
+                    <div class="numberbox__box">
+                        <span class="numberbox__number">9</span>
+                    </div>
+                </div>
+                <div class="numberbox">
+                    <div class="numberbox__box">
+                        <span class="numberbox__number">10</span>
+                    </div>
+                </div>
+                <div class="numberbox">
+                    <div class="numberbox__box">
+                        <span class="numberbox__number">11</span>
+                    </div>
+                </div>
+                <div class="numberbox">
+                    <div class="numberbox__box">
+                        <span class="numberbox__number">12</span>
+                    </div>
+                </div>
+            </div>
+        <div class="clearfix"></div>
     </main>
     <br><br><br><br><br>
     <footer>
