@@ -13,3 +13,4 @@ Thanks to:
    2. [ES6 Tutorial](https://www.youtube.com/watch?v=NCwa_xi0Uuc) (accessed on 19.08.2022)
 4. Mozilla Developer
    1. [Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) (accessed on 18.08.2022)
+5. [DWB](https://davidwalsh.name/xmlhttprequest) (accessed on 13.10.2022)
