@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        *, *::after, *::before {
+            box-sizing: border-box;
+        }
+        .alert-container {
+            margin: 10px 0;
+        }
+        .btn {
+            width: 100%;
+        }
+    </style>
+    <title>Bootstrap 3 - Alerts</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="page-header">Alerts</h1>
+        <div class="alert alert-success">
+            <strong>Success!</strong> Indicates a successful or positive action.
+        </div>        
+        <div class="alert alert-info">
+            <strong>Info!</strong> Indicates a neutral informative change or action.
+        </div>        
+        <div class="alert alert-warning">
+            <strong>Warning!</strong> Indicates a warning that might need attention.
+        </div>        
+        <div class="alert alert-danger">
+            <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-xs-6">
+                <button class="btn btn-success" onclick="showAlert('success')">Alert - Success</button>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <button class="btn btn-info" onclick="showAlert('info')">Alert - Info</button>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <button class="btn btn-warning" onclick="showAlert('warning')">Alert - Warning</button>                
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <button class="btn btn-danger" onclick="showAlert('danger')">Alert - Danger</button>
+            </div>
+        </div>
+        <div class="alert-container"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        const alertContainerEl = document.querySelector(".alert-container");
+        alertContainerEl.innerHTML = "not alerts selected yet.";
+        function showAlert(alertType) {
+            const divAlertEl = document.createElement("div");
+            const btnCloseEl = document.createElement("a");
+            
+            divAlertEl.classList.add("alert", `alert-${alertType}`, "alert-dismissible", "text-center", "fade", "in");
+            divAlertEl.innerText = "Alert type: " + alertType;
+
+            btnCloseEl.href = "#";
+            btnCloseEl.classList.add("close");
+            btnCloseEl.setAttribute("data-dismiss", "alert");
+            btnCloseEl.setAttribute("aria-label", "close");
+            btnCloseEl.innerHTML = "&times";
+
+            divAlertEl.appendChild(btnCloseEl);
+            alertContainerEl.innerHTML = "";
+            alertContainerEl.appendChild(divAlertEl);
+         }
+    </script>
+</body>
+</html>
