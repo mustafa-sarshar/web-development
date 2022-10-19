@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Bootstrap 3 - Progress Bar</title>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Progress Bar</h1>
+        </div>
+        <h2>Basic Progress Bar - Danger</h2>
+        <div class="progress">
+            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+                style="width:30%">
+                <span class="sr-only">30% Complete</span>
+                <span>30%</span>
+            </div>
+        </div>
+        <hr>
+        <h2>Interactive Progress Bar - Hover on it</h2>
+        <div class="progress my-progresses">
+            <div class="my-progressbars progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+                style="width:10%">
+                <span class="sr-only">10% Complete</span>
+                <span class="my-progressbars__label">10%</span>
+            </div>
+        </div>
+        <div class="progress my-progresses">
+            <div class="my-progressbars progress-bar progress-bar-striped" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                aria-valuemax="100" style="width:10%">
+                <span class="sr-only">10% Complete</span>
+                <span class="my-progressbars__label">10%</span>
+            </div>
+        </div>
+        <div class="progress my-progresses">
+            <div class="my-progressbars progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                aria-valuemax="100" style="width:10%">
+                <span class="sr-only">10% Complete</span>
+                <span class="my-progressbars__label">10%</span>
+            </div>
+        </div>
+        <hr>
+        <h2>Stacked Progress Bar</h2>
+        <button id="btn-try-random-values-0-100" class="btn btn-default">Try Random Values (0 - 100)</button>
+        <button id="btn-try-random-values-20-30" class="btn btn-default">Try Random Values (20 - 30)</button>
+        <div class="progress">
+            <div class="my-stacked-progressbars progress-bar progress-bar-success" role="progressbar" style="width:25%">
+                Success<span class="my-stacked-progressbars__label"> 25%</span>
+            </div>
+            <div class="my-stacked-progressbars progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" style="width:30%">
+                Warning<span class="my-stacked-progressbars__label"> 30%</span>
+            </div>
+            <div class="my-stacked-progressbars progress-bar progress-bar-danger" role="progressbar" style="width:20%">
+                Danger<span class="my-stacked-progressbars__label"> 20%</span>
+            </div>
+            <div class="my-stacked-progressbars progress-bar progress-bar-info progress-bar-striped active" role="progressbar" style="width:15%">
+                Info<span class="my-stacked-progressbars__label"> 15%</span>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script>
+        const myProgressesEl = document.querySelectorAll(".my-progresses");
+        const myProgressBarsEl = document.querySelectorAll(".my-progressbars");
+        const myProgressBar1LabelEl = document.querySelectorAll(".my-progressbars__label");
+        myProgressesEl.forEach((targetElement, idx) => {
+            targetElement.addEventListener("mouseover", function() {
+                updateMyProgress(targetElement, idx);
+            }, false);
+        });
+        function updateMyProgress(targetElement, idx) {
+            updateMyProgressBar(idx);
+        }
+        function updateMyProgressBar(idx) {
+            let perMyProgressBar = parseInt(myProgressBar1LabelEl[idx].innerText.split("%")[0]);
+            if (perMyProgressBar <= 95) perMyProgressBar += 5;
+            else perMyProgressBar = 0;
+
+            if (perMyProgressBar >= 50 && perMyProgressBar < 90) {
+                if (!myProgressBarsEl[idx].classList.contains("progress-bar-danger"))
+                    myProgressBarsEl[idx].classList.add("progress-bar-danger");
+            } else
+                myProgressBarsEl[idx].classList.remove("progress-bar-danger");
+
+            if (perMyProgressBar >= 90) {
+                if (!myProgressBarsEl[idx].classList.contains("progress-bar-success"))
+                    myProgressBarsEl[idx].classList.add("progress-bar-success");
+            } else
+                myProgressBarsEl[idx].classList.remove("progress-bar-success");
+            myProgressBarsEl[idx].style.width = perMyProgressBar + "%";
+            myProgressBar1LabelEl[idx].innerText = perMyProgressBar + "%";
+            console.log(idx, perMyProgressBar);
+        }
+
+        const btnTryRandomValues0100El = document.querySelector("#btn-try-random-values-0-100");
+        const btnTryRandomValues2030El = document.querySelector("#btn-try-random-values-20-30");
+        const myStackedProgressesBarsEl = document.querySelectorAll(".my-stacked-progressbars");
+        const myStackedProgressesBarsLabelEl = document.querySelectorAll(".my-stacked-progressbars__label");
+        btnTryRandomValues0100El.addEventListener("click", function (evt) {
+            tryRandomValues(0, 100, true);
+        }, false);
+        btnTryRandomValues2030El.addEventListener("click", function (evt) {
+            tryRandomValues(20, 30);
+        }, false);
+
+        function tryRandomValues(rangeMin, rangeMax, correctRangeMax=false) {
+            const lenItems = myStackedProgressesBarsEl.length;
+            let randomValues = [];
+            for (let i=0; i< lenItems -1; i++) {
+                randomValues.push(getRandomInt(rangeMin, rangeMax));
+                updateStackedProgressBars(i, randomValues[i]);
+                console.log(randomValues[i]);
+                if (correctRangeMax)
+                    rangeMax -= randomValues[i];
+            }
+            let sum = randomValues.reduce((a, b) => a + b, 0);  // Get the sum of all random values
+            randomValues.push(100-sum);
+            console.log(randomValues[lenItems-1]);
+            updateStackedProgressBars(lenItems-1, randomValues[lenItems-1]);
+        }
+
+        function updateStackedProgressBars(idx, value) {
+            myStackedProgressesBarsEl[idx].style.width = value + "%";
+            myStackedProgressesBarsLabelEl[idx].innerText = value + "%";
+        }
+
+        function getRandomInt(min, max) {  // Source: https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range (accessed on 19.10.2022)
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+    </script>
+</body>
+</html>

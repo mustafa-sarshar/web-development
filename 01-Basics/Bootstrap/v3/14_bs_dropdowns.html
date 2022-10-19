@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Bootstrap 3 - Dropdowns</title>
+    <style>
+        .clearfix {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Dropdowns</h1>
+        </div>
+        <h2>Simple Dropdown</h2>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Front-End Technologies
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">CSS / SCSS</a></li>
+                <li><a href="#">JavaScript</a></li>
+                <li class="divider"></li>
+                <li><a href="#">React.js</a></li>
+            </ul>
+        </div>
+        <hr>
+        <h2>Dropdown with Headers</h2>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">The Big Menu <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Cookie with Cream</a></li>
+                <li><a href="#">Cookie with Chocolate</a></li>
+                <li><a href="#">Cookie with Love</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Or nothing &#128540;</a></li>
+                <li class="disabled"><a href="#">Or just ignore it</a></li>
+            </ul>
+        </div>
+        <hr>
+        <h2>Dropup</h2>
+        <div class="dropup" style="float: right;">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">The Small Menu <span
+                    class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li role="presentation"><a role="menuitem" href="#">Item 1</a></li>
+                <li role="presentation"><a role="menuitem" href="#">Item 2</a></li>
+                <li role="presentation"><a role="menuitem" href="#">Item 3</a></li>
+            </ul>            
+        </div>
+        <div class="clearfix"></div>
+        <hr>
+        
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

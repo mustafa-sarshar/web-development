@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Bootstrap 3 - Badges/Labels</title>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Badges/Labels</h1>
+        </div>
+        <h2>Badges</h2>
+        <button id="btn-counter" class="btn btn-primary">Click here to count: <span class="badge" id="txt-counter">#</span></button>
+        <button id="btn-reset" class="btn btn-danger">Reset</button>
+        <hr>
+        <h2>Labels</h2>
+        <h1>Title H1 <span class="label label-default">Label for H1</span></h1>
+        <h2>Title H2 <span class="label label-default">Label for H2</span></h2>
+        <h3>Title H3 <span class="label label-default">Label for H3</span></h3>
+        <h4>Title H4 <span class="label label-default">Label for H4</span></h4>
+        <h5>Title H5 <span class="label label-default">Label for H5</span></h5>
+        <h6>Title H6 <span class="label label-default">Label for H6</span></h6>
+        <hr>
+        <h2>Different types of labels</h2>
+        <span class="label label-default">Default Label</span>
+        <span class="label label-primary">Primary Label</span>
+        <span class="label label-success">Success Label</span>
+        <span class="label label-info">Info Label</span>
+        <span class="label label-warning">Warning Label</span>
+        <span class="label label-danger">Danger Label</span>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script>
+        let counter = 0;
+        const btnCounterEl = document.querySelector("#btn-counter");
+        const btnResetEl = document.querySelector("#btn-reset");
+        const txtCounterEl = document.querySelector("#txt-counter");        
+        btnCounterEl.addEventListener("click", updateCount);
+        btnResetEl.addEventListener("click", resetCounter);
+
+        function updateCount() {
+            counter++;
+            updateTxtCounter();            
+        }
+
+        function resetCounter() {
+            counter = 0;
+            updateTxtCounter();
+        }
+
+        function updateTxtCounter() {
+            txtCounterEl.innerText = counter;
+            console.log(counter);
+        }
+
+        updateTxtCounter();
+    </script>
+</body>
+</html>
