@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Bootstrap 3 - Tooltips & Popovers</title>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Tooltips & Popovers</h1>
+        </div>
+        <div>
+            <button class="btn btn-primary" onclick="enableBsTooltip()">Enable Bootstrap Tooltip for all HTML Elements</button>
+        </div>
+        <h2>Tooltip</h2>
+        <h3>A Simple Tooltip</h3>
+        <a href="#" data-toggle="tooltip" title="This is the tooltip!">Hover over me</a>
+        <hr>
+        <h3>Tooltip positions:</h3>
+        <a href="#" data-toggle="tooltip" data-placement="top" title="Tooltip top">Hover</a><br>
+        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Tooltip bottom">Hover</a><br>
+        <a href="#" data-toggle="tooltip" data-placement="left" title="Tooltip left">Hover</a><br>
+        <a href="#" data-toggle="tooltip" data-placement="right" title="Tooltip right">Hover</a><br>
+        <a href="#" data-toggle="tooltip" data-placement="auto left" title="Tooltip auto left">Hover</a>
+        <hr>
+        <h2>Popover</h2>
+        <div>
+            <button class="btn btn-primary" onclick="enableBsPopover()">Enable Bootstrap Popover for all HTML Elements</button>
+        </div>
+        <h3>Simple Popover</h3>
+        <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle
+            popover</a>
+        <hr>
+        <h3>Popover positions</h3>
+        <a href="#" title="Header" data-toggle="popover" data-placement="top" data-content="Popover top">Click</a><br>
+        <a href="#" title="Header" data-toggle="popover" data-placement="bottom" data-content="Popover bottom">Click</a><br>
+        <a href="#" title="Header" data-toggle="popover" data-placement="left" data-content="Popover left">Click</a><br>
+        <a href="#" title="Header" data-toggle="popover" data-placement="right" data-content="Popover right">Click</a><br>
+        <a href="#" title="Header" data-toggle="popover" data-placement="right" data-content="Popover auto left">Click</a><br>
+        <h3>Popovers - Dismissible</h3>
+        <a href="#" title="Dismissible popover" data-toggle="popover" data-trigger="focus"
+            data-content="Click anywhere in the document to close this popover">Click me</a><br>
+        <a href="#" title="Header" data-toggle="popover" data-trigger="hover" data-content="Some content">Hover over me</a>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        "use strict";
+        // Enable Bootstrap Tooltip for all HTML Elements
+        function enableBsTooltip() {
+            $(document).ready(function () {
+                $("[data-toggle='tooltip']").tooltip();
+            });
+        }
+
+        function enableBsPopover() {
+            $(document).ready(function () {
+                $('[data-toggle="popover"]').popover();
+            });
+        }
+    </script>
+</body>
+</html>
