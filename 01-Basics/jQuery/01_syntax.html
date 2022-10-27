@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/global_style_1.css">
+    <title>jQuery 3.4 - Syntax</title>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/jquery/jquery_syntax.asp" target="_blank">jQuery - Syntax</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <button id="btn-hide">Hide all Paragraphs</button>
+            <hr>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod quaerat earum accusamus, itaque nulla tenetur dignissimos odit iste accusantium amet dolor veritatis optio velit delectus blanditiis. Repellendus esse nesciunt alias!
+            </p>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod quaerat earum accusamus, itaque nulla tenetur
+                dignissimos odit iste accusantium amet dolor veritatis optio velit delectus blanditiis. Repellendus esse nesciunt
+                alias!
+            </p>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod quaerat earum accusamus, itaque nulla tenetur
+                dignissimos odit iste accusantium amet dolor veritatis optio velit delectus blanditiis. Repellendus esse nesciunt
+                alias!
+            </p>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod quaerat earum accusamus, itaque nulla tenetur
+                dignissimos odit iste accusantium amet dolor veritatis optio velit delectus blanditiis. Repellendus esse nesciunt
+                alias!
+            </p>
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // jQuery Code Here
+        $(document).ready(function () {
+            console.log("Document is ready.");
+
+            $("#btn-hide").click(function () {
+                if ($(this).text() === "Hide all Paragraphs") {
+                    $("p").hide();
+                    $(this).text("Show all Paragraphs");
+                } else {
+                    $("p").show();
+                    $(this).text("Hide all Paragraphs");
+                }
+            });
+        })        
+    </script>
+</body>
+</html>

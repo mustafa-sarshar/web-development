@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/global_style_1.css">
+    <title>jQuery 3.4 - Events</title>
+    <style>
+        .object-wrapper {
+            position: relative;
+            margin: 0 auto;
+            width: 100%;
+            height: calc(100vh - 200px);
+        }
+        .event-display {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background-color: gray;
+            padding: 10px;
+            border-radius: 5px;
+            color: wheat;
+        }
+        .box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            max-width: 100px;
+            max-height: 100px;
+            background-color: purple;
+            border-radius: 5px;
+        }
+        .box p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/jquery/jquery_events.asp" target="_blank">jQuery - Events</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <div class="object-wrapper">
+                <div class="event-display">Event</div>
+                <div class="box">
+                    <p>Event</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // jQuery Code Here
+        $(document).ready(function () {
+
+            $(document).mousemove(function (evt) {
+                $(".event-display").text("Mouse position: X(" + evt.pageX + "), Y(" + evt.pageY + ")");
+            })
+
+            $(".box").mousedown(function () {
+                $(".box p").text("Mouse Down");
+            });
+            $(".box").mouseup(function () {
+                $(".box p").text("Mouse Up");
+            });
+            $(".box").mouseover(function () {
+                $(".box p").text("Mouse Over");
+            });
+            $(".box").mouseenter(function () {
+                $(".box p").text("Mouse Enter");
+            });
+            $(".box").mouseleave(function () {
+                $(".box p").text("Mouse Leave");
+            });
+            $(".box").dblclick(function () {
+                $(".box p").text("Double Click");
+            });
+
+            // Make the box object focusable
+            $(".box").attr("tabindex", "0");
+            $(".box").focusin(function () {
+                $(".box").css("color", "red");
+                $(".box p").text("Focus In");
+            });
+            $(".box").focusout(function () {
+                $(".box").css("color", "red");
+                $(".box p").text("Focus Out");
+            });
+        })
+    </script>
+</body>
+</html>

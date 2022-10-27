@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Bootstrap 3 - Scroll Spy</title>
+    <style>
+        body {
+            position: relative; 
+        }
+        .page-header {
+            margin-top: 80px;
+        }
+        [id*="section"] {
+            padding: 50px;
+            color: #fff;
+        }
+        #section1 {
+            background-color: #1E88E5;
+        }
+        #section2 {
+            background-color: #673ab7;
+        }
+        #section3 {
+            background-color: #ff9800;
+        }
+        #section41 {
+            background-color: #00bcd4;
+        }
+        #section42 {
+            background-color: #009688;
+        }
+    </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <div class="container">
+        <div class="page-header">
+            <h1>Scroll Spy</h1>
+        </div>
+        <h2>Scroll Spy for Navbar</h2>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Logo/Signature</a>
+                </div>
+                <div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#section1">Section 1</a></li>
+                            <li><a href="#section2">Section 2</a></li>
+                            <li><a href="#section3">Section 3</a></li>
+                            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span
+                                        class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#section41">Section 4-1</a></li>
+                                    <li><a href="#section42">Section 4-2</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#section5">Section 5</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div id="section1" class="container-fluid">
+            <h1>Section 1</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed neque officiis amet dolor quia magni maiores blanditiis repellat id atque ratione tempore iure, in sit quae tempora, perspiciatis, impedit eum.
+                Placeat, voluptate fuga quod ad tenetur architecto explicabo a obcaecati esse repellat suscipit perferendis fugiat nulla iusto quas labore, illum ea reiciendis id distinctio debitis eos necessitatibus! Mollitia, dicta quod.
+                Eaque quia pariatur voluptate illo quasi. Saepe quos delectus et alias maiores pariatur laudantium expedita quisquam ipsum quo velit sed placeat odio sunt officia eligendi nisi rem eius, reprehenderit a!
+                Magnam, illum rem voluptas minima suscipit cupiditate autem necessitatibus ab deleniti, possimus expedita odio sapiente. Odio possimus, ut fugiat soluta, tenetur vitae quos ipsum iure dolores, omnis officia consequuntur. Illum?
+                Ullam exercitationem praesentium assumenda blanditiis delectus nisi eveniet inventore recusandae dolore ipsum saepe temporibus ex distinctio fugiat sequi est, nesciunt magni pariatur quas totam. Dolorum voluptates blanditiis veniam quasi eligendi.
+            </p>
+        </div>
+        <div id="section2" class="container-fluid">
+            <h1>Section 2</h1>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis error consequatur est. Nemo ex, reprehenderit earum nulla minima ipsum ipsam voluptate. Inventore quam porro ullam iusto consequuntur sunt dolores nulla.
+                Optio neque quis, eius quae odit delectus tempora? Voluptate excepturi est obcaecati ab ea laboriosam nesciunt. Reiciendis, vero quos dolorem fuga cupiditate nam hic quas ipsa blanditiis, veniam iure fugit!
+                Mollitia exercitationem repudiandae enim accusamus illo animi voluptate molestias inventore quidem libero impedit excepturi consequuntur atque dolor blanditiis doloremque earum soluta, quaerat similique veniam perspiciatis iure reprehenderit ullam. Officia, quos.
+            </p>
+        </div>
+        <div id="section3" class="container-fluid">
+            <h1>Section 3</h1>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque distinctio facilis maiores nobis fugit molestiae dolores numquam labore veritatis, totam delectus quas quidem repellat. Labore aperiam vero ducimus quae fuga.
+            Incidunt alias tempore vel, quos id itaque facilis facere, maiores rerum qui voluptatum quod repudiandae. Repudiandae ullam, commodi suscipit nostrum reiciendis similique in tempore quod dignissimos mollitia itaque quibusdam! Fugiat.
+            Iure, enim possimus? Cupiditate architecto expedita corrupti numquam quo ad modi ratione vitae recusandae, odit veniam similique ex, excepturi illo esse doloribus placeat iste laboriosam molestiae enim deleniti tempora. Nisi.
+            Tempora voluptatibus incidunt aliquid accusamus facilis omnis quos non dolorem sunt quidem ea ducimus vel dolore est maxime suscipit, aut sit, eveniet consectetur voluptate magni velit recusandae saepe aperiam. Porro!
+            Unde cum dolorem ratione nesciunt ad odio fugit maxime non, minus, modi consequuntur itaque. Pariatur veniam vitae earum ex, molestiae aliquam perspiciatis adipisci officiis consectetur fuga voluptatum facere. Magnam, nostrum!
+            Facilis earum, aperiam cum perspiciatis neque magnam pariatur unde! Est quasi eaque nobis rerum exercitationem corrupti praesentium, esse dignissimos ipsam perspiciatis nostrum, ea dolorem officiis ut illum architecto amet libero!
+            Temporibus labore consequatur, fugiat doloribus soluta quos harum, sit et cumque magnam dolorem est necessitatibus, maxime velit repellendus blanditiis facilis distinctio culpa dolorum? Nemo tempore repudiandae aspernatur ipsam? Repellat, repellendus?
+            Optio delectus, eligendi facilis obcaecati ipsa blanditiis provident sunt saepe vero. Asperiores ea praesentium libero esse voluptatibus assumenda suscipit in quae! Voluptates, ipsam esse rerum nesciunt in reprehenderit officiis assumenda.
+            Odit similique modi asperiores doloremque, iste cum iure impedit hic consectetur soluta repellat perferendis labore libero minima, deserunt magnam nostrum facere? Nihil cupiditate reiciendis nemo, molestiae consectetur excepturi possimus similique!
+            Sunt vitae quo doloribus! Quasi ea iusto accusamus quo, libero in, consequatur consequuntur incidunt vel molestias totam tenetur. Blanditiis, rem excepturi? Doloremque, incidunt. Voluptates dolore natus laboriosam qui deleniti ratione.
+        </div>
+        <div id="section41" class="container-fluid">
+            <h1>Section 4 - 1</h1>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur veritatis aut voluptate eligendi unde dolor eos nostrum doloremque molestiae alias, ipsam eaque perspiciatis asperiores totam rem nobis obcaecati eius fuga!
+                Enim quasi esse reiciendis distinctio temporibus voluptates veritatis ea possimus mollitia, nobis cupiditate voluptatem aut officia vel explicabo? Ex minus necessitatibus doloribus modi saepe, quos hic totam quisquam adipisci sint.
+            </p>
+        </div>
+        <div id="section42" class="container-fluid">
+            <h1>Section 4 - 2</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam exercitationem quae voluptatem debitis rerum aspernatur blanditiis consequuntur reprehenderit id, dolore tempore, quo quidem reiciendis labore odit voluptas dolor repudiandae ea.
+                Dolor distinctio molestiae fugit natus eos quo labore placeat dolorum, quasi, illo pariatur, aspernatur reprehenderit libero velit saepe animi ipsum neque earum eum consequuntur in. Officiis deserunt eaque dolores nihil.
+            </p>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
