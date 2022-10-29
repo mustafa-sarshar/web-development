@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/global_style_1.css">
+    <title>jQuery 3.4 - Add Elements</title>
+    <style>
+        .div-wrapper {
+            border: 1px solid gray;
+            border-radius: 5px;
+            height: 70px;
+            margin: 10px auto;
+            overflow: auto;
+        }
+
+        p {
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 5px;
+            background-color: azure;
+            padding: 2px;
+            margin: 2px auto;
+        }
+
+        p:hover {
+            background-color: brown;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/jquery/jquery_dom_add.asp" target="_blank">jQuery - Add Elements</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <h2>Append</h2>
+            <button id="btn-append">Append</button>
+            <button id="btn-append-empty">Empty the div</button>
+            <button id="btn-append-remove">Remove the div</button>
+            <div id="div-append" class="div-wrapper">
+                <p>Initial Element (1)</p>
+            </div>
+            <hr>
+            <h2>Prepend</h2>
+            <button id="btn-prepend">Prepend</button>
+            <button id="btn-prepend-empty">Empty the div</button>
+            <button id="btn-prepend-remove">Remove the div</button>
+            <div id="div-prepend" class="div-wrapper">
+                <p>Initial Element (1)</p>
+            </div>
+            <hr>
+            <h2>After</h2>
+            <button id="btn-after">After</button>
+            <div id="div-after" class="div-wrapper">
+                <p>Initial Element (1)</p>
+            </div>
+            <hr>
+            <h2>Before</h2>
+            <button id="btn-before">Before</button>
+            <div id="div-before" class="div-wrapper">
+                <p>Initial Element (1)</p>
+            </div>
+            <hr>
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // jQuery Code Here
+        $("#btn-append").click(function () {
+            const elementNo = $("#div-append").children().length + 1;
+            const newElement = $("<p></p>");
+            newElement.text("New Element (" + elementNo + ")");
+            $("#div-append").append(newElement);
+        });
+        $("#btn-append-empty").click(function () {
+            $("#div-append").empty();
+        });
+        $("#btn-append-remove").click(function () {
+            $("#div-append").remove();
+        });
+
+        $("#btn-prepend").click(function () {
+            const elementNo = $("#div-prepend").children().length + 1;
+            const newElement = $("<p></p>");
+            newElement.text("New Element (" + elementNo + ")");
+            $("#div-prepend").prepend(newElement);
+        });
+        $("#btn-prepend-empty").click(function () {
+            $("#div-prepend").empty();
+        });
+        $("#btn-prepend-remove").click(function () {
+            $("#div-prepend").remove();
+        });
+
+        $("#btn-after").click(function () {
+            const newElement = $("<p></p>");
+            newElement.text("New Element");
+            $("#div-after").after(newElement);
+        });
+
+        $("#btn-before").click(function () {
+            const newElement = $("<p></p>");
+            newElement.text("New Element");
+            $("#div-before").before(newElement);
+        });
+    </script>
+</body>
+</html>

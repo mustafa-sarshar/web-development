@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/global_style_1.css">
+    <title>jQuery 3.4 - Slide</title>
+    <style>
+        .panel,
+        .flip {
+            padding: 5px;
+            text-align: center;
+            background-color: #e5eecc;
+            border: solid 1px #c3c3c3;
+        }
+
+        .panel {
+            display: none;
+        }
+
+        .panel p {
+            padding: 50px;
+        }
+
+        .btn-slide {
+            border: none;
+            background-color: white;
+            color: red;
+            font-weight: bold;
+            float: right;
+        }
+
+        .clearfix {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/jquery/jquery_slide.asp" target="_blank">jQuery - Slide</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <h2>Slide Down/Up</h2>
+            <div id="flip-1" class="flip">
+                <span>
+                    Click &#8595; to slide down panel
+                </span>
+                <button id="btn-slide-down-1" class="btn-slide">&#8595;</button>
+                <div class="clearfix"></div>
+            </div>
+            <div id="panel-1" class="panel">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi repudiandae ipsam sint ab rem
+                    quae, perferendis aut minus, tempore illo magni veritatis laborum impedit, quidem voluptates odit
+                    eaque totam numquam?
+                </p>
+                <button id="btn-slide-up-1" class="btn-slide">&#8593;</button>
+                <div class="clearfix"></div>
+            </div>
+            <hr>
+            <h2>Slide Toggle</h2>
+            <div id="flip-2" class="flip">
+                <span>
+                    Click to toggle the panel
+                </span>
+            </div>
+            <div id="panel-2" class="panel">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi repudiandae ipsam sint ab rem
+                    quae, perferendis aut minus, tempore illo magni veritatis laborum impedit, quidem voluptates odit
+                    eaque totam numquam?
+                </p>
+            </div>
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // jQuery Code Here
+        // $(selector).slideToggle(speed, callback);
+        $(document).ready(function () {
+            $("#btn-slide-down-1").click(function () {
+                $("#panel-1").slideDown("slow", function () {
+                    $("#btn-slide-up-1").show();
+                    $("#flip-1 span").text("Click ↑ to slide down panel");
+                });
+                $("#btn-slide-down-1").hide();
+            });
+            $("#btn-slide-up-1").click(function () {
+                $("#panel-1").slideUp("slow", function () {
+                    $("#btn-slide-down-1").show();
+                    $("#flip-1 span").text("Click ↓ to slide down panel");
+                });
+                $("#btn-slide-up-1").hide();
+            });
+
+            $("#flip-2").click(function () {
+                $("#panel-2").slideToggle(1000);
+            });
+        });
+    </script>
+</body>
+</html>

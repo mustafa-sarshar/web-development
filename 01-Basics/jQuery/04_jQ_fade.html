@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/global_style_1.css">
+    <title>jQuery 3.4 - Fade</title>
+    <style>
+        body {
+            /* Safari */
+            -webkit-user-select: none;
+            /* IE 10 and IE 11 */
+            -ms-user-select: none;
+            /* Standard syntax */
+            user-select: none;
+        }
+
+        button {
+            width: 125px;
+            padding: 2px;
+            border: none;
+            margin: 2px;
+            border-radius: 5px;
+        }
+
+        .object-wrapper {
+            position: relative;
+            margin: 0 auto;
+            width: 100%;
+            height: calc(100vh - 200px);
+        }
+
+        .box {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            max-width: 100px;
+            max-height: 100px;
+            background-color: purple;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/jquery/jquery_fade.asp" target="_blank">jQuery - Fade</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container prevent-select">
+            <div class="object-wrapper">
+                <div class="btn-groups">
+                    <button id="btn-fadein">Fade In</button>
+                    <button id="btn-fadeout">Fade Out</button>
+                    <button id="btn-fadetoggle">Fade Toggle</button>
+                    <button id="btn-fadeto">Fade To 50%</button>
+                    <hr>
+                    <button id="btn-fadein-slow">Fade In Slow</button>
+                    <button id="btn-fadeout-slow">Fade Out Slow</button>
+                    <button id="btn-fadetoggle-slow">Fade Toggle Slow</button>
+                    <button id="btn-fadeto-slow">Fade To 50% Slow</button>
+                    <hr>
+                    <button id="btn-fadein-fast">Fade In Fast</button>
+                    <button id="btn-fadeout-fast">Fade Out Fast</button>
+                    <button id="btn-fadetoggle-fast">Fade Toggle Fast</button>
+                    <button id="btn-fadeto-fast">Fade To 50% Fast</button>
+                    <hr>
+                    <button id="btn-reset">Reset</button>
+                </div>
+                <div class="box">
+                </div>
+            </div>
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // jQuery Code Here
+        // Note: $(selector).hide(speed, callback);
+        $(document).ready(function () {
+            const speedFast = 100;  // ms   or "fast"
+            const speedSlow = 3000; // ms   or "slow"
+            $("#btn-fadein").click(function () {
+                // $(selector).fadeIn(speed, callback);
+                $(".box").fadeIn();
+            });
+            $("#btn-fadeout").click(function () {
+                // $(selector).fadeOut(speed, callback);
+                $(".box").fadeOut();
+            });
+            $("#btn-fadetoggle").click(function () {
+                // $(selector).fadeToggle(speed, callback);
+                $(".box").fadeToggle();
+            });
+            $("#btn-fadeto").click(function () {
+                // $(selector).fadeTo(speed, opacity, callback);
+                $(".box").fadeTo("", .5);
+            });
+
+            $("#btn-fadein-slow").click(function () {
+                // $(selector).fadeIn(speed, callback);
+                $(".box").fadeIn(speedSlow);
+            });
+            $("#btn-fadeout-slow").click(function () {
+                // $(selector).fadeOut(speed, callback);
+                $(".box").fadeOut(speedSlow);
+            });
+            $("#btn-fadetoggle-slow").click(function () {
+                // $(selector).fadeToggle(speed, callback);
+                $(".box").fadeToggle(speedSlow);
+            });
+            $("#btn-fadeto-slow").click(function () {
+                // $(selector).fadeTo(speed, opacity, callback);
+                $(".box").fadeTo(speedSlow, .5);
+            });
+
+            $("#btn-fadein-fast").click(function () {
+                // $(selector).fadeIn(speed, callback);
+                $(".box").fadeIn("fast");
+            });
+            $("#btn-fadeout-fast").click(function () {
+                // $(selector).fadeOut(speed, callback);
+                $(".box").fadeOut("fast");
+            });
+            $("#btn-fadetoggle-fast").click(function () {
+                // $(selector).fadeToggle(speed, callback);
+                $(".box").fadeToggle("fast");
+            });
+            $("#btn-fadeto-fast").click(function () {
+                // $(selector).fadeTo(speed, opacity, callback);
+                $(".box").fadeTo("fast", .5);
+            });
+
+            $("#btn-reset").click(function () {
+                $(".box").fadeTo("fast", 1);
+            });
+        });
+    </script>
+</body>
+</html>

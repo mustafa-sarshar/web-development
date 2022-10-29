@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/global_style_1.css">
+    <title>jQuery 3.4 - Animation</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Safari */
+            -webkit-user-select: none;
+            /* IE 10 and IE 11 */
+            -ms-user-select: none;
+            /* Standard syntax */
+            user-select: none;
+        }
+
+        .box {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: blueviolet;
+            border-radius: 5px;
+        }
+
+        .box:hover {
+            box-shadow: 0 0 4px 4px black;
+        }
+
+        .box span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .box-wrapper {
+            position: relative;
+            height: 250px;
+            border: 1px solid gray;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        #box-3 {
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.w3schools.com/jquery/jquery_animate.asp" target="_blank">jQuery - Animation</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <h2>Simple Animation</h2>
+            <div id="box-1" class="box">
+                <span>
+                    Click on Me
+                </span>
+            </div>
+            <hr>
+            <h2>Animation with Multiple Properties</h2>
+            <div id="box-2" class="box">
+                <span>
+                    Catch Me
+                </span>
+            </div>
+            <hr>
+            <h2>Animation Using Relative Values</h2>
+            <div id="box-wrapper-box-3" class="box-wrapper" style="border: none; height: auto;">
+                <div id="box-3" class="box">
+                    <span>
+                        Don't Touch Me &#128540;
+                    </span>
+                </div>
+            </div>
+            <hr>
+            <h2>Animation Series</h2>
+            <div class="box-wrapper">
+                <div id="box-4" class="box">
+                    <span>
+                        Click on Me &#128540;
+                    </span>
+                </div>
+            </div>
+            <button id="btn-pause-animation">Pause the Animation</button>
+            <button id="btn-stop-animation">Stop the Animation</button>
+            <hr>
+
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // jQuery Code Here
+        // $(selector).animate({params}, speed, callback);
+        $(document).ready(function () {
+            $(window).resize(function (evt) {
+                location.reload();
+            });
+
+            $("#box-1").click(function () {
+                const posLeft = $(this).position().left;
+                const thisWidth = $(this).width();
+                const parentWidth = $(this).parent().width();
+                if (posLeft < 100)
+                    $(this).animate({ left: parentWidth - thisWidth });
+                else
+                    $(this).animate({ left: 0 });
+            });
+
+            $("#box-2").mouseenter(function () {
+                const thisWidth = $(this).width();
+                const parentWidth = $(this).parent().width();
+                if (thisWidth === 100)
+                    $(this).animate({
+                        width: 200,
+                        height: 50,
+                        left: parentWidth - thisWidth * 2,
+                        opacity: .5,
+                    });
+                else
+                    $(this).animate({
+                        width: 100,
+                        height: 100,
+                        left: 0,
+                        opacity: 1,
+                    });
+            });
+
+            $("#box-3").on({
+                "mouseenter mouseleave mousemove": function () {
+                    const incrementVal = "10px";
+                    const maxHeight = 200;
+                    $(this).animate({
+                        height: "+=" + incrementVal,
+                        width: "+=" + incrementVal
+                    }, "fast", function () {
+                        if ($(this).height() >= maxHeight) {
+                            $(this).animate({
+                                height: "100px",
+                                width: "100px"
+                            }, 100,);
+                        }
+                    });
+                },
+                "mouseout": function () {
+                    const maxHeight = 200;
+                    $(this).stop(true);
+                    if ($(this).height() >= maxHeight) {
+                        $(this).animate({
+                            height: "100px",
+                            width: "100px"
+                        }, 100,);
+                    }
+                }
+            });
+
+            $("#box-4").click(function () {
+                const thisWidth = $(this).width();
+                const parentWidth = $(this).parent().width();
+                const thisHeight = $(this).height();
+                const parentHeight = $(this).parent().height();
+
+                if (!$(this).prop("disabled")) {
+                    $(this)
+                        .prop("disabled", true)
+                        .animate({
+                            left: parentWidth - thisWidth,
+                            height: "+=50px"
+                        }, "slow")
+                        .animate({
+                            top: parentHeight - thisHeight,
+                            height: 100
+                        }, "slow", "swing")
+                        .animate({
+                            left: 0,
+                            top: parentHeight - thisHeight - 100,
+                            height: "+=100px",
+                            width: "+=100px"
+                        }, "slow")
+                        .animate({
+                            top: 0,
+                            height: "toggle",
+                            width: "toggle"
+                        }, "fast", "linear")
+                        .animate({
+                            left: (parentWidth - thisWidth) / 2,
+                            top: (parentHeight - thisHeight) / 2,
+                            height: "toggle",
+                            width: "toggle"
+                        }, "fast")
+                        .animate({
+                            left: 0,
+                            top: 0,
+                            height: 100,
+                            width: 100
+                        }, "slow")
+                        .prop("disabled", false);
+                }
+            });
+
+            $("#btn-pause-animation").click(function () {
+                // $(selector).stop(stopAll,goToEnd);
+                $("#box-4").stop(true);
+            });
+            $("#btn-stop-animation").click(function () {
+                // $(selector).stop(stopAll,goToEnd);
+                $("#box-4").stop(true, true);
+            });
+        });
+    </script>
+</body>
+</html>

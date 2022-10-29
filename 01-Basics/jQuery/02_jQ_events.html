@@ -14,6 +14,7 @@
             width: 100%;
             height: calc(100vh - 200px);
         }
+
         .event-display {
             position: absolute;
             top: 10%;
@@ -25,6 +26,7 @@
             border-radius: 5px;
             color: wheat;
         }
+
         .box {
             position: absolute;
             top: 50%;
@@ -36,7 +38,9 @@
             max-height: 100px;
             background-color: purple;
             border-radius: 5px;
+            cursor: pointer;
         }
+
         .box p {
             position: absolute;
             top: 50%;
@@ -46,6 +50,16 @@
             font-weight: bold;
             text-align: center;
         }
+
+        /* Source: https://www.w3schools.com/howto/howto_css_disable_text_selection.asp (accessed on 29.10.2022) */
+        .prevent-select {
+            /* Safari */
+            -webkit-user-select: none;
+            /* IE 10 and IE 11 */
+            -ms-user-select: none;
+            /* Standard syntax */
+            user-select: none;
+        }
     </style>
 </head>
 <body>
@@ -54,7 +68,7 @@
     </header>
     <hr>
     <main>
-        <div class="mussar-container">
+        <div class="mussar-container prevent-select">
             <div class="object-wrapper">
                 <div class="event-display">Event</div>
                 <div class="box">
@@ -73,11 +87,11 @@
     <script>
         // jQuery Code Here
         $(document).ready(function () {
-
             $(document).mousemove(function (evt) {
                 $(".event-display").text("Mouse position: X(" + evt.pageX + "), Y(" + evt.pageY + ")");
-            })
+            });
 
+            // Define events for box object
             $(".box").mousedown(function () {
                 $(".box p").text("Mouse Down");
             });
@@ -107,7 +121,7 @@
                 $(".box").css("color", "red");
                 $(".box p").text("Focus Out");
             });
-        })
+        });
     </script>
 </body>
 </html>
