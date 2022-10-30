@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/global_style_1.css">
+    <title>jQuery 3.4 - Load</title>
+    <style>
+        .data-loader {
+            margin: 5px auto;
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 5px;
+            height: 100px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="https://www.youtube.com/watch?v=Wl-VvvNCk2A&list=PLWKjhJtqVAbkyK9woUZUtunToLtNGoQHB&index=9"
+                target="_blank">jQuery - Load</a></h1>
+    </header>
+    <hr>
+    <main>
+        <div class="mussar-container">
+            <h2>Load Data from a server</h2>
+            <button id="btn-load">Click to LOAD a JSON from file a server</button>
+            <p id="output-1" class="data-loader"></p>
+            <hr>
+            <h2>Get Data from a server</h2>
+            <button id="btn-get">Click to GET a JSON file from a server</button>
+            <ul id="output-2" class="data-loader"></ul>
+            <hr>
+        </div>
+    </main>
+    <br><br><br>
+    <footer>
+        <div class="mussar-footer">
+            <p></p>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // jQuery Code Here
+        $(document).ready(function () {
+            const serverURL = "https://jsonplaceholder.typicode.com/todos/";
+            $("#btn-load").click(function () {
+                const randomNumber = Math.ceil(Math.random() * 100);
+                // $(selector).load(URL, data, callback);                
+                $("#output-1").load(serverURL + randomNumber, function (res, status, xhr) {
+                    if (status === "success")
+                        alert("The JSON file successfully loaded");
+                    else
+                        alert("Something went wrong!!!" + xhr.status + ": " + xhr.statusText);
+                });
+            });
+
+            $("#btn-get").click(function () {
+                const randomNumber = Math.ceil(Math.random() * 100);
+                // $.get(URL, callback);
+                $.get(serverURL + randomNumber, function (data, status) {
+                    if (status === "success") {
+                        alert("The JSON file successfully loaded");
+                        const liEl = $("<li></li>");
+                        liEl.text(JSON.stringify(data));
+                        $("#output-2").append(liEl);
+                    } else {
+                        alert("Something went wrong!!!");
+                        $("#output-2").text("Please try again!!!");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
