@@ -1,0 +1,4 @@
+20221102	15:23:13	2b301e23-0f09-4f59-82c8-c4999e527acc	OPTIONS	https://picsum.photos	/	Error	Not allowed by CORS
+20221102	15:23:13	ef687639-b75b-4e71-8ed9-c43bd072a93c	GET	https://picsum.photos	/	Error	Not allowed by CORS
+20221102	15:23:21	1d3b613a-ff46-4654-b09c-f6a7d81a0fa8	GET	undefined	/	ReferenceError	orisgin is not defined
+20221102	15:35:59	8b434ade-7d6c-4f79-83c0-59d970b74b96	POST	undefined	/sdsd	SyntaxError	Unexpected token a in JSON at position 4
