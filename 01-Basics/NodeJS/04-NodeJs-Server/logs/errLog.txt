@@ -1,0 +1,1 @@
+20221102	11:00:42	14f847f3-b379-4b77-88cf-b7f419b9c986	TypeError: contentType.include is not a function
