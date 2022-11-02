@@ -1,0 +1,2 @@
+20221101	22:33:28	c42b3bb4-b416-4c89-8aa5-3ff2a35d4f78	Log event emitted!!!
+20221101	22:35:05	a074cb8d-c833-429b-84b3-6a1f25f5cb25	Log event emitted!!!
