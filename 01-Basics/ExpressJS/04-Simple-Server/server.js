@@ -25,22 +25,16 @@ const corsOption = {
 app.use(cors(corsOption))     // Cross Origin Resource Sharing
 app.use(express.urlencoded({ extended: false }));   // to form data
 app.use(express.json());    // to understand json
-app.use(express.static(path.join(__dirname, "/public")));
 
-app.use("/subdir", require("./routes/subdir"));
+// Serve static files
+app.use("/", express.static(path.join(__dirname, "public")));
+app.use("/subdir", express.static(path.join(__dirname, "public")));
 
-app.get("^/$|/index(.html)?", (req, res) => {
-    // res.sendFile("./views/index.html", {root: __dirname});
-    res.status(200).sendFile(path.join(__dirname, "views", "index.html"));
-});
+// Import Routes
+app.use("/", require("./routes/root"));     // Use root routes
+app.use("/subdir", require("./routes/subdir"));     // Use subdir routes
+app.use("/employees", require("./routes/api/employees"));     // Use employees routes
 
-app.get("/new_page(.html)?", (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, "views", "new_page.html"));
-});
-
-app.get("/old_page(.html)?", (req, res) => {
-    res.redirect(301, "/new_page.html");
-});
 
 // Hello Page
 app.get("/hello(.html)?", (req, res, next) => {

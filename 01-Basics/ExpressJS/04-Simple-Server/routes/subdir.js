@@ -1,8 +1,6 @@
 const
-    express = require("express"),
+    router = require("express").Router(),
     path = require("path");
-
-const router = express.Router();
 
 router.get("^/$|/index(.html)?", (req, res) => {
     res.status(200).sendFile(path.join(__dirname, "..", "views", "subdir", "index.html"));

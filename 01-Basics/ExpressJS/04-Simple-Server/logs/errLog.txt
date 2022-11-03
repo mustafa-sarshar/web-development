@@ -2,3 +2,5 @@
 20221102	15:23:13	ef687639-b75b-4e71-8ed9-c43bd072a93c	GET	https://picsum.photos	/	Error	Not allowed by CORS
 20221102	15:23:21	1d3b613a-ff46-4654-b09c-f6a7d81a0fa8	GET	undefined	/	ReferenceError	orisgin is not defined
 20221102	15:35:59	8b434ade-7d6c-4f79-83c0-59d970b74b96	POST	undefined	/sdsd	SyntaxError	Unexpected token a in JSON at position 4
+20221103	19:55:19	56888e65-8764-4525-8744-4f756a2aa15f	GET	undefined	/	Error	ENOENT: no such file or directory, stat '/mnt/7b1f72a4-5274-4974-a43a-f396cd993bb6/GitHub-Repos/muSSar/Web-Development/01-Basics/ExpressJS/04-Simple-Server/routes/views/index.html'
+20221103	19:55:43	d457a86f-75c9-419d-b36b-4cb08936b527	GET	undefined	/	Error	ENOENT: no such file or directory, stat '/mnt/7b1f72a4-5274-4974-a43a-f396cd993bb6/GitHub-Repos/muSSar/Web-Development/01-Basics/ExpressJS/04-Simple-Server/routes/index.html'
