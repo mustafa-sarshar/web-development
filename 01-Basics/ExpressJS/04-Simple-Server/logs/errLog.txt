@@ -4,3 +4,17 @@
 20221102	15:35:59	8b434ade-7d6c-4f79-83c0-59d970b74b96	POST	undefined	/sdsd	SyntaxError	Unexpected token a in JSON at position 4
 20221103	19:55:19	56888e65-8764-4525-8744-4f756a2aa15f	GET	undefined	/	Error	ENOENT: no such file or directory, stat '/mnt/7b1f72a4-5274-4974-a43a-f396cd993bb6/GitHub-Repos/muSSar/Web-Development/01-Basics/ExpressJS/04-Simple-Server/routes/views/index.html'
 20221103	19:55:43	d457a86f-75c9-419d-b36b-4cb08936b527	GET	undefined	/	Error	ENOENT: no such file or directory, stat '/mnt/7b1f72a4-5274-4974-a43a-f396cd993bb6/GitHub-Repos/muSSar/Web-Development/01-Basics/ExpressJS/04-Simple-Server/routes/index.html'
+20221105	17:37:31	78acc82d-26e5-4889-a30c-1931ab86f81b	POST	undefined	/employees	TypeError	Cannot read properties of undefined (reading 'push')
+20221105	17:41:52	5f861c55-fc55-45ca-9279-bc3f32c93ada	POST	undefined	/employees	TypeError	this.employees is not iterable
+20221105	17:42:10	8891a4ef-bfde-4dc6-959e-88ef52818d0c	POST	undefined	/employees	ReferenceError	employees is not defined
+20221105	17:43:01	5a411338-2ae3-4a23-8aff-d6c624ab5630	POST	undefined	/employees	ReferenceError	setEmployees is not defined
+20221105	17:43:09	6772a44b-5fe0-422e-a412-0d9eed8050b9	POST	undefined	/employees	ReferenceError	employees is not defined
+20221105	17:43:42	37cd9052-b61f-4238-bc63-70223dba0d56	POST	undefined	/employees	TypeError	this.employees is not iterable
+20221105	17:44:32	84429366-658f-4562-9296-431dd21cb712	POST	undefined	/employees	TypeError	this.setEmployees is not a function
+20221105	17:59:00	13b687b8-2d6b-47ce-a5d4-cad7a0d4f72a	POST	undefined	/employees	TypeError	newEmployee.stringify is not a function
+20221105	18:05:01	c6b6a70d-937a-40b9-a88e-97df99c354af	POST	undefined	/employees	ReferenceError	uuisdV4 is not defined
+20221105	18:06:21	427dee1d-67ce-485f-b213-013eb51290f6	POST	undefined	/employees	SyntaxError	Unexpected token R in JSON at position 0
+20221105	18:30:55	317446d3-0b55-4d25-b778-a95799dbfed6	DELETE	undefined	/employees	SyntaxError	Unexpected token } in JSON at position 15
+20221105	18:36:45	b3432d13-2ea5-4f00-ac5d-86535203ceee	DELETE	undefined	/employees	RangeError	Invalid status code: undefined
+20221105	20:19:11	9183c8c6-be03-47b0-92d4-2694cdcd85a6	PUT	undefined	/employees	SyntaxError	Unexpected token } in JSON at position 15
+20221106	00:11:30	ebb699f1-6a8c-4edf-acac-229fdae7bec8	GET	undefined	/users	ReferenceError	employeeDB is not defined

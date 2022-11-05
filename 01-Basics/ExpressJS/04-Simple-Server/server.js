@@ -3,26 +3,16 @@ const
     path = require("path"),
     cors = require("cors"),
     { logger } = require("./middleware/log_events"),
-    errorHandler = require("./middleware/error_handlers");
+    errorHandler = require("./middleware/error_handlers"),
+    { corsOptions } = require("./config/cors_options");
+
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Apply middleware
 app.use(logger);
-// Any server you wanna allow to access your server or backend
-const whitelist = ["https://www.website.com", "http://127.0.0.1:8080"];
-const corsOption = {
-    origin: (origin, callback) => {
-        if (whitelist.indexOf(origin) !== -1 || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
-    optionsSuccessStatus: 200
-}
-app.use(cors(corsOption))     // Cross Origin Resource Sharing
+app.use(cors(corsOptions))     // Cross Origin Resource Sharing
 app.use(express.urlencoded({ extended: false }));   // to form data
 app.use(express.json());    // to understand json
 
@@ -31,9 +21,10 @@ app.use("/", express.static(path.join(__dirname, "public")));
 app.use("/subdir", express.static(path.join(__dirname, "public")));
 
 // Import Routes
-app.use("/", require("./routes/root"));     // Use root routes
-app.use("/subdir", require("./routes/subdir"));     // Use subdir routes
-app.use("/employees", require("./routes/api/employees"));     // Use employees routes
+app.use("/", require("./routes/root"));     // Root routes
+app.use("/subdir", require("./routes/subdir"));     // subdir routes
+app.use("/employees", require("./routes/api/employees"));     // Employees routes
+app.use("/users", require("./routes/api/users"));     // Users routes
 
 
 // Hello Page

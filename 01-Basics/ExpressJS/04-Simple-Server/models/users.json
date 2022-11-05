@@ -1,16 +1,25 @@
 [
     {
         "id": "1",
+        "user_name": "user 1",
+        "email": "mail1@mail.com",
+        "pwd": "user1",
         "first_name": "Firstname 1",
         "last_name": "Lastname 1"
     },
     {
         "id": "2",
+        "user_name": "user 2",
+        "email": "mail2@mail.com",
+        "pwd": "user2",
         "first_name": "Firstname 2",
         "last_name": "Lastname 2"
     },
     {
         "id": "3",
+        "user_name": "user 3",
+        "email": "mail3@mail.com",
+        "pwd": "user3",
         "first_name": "Firstname 3",
         "last_name": "Lastname 3"
     }
