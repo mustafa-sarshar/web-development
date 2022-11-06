@@ -1,4 +1,7 @@
-const { v4: uuidV4 } = require("uuid");
+const
+    { v4: uuidV4 } = require("uuid"),
+    fs = require("fs"),
+    path = require("path");
 
 const employeesDB = {
     employees: require("../models/employees.json"),
@@ -13,6 +16,10 @@ const employeesDB = {
                 "last_name": last_name
             }
             this.setEmployees([...this.employees, newEmployee]);
+            fs.writeFileSync(
+                path.join(__dirname, "..", "models", "employees.json"),
+                JSON.stringify(this.employees, null, "\t")
+            );
             return {
                 code: 201,      // Created new record
                 message: JSON.stringify(newEmployee)

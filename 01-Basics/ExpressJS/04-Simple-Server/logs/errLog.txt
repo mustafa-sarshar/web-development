@@ -18,3 +18,5 @@
 20221105	18:36:45	b3432d13-2ea5-4f00-ac5d-86535203ceee	DELETE	undefined	/employees	RangeError	Invalid status code: undefined
 20221105	20:19:11	9183c8c6-be03-47b0-92d4-2694cdcd85a6	PUT	undefined	/employees	SyntaxError	Unexpected token } in JSON at position 15
 20221106	00:11:30	ebb699f1-6a8c-4edf-acac-229fdae7bec8	GET	undefined	/users	ReferenceError	employeeDB is not defined
+20221106	01:43:07	01231a22-b56e-4a8a-ad3a-4fb6edfacfe6	POST	undefined	/users	RangeError	Invalid status code: undefined
+20221106	01:43:38	5eadeb8c-d8ef-4caa-9d76-a465b437fc42	POST	undefined	/users	RangeError	Invalid status code: undefined

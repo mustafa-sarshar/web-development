@@ -1,26 +1,42 @@
 [
-    {
-        "id": "1",
-        "user_name": "user 1",
-        "email": "mail1@mail.com",
-        "pwd": "user1",
-        "first_name": "Firstname 1",
-        "last_name": "Lastname 1"
-    },
-    {
-        "id": "2",
-        "user_name": "user 2",
-        "email": "mail2@mail.com",
-        "pwd": "user2",
-        "first_name": "Firstname 2",
-        "last_name": "Lastname 2"
-    },
-    {
-        "id": "3",
-        "user_name": "user 3",
-        "email": "mail3@mail.com",
-        "pwd": "user3",
-        "first_name": "Firstname 3",
-        "last_name": "Lastname 3"
-    }
+	{
+		"_id": "1a7c48ac-3920-4800-a6de-36b9d517e44f",
+		"user_name": "user 1",
+		"email": "mail1@mail.com",
+		"pwd": "$2a$10$WPOpTQfE3kc0T6jATUFmaeNlaTiWvBY/j2uxWinp/olfwTXHUG3mW",
+		"first_name": "Firstname 1",
+		"last_name": "Lastname 1"
+	},
+	{
+		"_id": "96d74032-4a7d-43b2-8bb3-d7184ba8e23e",
+		"user_name": "user 2",
+		"email": "mail2@mail.com",
+		"pwd": "$2a$10$MoMeCFx1sRFtaq2iX/HSTuu3SQlwN.fWMYTBp/jZP5vpdlpcuhTC6",
+		"first_name": "Firstname 2",
+		"last_name": "Lastname 2"
+	},
+	{
+		"_id": "a4774083-8d0d-4566-b878-1d3fb718e52c",
+		"user_name": "user 3",
+		"email": "mail3@mail.com",
+		"pwd": "$2a$10$hIkpAGygKQTrnyNrkx6FJenfUfGq3eZpc0kddb4a8ohN6MseUrmIe",
+		"first_name": "Firstname 3",
+		"last_name": "Lastname 3"
+	},
+	{
+		"_id": "c0f61f46-0e5a-46f7-83aa-e5650bd590a6",
+		"user_name": "user 4",
+		"email": "mail4@mail.com",
+		"pwd": "$2a$10$B4DZc9kJPeKwO2KGVYuWmO8Xq/jQhBO9gx/SChltRQA3sviu.Xriy",
+		"first_name": "Firstname 4",
+		"last_name": "Lastname 4"
+	},
+	{
+		"_id": "317c6035-4c23-4507-ad62-5052c7642ef0",
+		"user_name": "user 5",
+		"email": "mail5@mail.com",
+		"pwd": "$2a$10$Jk52.IxURK4eReSGu5QacOOetUZwv6gy4u9xZ8TkdQ2yrPi9SU6E6",
+		"first_name": "Firstname 5",
+		"last_name": "Lastname 5"
+	}
 ]

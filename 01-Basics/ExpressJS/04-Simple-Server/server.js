@@ -23,8 +23,9 @@ app.use("/subdir", express.static(path.join(__dirname, "public")));
 // Import Routes
 app.use("/", require("./routes/root"));     // Root routes
 app.use("/subdir", require("./routes/subdir"));     // subdir routes
-app.use("/employees", require("./routes/api/employees"));     // Employees routes
 app.use("/users", require("./routes/api/users"));     // Users routes
+app.use("/auth", require("./routes/auth"));     // Auth routes
+app.use("/employees", require("./routes/api/employees"));     // Employees routes
 
 
 // Hello Page
