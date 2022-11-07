@@ -20,3 +20,31 @@
 20221106	00:11:30	ebb699f1-6a8c-4edf-acac-229fdae7bec8	GET	undefined	/users	ReferenceError	employeeDB is not defined
 20221106	01:43:07	01231a22-b56e-4a8a-ad3a-4fb6edfacfe6	POST	undefined	/users	RangeError	Invalid status code: undefined
 20221106	01:43:38	5eadeb8c-d8ef-4caa-9d76-a465b437fc42	POST	undefined	/users	RangeError	Invalid status code: undefined
+20221107	22:29:22	fce2476c-dffb-44c0-9adb-9e6eeef216cc	GET	undefined	/users	TypeError	Converting circular structure to JSON
+    --> starting at object with constructor 'MongoClient'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'client' closes the circle
+20221107	22:32:13	1af8dd4d-cc09-4cb8-9b54-5b7485c07c83	GET	undefined	/users	TypeError	Converting circular structure to JSON
+    --> starting at object with constructor 'MongoClient'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'client' closes the circle
+20221107	22:33:49	1014171b-ede0-435b-a928-c905c8133a4e	GET	undefined	/users	TypeError	Converting circular structure to JSON
+    --> starting at object with constructor 'MongoClient'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'client' closes the circle
+20221107	22:33:59	0484108d-bf4b-4555-ae47-25a878e9bde2	GET	undefined	/users	TypeError	Converting circular structure to JSON
+    --> starting at object with constructor 'MongoClient'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'client' closes the circle
+20221107	22:37:01	eb9c8bdd-d707-4bb0-8400-bc88f1efa853	GET	undefined	/users	TypeError	Cannot read properties of undefined (reading 'find')
+20221107	22:37:37	e8e74b3a-eb09-403e-9d58-4e14444d6d34	GET	undefined	/users	TypeError	Converting circular structure to JSON
+    --> starting at object with constructor 'MongoClient'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'client' closes the circle
+20221107	22:42:37	df907d36-6786-4706-8fd1-f02e1079357b	POST	undefined	/users	RangeError	Invalid status code: undefined
+20221107	22:50:38	0e1f98da-b354-4f86-b827-df5d6460172c	POST	undefined	/users	TypeError	Cannot destructure property 'code' of 'usersDB.addUser(...)' as it is undefined.

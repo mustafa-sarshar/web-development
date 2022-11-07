@@ -1,11 +1,17 @@
+"use strict";
+require("dotenv").config();
 const
     express = require("express"),
     path = require("path"),
     cors = require("cors"),
     { logger } = require("./middleware/log_events"),
     errorHandler = require("./middleware/error_handlers"),
-    { corsOptions } = require("./config/cors_options");
+    { corsOptions } = require("./config/cors_options"),
+    mongoose = require("mongoose"),
+    connectDB = require("./config/db_connection");
 
+// Connect to the database
+connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -51,5 +57,8 @@ app.all("*", (req, res) => {
 // Error Handler
 app.use(errorHandler);
 
-// Start the server and listen to events on port ...
-app.listen(PORT, () => { console.log(`Server is running on port ${PORT}`); });
+mongoose.connection.once("open", () => {
+    console.log("Connected to Database");
+    // Start the server and listen to events on port ...
+    app.listen(PORT, () => { console.log(`Server is running on port ${PORT}`); });
+});

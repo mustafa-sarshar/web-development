@@ -1,55 +1,13 @@
 const
-    { v4: uuidV4 } = require("uuid"),
-    fs = require("fs"),
-    path = require("path"),
-    bcrypt = require('bcryptjs');
+    { User: Users } = require("../models/User"),
+    bcrypt = require("bcryptjs");
 
 const salt = bcrypt.genSaltSync(10);
 
 const usersDB = {
-    users: require("../models/users.json"),
-    setUsers: function (data) {
-        this.users = data;
-    },
-    addUser: function (user_name, email, pwd, first_name, last_name) {
-        console.log(user_name, email, pwd, first_name, last_name);
-        try {
-            const duplicateCheck = this.users.find((user) => user.user_name === user_name);
-            if (!duplicateCheck) {
-                const newUser = {
-                    "_id": uuidV4(),
-                    "user_name": user_name,
-                    "email": email,
-                    "pwd": bcrypt.hashSync(pwd, salt),
-                    "first_name": first_name !== undefined ? first_name : "1",
-                    "last_name": last_name !== undefined ? last_name : "1"
-                }
-                this.setUsers([...this.users, newUser]);
-                fs.writeFileSync(
-                    path.join(__dirname, "..", "models", "users.json"),
-                    JSON.stringify(this.users, null, "\t")
-                );
-                return {
-                    code: 201,      // Created new record
-                    message: JSON.stringify(newUser)
-                }
-            } else {
-                return {
-                    code: 409,      // Conflict
-                    message: "The username is not available!!!"
-                }
-            }
-        } catch (err) {
-            return {
-                code: 500,      // Server internal error
-                message: err.message
-            }
-        }
-    },
     updateUser: function (_id, user_name, email, pwd, first_name, last_name) {
         try {
-            const updateUser = this.users.find((user) => user._id == _id);
-            console.log(_id, user_name, email, pwd, first_name, last_name, updateUser);
+            const updateUser = Users.findOne({ _id: _id });
             if (updateUser) {
                 if (user_name) updateUser.user_name = user_name;
                 if (email) updateUser.email = email;
@@ -79,7 +37,7 @@ const usersDB = {
     },
     deleteUser: function (_id) {
         try {
-            const deleteUser = this.users.find((user) => user._id == _id);
+            const deleteUser = Users.findOne({ _id: _id });
             if (deleteUser) {
                 const usersFiltered = this.users.filter((user) => user._id != _id);
                 this.setUsers([...usersFiltered]);
@@ -102,7 +60,7 @@ const usersDB = {
     },
     getUser: function (_id) {
         try {
-            const user = this.users.find((user) => user._id == _id);
+            const user = Users.findOne({ _id: _id });
             if (user) {
                 return {
                     code: 200,      // Accepted
@@ -124,15 +82,52 @@ const usersDB = {
 };
 
 const getAllUsers = (req, res) => {
-    res.json(usersDB.users);
+    Users.find()
+        .then((users) => {
+            res.status(200)
+                .json(users);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500)
+                .send("Error: " + err);
+        });
 }
 
 const addNewUser = (req, res) => {
     const { user_name, email, pwd, first_name, last_name } = req.body;
-    if (user_name && email && pwd) {
-        const { code, message } = usersDB.addUser(user_name, email, pwd, first_name, last_name);
-        res.status(code)
-            .send(message);
+    if (user_name && email && pwd) {        
+        Users.findOne({ user_name: user_name })
+            .then((user) => {
+                if (user) {
+                    return res.status(409)  // Conflict
+                        .send(user_name + "already exists");
+                } else {
+                    const newUser = {};
+                    newUser.user_name = user_name;
+                    newUser.email = email;
+                    newUser.pwd = bcrypt.hashSync(pwd, salt);
+                    newUser.email = email;
+                    if (first_name) newUser.first_name = first_name;
+                    if (last_name) newUser.last_name = last_name;
+                    Users
+                        .create(newUser)
+                        .then((user) => {
+                            res.status(201)	// CREATED
+                                .json(user)
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            res.status(500)
+                                .send("Error: " + error);
+                        });
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+                res.status(500)
+                    .send("Error: " + error);
+            });
     } else {
         res.status(400)
             .json({
