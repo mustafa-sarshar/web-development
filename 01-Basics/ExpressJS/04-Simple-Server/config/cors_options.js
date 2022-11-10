@@ -1,6 +1,5 @@
 // Any server you wanna allow to access your server or backend
 const whitelist = [
-    "https://www.website.com",
     "http://127.0.0.1:8080"
 ];
 

@@ -14,7 +14,7 @@ const
 connectDB();
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 // Apply middleware
 app.use(logger);
