@@ -14,7 +14,7 @@ app.use(express.static("public"));
 
 // Handler for 404 - Page Not Found
 app.use((req, res, next) => {
-    res.status(404).send("Page Not Found");
+    res.status(404).send("Page Not Found!!!");
 });
 
 // Error Handler: 500
