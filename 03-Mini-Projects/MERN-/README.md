@@ -1,0 +1,2 @@
+This repo is inspired by:
+- [MERN Stack Full Tutorial & Project | Complete All-in-One Course | 8 Hours](https://www.youtube.com/watch?v=CvCiNeLnZ00&list=PL0Zuz27SZ-6P4dQUsoDatjEGpmBpcOW8V&index=14) (accessed on 17.11.2022)
