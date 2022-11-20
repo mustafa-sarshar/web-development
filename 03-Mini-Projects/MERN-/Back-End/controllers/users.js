@@ -57,7 +57,40 @@ const addUser = asyncHandler(async (req, res, next) => {
     @route      PATCH       /users
     @access     Private
 */
-const updateUser = asyncHandler(async (req, res, next) => {});
+const updateUser = asyncHandler(async (req, res, next) => {
+    const { _id, username, password, roles, active } = req.body;
+
+    if (
+        !_id ||
+        !username ||
+        !password ||
+        !Array.isArray(roles) ||
+        !roles.length ||
+        typeof active !== "boolean"
+    ) {
+        return res.status(400).json({ message: "All Fields Are Required" });
+    }
+
+    const duplicate = await Users.findOne({ username }).lean().exec();
+    if (duplicate) {
+        return res.status(409).json({ message: "Duplicate Username" });
+    }
+
+    const pwdHashed = await bcrypt.hash(password, 10);
+    const newUser = await Users.create({
+        username,
+        password: pwdHashed,
+        roles,
+    });
+
+    if (newUser) {
+        res.status(201).json({
+            message: `User (${username}) Added Successfully`,
+        });
+    } else {
+        res.status(400).json({ message: "Something Went Wrong" });
+    }
+});
 
 /*
     @desc       Delete a User
