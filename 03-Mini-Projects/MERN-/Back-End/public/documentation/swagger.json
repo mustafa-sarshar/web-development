@@ -1,0 +1,76 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "MERN-Project-1",
+        "description": "Swagger documentation for API endpoints",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:5000",
+    "basePath": "",
+    "tags": [
+        {
+            "name": "Movies",
+            "description": "API for movies"
+        },
+        {
+            "name": "Genres",
+            "description": "API for genres"
+        },
+        {
+            "name": "Users",
+            "description": "API for users"
+        }
+    ],
+    "schemes": ["http", "https"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/movies": {
+            "get": {
+                "tags": ["Movies"],
+                "summary": "Get all movies",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Movies"
+                        }
+                    },
+                    "500": {
+                        "description": "Server error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Model1": {
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "example": "636541bf21636541bf21abcd"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "firstname lastname"
+                },
+                "bio": {
+                    "type": "string",
+                    "example": "Here is a short bio of the actor/actress."
+                },
+                "birth": {
+                    "type": "date",
+                    "example": "1900-01-01T00:00:00.000Z"
+                },
+                "death": {
+                    "type": "date",
+                    "example": "1900-01-01T00:00:00.000Z"
+                }
+            }
+        }
+    }
+}
