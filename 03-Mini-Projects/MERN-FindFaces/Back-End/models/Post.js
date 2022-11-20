@@ -3,7 +3,7 @@ const mongoose = require("mongoose"),
 
 const postSchema = new mongoose.Schema(
     {
-        username_id: {
+        user_id: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
             ref: "User",
@@ -32,4 +32,5 @@ postSchema.plugin(AutoIncrement, {
     start_seq: 500,
 });
 
-module.exports = mongoose.model("Post", postSchema);
+const Post = mongoose.model("Post", postSchema);
+module.exports = { Post };

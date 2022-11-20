@@ -28,6 +28,8 @@ app.use(cookieParser());
 // Set routes
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use("/", require(path.join(__dirname, "routes", "root.js")));
+app.use("/users", require(path.join(__dirname, "routes", "users.js")));
+app.use("/posts", require(path.join(__dirname, "routes", "posts.js")));
 
 // Set routes --- Swagger UI for API Documentation
 app.use(

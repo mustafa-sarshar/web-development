@@ -5,9 +5,8 @@ const errorHandler = (err, req, res, next) => {
     logEvents(errMessage, "errLog");
     console.log(err.stack);
 
-    const status = res.statusCode ? res.statusCode : 500;
-    res.status(statusCode);
-    res.json({ message: err.message });
+    const statusCode = res.statusCode ? res.statusCode : 500;
+    res.status(statusCode).json({ message: err.message });
 };
 
 module.exports = { errorHandler };
