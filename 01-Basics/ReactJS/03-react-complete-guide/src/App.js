@@ -1,51 +1,48 @@
-import Athletes from "./components/Athletes/Athletes";
+import { useState } from "react";
+import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
-function App() {
-    const athletes = [
-        {
-            _id: "0001",
-            sport: "Basketball",
-            name: "Michael Jordan",
-            birthDate: new Date(1899, 10, 10),
-            overall: 99,
-        },
-        {
-            _id: "0002",
-            sport: "Soccer",
-            name: "Christiano Ronaldo",
-            birthDate: new Date(1899, 10, 10),
-            overall: 96,
-        },
-        {
-            _id: "0003",
-            sport: "Tennis",
-            name: "Rafael Nadal",
-            birthDate: new Date(1899, 10, 10),
-            overall: 89,
-        },
-        {
-            _id: "0004",
-            sport: "Swimming",
-            name: "Michael Phelps",
-            birthDate: new Date(1899, 10, 10),
-            overall: 99,
-        },
-        {
-            _id: "0005",
-            sport: "Boxing",
-            name: "Mike Tyson",
-            birthDate: new Date(1899, 10, 10),
-            overall: 95,
-        },
-    ];
+const DUMMY_EXPENSES = [
+    {
+        id: "e1",
+        title: "Toilet Paper",
+        amount: 94.12,
+        date: new Date(2020, 7, 14),
+    },
+    {
+        id: "e2",
+        title: "New TV",
+        amount: 799.49,
+        date: new Date(2021, 2, 12),
+    },
+    {
+        id: "e3",
+        title: "Car Insurance",
+        amount: 294.67,
+        date: new Date(2021, 2, 28),
+    },
+    {
+        id: "e4",
+        title: "New Desk (Wooden)",
+        amount: 450,
+        date: new Date(2021, 5, 12),
+    },
+];
+
+const App = () => {
+    const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+
+    const addExpenseHandler = (expense) => {
+        setExpenses((prevExpenses) => [expense, ...prevExpenses]);
+        console.log("Add expense:", expense);
+    };
+
     return (
         <div>
-            <h1>Best athletes in the World</h1>
-            <section className="">
-                <Athletes athletes={athletes} />
-            </section>
+            <NewExpense onAddExpense={addExpenseHandler} />
+            <Expenses items={expenses} />
         </div>
     );
-}
+};
 
 export default App;
