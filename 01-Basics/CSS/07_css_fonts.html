@@ -1,154 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/global_style_1.css">
-    <title>CSS Fonts</title>
-    <style>
-        body {
-            font-size: 100%; /* It shows the same text size in all browsers, and allows all browsers to zoom or resize the text! */
-        }
-        .font-container {
-            width: 500px;
-            background-color: azure;
-            margin: auto;
-        }
-        .font-container h1 {
-            text-align: center;
-            margin-top: 5px;
-            text-decoration: underline dashed darkblue;
-        }
-        .font-container h2 {
-            margin: 0;
-            padding-left: 20px;
-        }
-        .font-container p {
-            text-align: justify;
-            text-align-last: center;
-            text-indent: 2em;   /* pixels to em formula: pixels/16 = em */
-            padding: 10px;
-            outline: 3px double;
-            outline-offset: 10px;
-        }
-        .font-container #p-serif {
-            font-family: serif, Arial;
-            color: blue;
-            font-style: oblique;
-        }
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../assets/global_style_1.css">
+  <title>CSS Fonts</title>
+  <style>
+    body {
+      font-size: 100%;
+      /* It shows the same text size in all browsers, and allows all browsers to zoom or resize the text! */
+    }
 
-        .font-container #p-sans-serif {
-            font-family: sans-serif, Arial;
-            color: red;
-            font-style: italic;
-        }
+    .font-container {
+      width: 500px;
+      background-color: azure;
+      margin: auto;
+    }
 
-        .font-container #p-monospace {
-            font-family: monospace, Arial;
-            color: brown;
-            font-weight: bold;
-        }
+    .font-container h1 {
+      text-align: center;
+      margin-top: 5px;
+      text-decoration: underline dashed darkblue;
+    }
 
-        .font-container #p-cursive {
-            font-family: cursive, Arial;
-            color: coral;
-            font-variant: small-caps;
-        }
-        
-        .font-container #p-fantasy {
-            font-family: fantasy, Arial;
-            color: forestgreen;
-            text-transform: capitalize;
-            font-variant: small-caps;
-        }
+    .font-container h2 {
+      margin: 0;
+      padding-left: 20px;
+    }
 
-        .font-container #p-responsive-font-size {
-            font-size: 2vw; /* vw unit, means the "viewport width */
-            /* Viewport is the browser window size. 1vw = 1% of viewport width. If the viewport is 50cm wide, 1vw is 0.5cm. */
-        }
+    .font-container p {
+      text-align: justify;
+      text-align-last: center;
+      text-indent: 2em;
+      /* pixels to em formula: pixels/16 = em */
+      padding: 10px;
+      outline: 3px double;
+      outline-offset: 10px;
+    }
 
-        .font-container #p-google-font-sofia {
-            font-family: "Sofia", Arial;
-            font-size: 20px;
-            text-shadow: 3px 3px 3px #ababab;
-        }
-        
-        .font-container #p-google-font-sofia-with-fire {
-            width: initial;
-            background-color: rgb(1, 4, 5);
-            font-family: "Sofia", Arial;
-            font-size: 20px;
-        }
+    .font-container #p-serif {
+      font-family: serif, Arial;
+      color: blue;
+      font-style: oblique;
+    }
 
-        .font-container #p-google-font-sofia-with-shadow-multiple {
-            width: initial;
-            font-family: "Sofia", Arial;
-            font-size: 25px;
-        }
+    .font-container #p-sans-serif {
+      font-family: sans-serif, Arial;
+      color: red;
+      font-style: italic;
+    }
 
-        .font-container #p-google-font-audiowide {
-            font-family: "Audiowide", Arial;
-        }
-    </style>
+    .font-container #p-monospace {
+      font-family: monospace, Arial;
+      color: brown;
+      font-weight: bold;
+    }
+
+    .font-container #p-cursive {
+      font-family: cursive, Arial;
+      color: coral;
+      font-variant: small-caps;
+    }
+
+    .font-container #p-fantasy {
+      font-family: fantasy, Arial;
+      color: forestgreen;
+      text-transform: capitalize;
+      font-variant: small-caps;
+    }
+
+    .font-container #p-responsive-font-size {
+      font-size: 2vw;
+      /* vw unit, means the "viewport width */
+      /* Viewport is the browser window size. 1vw = 1% of viewport width. If the viewport is 50cm wide, 1vw is 0.5cm. */
+    }
+
+    .font-container #p-google-font-sofia {
+      font-family: "Sofia", Arial;
+      font-size: 20px;
+      text-shadow: 3px 3px 3px #ababab;
+    }
+
+    .font-container #p-google-font-sofia-with-fire {
+      width: initial;
+      background-color: rgb(1, 4, 5);
+      font-family: "Sofia", Arial;
+      font-size: 20px;
+    }
+
+    .font-container #p-google-font-sofia-with-shadow-multiple {
+      width: initial;
+      font-family: "Sofia", Arial;
+      font-size: 25px;
+    }
+
+    .font-container #p-google-font-audiowide {
+      font-family: "Audiowide", Arial;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1><a href="https://www.w3schools.com/css/css_font.asp" target="_blank">CSS Fonts</a></h1>
-    </header>
-    <hr>
-    <main>
-        <div class="mussar-container">
-            <div class="font-container">
-                <h1>Generic Font Families</h1>
-                <h2>Serif</h2>
-                <p id="p-serif">            
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem pariatur qui nam nostrum debitis atque voluptatibus molestias corporis incidunt dolor voluptate quasi in accusantium, cum ipsa possimus assumenda ut sunt?
-                </p>
-                <h2>Sans-Serif</h2>
-                <p id="p-sans-serif">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem pariatur qui nam nostrum debitis atque voluptatibus molestias corporis incidunt dolor voluptate quasi in accusantium, cum ipsa possimus assumenda ut sunt?
-                </p>
-                <h2>Monospace</h2>
-                <p id="p-monospace">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem pariatur qui nam nostrum debitis atque voluptatibus molestias corporis incidunt dolor voluptate quasi in accusantium, cum ipsa possimus assumenda ut sunt?
-                </p>
-                <h2>Cursive</h2>
-                <p id="p-cursive">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem pariatur qui nam nostrum debitis atque voluptatibus molestias corporis incidunt dolor voluptate quasi in accusantium, cum ipsa possimus assumenda ut sunt?
-                </p>
-                <h2>Fantasy</h2>
-                <p id="p-fantasy">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem pariatur qui nam nostrum debitis atque voluptatibus molestias corporis incidunt dolor voluptate quasi in accusantium, cum ipsa possimus assumenda ut sunt?
-                </p>
-                <h2>Responsive Font Size</h2>
-                <p id="p-responsive-font-size">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident illum, atque suscipit soluta qui explicabo! Error corrupti, cupiditate et esse sint reprehenderit est voluptatum consectetur provident saepe, alias nostrum ipsam?
-                </p>
-                <h2>Google Fonts - Sofia</h2>
-                <p id="p-google-font-sofia">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa saepe laudantium at. Eos mollitia provident facere autem harum tempora voluptatem pariatur suscipit quibusdam laudantium, alias commodi molestiae repellat odit qui.
-                </p>
-                <h2>Google Fonts - Sofia with fire</h2>
-                <p id="p-google-font-sofia-with-fire" class="font-effect-fire">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa saepe laudantium at. Eos mollitia provident facere autem harum tempora voluptatem pariatur suscipit quibusdam laudantium, alias commodi molestiae repellat odit qui.
-                </p>
-                <h2>Google Fonts - Sofia with multiple shadows</h2>
-                <p id="p-google-font-sofia-with-shadow-multiple" class="font-effect-shadow-multiple">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa saepe laudantium at. Eos mollitia provident facere autem harum tempora voluptatem pariatur suscipit quibusdam laudantium, alias commodi molestiae repellat odit qui.
-                </p>
-                <h2>Google Fonts - Audiowide</h2>
-                <p id="p-google-font-audiowide">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa saepe laudantium at. Eos mollitia provident facere autem harum tempora voluptatem pariatur suscipit quibusdam laudantium, alias commodi molestiae repellat odit qui.
-                </p>
-            </div>
-        </div>
-    </main>
-    <br><br><br>
-    <footer>
-        <div class="mussar-footer">
-            <p></p>
-        </div>
-    </footer>
+  <header>
+    <h1><a href="https://www.w3schools.com/css/css_font.asp" target="_blank">CSS Fonts</a></h1>
+  </header>
+  <hr>
+  <main>
+    <div class="mussar-container">
+      <div class="font-container">
+        <h1>Generic Font Families</h1>
+        <h2>Serif</h2>
+        <p id="p-serif">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem pariatur qui nam nostrum debitis atque
+          voluptatibus molestias corporis incidunt dolor voluptate quasi in accusantium, cum ipsa possimus assumenda ut
+          sunt?
+        </p>
+        <h2>Sans-Serif</h2>
+        <p id="p-sans-serif">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem pariatur qui nam nostrum debitis atque
+          voluptatibus molestias corporis incidunt dolor voluptate quasi in accusantium, cum ipsa possimus assumenda ut
+          sunt?
+        </p>
+        <h2>Monospace</h2>
+        <p id="p-monospace">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem pariatur qui nam nostrum debitis atque
+          voluptatibus molestias corporis incidunt dolor voluptate quasi in accusantium, cum ipsa possimus assumenda ut
+          sunt?
+        </p>
+        <h2>Cursive</h2>
+        <p id="p-cursive">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem pariatur qui nam nostrum debitis atque
+          voluptatibus molestias corporis incidunt dolor voluptate quasi in accusantium, cum ipsa possimus assumenda ut
+          sunt?
+        </p>
+        <h2>Fantasy</h2>
+        <p id="p-fantasy">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem pariatur qui nam nostrum debitis atque
+          voluptatibus molestias corporis incidunt dolor voluptate quasi in accusantium, cum ipsa possimus assumenda ut
+          sunt?
+        </p>
+        <h2>Responsive Font Size</h2>
+        <p id="p-responsive-font-size">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident illum, atque suscipit soluta qui
+          explicabo! Error corrupti, cupiditate et esse sint reprehenderit est voluptatum consectetur provident saepe,
+          alias nostrum ipsam?
+        </p>
+        <h2>Google Fonts - Sofia</h2>
+        <p id="p-google-font-sofia">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa saepe laudantium at. Eos mollitia provident
+          facere autem harum tempora voluptatem pariatur suscipit quibusdam laudantium, alias commodi molestiae repellat
+          odit qui.
+        </p>
+        <h2>Google Fonts - Sofia with fire</h2>
+        <p id="p-google-font-sofia-with-fire" class="font-effect-fire">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa saepe laudantium at. Eos mollitia provident
+          facere autem harum tempora voluptatem pariatur suscipit quibusdam laudantium, alias commodi molestiae repellat
+          odit qui.
+        </p>
+        <h2>Google Fonts - Sofia with multiple shadows</h2>
+        <p id="p-google-font-sofia-with-shadow-multiple" class="font-effect-shadow-multiple">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa saepe laudantium at. Eos mollitia provident
+          facere autem harum tempora voluptatem pariatur suscipit quibusdam laudantium, alias commodi molestiae repellat
+          odit qui.
+        </p>
+        <h2>Google Fonts - Audiowide</h2>
+        <p id="p-google-font-audiowide">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa saepe laudantium at. Eos mollitia provident
+          facere autem harum tempora voluptatem pariatur suscipit quibusdam laudantium, alias commodi molestiae repellat
+          odit qui.
+        </p>
+      </div>
+    </div>
+  </main>
+  <br><br><br>
+  <footer>
+    <div class="mussar-footer">
+      <p></p>
+    </div>
+  </footer>
 </body>
 </html>
