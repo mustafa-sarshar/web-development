@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
+  <title>Bootstrap 5 | Web Page Example 1</title>
+  <style>
+    footer {
+      height: 50px;
+    }
+  </style>
+</head>
+<body class="bg-dark">
+  <div class="container">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="mb-5">
+      <div class="row mt-5">
+        <div class="col-12 col-md-7 my-auto mx-auto">
+          <img id="img-picsum-photo" class="img-fluid img-thumbnail" src="https://picsum.photos/600/400"
+            alt="picsum photos">
+        </div>
+        <div class="col-12 col-md-5 text-light">
+          <h1 class="card-title">Random photo</h1>
+          <p>from <a href="http://picsum.photos" target="_blank" rel="noopener noreferrer">Picsum.photos</a>
+          </p>
+          <p class="mt-3 mb-3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem voluptatibus ipsam omnis maxime
+            architecto et quidem quae quas odio officiis, culpa beatae exercitationem deserunt voluptatum! Eos dicta
+            voluptate reprehenderit voluptatem?
+          </p>
+          <button id="btn-get-new-photo" class="btn btn-secondary">Get a new photo</button>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col">
+          <div class="bg-secondary rounded p-5" style="min-height: 50px;">
+            <p class="text-white text-center my-auto">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi ipsum neque delectus harum placeat sit
+              et
+              aut corrupti tempora praesentium!
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col">
+          <div class="card-group">
+            <div class="card">
+              <img src="https://picsum.photos/id/200/300/200" class="card-img-top" alt="Picsum Photo">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                  content.
+                  This content is a little bit longer.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+              <img src="https://picsum.photos/id/201/300/200" class="card-img-top" alt="Picsum Photo">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+              <img src="https://picsum.photos/id/202/300/200" class="card-img-top" alt="Picsum Photo">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                  content.
+                  This card has even longer content than the first to show that equal height action.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5 justify-content-center">
+        <div class="col-sm-8">
+          <div class="card">
+            <div class="card-header">Contact form:</div>
+            <form action="">
+              <div class="card-body">
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  <label for="email" class="form-label">Email address</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="name" class="form-control" id="name" aria-describedby="nameHelp">
+                  <div id="nameHelp" class="form-text">e.g. Musto</div>
+                  <label for="name" class="form-label">Name</label>
+                </div>
+                <div class="mb-3">
+                  <textarea name="message" class="form-control" id="message" cols="30" rows="7"
+                    placeholder="write your message here"></textarea>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">send</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+  </div>
+  </main>
+  <br>
+  <footer class="footer my-auto fixed-bottom bg-dark">
+    <div class="container p-3">
+      <span class="text-light text-muted">Copyright - developed by <a
+          href="https://mustafa-sarshar.github.io/portfolio-website/" target="_blank"
+          rel="noopener noreferrer">Musto</a></span>
+    </div>
+  </footer>
+  </div>
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  <script>
+    const imgPicsumPhotoEl = document.getElementById("img-picsum-photo");
+    const btnGetNewPhotoEl = document.getElementById("btn-get-new-photo");
+    const picsumPhotoURL = "https://picsum.photos/600/400?random=";
+
+    btnGetNewPhotoEl.addEventListener("click", (evt) => {
+      evt.preventDefault();
+      imgPicsumPhotoEl.src = picsumPhotoURL + Math.round(Math.random() * 900);
+    })
+  </script>
+</body>
+</html>
