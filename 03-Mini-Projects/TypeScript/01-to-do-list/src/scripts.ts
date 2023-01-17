@@ -36,7 +36,12 @@ btnAddTaskEl.addEventListener("click", (evt: Event) => {
     inputTaskCategoryEl.value
   );
   console.log(newTask);
-  liTaskEl.render(newTask);
+  if (
+    newTask.taskName !== "" &&
+    newTask.taskDeadline.toString() !== "Invalid Date"
+  ) {
+    liTaskEl.render(newTask);
+  }
 });
 
 btnResetTasksEl.addEventListener("click", (evt) => {
