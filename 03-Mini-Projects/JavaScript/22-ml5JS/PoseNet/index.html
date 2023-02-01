@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+  <script defer src="./scripts.js"></script>
+  <title>PoseNet</title>
+</head>
+<body>
+  <header>
+    <h1>PoseNet</h1>
+    <div class="sub-container">
+      <button type="button" id="btnTogglePoseNet">Start PoseNet</button>
+    </div>
+  </header>
+  <main>
+    <canvas id="canvas" width="720" height="560"></canvas>
+    <video id="video" width="720" height="560" autoplay muted crossorigin="anonymous" />
+  </main>
+</body>
+</html>

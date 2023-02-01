@@ -1,0 +1,52 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 0;
+  background-color: lightgray;
+}
+
+main {
+  position: relative;
+  width: 100%;
+  // background-color: #00800050;
+}
+
+video,
+canvas {
+  width: 100%;
+  margin: auto;
+  // background-color: red;
+}
+
+canvas {
+  border: 1px green solid;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+button {
+  padding: 0.2rem 1rem;
+}
+
+.button-stop {
+  background-color: none;
+
+  &:hover {
+    background-color: lightcoral;
+  }
+}
+
+.button-start {
+  background-color: none;
+
+  &:hover {
+    background-color: lightgreen;
+  }
+}
