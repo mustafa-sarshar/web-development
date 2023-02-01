@@ -1,0 +1,90 @@
+<div class="mat-headline-4">
+  <a href="https://material.angular.io/components/badge/overview"
+    >Material Badge</a
+  >
+</div>
+<div>
+  <div>
+    <span matBadge="1">Notifications</span>
+  </div>
+  <div>
+    <span matBadge="5" matBadgePosition="below after">Notifications</span>
+  </div>
+</div>
+<div>
+  <div>
+    <span matBadge="5" matBadgePosition="below after" matBadgeSize="small"
+      >Notifications</span
+    >
+  </div>
+  <div>
+    <span matBadge="5" matBadgePosition="below after" matBadgeSize="medium"
+      >Notifications</span
+    >
+  </div>
+  <div>
+    <span matBadge="5" matBadgePosition="below after" matBadgeSize="large"
+      >Notifications</span
+    >
+  </div>
+</div>
+<div>
+  <div>
+    <span matBadge="5" matBadgeColor="primary" matBadgeSize="large"
+      >Notifications</span
+    >
+  </div>
+  <div>
+    <span matBadge="5" matBadgeColor="accent" matBadgeSize="medium"
+      >Notifications</span
+    >
+  </div>
+  <div>
+    <span matBadge="5" matBadgeColor="warn" matBadgeSize="large"
+      >Notifications</span
+    >
+  </div>
+</div>
+<div>
+  <div>
+    <span
+      matBadge="5"
+      matBadgeColor="accent"
+      matBadgeSize="large"
+      matBadgeOverlap="true"
+      >Notifications</span
+    >
+  </div>
+  <div>
+    <span
+      matBadge="5"
+      matBadgeColor="accent"
+      matBadgeSize="medium"
+      matBadgeOverlap="false"
+      >Notifications</span
+    >
+  </div>
+</div>
+<div>
+  <div>
+    <div>
+      Counter
+      <span
+        [matBadge]="counterValue"
+        [matBadgeHidden]="counterValue === 0"
+        matBadgeColor="accent"
+        matBadgeSize="medium"
+        matBadgePosition="below after"
+        matBadgeOverlap="false"
+      ></span>
+    </div>
+    <div>
+      <button (click)="onClickIncreaseCounter()">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button (click)="onClickDecreaseCounter()">
+        <mat-icon>remove</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<a href="https://material.angular.io/components/button-toggle/overview"
+  >Button Toggle</a
+>
+<div>
+  <mat-button-toggle #btnToggle1
+    >Toggle {{ btnToggle1.checked ? "off" : "on" }}</mat-button-toggle
+  >
+  <mat-button-toggle checked #btnToggle2
+    >Toggle {{ btnToggle2.checked ? "off" : "on" }}</mat-button-toggle
+  >
+  <mat-button-toggle disableRipple checked #btnToggle3
+    >Toggle {{ btnToggle3.checked ? "off" : "on" }} (no
+    ripple)</mat-button-toggle
+  >
+  <mat-button-toggle disabled checked>Toggle (disabled)</mat-button-toggle>
+</div>
+<br /><br />
+<div>
+  <div class="mat-subtitle-1">Who is the GOAT? (like radio buttons)</div>
+  <mat-button-toggle-group #btnToggleGoat="matButtonToggleGroup">
+    <mat-button-toggle value="mj">Micheal Jordan</mat-button-toggle>
+    <mat-button-toggle value="kb">Kobe Bryant</mat-button-toggle>
+    <mat-button-toggle value="lbj">Lebron James</mat-button-toggle>
+  </mat-button-toggle-group>
+  <div class="mat-body-2">You selected: {{ btnToggleGoat.value }}</div>
+</div>
+<br /><br />
+<div>
+  <div class="mat-subtitle-1">
+    Who is your favorite athlete? (like checkboxes)
+  </div>
+  <mat-button-toggle-group
+    #btnToggleFavoriteAthlete="matButtonToggleGroup"
+    multiple
+  >
+    <mat-button-toggle value="mj">Micheal Jordan</mat-button-toggle>
+    <mat-button-toggle value="ma">Muhammed Ali</mat-button-toggle>
+    <mat-button-toggle value="rf">Rogger Federer</mat-button-toggle>
+  </mat-button-toggle-group>
+  <div class="mat-body-2">
+    You selected: {{ btnToggleFavoriteAthlete.value }}
+  </div>
+</div>
