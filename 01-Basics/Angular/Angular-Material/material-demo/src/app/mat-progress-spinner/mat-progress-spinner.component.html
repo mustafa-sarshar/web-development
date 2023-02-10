@@ -1,15 +1,25 @@
-<div class="mat-headline-4">
-  <a href="https://material.angular.io/components/progress-spinner/overview"
-    >Material (progress) Spinner</a
-  >
+<div class="div-container mat-headline-4">
+  <a href="https://material.angular.io/components/progress-spinner/overview">Material (progress) Spinner</a>
 </div>
-<section>
-  <section>
+<div class="div-container">
+  <mat-progress-spinner value="10"></mat-progress-spinner>
+  <mat-progress-spinner value="50"></mat-progress-spinner>
+</div>
+<div class="div-container">
+  <div>
     <button mat-stroked-button (click)="onClickStartProgressSpinner()">
       Start
     </button>
-  </section>
-  <section>
+  </div>
+  <div>
     <mat-progress-spinner [value]="progressSpinnerValue"></mat-progress-spinner>
-  </section>
-</section>
+  </div>
+  <div>
+  </div>
+</div>
+<div class="div-container">
+  <button mat-stroked-button (click)="onClickShowSpinner()">Show Spinner</button>
+  <div>
+    <mat-spinner *ngIf="showSpinner"></mat-spinner>
+  </div>
+</div>

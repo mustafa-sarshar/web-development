@@ -1,0 +1,15 @@
+mat {
+  &-sidenav {
+    padding: 16px;
+    width: 200px;
+    background-color: lightcoral;
+
+    &-container {
+      height: 10%;
+    }
+
+    &-content {
+      padding: 16px;
+    }
+  }
+}

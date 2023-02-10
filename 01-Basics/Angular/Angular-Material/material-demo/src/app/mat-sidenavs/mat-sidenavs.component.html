@@ -1,0 +1,38 @@
+<div class="mat-headline-4 div-container">
+  <a href="https://material.angular.io/components/sidenav/overview">Material Sidenav</a>
+</div>
+<mat-sidenav-container>
+  <mat-sidenav mode="over" [(opened)]="sidenavOpened1">Sidenav</mat-sidenav>
+  <mat-sidenav-content>
+    <button mat-flat-button
+      (click)="sidenavOpened1 = !sidenavOpened1">{{sidenavOpened1 ? 'Hide Sidenav' : 'Show Sidenav'}}</button>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<mat-sidenav-container>
+  <mat-sidenav mode="push" [(opened)]="sidenavOpened2">Sidenav</mat-sidenav>
+  <mat-sidenav-content>
+    <button mat-flat-button
+      (click)="sidenavOpened2 = !sidenavOpened2">{{sidenavOpened2 ? 'Hide Sidenav' : 'Show Sidenav'}}</button>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [(opened)]="sidenavOpened3">Sidenav</mat-sidenav>
+  <mat-sidenav-content>
+    <button mat-flat-button
+      (click)="sidenavOpened3 = !sidenavOpened3">{{sidenavOpened3 ? 'Hide Sidenav' : 'Show Sidenav'}}</button>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<div>
+  <button mat-flat-button (click)="sidenavEl.open()">Open Sidenav</button>
+  <button mat-flat-button (click)="sidenavEl.close()">Close Sidenav</button>
+  <button mat-flat-button (click)="sidenavEl.toggle()">Toggle Sidenav</button>
+</div>
+<mat-sidenav-container>
+  <mat-sidenav #sidenavEl mode="side" (opened)="onLogState(sidenavEl)"
+    (closed)="onLogState(sidenavEl)">Sidenav</mat-sidenav>
+  <mat-sidenav-content>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium cumque dolorem eaque explicabo eligendi numquam
+    quas voluptatibus repudiandae. Ipsa sequi reprehenderit dolorum qui animi? Molestiae ducimus enim voluptas sint
+    mollitia!
+  </mat-sidenav-content>
+</mat-sidenav-container>

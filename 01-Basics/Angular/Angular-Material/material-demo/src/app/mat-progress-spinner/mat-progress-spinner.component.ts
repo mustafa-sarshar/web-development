@@ -8,6 +8,7 @@ import { Component } from "@angular/core";
 export class MatProgressSpinnerComponent {
   progressSpinnerValue: number = 10;
   progressSpinnerIntRef;
+  showSpinner = false;
 
   onClickStartProgressSpinner(): void {
     this.progressSpinnerValue = 10;
@@ -15,8 +16,16 @@ export class MatProgressSpinnerComponent {
       if (this.progressSpinnerValue < 90) {
         this.progressSpinnerValue += 10;
       } else {
-        this.progressSpinnerIntRef = 0;
+        this.progressSpinnerValue = 10;
+        clearInterval(this.progressSpinnerIntRef);
       }
-    }, 1000);
+    }, 500);
+  }
+
+  onClickShowSpinner(): void {
+    this.showSpinner = true;
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 3000);
   }
 }
