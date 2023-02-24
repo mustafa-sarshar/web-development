@@ -1,0 +1,11 @@
+mat-sidenav {
+  padding: 16px;
+  width: 200px;
+  background-color: lightcoral;
+}
+mat-sidenav-container {
+  height: 10%;
+}
+mat-sidenav-content {
+  padding: 16px;
+}/*# sourceMappingURL=mat-sidenavs.component.css.map */

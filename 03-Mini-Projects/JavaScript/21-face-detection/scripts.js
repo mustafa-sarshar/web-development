@@ -1,4 +1,5 @@
 const videoEl = document.getElementById("video");
+const btnFlipHorizontallyEl = document.getElementById("btnFlipHorizontally");
 
 Promise.all([
   // faceapi.nets.tinyFaceDetector.loadFromUri("/models"),
@@ -17,4 +18,9 @@ function startVideo() {
 
 videoEl.addEventListener("play", () => {
   console.log("Video Played");
+});
+
+btnFlipHorizontallyEl.addEventListener("click", () => {
+  console.log("Flip Video!");
+  videoEl.classList.toggle("flip");
 });
