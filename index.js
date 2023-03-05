@@ -85,7 +85,7 @@ window.addEventListener("load", (_) => {
   });
 
   window.addEventListener("lightlevel", function (e) {
-    document.getElementById("Lightlevel").innerHTML = "Light level: " + e.value;
+    document.getElementById("LightLevel").innerHTML = "Light level: " + e.value;
   });
 
   window.addEventListener("deviceproximity", function (e) {
