@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Capture Image & Video from User</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Capture Image:</h1>
+    <input type="file" accept="image/*" id="file-input" />
+    <hr>
+    <input type="file" accept="image/*" capture id="file-input-capture" />
+    <hr>
+    <input type="file" accept="image/*" capture="user" id="file-input-capture-user" />
+    <hr>
+    <input type="file" accept="image/*" capture="environment" id="file-input-capture-environment" />
+    <hr>
+    <div id="drop-target">You can drag an image file here</div>
+    <hr>
+    <textarea id="clipboard-target" cols="100" rows="10">Paste an image here</textarea>
+    <hr>
+    <p>
+      First image loaded:
+    </p>
+    <img id="image-output" />
+    <hr>
+    <h1>Capture Video/Camera</h1>
+    <video id="video-player" controls autoplay></video><br>
+    <button id="btn-capture-camera">Capture Camera</button>
+    <button id="btn-toggle-camera">Toggle Camera</button>
+    <canvas id="canvas-capture-camera" width="320" height="240"></canvas>
+  </div>
+  <script src="./scripts.js"></script>
+</body>
+</html>

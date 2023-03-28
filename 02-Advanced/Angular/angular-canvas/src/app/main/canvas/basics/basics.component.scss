@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.drawing {
+  &__settings {
+    border: 1px solid black;
+    flex: 1;
+  }
+
+  &__area {
+    border: 1px solid black;
+  }
+}
+
+canvas {
+  border: 1px solid black;
+}
