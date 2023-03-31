@@ -1,15 +1,21 @@
 <div class="container">
   <div class="drawing__settings">
     <form action="" (change)="onChangeForm(formEl)" #formEl>
-      <input ngModel type="radio" id="line" name="drawing" value="LINE">
+      <input ngModel type="radio" id="line" name="drawing-shape" value="LINE">
       <label for="line">Line</label><br>
-      <input ngModel type="radio" id="rect" name="drawing" value="RECT">
+      <input ngModel type="radio" id="rect" name="drawing-shape" value="RECT">
       <label for="rect">Rectangle</label>
-      <input ngModel type="radio" id="arc" name="drawing" value="ARC">
+      <input ngModel type="radio" id="arc" name="drawing-shape" value="ARC">
       <label for="arc">Arc</label><br>
-      <input ngModel type="radio" id="circle" name="drawing" value="CIRCLE">
+      <input ngModel type="radio" id="circle" name="drawing-shape" value="CIRCLE">
       <label for="circl">Circle</label><br>
+      <hr>
+      <input ngModel type="radio" id="stroke" name="drawing-type" value="STROKE">
+      <label for="stroke">Stroke</label><br>
+      <input ngModel type="radio" id="fill" name="drawing-type" value="FILL">
+      <label for="fill">Fill</label>
     </form>
+
   </div>
   <div class="drawing__area">
     <canvas #canvasEl (pointerdown)="onPointerDown($event)" (pointerup)="onPointerUp($event)"></canvas>
