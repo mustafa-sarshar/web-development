@@ -4,7 +4,10 @@
 }
 
 .landmark-grid-container {
-  width: 80%;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  z-index: 999;
 }
 
 .clearfix {
@@ -19,6 +22,7 @@ video {
   position: absolute;
   width: 80% !important;
   height: auto !important;
+  z-index: 80;
 }
 
 canvas {
@@ -27,4 +31,5 @@ canvas {
   height: auto !important;
   /* left: 0px;
   top: 0px; */
+  z-index: 80;
 }
