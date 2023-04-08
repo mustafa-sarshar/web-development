@@ -15,6 +15,11 @@ window.onload = () => {
       return;
     }
 
+    videoElement.width = window.innerWidth;
+    videoElement.height = window.innerHeight;
+    canvasElement.width = videoElement.videoWidth;
+    canvasElement.height = videoElement.videoHeight;
+
     canvasCtx.save();
     canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
     canvasCtx.drawImage(
