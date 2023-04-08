@@ -12,6 +12,7 @@ window.onload = () => {
   function onResults(results) {
     if (!results.poseLandmarks) {
       grid.updateLandmarks([]);
+      canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
       return;
     }
 
