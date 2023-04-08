@@ -17,8 +17,6 @@
 }
 
 video {
-  /* width: 1280px;
-  height: 720px; */
   position: absolute;
   width: 80% !important;
   height: auto !important;
@@ -29,7 +27,5 @@ canvas {
   position: absolute;
   width: 80% !important;
   height: auto !important;
-  /* left: 0px;
-  top: 0px; */
   z-index: 80;
 }
