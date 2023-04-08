@@ -4,20 +4,21 @@
   <meta charset="utf-8">
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils_3d/control_utils_3d.js"
     crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
   <div class="container">
-    <p>MediaPipe Pose v3</p>
+    <p>MediaPipe Hands v1</p>
     <div class="landmark-grid-container"></div>
     <video class="input_video"></video>
     <canvas class="output_canvas" width="1280px" height="720px"></canvas>
   </div>
+  <div class="clearfix"></div>
 
   <script src="./scripts.js"></script>
 </body>

@@ -10,12 +10,6 @@
   z-index: 999;
 }
 
-.clearfix {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 video {
   position: absolute;
   width: 80% !important;
