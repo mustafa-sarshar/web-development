@@ -1,9 +1,58 @@
+import * as THREE from "three";
+
 window.addEventListener("load", (_) => {
-  function handleOrientation(event) {
-    updateFieldIfNotNull("Orientation_a", event.alpha);
-    updateFieldIfNotNull("Orientation_b", event.beta);
-    updateFieldIfNotNull("Orientation_g", event.gamma);
-    incrementEventCount();
+  const divAnimationEl = document.getElementById("div-animation");
+  const canvasEl = document.getElementById("canvas");
+  const demo_button = document.getElementById("start_demo");
+  let is_running = false;
+  const animationWidth = 300;
+  const animationHeight = 300;
+  let orientations = {
+    alpha: 0,
+    beta: 0,
+    gamma: 0,
+  };
+
+  function deg2Rad(degree) {
+    return (degree * Math.PI) / 180;
+  }
+
+  function createScene() {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      25,
+      animationWidth / animationHeight,
+      1,
+      1000
+    );
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(animationWidth, animationHeight);
+
+    return { scene, camera, renderer };
+  }
+
+  function initAnimation() {
+    const { scene, camera, renderer } = createScene();
+
+    const geometry = new THREE.ConeGeometry(1, 2, 32);
+    const material = new THREE.MeshBasicMaterial({ color: 0x3689d1 });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    camera.position.z = 10;
+
+    divAnimationEl.append(renderer.domElement);
+
+    (function animate() {
+      renderer.render(scene, camera);
+      if (orientations.alpha && orientations.beta && orientations.gamma) {
+        cube.rotation.x = deg2Rad(+orientations.beta);
+        cube.rotation.y = deg2Rad(+orientations.gamma);
+        cube.rotation.z = deg2Rad(+orientations.alpha);
+      }
+
+      requestAnimationFrame(animate);
+    })();
   }
 
   function incrementEventCount() {
@@ -37,16 +86,26 @@ window.addEventListener("load", (_) => {
 
     updateFieldIfNotNull("Accelerometer_i", event.interval, 2);
 
-    updateFieldIfNotNull("Gyroscope_z", event.rotationRate.alpha);
     updateFieldIfNotNull("Gyroscope_x", event.rotationRate.beta);
     updateFieldIfNotNull("Gyroscope_y", event.rotationRate.gamma);
+    updateFieldIfNotNull("Gyroscope_z", event.rotationRate.alpha);
     incrementEventCount();
   }
 
-  let is_running = false;
-  let demo_button = document.getElementById("start_demo");
+  function handleOrientation(event) {
+    orientations.alpha = event.alpha;
+    orientations.beta = event.beta;
+    orientations.gamma = event.gamma;
+
+    updateFieldIfNotNull("Orientation_a", event.alpha);
+    updateFieldIfNotNull("Orientation_b", event.beta);
+    updateFieldIfNotNull("Orientation_g", event.gamma);
+    incrementEventCount();
+  }
+
   demo_button.onclick = function (e) {
     e.preventDefault();
+    initAnimation();
 
     // Request permission for iOS 13+ devices
     if (

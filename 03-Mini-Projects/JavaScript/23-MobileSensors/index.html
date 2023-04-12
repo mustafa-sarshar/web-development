@@ -7,12 +7,21 @@
   <link href="./assets/styles/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./index.css">
   <title>JavaScript Sensor Access Demo</title>
+  <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@v0.151.3/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@v0.151.3/examples/jsm/"
+      }
+    }
+  </script>
 
 </head>
 <body>
   <main role="main" class="container">
 
-    <h1 align="left">JavaScript Sensor Access Demo</h1>
+    <h1 align="left">JavaScript Sensor Access Demo v1.2</h1>
     <p><b>This demo page should be run from a mobile phone or a tablet.</b></p>
     <p>This demo page shows how websites can access sensor data from mobile devices using <a
         href="https://developer.mozilla.org/en-US/docs/Web/Events/deviceorientation"><i>deviceorientation</i></a> and <a
@@ -27,7 +36,7 @@
       may not be true for other websites that you visit. For more information, see the companion page for our study: <a
         href="https://sensor-js.xyz/">"The Web's Sixth Sense: A Study of Scripts Accessing Smartphone Sensors"</a>.</p>
 
-    <div class="p-3 mb-2 bg-secondary" id="demo-div">
+    <div class="p-3 mb-2 bg-secondary" id="div-demo">
       <a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start the demo</a>
       <p style="margin-top:1rem;">Num. of datapoints: <span class="badge badge-warning"
           id="num-observed-events">0</span></p>
@@ -75,6 +84,9 @@
       </ul>
 
     </div>
+    <div id="div-animation">
+      <!-- <canvas id="canvas"></canvas> -->
+    </div>
   </main>
   <footer class="footer">
     <div class="container">
@@ -83,6 +95,6 @@
     </div>
   </footer>
   <noscript>Please enable JavaScript in your browser.</noscript>
-  <script src="./index.js"></script>
+  <script type="module" src="./index.js"></script>
 </body>
 </html>

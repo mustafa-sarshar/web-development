@@ -112,3 +112,6 @@ dist
 
 # NodeJS packages
 package-lock.json
+
+# Others
+/assets

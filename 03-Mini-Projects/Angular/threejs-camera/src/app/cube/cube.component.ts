@@ -39,6 +39,7 @@ export class CubeComponent implements OnInit, AfterViewInit {
   private material = new THREE.MeshBasicMaterial({
     map: this.loader.load(this.texture),
   });
+
   private cube: THREE.Mesh = new THREE.Mesh(this.geometry, this.material);
   private renderer!: THREE.WebGLRenderer;
   private scene!: THREE.Scene;
