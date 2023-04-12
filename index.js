@@ -13,6 +13,10 @@ window.addEventListener("load", (_) => {
     gamma: 0,
   };
 
+  function deg2Rad(degree) {
+    return (degree * Math.PI) / 180;
+  }
+
   function createScene() {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -42,9 +46,9 @@ window.addEventListener("load", (_) => {
     (function animate() {
       renderer.render(scene, camera);
       if (orientations.alpha && orientations.beta && orientations.gamma) {
-        cube.rotation.x = +orientations.alpha;
-        cube.rotation.y = +orientations.beta;
-        cube.rotation.z = +orientations.gamma;
+        cube.rotation.x = deg2Rad(+orientations.alpha);
+        cube.rotation.y = deg2Rad(+orientations.beta);
+        cube.rotation.z = deg2Rad(+orientations.gamma);
       }
 
       requestAnimationFrame(animate);
