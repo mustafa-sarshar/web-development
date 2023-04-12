@@ -55,17 +55,6 @@ window.addEventListener("load", (_) => {
     })();
   }
 
-  function handleOrientation(event) {
-    orientations.alpha = event.alpha;
-    orientations.beta = event.beta;
-    orientations.gamma = event.gamma;
-
-    updateFieldIfNotNull("Orientation_a", event.alpha);
-    updateFieldIfNotNull("Orientation_b", event.beta);
-    updateFieldIfNotNull("Orientation_g", event.gamma);
-    incrementEventCount();
-  }
-
   function incrementEventCount() {
     let counterElement = document.getElementById("num-observed-events");
     let eventCount = parseInt(counterElement.innerHTML);
@@ -97,9 +86,20 @@ window.addEventListener("load", (_) => {
 
     updateFieldIfNotNull("Accelerometer_i", event.interval, 2);
 
-    updateFieldIfNotNull("Gyroscope_z", event.rotationRate.alpha);
     updateFieldIfNotNull("Gyroscope_x", event.rotationRate.beta);
     updateFieldIfNotNull("Gyroscope_y", event.rotationRate.gamma);
+    updateFieldIfNotNull("Gyroscope_z", event.rotationRate.alpha);
+    incrementEventCount();
+  }
+
+  function handleOrientation(event) {
+    orientations.alpha = event.alpha;
+    orientations.beta = event.beta;
+    orientations.gamma = event.gamma;
+
+    updateFieldIfNotNull("Orientation_a", event.alpha);
+    updateFieldIfNotNull("Orientation_b", event.beta);
+    updateFieldIfNotNull("Orientation_g", event.gamma);
     incrementEventCount();
   }
 
