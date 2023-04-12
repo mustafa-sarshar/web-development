@@ -42,9 +42,9 @@ window.addEventListener("load", (_) => {
     (function animate() {
       renderer.render(scene, camera);
       if (orientations.alpha && orientations.beta && orientations.gamma) {
-        cube.rotation.x += +orientations.alpha;
-        cube.rotation.y += +orientations.beta;
-        cube.rotation.z += orientations.gamma;
+        cube.rotation.x = +orientations.alpha;
+        cube.rotation.y = +orientations.beta;
+        cube.rotation.z = +orientations.gamma;
       }
 
       requestAnimationFrame(animate);
