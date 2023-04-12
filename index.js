@@ -34,21 +34,21 @@ window.addEventListener("load", (_) => {
   function initAnimation() {
     const { scene, camera, renderer } = createScene();
 
-    const geometry = new THREE.BoxGeometry(0.5, 2, 0.5);
+    const geometry = new THREE.ConeGeometry(1, 2, 32);
     const material = new THREE.MeshBasicMaterial({ color: 0x3689d1 });
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    camera.position.z = 5;
+    camera.position.z = 10;
 
     divAnimationEl.append(renderer.domElement);
 
     (function animate() {
       renderer.render(scene, camera);
       if (orientations.alpha && orientations.beta && orientations.gamma) {
-        cube.rotation.x = deg2Rad(+orientations.alpha);
-        cube.rotation.y = deg2Rad(+orientations.beta);
-        cube.rotation.z = deg2Rad(+orientations.gamma);
+        cube.rotation.x = deg2Rad(+orientations.beta);
+        cube.rotation.y = deg2Rad(+orientations.gamma);
+        cube.rotation.z = deg2Rad(+orientations.alpha);
       }
 
       requestAnimationFrame(animate);
