@@ -1,5 +1,61 @@
+import * as THREE from "three";
+
 window.addEventListener("load", (_) => {
+  const divAnimationEl = document.getElementById("div-animation");
+  const canvasEl = document.getElementById("canvas");
+  const demo_button = document.getElementById("start_demo");
+  let is_running = false;
+  const animationWidth = 300;
+  const animationHeight = 300;
+  let orientations = {
+    alpha: 0,
+    beta: 0,
+    gamma: 0,
+  };
+
+  function createScene() {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      25,
+      animationWidth / animationHeight,
+      1,
+      1000
+    );
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(animationWidth, animationHeight);
+
+    return { scene, camera, renderer };
+  }
+
+  function initAnimation() {
+    const { scene, camera, renderer } = createScene();
+
+    const geometry = new THREE.BoxGeometry(0.5, 2, 0.5);
+    const material = new THREE.MeshBasicMaterial({ color: 0x3689d1 });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    camera.position.z = 5;
+
+    divAnimationEl.append(renderer.domElement);
+
+    (function animate() {
+      renderer.render(scene, camera);
+      if (orientations.alpha && orientations.beta && orientations.gamma) {
+        cube.rotation.x += +orientations.alpha;
+        cube.rotation.y += +orientations.beta;
+        cube.rotation.z += orientations.gamma;
+      }
+
+      requestAnimationFrame(animate);
+    })();
+  }
+
   function handleOrientation(event) {
+    orientations.alpha = event.alpha;
+    orientations.beta = event.beta;
+    orientations.gamma = event.gamma;
+
     updateFieldIfNotNull("Orientation_a", event.alpha);
     updateFieldIfNotNull("Orientation_b", event.beta);
     updateFieldIfNotNull("Orientation_g", event.gamma);
@@ -43,10 +99,9 @@ window.addEventListener("load", (_) => {
     incrementEventCount();
   }
 
-  let is_running = false;
-  let demo_button = document.getElementById("start_demo");
   demo_button.onclick = function (e) {
     e.preventDefault();
+    initAnimation();
 
     // Request permission for iOS 13+ devices
     if (
