@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("./includes/content-head.ejs") %>
+    <%- include("./includes/content-title.ejs") %>
+</head>
+<body>
+  <header class="main-header">
+    <%- include("./includes/content-nav.ejs") %>
+  </header>
+  <main>
+    <% if(products.length> 0) { %>
+      <div class="grid">
+        <% for (let product of products) { %>
+          <article class="card product-item">
+            <header class="card__header">
+              <h1 class="product__title">
+                <%= product.title %>
+              </h1>
+            </header>
+            <div class="card__image">
+              <img src="https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg" alt="" />
+            </div>
+            <div class="card__content">
+              <h2 class="product__price">$19.99</h2>
+              <p class="product__description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
+                aliquam error debitis quos quibusdam exercitationem ipsum doloribus
+                corporis eius saepe vitae repellat libero nemo rem, tenetur iste
+                odit nam eum.
+              </p>
+            </div>
+            <div class="card__actions">
+              <button class="btn">Add to Cart</button>
+            </div>
+          </article>
+          <% } %>
+      </div>
+      <% } else { %>
+        <h1>No Products!</h1>
+        <% } %>
+  </main>
+</body>
+</html>

@@ -26,12 +26,17 @@ canvas {
   position: absolute;
 }
 
+video {
+  transform: scaleX(-1);
+}
+
 footer {
   text-align: center;
+  visibility: hidden;
 }
 
 .flip {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg); /* Safari and Chrome */
   -moz-transform: rotateY(180deg); /* Firefox */
-}/*# sourceMappingURL=styles.css.map */
+} /*# sourceMappingURL=styles.css.map */

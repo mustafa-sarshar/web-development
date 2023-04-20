@@ -1,0 +1,18 @@
+extends layouts/layout-main.pug
+
+block content
+  if products.length > 0
+    div.grid
+      each product in products
+        article.card.product-item
+          header.card__header
+            h1.product__title #{product.title}
+          div.card__image
+            img(src="https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg" alt="product image")
+          div.card__content
+            h2.product__price $19.99
+            p.product__description Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti delectus soluta sunt deserunt, quidem tenetur aut consequuntur voluptates earum ex. Placeat dolores temporibus facilis minima voluptatem, ut unde soluta eligendi.
+          div.card__actions
+            button.btn Add to Cart
+  else
+    h1 No Products!
