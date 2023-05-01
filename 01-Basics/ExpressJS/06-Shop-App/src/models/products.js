@@ -1,41 +1,47 @@
 const fs = require("fs"),
-  { pathData } = require("../utility/paths");
-const { stringify } = require("querystring");
+  { pathDataProducts } = require("../utility/paths");
 
 const products = [];
 
-class Product {
-  constructor(title) {
-    this.title = title;
-  }
+const getProductsFromFile = (callback) => {
+  fs.readFile(pathDataProducts, (error, fileContent) => {
+    if (error) {
+      callback([]);
+    } else {
+      callback(JSON.parse(fileContent));
+    }
+  });
+};
 
-  static establishDatabase() {
-    fs.writeFile(pathData, JSON.stringify([]), (error) => {
-      console.error(error);
-    });
+class Product {
+  constructor(title, imageUrl, description, price) {
+    this.title = title;
+    this.imageUrl = imageUrl;
+    this.description = description;
+    this.price = price;
   }
 
   save() {
-    fs.readFile(pathData, (error, data) => {
-      let products = [];
-      if (!error) {
-        products = JSON.parse(data);
-      }
+    this.id = (Math.random() * 100000).toString();
+
+    getProductsFromFile((products) => {
       products.push(this);
-      fs.writeFile(pathData, JSON.stringify(products), (error) => {
+      fs.writeFile(pathDataProducts, JSON.stringify(products), (error) => {
         console.error(error);
       });
     });
   }
 
   static fetchAll(callback) {
-    fs.readFile(pathData, (error, data) => {
-      let products = [];
-      if (!error) {
-        callback(JSON.parse(data));
-      } else {
-        callback(products.slice());
-      }
+    getProductsFromFile(callback);
+  }
+
+  static findById(id, callback) {
+    getProductsFromFile((products) => {
+      const product = products.find((product) => {
+        return product.id === id;
+      });
+      callback(product);
     });
   }
 }

@@ -1,3 +1,10 @@
+:root {
+  --orange: #d1a222;
+  --nav-normal: #000000;
+  --nav-active: #4c036e;
+  --form-field-border: #a1a109;
+}
+
 *,
 *::after,
 *::before {
@@ -16,7 +23,7 @@ main {
 .main-header {
   width: 100%;
   height: 3.5rem;
-  background-color: #d1a222;
+  background-color: var(--orange);
 }
 
 .main-header__nav {
@@ -40,14 +47,14 @@ main {
 
 .main-header__item a {
   text-decoration: none;
-  color: black;
+  color: var(--nav-normal);
   font-weight: bold;
 }
 
 .main-header__item a:hover,
 .main-header__item a:active,
 .main-header__item a.active {
-  color: #4c036e;
+  color: var(--nav-active);
 }
 
 .form-main {
@@ -60,12 +67,25 @@ main {
   margin-bottom: 0.5rem;
 }
 
+.form-group textarea {
+  border: 1px solid var(--form-field-border);
+  border-radius: 2px;
+  font: inherit;
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline-color: var(--orange);
+}
+
 .form-control {
   display: block;
 }
 
-.form-control[type="text"] {
-  border: 1px solid #a1a109;
+.form-control[type="text"],
+.form-control[type="number"] {
+  border: 1px solid var(--form-field-border);
   border-radius: 2px;
   font: inherit;
   width: 100%;
@@ -81,7 +101,7 @@ main {
 }
 
 .form-control[type="submit"]:hover {
-  background-color: #4c036e;
+  background-color: var(--nav-active);
   color: white;
 }
 
@@ -117,17 +137,18 @@ main {
 }
 
 .card__actions {
-    padding: 1rem;
-    text-align: center;
+  padding: 1rem;
+  text-align: center;
 }
 
 .card__actions button,
 .card__actions a {
-    margin: 0 0.25rem;
+  margin: 0 0.25rem;
 }
 
 .btn {
   font: inherit;
+  padding: 5px 1rem;
   border: 1px solid #00695c;
   color: #00695c;
   background: white;
@@ -142,21 +163,26 @@ main {
 }
 
 .product-item {
-    width: 20rem;
-    max-width: 95%;
+  width: 20rem;
+  max-width: 95%;
 }
 
 .product__title {
-    font-size: 1.2rem;
-    text-align: center;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .product__price {
-    text-align: center;
-    color: #4d4d4d;
-    margin-bottom: 0.5rem;
+  text-align: center;
+  color: #4d4d4d;
+  margin-bottom: 0.5rem;
 }
 
 .product__description {
-    text-align: center;
+  text-align: center;
+}
+
+.centered {
+  margin: 0 auto;
+  text-align: center;
 }

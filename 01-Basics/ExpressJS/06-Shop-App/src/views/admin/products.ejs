@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%- include("./includes/content-head.ejs") %>
-    <%- include("./includes/content-title.ejs") %>
+  <%- include("../includes/content-head.ejs") %>
+    <%- include("../includes/content-title.ejs") %>
 </head>
 <body>
   <header class="main-header">
-    <%- include("./includes/content-nav.ejs") %>
+    <%- include("../includes/content-nav.ejs") %>
   </header>
   <main>
     <% if(products.length> 0) { %>
@@ -19,19 +19,23 @@
               </h1>
             </header>
             <div class="card__image">
-              <img src="https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg" alt="" />
+              <img src="<%= product.imageUrl %>" alt="<%= product.title %>" />
             </div>
             <div class="card__content">
-              <h2 class="product__price">$19.99</h2>
+              <h2 class="product__price">
+                $<%= product.price %>
+              </h2>
               <p class="product__description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
-                aliquam error debitis quos quibusdam exercitationem ipsum doloribus
-                corporis eius saepe vitae repellat libero nemo rem, tenetur iste
-                odit nam eum.
+                <%= product.description %>
               </p>
             </div>
             <div class="card__actions">
-              <button class="btn">Add to Cart</button>
+              <form action="/admin/edit-product" method="GET">
+                <button class="btn" type="submit">Edit</button>
+              </form>
+              <form action="/admin/delete-product" method="post">
+                <button class="btn" type="submit">Delete</button>
+              </form>
             </div>
           </article>
           <% } %>
