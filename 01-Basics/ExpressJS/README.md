@@ -6,3 +6,16 @@ This repo is inspired by:
     - [MVC Model-View-Controller Example](https://www.youtube.com/watch?v=Dco1gzVZKVk&list=PL0Zuz27SZ-6PFkIxaJ6Xx_X46avTM1aYw&index=9) (accessed on 04.11.2022)
     - [User Password Authentication](https://www.youtube.com/watch?v=Nlg0JrUt0qg&list=PL0Zuz27SZ-6PFkIxaJ6Xx_X46avTM1aYw&index=11) (accessed on 05.11.2022)
     - [JWT Authentication](https://www.youtube.com/watch?v=favjC6EKFgw&list=PL0Zuz27SZ-6PFkIxaJ6Xx_X46avTM1aYw&index=11) (accessed on 10.11.2022)
+
+Create Table (MySQL):
+```
+mysql> CREATE TABLE onlineshop.products(
+    -> id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    -> title VARCHAR(255) NOT NULL,
+    -> price DOUBLE NOT NULL,
+    -> description TEXT NOT NULL,
+    -> imageUrl VARCHAR(255) NOT NULL,
+    -> PRIMARY KEY (id),
+    -> UNIQUE INDEX id_UNIQUE (id ASC) VISIBLE);
+
+```

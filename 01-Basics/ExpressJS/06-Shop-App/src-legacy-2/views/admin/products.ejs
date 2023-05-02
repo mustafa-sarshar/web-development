@@ -30,10 +30,10 @@
               </p>
             </div>
             <div class="card__actions">
-              <form action="/admin/edit-product/<%= product.id %>" method="get">
-                <button class="btn" type="submit">Edit</button>
-              </form>
-              <form action="/admin/delete-product/<%= product.id %>" method="post">
+              <div class="btn">
+                <a href="/admin/edit-product/<%= product.id %>?editMode=true">Edit</a>
+              </div>
+              <form action="/admin/delete-product" method="post">
                 <button class="btn" type="submit">Delete</button>
               </form>
             </div>

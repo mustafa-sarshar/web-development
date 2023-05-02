@@ -5,7 +5,6 @@ const router = require("express").Router(),
     getProduct,
     getCart,
     postCart,
-    postCartItemDelete,
     getCheckout,
     getOrders,
   } = require("../controllers/shop");
@@ -26,10 +25,6 @@ router
   .route("/cart") // ROUTE: /cart
   .get(getCart) // GET
   .post(postCart); // POST
-
-router
-  .route("/cart-item-delete") // ROUTE: /cart-item-delete
-  .post(postCartItemDelete); // POST
 
 router
   .route("/orders") // ROUTE: /orders
