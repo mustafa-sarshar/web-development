@@ -5,7 +5,9 @@ const express = require("express"),
   Product = require("./models/products"),
   User = require("./models/users"),
   Cart = require("./models/carts"),
-  CartItem = require("./models/cart-items");
+  CartItem = require("./models/cart-items"),
+  Order = require("./models/orders"),
+  OrderItem = require("./models/order-items");
 
 const app = express();
 const PORT = 4000;
@@ -51,6 +53,10 @@ Cart.belongsTo(User);
 User.hasOne(Cart);
 Cart.belongsToMany(Product, { through: CartItem });
 Product.belongsToMany(Cart, { through: CartItem });
+Order.belongsTo(User);
+User.hasMany(Order);
+Order.belongsToMany(Product, { through: OrderItem });
+Product.belongsToMany(Order, { through: OrderItem });
 
 // Init the Database -->> run the Server
 const FORCE_DB_OVERWRITE = false;

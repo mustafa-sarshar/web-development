@@ -8,6 +8,8 @@ const router = require("express").Router(),
     postCartItemDelete,
     getCheckout,
     getOrders,
+    postOrderCreate,
+    postOrderItemDelete,
   } = require("../controllers/shop");
 
 router
@@ -34,6 +36,14 @@ router
 router
   .route("/orders") // ROUTE: /orders
   .get(getOrders); // GET
+
+router
+  .route("/order-create") // ROUTE: /order-create
+  .post(postOrderCreate); // POST
+
+router
+  .route("/order-item-delete") // ROUTE: /order-item-delete
+  .post(postOrderItemDelete); // DELETE
 
 router
   .route("/checkout") // ROUTE: /checkout

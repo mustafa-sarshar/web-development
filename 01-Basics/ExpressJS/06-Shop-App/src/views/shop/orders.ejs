@@ -9,7 +9,30 @@
     <%- include("../includes/content-nav.ejs") %>
   </header>
   <main>
-    <h1>Orders!</h1>
+    <% if (orders.length> 0) { %>
+      <ul class="cart__item-list">
+        <% for (let order of orders) { %>
+          <li class="cart__item">
+            <h1>
+              #<%= order.id %>
+            </h1>
+            <ul>
+              <% for (let product of order.products) { %>
+                <li>
+                  <%= product.title %> (<%= product.orderItem.quantity %>)
+                </li>
+                <% } %>
+            </ul>
+            <form action="/order-item-delete" method="post">
+              <input type="hidden" value="<%= order.id %>" name="orderId">
+              <button class="btn danger" type="submit">Delete</button>
+            </form>
+          </li>
+          <% } %>
+      </ul>
+      <% } else { %>
+        <h1>No Products!</h1>
+        <% } %>
   </main>
 </body>
 </html>

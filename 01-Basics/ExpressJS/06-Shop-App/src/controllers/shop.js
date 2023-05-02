@@ -1,5 +1,4 @@
 const Product = require("../models/products");
-const Cart = require("../models/carts");
 
 const getIndex = (req, res, next) => {
   Product.findAll()
@@ -110,10 +109,62 @@ const postCartItemDelete = (req, res, next) => {
 };
 
 const getOrders = (req, res, next) => {
-  res.render("shop/orders", {
-    pageTitle: "My Orders",
-    path: "/shop/orders",
-  });
+  req.user
+    .getOrders({ include: ["products"] })
+    .then((orders) => {
+      res.render("shop/orders", {
+        pageTitle: "My Orders",
+        path: "/shop/orders",
+        orders: orders,
+      });
+    })
+    .catch((error) => console.error(error));
+};
+
+const postOrderCreate = (req, res, next) => {
+  let cartFetched;
+
+  req.user
+    .getCart()
+    .then((cart) => {
+      cartFetched = cart;
+      return cart.getProducts();
+    })
+    .then((products) => {
+      return req.user
+        .createOrder()
+        .then((order) => {
+          return order.addProducts(
+            products.map((product) => {
+              product.orderItem = { quantity: product.cartItem.quantity };
+              return product;
+            })
+          );
+        })
+        .catch((error) => console.error(error));
+    })
+    .then((results) => {
+      return cartFetched.setProducts(null);
+    })
+    .then((results) => {
+      res.redirect("/orders");
+    })
+    .catch((error) => console.error(error));
+};
+
+const postOrderItemDelete = (req, res, next) => {
+  const { orderId } = req.body;
+
+  req.user
+    .getOrders({ where: { id: orderId } })
+    .then((orderItems) => {
+      const orderItem = orderItems[0];
+      return orderItem.destroy();
+    })
+    .then((results) => {
+      res.redirect("/orders");
+    })
+    .catch((error) => console.error(error));
 };
 
 const getCheckout = (req, res, next) => {
@@ -131,5 +182,7 @@ module.exports = {
   postCart,
   postCartItemDelete,
   getOrders,
+  postOrderCreate,
+  postOrderItemDelete,
   getCheckout,
 };
