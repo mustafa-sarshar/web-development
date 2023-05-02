@@ -1,13 +1,8 @@
 const express = require("express"),
   bodyParser = require("body-parser"),
   path = require("path"),
-  db = require("./utility/database"),
-  Product = require("./models/products"),
-  User = require("./models/users"),
-  Cart = require("./models/carts"),
-  CartItem = require("./models/cart-items"),
-  Order = require("./models/orders"),
-  OrderItem = require("./models/order-items");
+  { mongodbConnect } = require("./utility/database"),
+  User = require("./models/users");
 
 const app = express();
 const PORT = 4000;
@@ -27,9 +22,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Auth
 app.use((req, res, next) => {
-  User.findByPk(1)
+  User.findById("6451576b08c97e2f29ee9b8f")
     .then((user) => {
-      req.user = user;
+      req.user = new User(user.username, user.email, user.cart, user._id);
       next();
     })
     .catch((error) => console.error(error));
@@ -47,37 +42,10 @@ app.use("/", shopRoutes);
 app.use(pageNotFoundRoutes);
 
 // Define Associations between models
-Product.belongsTo(User, { constraints: true, onDelete: "CASCADE" });
-User.hasMany(Product);
-Cart.belongsTo(User);
-User.hasOne(Cart);
-Cart.belongsToMany(Product, { through: CartItem });
-Product.belongsToMany(Cart, { through: CartItem });
-Order.belongsTo(User);
-User.hasMany(Order);
-Order.belongsToMany(Product, { through: OrderItem });
-Product.belongsToMany(Order, { through: OrderItem });
 
 // Init the Database -->> run the Server
-const FORCE_DB_OVERWRITE = false;
-db.sync({ force: FORCE_DB_OVERWRITE })
-  .then((results) => {
-    return User.findByPk(1);
-  })
-  .then((user) => {
-    if (!user) {
-      return User.create({ username: "Musto", email: "musto@mail.com" });
-    } else {
-      return user;
-    }
-  })
-  .then((user) => {
-    return user.createCart();
-  })
-  .then((cart) => {
-    console.log("User is activated!");
-    app.listen(4000, () => {
-      console.log(`App is running on port ${PORT}`);
-    });
-  })
-  .catch((error) => console.error(error));
+mongodbConnect(() => {
+  app.listen(4000, () => {
+    console.log(`App is running on port ${PORT}`);
+  });
+});

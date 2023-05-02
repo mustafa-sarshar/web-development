@@ -30,7 +30,7 @@
               </p>
             </div>
             <div class="card__actions">
-              <form action="/products/<%= product._id %>" method="get">
+              <form action="products/<%= product.id %>" method="get">
                 <button class="btn" type="submit">Details</button>
               </form>
               <%- include("../includes/gadgets/add-to-cart-button.ejs", {product}) %>

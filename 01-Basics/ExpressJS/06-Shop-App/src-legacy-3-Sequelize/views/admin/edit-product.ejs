@@ -9,7 +9,7 @@
     <%- include("../includes/content-nav.ejs") %>
   </header>
   <main>
-    <form class="form-main" action="/admin/edit-product/<%= product._id %>" method="POST">
+    <form class="form-main" action="/admin/edit-product/<%= product.id %>" method="POST">
       <div class="form-group">
         <label class="form-control" for="title">Title:</label>
         <input class="form-control" type="text" name="title" id="title" value="<%= product.title %>" required>
@@ -34,7 +34,7 @@
           Edit Product
         </button>
       </div>
-      <input type="hidden" name="productId" id="productId" value="<%= product._id %>">
+      <input type="hidden" name="productId" id="productId" value="<%= product.id %>">
     </form>
   </main>
 </body>

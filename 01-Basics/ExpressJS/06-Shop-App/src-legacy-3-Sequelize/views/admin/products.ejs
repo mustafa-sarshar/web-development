@@ -30,10 +30,12 @@
               </p>
             </div>
             <div class="card__actions">
-              <form action="/products/<%= product._id %>" method="get">
-                <button class="btn" type="submit">Details</button>
+              <form action="/admin/edit-product/<%= product.id %>" method="get">
+                <button class="btn" type="submit">Edit</button>
               </form>
-              <%- include("../includes/gadgets/add-to-cart-button.ejs", {product}) %>
+              <form action="/admin/delete-product/<%= product.id %>" method="post">
+                <button class="btn" type="submit">Delete</button>
+              </form>
             </div>
           </article>
           <% } %>

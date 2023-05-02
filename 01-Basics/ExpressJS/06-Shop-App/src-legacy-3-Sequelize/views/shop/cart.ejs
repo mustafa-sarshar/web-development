@@ -9,17 +9,17 @@
     <%- include("../includes/content-nav.ejs") %>
   </header>
   <main>
-    <% if (cartItems.length> 0) { %>
+    <% if (products.length> 0) { %>
       <ul class="cart__item-list">
-        <% for (let cartItem of cartItems) { %>
+        <% for (let product of products) { %>
           <li class="cart__item">
             <h1>
-              <%= cartItem.title %>
+              <%= product.title %>
             </h1>
-            <h2>Quantity: <%= cartItem.quantity %>
+            <h2>Quantity: <%= product.cartItem.quantity %>
             </h2>
             <form action="/cart-item-delete" method="post">
-              <input type="hidden" value="<%= cartItem._id %>" name="cartItemId">
+              <input type="hidden" value="<%= product.id %>" name="productId">
               <button class="btn danger" type="submit">Delete</button>
             </form>
           </li>
