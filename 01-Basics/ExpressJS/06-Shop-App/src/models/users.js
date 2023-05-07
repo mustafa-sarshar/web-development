@@ -110,6 +110,61 @@ class User {
       );
   }
 
+  addOrder() {
+    const db = getDb();
+
+    return this.getCart()
+      .then((products) => {
+        const order = {
+          items: products,
+          user: {
+            _id: new mongodb.ObjectId(this._id),
+            username: this.username,
+          },
+        };
+
+        return db.collection("orders").insertOne(order);
+      })
+      .then((result) => {
+        this.cart = { items: [] };
+
+        return db
+          .collection("users")
+          .updateOne(
+            { _id: new mongodb.ObjectId(this._id) },
+            { $set: { cart: { items: [] } } }
+          );
+      });
+  }
+
+  getOrders() {
+    const db = getDb();
+
+    return db
+      .collection("orders")
+      .find({ "user._id": new mongodb.ObjectId(this._id) })
+      .toArray();
+  }
+
+  deleteOrderItem(orderId) {
+    const db = getDb();
+
+    return this.getOrders()
+      .then((orders) => {
+        console.log("ORDERS:", orders);
+        console.log("ORDER ID", orderId);
+        return db
+          .collection("orders")
+          .deleteOne({ _id: new mongodb.ObjectId(orderId) });
+      })
+      .then((order) => {
+        return order;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   static findById(userId) {
     const db = getDb();
 

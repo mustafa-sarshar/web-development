@@ -10,28 +10,28 @@
   </header>
   <main>
     <% if (orders.length> 0) { %>
-      <ul class="cart__item-list">
+      <ul class="orders">
         <% for (let order of orders) { %>
-          <li class="cart__item">
+          <li class="orders__item">
             <h1>
-              #<%= order.id %>
+              #<%= order._id %>
             </h1>
-            <ul>
-              <% for (let product of order.products) { %>
-                <li>
-                  <%= product.title %> (<%= product.orderItem.quantity %>)
+            <ul class="orders__product">
+              <% for (let orderItem of order.items) { %>
+                <li class="orders__products-item">
+                  <%= orderItem.title %> (<%= orderItem.quantity %>)
                 </li>
                 <% } %>
             </ul>
             <form action="/order-item-delete" method="post">
-              <input type="hidden" value="<%= order.id %>" name="orderId">
+              <input type="hidden" value="<%= order._id %>" name="orderId">
               <button class="btn danger" type="submit">Delete</button>
             </form>
           </li>
           <% } %>
       </ul>
       <% } else { %>
-        <h1>No Products!</h1>
+        <h1>No Orders!</h1>
         <% } %>
   </main>
 </body>
