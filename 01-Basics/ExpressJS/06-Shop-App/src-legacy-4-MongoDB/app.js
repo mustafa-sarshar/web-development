@@ -22,9 +22,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Auth
 app.use((req, res, next) => {
-  User.findOne()
+  User.findById("6451576b08c97e2f29ee9b8f")
     .then((user) => {
-      req.user = user;
+      req.user = new User(user.username, user.email, user.cart, user._id);
       next();
     })
     .catch((error) => console.error(error));
@@ -43,16 +43,6 @@ app.use(pageNotFoundRoutes);
 
 // Init the Database -->> run the Server
 mongodbConnect(() => {
-  User.findOne().then((user) => {
-    if (!user) {
-      const user = new User({
-        username: "Musto",
-        email: "musto@mail.com",
-        cart: { items: [] },
-      });
-      user.save();
-    }
-  });
   app.listen(4000, () => {
     console.log(`App is running on port ${PORT}`);
   });

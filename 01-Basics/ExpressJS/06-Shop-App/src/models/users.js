@@ -1,182 +1,156 @@
-const mongodb = require("mongodb");
-const { getDb } = require("../utility/database");
+const mongoose = require("mongoose");
 
-const COLLECTION_NAME = "users";
-
-class User {
-  constructor(username, email, cart, id) {
-    this.username = username;
-    this.email = email;
-    this.cart = cart;
-    this._id = id ? new mongodb.ObjectId(id) : null;
-  }
-
-  save() {
-    const db = getDb();
-    let dbOps;
-
-    if (this._id) {
-      dbOps = db.collection(COLLECTION_NAME).updateOne(
-        { _id: this._id },
-        {
-          $set: this,
-        }
-      );
-    } else {
-      dbOps = db.collection(COLLECTION_NAME).insertOne(this);
-    }
-
-    return dbOps
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-  getCart() {
-    const db = getDb();
-    const productsIds = this.cart.items.map((cartItem) => {
-      return cartItem.productId;
-    });
-    return db
-      .collection("products")
-      .find({ _id: { $in: productsIds } })
-      .toArray()
-      .then((products) => {
-        return products.map((product) => {
-          return {
-            ...product,
-            quantity: this.cart.items.find((cartItem) => {
-              return cartItem.productId.toString() === product._id.toString();
-            }).quantity,
-          };
-        });
-      })
-      .catch((error) => console.error(error));
-  }
-
-  addToCart(product) {
-    const db = getDb();
-    let quantityNew = 1;
-    const cartItemsUpdated = [...this.cart.items];
-    const cartItemFoundIndex = this.cart.items.findIndex((item) => {
-      return item.productId.toString() === product._id.toString();
-    });
-
-    if (cartItemFoundIndex > -1) {
-      quantityNew = this.cart.items[cartItemFoundIndex].quantity + 1;
-      cartItemsUpdated[cartItemFoundIndex].quantity = quantityNew;
-    } else {
-      cartItemsUpdated.push({
-        productId: new mongodb.ObjectId(product._id),
-        quantity: quantityNew,
-      });
-    }
-
-    const cartUpdated = {
-      items: cartItemsUpdated,
-    };
-
-    return db
-      .collection(COLLECTION_NAME)
-      .updateOne(
-        {
-          _id: new mongodb.ObjectId(this._id),
+const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  cart: {
+    items: [
+      {
+        product: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Product",
+          required: true,
         },
-        {
-          $set: { cart: cartUpdated },
-        }
-      )
-      .then((user) => {
-        console.log(user);
-        return user;
-      })
-      .catch((error) => console.error(error));
-  }
+        quantity: {
+          type: Number,
+          required: true,
+        },
+      },
+    ],
+  },
+});
 
-  deleteItemFromCart(cartItemId) {
-    const db = getDb();
-    const cartItemsUpdated = this.cart.items.filter((cartItem) => {
-      return cartItem.productId.toString() !== cartItemId.toString();
+userSchema.methods.addToCart = function (product) {
+  let quantityNew = 1;
+  const cartItemsUpdated = [...this.cart.items];
+  const cartItemFoundIndex = this.cart.items.findIndex((item) => {
+    console.log("ITEM", item);
+    return item.product.toString() === product._id.toString();
+  });
+
+  if (cartItemFoundIndex > -1) {
+    quantityNew = this.cart.items[cartItemFoundIndex].quantity + 1;
+    cartItemsUpdated[cartItemFoundIndex].quantity = quantityNew;
+  } else {
+    cartItemsUpdated.push({
+      product: product._id,
+      quantity: quantityNew,
     });
-
-    return db
-      .collection(COLLECTION_NAME)
-      .updateOne(
-        { _id: new mongodb.ObjectId(this._id) },
-        { $set: { cart: { items: cartItemsUpdated } } }
-      );
   }
 
-  addOrder() {
-    const db = getDb();
+  const cartUpdated = {
+    items: cartItemsUpdated,
+  };
+  this.cart = cartUpdated;
 
-    return this.getCart()
-      .then((products) => {
-        const order = {
-          items: products,
-          user: {
-            _id: new mongodb.ObjectId(this._id),
-            username: this.username,
-          },
-        };
+  return this.save()
+    .then((user) => {
+      return user;
+    })
+    .catch((error) => console.error(error));
+};
 
-        return db.collection("orders").insertOne(order);
-      })
-      .then((result) => {
-        this.cart = { items: [] };
+userSchema.methods.deleteCartItem = function (cartItemId) {
+  const cartItemsUpdated = this.cart.items.filter((cartItem) => {
+    return cartItem.product.toString() !== cartItemId.toString();
+  });
+  this.cart.items = cartItemsUpdated;
 
-        return db
-          .collection("users")
-          .updateOne(
-            { _id: new mongodb.ObjectId(this._id) },
-            { $set: { cart: { items: [] } } }
-          );
-      });
-  }
+  return this.save();
+};
 
-  getOrders() {
-    const db = getDb();
+userSchema.methods.clearCart = function () {
+  this.cart = { items: [] };
+  return this.save();
+};
 
-    return db
-      .collection("orders")
-      .find({ "user._id": new mongodb.ObjectId(this._id) })
-      .toArray();
-  }
+//   deleteItemFromCart(cartItemId) {
+//     const db = getDb();
+//     const cartItemsUpdated = this.cart.items.filter((cartItem) => {
+//       return cartItem.productId.toString() !== cartItemId.toString();
+//     });
 
-  deleteOrderItem(orderId) {
-    const db = getDb();
+//     return db
+//       .collection(COLLECTION_NAME)
+//       .updateOne(
+//         { _id: new mongodb.ObjectId(this._id) },
+//         { $set: { cart: { items: cartItemsUpdated } } }
+//       );
+//   }
 
-    return this.getOrders()
-      .then((orders) => {
-        console.log("ORDERS:", orders);
-        console.log("ORDER ID", orderId);
-        return db
-          .collection("orders")
-          .deleteOne({ _id: new mongodb.ObjectId(orderId) });
-      })
-      .then((order) => {
-        return order;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+//   addOrder() {
+//     const db = getDb();
 
-  static findById(userId) {
-    const db = getDb();
+//     return this.getCart()
+//       .then((products) => {
+//         const order = {
+//           items: products,
+//           user: {
+//             _id: new mongodb.ObjectId(this._id),
+//             username: this.username,
+//           },
+//         };
 
-    return db
-      .collection(COLLECTION_NAME)
-      .findOne({ _id: new mongodb.ObjectId(userId) })
-      .then((user) => {
-        console.log(user);
-        return user;
-      })
-      .catch((error) => console.error(error));
-  }
-}
+//         return db.collection("orders").insertOne(order);
+//       })
+//       .then((result) => {
+//         this.cart = { items: [] };
 
-module.exports = User;
+//         return db
+//           .collection("users")
+//           .updateOne(
+//             { _id: new mongodb.ObjectId(this._id) },
+//             { $set: { cart: { items: [] } } }
+//           );
+//       });
+//   }
+
+//   getOrders() {
+//     const db = getDb();
+
+//     return db
+//       .collection("orders")
+//       .find({ "user._id": new mongodb.ObjectId(this._id) })
+//       .toArray();
+//   }
+
+//   deleteOrderItem(orderId) {
+//     const db = getDb();
+
+//     return this.getOrders()
+//       .then((orders) => {
+//         console.log("ORDERS:", orders);
+//         console.log("ORDER ID", orderId);
+//         return db
+//           .collection("orders")
+//           .deleteOne({ _id: new mongodb.ObjectId(orderId) });
+//       })
+//       .then((order) => {
+//         return order;
+//       })
+//       .catch((error) => {
+//         console.error(error);
+//       });
+//   }
+
+//   static findById(userId) {
+//     const db = getDb();
+
+//     return db
+//       .collection(COLLECTION_NAME)
+//       .findOne({ _id: new mongodb.ObjectId(userId) })
+//       .then((user) => {
+//         console.log(user);
+//         return user;
+//       })
+//       .catch((error) => console.error(error));
+//   }
+// }
+
+module.exports = mongoose.model("User", userSchema);

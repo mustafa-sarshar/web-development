@@ -14,12 +14,12 @@
         <% for (let cartItem of cartItems) { %>
           <li class="cart__item">
             <h1>
-              <%= cartItem.product.title %>
+              <%= cartItem.title %>
             </h1>
             <h2>Quantity: <%= cartItem.quantity %>
             </h2>
             <form action="/cart-item-delete" method="post">
-              <input type="hidden" value="<%= cartItem.product._id %>" name="cartItemId">
+              <input type="hidden" value="<%= cartItem._id %>" name="cartItemId">
               <button class="btn danger" type="submit">Delete</button>
             </form>
           </li>

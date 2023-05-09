@@ -9,29 +9,29 @@ const getAddProduct = (req, res, next) => {
 
 const postAddProduct = (req, res, next) => {
   const { title, price, imageUrl, description } = req.body;
-  const product = new Product({
-    title: title.trim(),
-    price: +price,
-    imageUrl: imageUrl.trim(),
-    description: description.trim(),
-    user: req.user._id,
-  });
+  const product = new Product(
+    title,
+    price,
+    imageUrl,
+    description,
+    null,
+    req.user._id
+  );
 
   product
     .save()
     .then((result) => {
+      console.log("Product created!", result);
       res.redirect("/admin/products");
     })
     .catch((error) => console.error(error));
 };
 
 const getProducts = (req, res, next) => {
-  Product.find()
-    // .select("title price -_id")
-    // .populate("userId", "username -_id")
-    .then((products) => {
+  Product.fetchAll()
+    .then((data) => {
       res.render("admin/products", {
-        products: products,
+        products: data,
         pageTitle: "Admin Products",
         path: "/admin/products",
       });
@@ -58,18 +58,13 @@ const getEditProduct = (req, res, next) => {
 
 const postEditProduct = (req, res, next) => {
   const { productId, title, price, imageUrl, description } = req.body;
+  const product = new Product(title, price, imageUrl, description, productId);
 
-  Product.findById(productId)
-    .then((product) => {
-      product.title = title.trim();
-      product.price = +price;
-      product.description = description.trim();
-      product.imageUrl = imageUrl.trim();
-
-      return product.save();
-    })
+  product
+    .save()
     .then((result) => {
       res.redirect("/admin/products");
+      console.log("Saved!", result);
     })
     .catch((error) => console.error(error));
 };
@@ -77,9 +72,10 @@ const postEditProduct = (req, res, next) => {
 const postDeleteProduct = (req, res, next) => {
   const { id } = req.params;
 
-  Product.findByIdAndRemove(id)
+  Product.deleteById(id)
     .then((results) => {
       res.redirect("/admin/products");
+      console.log("DELETED!", results);
     })
     .catch((error) => console.error(error));
 };
