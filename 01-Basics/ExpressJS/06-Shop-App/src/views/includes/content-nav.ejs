@@ -10,25 +10,40 @@
         Products
       </a>
     </li>
+    <% if (isAuthenticated) { %>
+      <li class="main-header__item">
+        <a href="/cart" class="<%= path === '/shop/cart' ? 'active' : '' %>">
+          Cart
+        </a>
+      </li>
+      <li class="main-header__item">
+        <a href="/orders" class="<%= path === '/shop/orders' ? 'active' : '' %>">
+          Orders
+        </a>
+      </li>
+      <li class="main-header__item">
+        <a href="/admin/add-product" class="<%= path === '/admin/add-product' ? 'active' : '' %>">
+          Add Product (Admin)
+        </a>
+      </li>
+      <li class="main-header__item">
+        <a href="/admin/products" class="<%= path === '/admin/products' ? 'active' : '' %>">
+          Products (Admin)
+        </a>
+      </li>
+      <% } %>
+  </ul>
+  <ul class="main-header__item-list">
     <li class="main-header__item">
-      <a href="/cart" class="<%= path === '/shop/cart' ? 'active' : '' %>">
-        Cart
-      </a>
-    </li>
-    <li class="main-header__item">
-      <a href="/orders" class="<%= path === '/shop/orders' ? 'active' : '' %>">
-        Orders
-      </a>
-    </li>
-    <li class="main-header__item">
-      <a href="/admin/add-product" class="<%= path === '/admin/add-product' ? 'active' : '' %>">
-        Add Product (Admin)
-      </a>
-    </li>
-    <li class="main-header__item">
-      <a href="/admin/products" class="<%= path === '/admin/products' ? 'active' : '' %>">
-        Products (Admin)
-      </a>
+      <% if (isAuthenticated) { %>
+        <a href="/auth/logout" class="<%= path === '/auth/logout' ? 'active' : '' %>">
+          Logout
+        </a>
+        <% } else { %>
+          <a href="/auth/login" class="<%= path === '/auth/login' ? 'active' : '' %>">
+            Login
+          </a>
+          <% } %>
     </li>
   </ul>
 </nav>

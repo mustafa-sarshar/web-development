@@ -3,4 +3,4 @@ const router = require("express").Router(),
 
 router.use(errorPageNotFound);
 
-module.exports = { router };
+module.exports = router;

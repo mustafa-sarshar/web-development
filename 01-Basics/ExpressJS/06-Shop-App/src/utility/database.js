@@ -1,19 +1,18 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"),
+  session = require("express-session"),
+  MongoDBStore = require("connect-mongodb-session")(session);
 
 const password = process.env["MONGODB_PASS"];
 const DB_NAME = "onlineshop";
-let _db;
+const DB_URI = `mongodb+srv://mustisar4:${password}@cluster0.5eqee6n.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`;
 
 const mongodbConnect = (callback) => {
   mongoose
-    .connect(
-      `mongodb+srv://mustisar4:${password}@cluster0.5eqee6n.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`,
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-    )
-    .then((client) => {
+    .connect(DB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then((result) => {
       console.log("MongoDB Connected!");
       callback();
     })
@@ -23,4 +22,9 @@ const mongodbConnect = (callback) => {
     });
 };
 
-module.exports = { mongodbConnect };
+const mongoDBStore = new MongoDBStore({
+  uri: DB_URI,
+  collection: "sessions",
+});
+
+module.exports = { mongodbConnect, mongoDBStore };

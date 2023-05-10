@@ -27,4 +27,4 @@ router
   .route("/products") // ROUTE: /admin/products
   .get(getProducts); // GET
 
-module.exports = { router };
+module.exports = router;

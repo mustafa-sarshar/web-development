@@ -30,7 +30,9 @@
               </p>
             </div>
             <div class="card__actions">
-              <%- include("../includes/gadgets/add-to-cart-button.ejs", {product}) %>
+              <% if (isAuthenticated) { %>
+                <%- include("../includes/gadgets/add-to-cart-button.ejs", {product}) %>
+                  <% } %>
             </div>
           </article>
           <% } %>

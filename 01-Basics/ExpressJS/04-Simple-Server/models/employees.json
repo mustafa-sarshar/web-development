@@ -1,28 +1,27 @@
 [
-	{
-		"_id": "cb1646a3-fbb9-41fd-9794-9b49617b07e9",
-		"first_name": "employee 1",
-		"last_name": "EMPLOYEE 1"
-	},
-	{
-		"_id": "1c1a5b10-3eaf-43a8-b543-ac8d70b007d8",
-		"first_name": "employee 2",
-		"last_name": "EMPLOYEE 2"
-	},
-	{
-		"_id": "562b9137-f507-432d-953d-c5ccf2e573af",
-		"first_name": "employee 3",
-		"last_name": "EMPLOYEE 3"
-	},
-	{
-		"_id": "3234cd03-d21c-40c4-91f3-5dbcca325da9",
-		"first_name": "employee 4",
-		"last_name": "EMPLOYEE 4"
-	},
-	{
-		"_id": "e38b849f-f282-4639-80a2-322264625517",
-		"first_name": "employee 5",
-		"last_name": "EMPLOYEE 5"
-	}
+  {
+    "_id": "cb1646a3-fbb9-41fd-9794-9b49617b07e9",
+    "first_name": "employee 1",
+    "last_name": "EMPLOYEE 1"
+  },
+  {
+    "_id": "1c1a5b10-3eaf-43a8-b543-ac8d70b007d8",
+    "first_name": "employee 2",
+    "last_name": "EMPLOYEE 2"
+  },
+  {
+    "_id": "562b9137-f507-432d-953d-c5ccf2e573af",
+    "first_name": "employee 3",
+    "last_name": "EMPLOYEE 3"
+  },
+  {
+    "_id": "3234cd03-d21c-40c4-91f3-5dbcca325da9",
+    "first_name": "employee 4",
+    "last_name": "EMPLOYEE 4"
+  },
+  {
+    "_id": "e38b849f-f282-4639-80a2-322264625517",
+    "first_name": "employee 5",
+    "last_name": "EMPLOYEE 5"
+  }
 ]
-

@@ -22,7 +22,9 @@
       <%= product.description %>
     </p>
     <br>
-    <%- include("../includes/gadgets/add-to-cart-button.ejs") %>
+    <% if (isAuthenticated) { %>
+      <%- include("../includes/gadgets/add-to-cart-button.ejs", {product}) %>
+        <% } %>
   </main>
 </body>
 </html>

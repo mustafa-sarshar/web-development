@@ -30,6 +30,8 @@ main {
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
 }
 
 .main-header__item-list {
@@ -84,7 +86,8 @@ main {
 }
 
 .form-control[type="text"],
-.form-control[type="number"] {
+.form-control[type="number"],
+.form-control[type="password"] {
   border: 1px solid var(--form-field-border);
   border-radius: 2px;
   font: inherit;
@@ -114,6 +117,7 @@ main {
 
 .card {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin-bottom: 1rem;
 }
 
 .card__header,

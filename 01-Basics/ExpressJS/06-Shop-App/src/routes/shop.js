@@ -49,4 +49,4 @@ router
   .route("/checkout") // ROUTE: /checkout
   .get(getCheckout); // GET
 
-module.exports = { router };
+module.exports = router;

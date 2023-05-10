@@ -10,7 +10,7 @@ const getAddProduct = (req, res, next) => {
 const postAddProduct = (req, res, next) => {
   const { title, imageUrl, description, price } = req.body;
 
-  req.user
+  req.session.user
     .createProduct({
       title: title.trim(),
       price: +price,
@@ -25,7 +25,7 @@ const postAddProduct = (req, res, next) => {
 };
 
 const getProducts = (req, res, next) => {
-  req.user
+  req.session.user
     .getProducts()
     // Product.findAll()
     .then((data) => {
@@ -41,7 +41,7 @@ const getProducts = (req, res, next) => {
 const getEditProduct = (req, res, next) => {
   const { id } = req.params;
 
-  req.user
+  req.session.user
     .getProducts({ where: { id: id } })
     // Product.findByPk(id)
     .then((data) => {

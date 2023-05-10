@@ -38,7 +38,7 @@ const getProduct = (req, res, next) => {
 };
 
 const getCart = (req, res, next) => {
-  req.user
+  req.session.user
     .getCart()
     .then((cart) => {
       console.log("Cart", cart.dataValues);
@@ -61,7 +61,7 @@ const postCart = (req, res, next) => {
   let cartFetched;
   let quantityNew = 1;
 
-  req.user
+  req.session.user
     .getCart()
     .then((cart) => {
       console.log("Cart", cart.dataValues);
@@ -93,7 +93,7 @@ const postCart = (req, res, next) => {
 
 const postCartItemDelete = (req, res, next) => {
   const { productId } = req.body;
-  req.user
+  req.session.user
     .getCart()
     .then((cart) => {
       return cart.getProducts({ where: { id: productId } });
@@ -109,7 +109,7 @@ const postCartItemDelete = (req, res, next) => {
 };
 
 const getOrders = (req, res, next) => {
-  req.user
+  req.session.user
     .getOrders({ include: ["products"] })
     .then((orders) => {
       res.render("shop/orders", {
@@ -124,14 +124,14 @@ const getOrders = (req, res, next) => {
 const postOrderCreate = (req, res, next) => {
   let cartFetched;
 
-  req.user
+  req.session.user
     .getCart()
     .then((cart) => {
       cartFetched = cart;
       return cart.getProducts();
     })
     .then((products) => {
-      return req.user
+      return req.session.user
         .createOrder()
         .then((order) => {
           return order.addProducts(
@@ -155,7 +155,7 @@ const postOrderCreate = (req, res, next) => {
 const postOrderItemDelete = (req, res, next) => {
   const { orderId } = req.body;
 
-  req.user
+  req.session.user
     .getOrders({ where: { id: orderId } })
     .then((orderItems) => {
       const orderItem = orderItems[0];

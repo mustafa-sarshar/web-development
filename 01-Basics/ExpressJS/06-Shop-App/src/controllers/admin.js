@@ -4,6 +4,7 @@ const getAddProduct = (req, res, next) => {
   res.render("admin/add-product", {
     pageTitle: "Add Product",
     path: "/admin/add-product",
+    isAuthenticated: req.session.isAuthenticated,
   });
 };
 
@@ -34,6 +35,7 @@ const getProducts = (req, res, next) => {
         products: products,
         pageTitle: "Admin Products",
         path: "/admin/products",
+        isAuthenticated: req.session.isAuthenticated,
       });
     })
     .catch((error) => console.error(error));
@@ -51,6 +53,7 @@ const getEditProduct = (req, res, next) => {
         product: data,
         pageTitle: "Edit Product",
         path: "/admin/edit-product",
+        isAuthenticated: req.session.isAuthenticated,
       });
     })
     .catch((error) => console.error(error));

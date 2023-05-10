@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use((req, res, next) => {
   User.findByPk(1)
     .then((user) => {
-      req.user = user;
+      req.session.user = user;
       next();
     })
     .catch((error) => console.error(error));

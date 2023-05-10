@@ -15,7 +15,7 @@ const postAddProduct = (req, res, next) => {
     imageUrl,
     description,
     null,
-    req.user._id
+    req.session.user._id
   );
 
   product

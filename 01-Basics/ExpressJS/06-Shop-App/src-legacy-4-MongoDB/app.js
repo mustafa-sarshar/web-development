@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use((req, res, next) => {
   User.findById("6451576b08c97e2f29ee9b8f")
     .then((user) => {
-      req.user = new User(user.username, user.email, user.cart, user._id);
+      req.session.user = new User(user.username, user.email, user.cart, user._id);
       next();
     })
     .catch((error) => console.error(error));
