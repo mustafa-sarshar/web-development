@@ -4,7 +4,6 @@ const getAddProduct = (req, res, next) => {
   res.render("admin/add-product", {
     pageTitle: "Add Product",
     path: "/admin/add-product",
-    isAuthenticated: req.session.isAuthenticated,
   });
 };
 
@@ -27,7 +26,7 @@ const postAddProduct = (req, res, next) => {
 };
 
 const getProducts = (req, res, next) => {
-  Product.find()
+  Product.find({ user: req.user._id })
     // .select("title price -_id")
     // .populate("userId", "username -_id")
     .then((products) => {
@@ -35,10 +34,13 @@ const getProducts = (req, res, next) => {
         products: products,
         pageTitle: "Admin Products",
         path: "/admin/products",
-        isAuthenticated: req.session.isAuthenticated,
       });
     })
-    .catch((error) => console.error(error));
+    .catch((error) => {
+      req.flash("errorMessage", "Something went wrong!");
+      res.redirect("/admin/products");
+      console.error(error);
+    });
 };
 
 const getEditProduct = (req, res, next) => {
@@ -53,38 +55,59 @@ const getEditProduct = (req, res, next) => {
         product: data,
         pageTitle: "Edit Product",
         path: "/admin/edit-product",
-        isAuthenticated: req.session.isAuthenticated,
       });
     })
-    .catch((error) => console.error(error));
+    .catch((error) => {
+      req.flash("errorMessage", "Something went wrong!");
+      res.redirect("/admin/products");
+      console.error(error);
+    });
 };
 
 const postEditProduct = (req, res, next) => {
   const { productId, title, price, imageUrl, description } = req.body;
 
-  Product.findById(productId)
+  Product.findOne({ _id: productId, user: req.user._id })
     .then((product) => {
+      if (!product) {
+        return res.redirect("/admin/products");
+      }
+
       product.title = title.trim();
       product.price = +price;
       product.description = description.trim();
       product.imageUrl = imageUrl.trim();
 
-      return product.save();
+      return product
+        .save()
+        .then((result) => {
+          res.redirect("/admin/products");
+        })
+        .catch((error) => {
+          req.flash("errorMessage", "Something went wrong!");
+          res.redirect("/admin/products");
+          console.error(error);
+        });
     })
-    .then((result) => {
+    .catch((error) => {
+      req.flash("errorMessage", "Something went wrong!");
       res.redirect("/admin/products");
-    })
-    .catch((error) => console.error(error));
+      console.error(error);
+    });
 };
 
 const postDeleteProduct = (req, res, next) => {
   const { id } = req.params;
 
-  Product.findByIdAndRemove(id)
+  Product.deleteOne({ _id: id, user: req.user._id })
     .then((results) => {
       res.redirect("/admin/products");
     })
-    .catch((error) => console.error(error));
+    .catch((error) => {
+      req.flash("errorMessage", "Something went wrong!");
+      res.redirect("/admin/products");
+      console.error(error);
+    });
 };
 
 module.exports = {

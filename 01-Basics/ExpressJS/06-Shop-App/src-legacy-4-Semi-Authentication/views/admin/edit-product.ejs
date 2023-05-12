@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("../includes/content-head.ejs") %>
+    <%- include("../includes/content-title.ejs") %>
+</head>
+<body>
+  <header class="main-header">
+    <%- include("../includes/content-nav.ejs") %>
+  </header>
+  <main>
+    <form class="form-main" action="/admin/edit-product/<%= product._id %>" method="post">
+      <div class="form-group">
+        <label class="form-control" for="title">Title:</label>
+        <input class="form-control" type="text" name="title" id="title" value="<%= product.title %>" required>
+      </div>
+      <div class="form-group">
+        <label class="form-control" for="imageUrl">Image URL:</label>
+        <input class="form-control" type="text" name="imageUrl" id="imageUrl" value="<%= product.imageUrl %>" required>
+      </div>
+      <div class="form-group">
+        <label class="form-control" for="price">Price:</label>
+        <input class="form-control" type="number" min="0" name="price" id="price" step="0.01"
+          value="<%= product.price %>" required>
+      </div>
+      <div class="form-group">
+        <label class="form-control" for="description">Description:</label>
+        <textarea class="form-control" cols="30" rows="10" name="description" id="description" required>
+          <%= product.description %>
+        </textarea>
+      </div>
+      <div class="form-group">
+        <button class="form-control" type="submit">
+          Edit Product
+        </button>
+      </div>
+      <input type="hidden" name="productId" id="productId" value="<%= product._id %>">
+    </form>
+  </main>
+</body>
+</html>

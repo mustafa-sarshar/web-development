@@ -10,7 +10,8 @@ const router = require("express").Router(),
     getOrders,
     postOrderCreate,
     postOrderItemDelete,
-  } = require("../controllers/shop");
+  } = require("../controllers/shop"),
+  authFirewall = require("../middleware/auth");
 
 router
   .route("/") // ROUTE: /
@@ -26,27 +27,27 @@ router
 
 router
   .route("/cart") // ROUTE: /cart
-  .get(getCart) // GET
-  .post(postCart); // POST
+  .get(authFirewall, getCart) // GET
+  .post(authFirewall, postCart); // POST
 
 router
   .route("/cart-item-delete") // ROUTE: /cart-item-delete
-  .post(postCartItemDelete); // POST
+  .post(authFirewall, postCartItemDelete); // POST
 
 router
   .route("/orders") // ROUTE: /orders
-  .get(getOrders); // GET
+  .get(authFirewall, getOrders); // GET
 
 router
   .route("/order-create") // ROUTE: /order-create
-  .post(postOrderCreate); // POST
+  .post(authFirewall, postOrderCreate); // POST
 
 router
   .route("/order-item-delete") // ROUTE: /order-item-delete
-  .post(postOrderItemDelete); // DELETE
+  .post(authFirewall, postOrderItemDelete); // DELETE
 
 router
   .route("/checkout") // ROUTE: /checkout
-  .get(getCheckout); // GET
+  .get(authFirewall, getCheckout); // GET
 
 module.exports = router;

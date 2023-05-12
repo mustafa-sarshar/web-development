@@ -3,6 +3,9 @@
   --nav-normal: #000000;
   --nav-active: #4c036e;
   --form-field-border: #a1a109;
+  --color-error: #b31616;
+  --color-success: #0f630f;
+  --color-warn: #b87d0f;
 }
 
 *,
@@ -45,6 +48,16 @@ main {
 
 .main-header__item {
   margin-left: 1rem;
+}
+
+.main-header__item button {
+  background-color: transparent;
+  color: var(--nav-normal);
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 5px 1rem;
+  border: none;
+  cursor: pointer;
 }
 
 .main-header__item a {
@@ -246,4 +259,28 @@ main {
   border: 1px solid #00695c;
   color: #00695c;
   list-style: none;
+}
+
+.flash-message {
+  padding: 1rem;
+  margin: 1rem auto;
+  border: 1px #8889e9 solid;
+  border-radius: 0.375rem;
+  width: 90%;
+  text-align: center;
+}
+
+.flash-message--error {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.flash-message--success {
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+.flash-message--warn {
+  border-color: var(--color-warn);
+  color: var(--color-warn);
 }

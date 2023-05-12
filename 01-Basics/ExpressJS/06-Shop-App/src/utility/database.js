@@ -2,9 +2,7 @@ const mongoose = require("mongoose"),
   session = require("express-session"),
   MongoDBStore = require("connect-mongodb-session")(session);
 
-const password = process.env["MONGODB_PASS"];
-const DB_NAME = "onlineshop";
-const DB_URI = `mongodb+srv://mustisar4:${password}@cluster0.5eqee6n.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`;
+const DB_URI = process.env["DB_URI"];
 
 const mongodbConnect = (callback) => {
   mongoose

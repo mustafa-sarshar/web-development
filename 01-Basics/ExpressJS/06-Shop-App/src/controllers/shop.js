@@ -3,14 +3,12 @@ const Product = require("../models/products"),
   Order = require("../models/orders");
 
 const getIndex = (req, res, next) => {
-  console.log(req.cookies);
   Product.find()
     .then((data) => {
       res.render("shop/index", {
         products: data,
         pageTitle: "My Shops",
         path: "/shop/index",
-        isAuthenticated: req.session.isAuthenticated,
       });
     })
     .catch((error) => console.error(error));
@@ -23,7 +21,6 @@ const getProducts = (req, res, next) => {
         products: products,
         pageTitle: "My Shops",
         path: "/shop/products",
-        isAuthenticated: req.session.isAuthenticated,
       });
     })
     .catch((error) => console.error(error));
@@ -37,7 +34,6 @@ const getProduct = (req, res, next) => {
         product: product,
         pageTitle: "My Shops - " + product.title,
         path: "/shop/product-details",
-        isAuthenticated: req.session.isAuthenticated,
       });
     })
     .catch((error) => console.error(error));
@@ -55,7 +51,6 @@ const getCart = (req, res, next) => {
         cartItems: cartItems,
         pageTitle: "My Cart",
         path: "/shop/cart",
-        isAuthenticated: req.session.isAuthenticated,
       });
     })
     .catch((error) => console.error(error));
@@ -88,12 +83,10 @@ const postCartItemDelete = (req, res, next) => {
 const getOrders = (req, res, next) => {
   Order.find({ "user.userId": req.user._id })
     .then((orders) => {
-      console.log("ORDERS", orders);
       res.render("shop/orders", {
         pageTitle: "My Orders",
         path: "/shop/orders",
         orders: orders,
-        isAuthenticated: req.session.isAuthenticated,
       });
     })
     .catch((error) => console.error(error));
@@ -113,7 +106,7 @@ const postOrderCreate = (req, res, next) => {
       const order = new Order({
         user: {
           userId: req.user._id,
-          username: req.user.username,
+          email: req.user.email,
         },
         products: products,
       });
@@ -126,7 +119,7 @@ const postOrderCreate = (req, res, next) => {
     .then((result) => {
       res.redirect("/orders");
     })
-    .catch((err) => console.log(err));
+    .catch((error) => console.error(error));
 };
 
 const postOrderItemDelete = (req, res, next) => {
@@ -143,7 +136,6 @@ const getCheckout = (req, res, next) => {
   res.render("shop/checkout", {
     pageTitle: "Checkout",
     path: "/shop/checkout",
-    isAuthenticated: req.session.isAuthenticated,
   });
 };
 

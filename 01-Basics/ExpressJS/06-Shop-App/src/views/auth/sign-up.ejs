@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("../includes/content-head.ejs") %>
+    <%- include("../includes/content-title.ejs") %>
+</head>
+<body>
+  <header class="main-header">
+    <%- include("../includes/content-nav.ejs") %>
+  </header>
+  <main>
+    <%- include("../includes/gadgets/flash-message.ejs") %>
+      <form class="form-main" action="/auth/sign-up" method="post">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <div class="form-group">
+          <label class="form-control" for="email">Email:</label>
+          <input class="form-control" type="text" name="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label class="form-control" for="password">Password:</label>
+          <input class="form-control" type="password" name="password" id="password" required>
+        </div>
+        <div class="form-group">
+          <label class="form-control" for="password-confirm">Confirm Password:</label>
+          <input class="form-control" type="password" name="passwordConfirm" id="password-confirm" required>
+        </div>
+        <div class="form-group">
+          <button class="form-control" type="submit">
+            Sign Up
+          </button>
+        </div>
+      </form>
+  </main>
+</body>
+</html>

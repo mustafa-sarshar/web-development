@@ -9,6 +9,7 @@
     <%- include("../includes/content-nav.ejs") %>
   </header>
   <main>
+    <%- include("../includes/gadgets/flash-message.ejs") %>
     <% if (orders.length> 0) { %>
       <ul class="orders">
         <% for (let order of orders) { %>
@@ -24,6 +25,7 @@
                 <% } %>
             </ul>
             <form action="/order-item-delete" method="post">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
               <input type="hidden" value="<%= order._id %>" name="orderId">
               <button class="btn danger" type="submit">Delete</button>
             </form>

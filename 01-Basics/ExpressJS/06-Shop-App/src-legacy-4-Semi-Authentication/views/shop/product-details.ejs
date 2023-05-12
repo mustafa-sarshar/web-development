@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("../includes/content-head.ejs") %>
+    <%- include("../includes/content-title.ejs") %>
+</head>
+<body>
+  <header class="main-header">
+    <%- include("../includes/content-nav.ejs") %>
+  </header>
+  <main class="centered">
+    <h1>
+      Title: <%= product.title %>
+    </h1>
+    <hr>
+    <div class="card__image">
+      <img src="<%= product.imageUrl %>" alt="<%= product.title %>" srcset="">
+    </div>
+    <h2>Price: $<%= product.price %>
+    </h2>
+    <p>
+      <%= product.description %>
+    </p>
+    <br>
+    <% if (isAuthenticated) { %>
+      <%- include("../includes/gadgets/add-to-cart-button.ejs", {product}) %>
+        <% } %>
+  </main>
+</body>
+</html>

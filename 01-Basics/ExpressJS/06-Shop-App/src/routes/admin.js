@@ -6,25 +6,26 @@ const router = require("express").Router(),
     getEditProduct,
     postEditProduct,
     postDeleteProduct,
-  } = require("../controllers/admin");
+  } = require("../controllers/admin"),
+  authFirewall = require("../middleware/auth");
 
 // sub-routes for /admin
 router
   .route("/add-product") // ROUTE: /admin/add-product
-  .get(getAddProduct) // GET
-  .post(postAddProduct); // POST
+  .get(authFirewall, getAddProduct) // GET
+  .post(authFirewall, postAddProduct); // POST
 
 router
   .route("/edit-product/:id") // ROUTE: /admin/edit-product/{productId}
-  .get(getEditProduct) // GET
-  .post(postEditProduct); // POST
+  .get(authFirewall, getEditProduct) // GET
+  .post(authFirewall, postEditProduct); // POST
 
 router
   .route("/delete-product/:id") // ROUTE: /admin/delete-product/{productId}
-  .post(postDeleteProduct); // POST
+  .post(authFirewall, postDeleteProduct); // POST
 
 router
   .route("/products") // ROUTE: /admin/products
-  .get(getProducts); // GET
+  .get(authFirewall, getProducts); // GET
 
 module.exports = router;

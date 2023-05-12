@@ -1,13 +1,21 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-  },
   email: {
     type: String,
     required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  resetToken: {
+    type: String,
+    required: false,
+  },
+  resetTokenExpirationDate: {
+    type: Date,
+    required: false,
   },
   cart: {
     items: [
@@ -30,7 +38,6 @@ userSchema.methods.addToCart = function (product) {
   let quantityNew = 1;
   const cartItemsUpdated = [...this.cart.items];
   const cartItemFoundIndex = this.cart.items.findIndex((item) => {
-    console.log("ITEM", item);
     return item.product.toString() === product._id.toString();
   });
 
