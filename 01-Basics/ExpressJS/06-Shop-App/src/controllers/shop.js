@@ -1,14 +1,23 @@
 const Product = require("../models/products"),
   User = require("../models/users"),
-  Order = require("../models/orders");
+  Order = require("../models/orders"),
+  {
+    renderParamsCommon,
+    renderParamsIndex,
+    renderParamsProducts,
+    renderParamsCheckout,
+    renderParamsOrders,
+    renderParamsCart,
+    renderParamsDetails,
+  } = require("../constants/renderParams");
 
 const getIndex = (req, res, next) => {
   Product.find()
     .then((data) => {
       res.render("shop/index", {
+        ...renderParamsIndex,
+        ...renderParamsCommon,
         products: data,
-        pageTitle: "My Shops",
-        path: "/shop/index",
       });
     })
     .catch((error) => console.error(error));
@@ -18,9 +27,9 @@ const getProducts = (req, res, next) => {
   Product.find()
     .then((products) => {
       res.render("shop/products", {
+        ...renderParamsProducts,
+        ...renderParamsCommon,
         products: products,
-        pageTitle: "My Shops",
-        path: "/shop/products",
       });
     })
     .catch((error) => console.error(error));
@@ -31,9 +40,10 @@ const getProduct = (req, res, next) => {
   Product.findById(productId)
     .then((product) => {
       res.render("shop/product-details", {
-        product: product,
+        ...renderParamsDetails,
+        ...renderParamsCommon,
         pageTitle: "My Shops - " + product.title,
-        path: "/shop/product-details",
+        product: product,
       });
     })
     .catch((error) => console.error(error));
@@ -48,9 +58,9 @@ const getCart = (req, res, next) => {
     .then((user) => {
       const cartItems = user.cart.items;
       res.render("shop/cart", {
+        ...renderParamsCart,
+        ...renderParamsCommon,
         cartItems: cartItems,
-        pageTitle: "My Cart",
-        path: "/shop/cart",
       });
     })
     .catch((error) => console.error(error));
@@ -84,8 +94,8 @@ const getOrders = (req, res, next) => {
   Order.find({ "user.userId": req.user._id })
     .then((orders) => {
       res.render("shop/orders", {
-        pageTitle: "My Orders",
-        path: "/shop/orders",
+        ...renderParamsOrders,
+        ...renderParamsCommon,
         orders: orders,
       });
     })
@@ -134,8 +144,8 @@ const postOrderItemDelete = (req, res, next) => {
 
 const getCheckout = (req, res, next) => {
   res.render("shop/checkout", {
-    pageTitle: "Checkout",
-    path: "/shop/checkout",
+    ...renderParamsCheckout,
+    ...renderParamsCommon,
   });
 };
 

@@ -1,7 +1,14 @@
 const bcrypt = require("bcryptjs"),
   crypto = require("crypto"),
+  { validationResult } = require("express-validator"),
   User = require("../models/users"),
-  { sendEmail, getOAuth2AccessToken } = require("../utility/mail");
+  { sendEmail, getOAuth2AccessToken } = require("../utility/mail"),
+  {
+    renderParamsCommon,
+    renderParamsLogin,
+    renderParamsSignUp,
+    renderParamsResetPassword,
+  } = require("../constants/renderParams");
 
 const SERVER_PORT = process.env["SERVER_PORT"];
 const SERVER_IP = process.env["SERVER_IP"];
@@ -9,19 +16,43 @@ const salt = bcrypt.genSaltSync(10);
 
 const getLogin = (req, res, next) => {
   res.render("auth/login", {
-    pageTitle: "Login",
-    path: "/auth/login",
+    ...renderParamsLogin,
+    ...renderParamsCommon,
   });
 };
 
 const postLogin = (req, res, next) => {
   const { email, password } = req.body;
+  const validationErrors = validationResult(req);
+
+  if (!validationErrors.isEmpty()) {
+    console.error("VAL", validationErrors.array());
+    return res
+      .status(422) // validation error
+      .render("auth/login", {
+        ...renderParamsLogin,
+        ...renderParamsCommon,
+        validationErrors: validationErrors.array(),
+        oldInputs: {
+          email: email,
+          password: password,
+        },
+      });
+  }
 
   User.findOne({ email: email })
     .then((user) => {
       if (!user) {
         req.flash("errorMessage", "No user found! Please try again.");
-        return res.redirect("/auth/login");
+        return res.render("auth/login", {
+          ...renderParamsLogin,
+          ...renderParamsCommon,
+          errorMessage: ["No user found! Please try again."],
+          oldInputs: {
+            email: email,
+            password: password,
+          },
+        });
       }
 
       return bcrypt
@@ -33,98 +64,126 @@ const postLogin = (req, res, next) => {
 
             return req.session.save((error) => {
               if (error) {
-                req.flash("errorMessage", "Server error! Please try again.");
-                res.redirect("/auth/login");
+                res.render("auth/login", {
+                  ...renderParamsLogin,
+                  ...renderParamsCommon,
+                  errorMessage: ["Server error! Please try again."],
+                  oldInputs: {
+                    email: email,
+                    password: password,
+                  },
+                });
                 console.error(error);
               } else {
                 res.redirect("/");
               }
             });
           } else {
-            req.flash(
-              "errorMessage",
-              "Credentials are not valid! Please try again."
-            );
-            res.redirect("/auth/login");
+            res.render("auth/login", {
+              ...renderParamsLogin,
+              ...renderParamsCommon,
+              errorMessage: ["Credentials are not valid! Please try again."],
+              oldInputs: {
+                email: email,
+                password: password,
+              },
+            });
           }
         })
         .catch((error) => {
-          req.flash("errorMessage", "Something went wrong! Please try again.");
-          res.redirect("/auth/login");
+          res.render("auth/login", {
+            ...renderParamsLogin,
+            ...renderParamsCommon,
+            errorMessage: ["Something went wrong! Please try again."],
+            oldInputs: {
+              email: email,
+              password: password,
+            },
+          });
           console.error(error);
         });
     })
     .catch((error) => {
-      req.flash("errorMessage", "Something went wrong! Please try again.");
-      res.redirect("/auth/login");
+      res.render("auth/login", {
+        ...renderParamsLogin,
+        ...renderParamsCommon,
+        errorMessage: ["Something went wrong! Please try again."],
+        oldInputs: {
+          email: email,
+          password: password,
+        },
+      });
       console.error(error);
     });
 };
 
 const getSignUp = (req, res, next) => {
   res.render("auth/sign-up", {
-    pageTitle: "Sign Up",
-    path: "/auth/sign-up",
+    ...renderParamsSignUp,
+    ...renderParamsCommon,
   });
 };
 
 const postSignUp = (req, res, next) => {
   const { email, password, passwordConfirm } = req.body;
+  const validationErrors = validationResult(req);
   let newUser;
 
-  if (password !== passwordConfirm) {
-    req.flash("errorMessage", "Passwords are not identical!");
-    return res.render("auth/sign-up", {
-      pageTitle: "Sign Up",
-      path: "/auth/sign-up",
-    });
+  if (!validationErrors.isEmpty()) {
+    return res
+      .status(422) // validation error
+      .render("auth/sign-up", {
+        ...renderParamsSignUp,
+        ...renderParamsCommon,
+        validationErrors: validationErrors.array(),
+        oldInputs: {
+          email: email,
+          password: password,
+          passwordConfirm: passwordConfirm,
+        },
+      });
   }
 
-  User.findOne({ email: email })
-    .then((user) => {
-      if (user) {
-        req.flash("errorMessage", "This email is not available!");
-        return res.redirect("/auth/sign-up");
-      }
+  bcrypt
+    .hash(password, salt)
+    .then((passHashed) => {
+      newUser = new User({
+        email: email,
+        password: passHashed,
+        cart: { items: [] },
+      });
 
-      bcrypt
-        .hash(password, salt)
-        .then((passHashed) => {
-          newUser = new User({
-            email: email,
-            password: passHashed,
-            cart: { items: [] },
-          });
-
-          return getOAuth2AccessToken;
-        })
-        .then((accessToken) => {
-          return sendEmail(
-            email,
-            "Sign up confirmation",
-            `<h1>Congratulations!</h1><p>You have successfully created your account via <strong>${email}</strong>.</p>`,
-            accessToken
-          );
-        })
-        .then((result) => {
-          return newUser.save();
-        })
-        .then((result) => {
-          req.flash(
-            "successMessage",
-            "Congratulations! You have successfully signed up."
-          );
-          res.redirect("/auth/login");
-        })
-        .catch((error) => {
-          req.flash("errorMessage", "Something went wrong! Please try again.");
-          res.redirect("/auth/sign-up");
-          console.error(error);
-        });
+      return getOAuth2AccessToken;
+    })
+    .then((accessToken) => {
+      return sendEmail(
+        email,
+        "Sign up confirmation",
+        `<h1>Congratulations!</h1><p>You have successfully created your account via <strong>${email}</strong>.</p>`,
+        accessToken
+      );
+    })
+    .then((result) => {
+      return newUser.save();
+    })
+    .then((result) => {
+      res.render("auth/login", {
+        ...renderParamsLogin,
+        ...renderParamsCommon,
+        successMessage: ["Congratulations! You have successfully signed up."],
+      });
     })
     .catch((error) => {
-      req.flash("errorMessage", "Something went wrong! Please try again.");
-      res.redirect("/auth/sign-up");
+      res.render("auth/sign-up", {
+        ...renderParamsSignUp,
+        ...renderParamsCommon,
+        errorMessage: ["Something went wrong! Please try again."],
+        oldInputs: {
+          email: email,
+          password: password,
+          passwordConfirm: passwordConfirm,
+        },
+      });
       console.error(error);
     });
 };
@@ -134,14 +193,18 @@ const postLogout = (req, res, next) => {
     if (error) {
       console.error(error);
     }
-    res.redirect("/auth/login");
+    res.render("auth/login", {
+      ...renderParamsLogin,
+      ...renderParamsCommon,
+    });
   });
 };
 
 const getResetPassword = (req, res, next) => {
   res.render("auth/reset-password", {
-    pageTitle: "Reset Password",
-    path: "/auth/reset-password",
+    ...renderParamsResetPassword,
+    ...renderParamsCommon,
+    errorMessage: req.flash("errorMessage"),
   });
 };
 
@@ -159,7 +222,6 @@ const postResetPassword = (req, res, next) => {
       User.findOne({ email: email })
         .then((user) => {
           if (!user) {
-            console.error(error);
             req.flash(
               "errorMessage",
               "Credentials are not valid! Please try again."
@@ -168,14 +230,14 @@ const postResetPassword = (req, res, next) => {
           } else {
             user.resetToken = resetToken;
             user.resetTokenExpirationDate = Date.now() + 60 * 60 * 1000;
-            return user.save();
-          }
-        })
-        .then((result) => {
-          return getOAuth2AccessToken();
-        })
-        .then((accessToken) => {
-          const emailHtml = `
+
+            return user
+              .save()
+              .then((result) => {
+                return getOAuth2AccessToken();
+              })
+              .then((accessToken) => {
+                const emailHtml = `
             <p>You requested a password reset.</p>
             <p>
               Please click this
@@ -187,15 +249,25 @@ const postResetPassword = (req, res, next) => {
             </p>
           `;
 
-          return sendEmail(
-            email,
-            "Reset Password Request",
-            emailHtml,
-            accessToken
-          );
-        })
-        .then((result) => {
-          res.redirect("/");
+                return sendEmail(
+                  email,
+                  "Reset Password Request",
+                  emailHtml,
+                  accessToken
+                );
+              })
+              .then((result) => {
+                res.redirect("/");
+              })
+              .catch((error) => {
+                console.error(error);
+                req.flash(
+                  "errorMessage",
+                  "Something went wrong! Please try again."
+                );
+                res.redirect("/auth/reset-password");
+              });
+          }
         })
         .catch((error) => {
           console.error(error);

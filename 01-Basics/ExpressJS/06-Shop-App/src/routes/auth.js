@@ -9,17 +9,21 @@ const router = require("express").Router(),
     postResetPassword,
     getSetNewPassword,
     postSetNewPassword,
-  } = require("../controllers/auth");
+  } = require("../controllers/auth"),
+  {
+    signUpFieldsValidation,
+    loginFieldsValidation,
+  } = require("../utility/validators");
 
 router
   .route("/login") // /auth/login
   .get(getLogin) // GET
-  .post(postLogin); // POST
+  .post(loginFieldsValidation, postLogin); // POST
 
 router
   .route("/sign-up") // /auth/sign-up
   .get(getSignUp) // GET
-  .post(postSignUp); // POST
+  .post(signUpFieldsValidation, postSignUp); // POST
 
 router
   .route("/logout") // /auth/logout

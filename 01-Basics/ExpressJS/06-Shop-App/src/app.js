@@ -58,9 +58,9 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.session.isAuthenticated;
   res.locals.csrfToken = req.csrfToken();
-  res.locals.errorMessage = req.flash("errorMessage");
-  res.locals.successMessage = req.flash("successMessage");
-  res.locals.warnMessage = req.flash("warnMessage");
+  // res.locals.errorMessage = req.flash("errorMessage");
+  // res.locals.successMessage = req.flash("successMessage");
+  // res.locals.warnMessage = req.flash("warnMessage");
   next();
 });
 

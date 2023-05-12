@@ -284,3 +284,8 @@ main {
   border-color: var(--color-warn);
   color: var(--color-warn);
 }
+
+.form-group input.invalid-input {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}

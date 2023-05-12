@@ -1,9 +1,15 @@
-const Product = require("../models/products");
+const Product = require("../models/products"),
+  {
+    renderParamsCommon,
+    renderParamsAdminAddProducts,
+    renderParamsAdminProducts,
+    renderParamsAdminEditProduct,
+  } = require("../constants/renderParams");
 
 const getAddProduct = (req, res, next) => {
   res.render("admin/add-product", {
-    pageTitle: "Add Product",
-    path: "/admin/add-product",
+    ...renderParamsAdminAddProducts,
+    ...renderParamsCommon,
   });
 };
 
@@ -31,9 +37,9 @@ const getProducts = (req, res, next) => {
     // .populate("userId", "username -_id")
     .then((products) => {
       res.render("admin/products", {
+        ...renderParamsAdminProducts,
+        ...renderParamsCommon,
         products: products,
-        pageTitle: "Admin Products",
-        path: "/admin/products",
       });
     })
     .catch((error) => {
@@ -52,9 +58,9 @@ const getEditProduct = (req, res, next) => {
         return res.redirect("/");
       }
       res.render("admin/edit-product", {
+        ...renderParamsAdminEditProduct,
+        ...renderParamsCommon,
         product: data,
-        pageTitle: "Edit Product",
-        path: "/admin/edit-product",
       });
     })
     .catch((error) => {
