@@ -7,7 +7,9 @@ const MAIL_SERVICE = process.env["MAIL_SERVICE"],
   MAIL_SERVICE_CLIENT_ID = process.env["MAIL_SERVICE_CLIENT_ID"],
   MAIL_SERVICE_CLIENT_SECRET = process.env["MAIL_SERVICE_CLIENT_SECRET"],
   MAIL_SERVICE_REDIRECT_URI = process.env["MAIL_SERVICE_REDIRECT_URI"],
-  MAIL_SERVICE_REFRESH_TOKEN = process.env["MAIL_SERVICE_REFRESH_TOKEN"];
+  MAIL_SERVICE_REFRESH_TOKEN = process.env["MAIL_SERVICE_REFRESH_TOKEN"],
+  SERVER_IP = process.env["SERVER_IP"],
+  SERVER_PORT = process.env["SERVER_PORT"];
 
 const googleOAuth2Client = new google.auth.OAuth2(
   MAIL_SERVICE_CLIENT_ID,
@@ -45,4 +47,18 @@ const getOAuth2AccessToken = () => {
   return googleOAuth2Client.getAccessToken();
 };
 
-module.exports = { sendEmail, getOAuth2AccessToken };
+const generateWelcomeEmail = (resetToken) => {
+  return `
+            <p>You requested a password reset.</p>
+            <p>
+              Please click this
+              <a href="http://${SERVER_IP}:${SERVER_PORT}/auth/set-new-password/${resetToken}"> link </a>
+              to set a new password.
+            </p>
+            <p>
+              This link will be expired in one hour.
+            </p>
+          `;
+};
+
+module.exports = { sendEmail, getOAuth2AccessToken, generateWelcomeEmail };

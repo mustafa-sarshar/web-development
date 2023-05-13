@@ -57,10 +57,14 @@ exports.renderParamsAdminEditProduct = {
   path: "/admin/edit-product",
 };
 
-// 404
+// Error
 exports.renderParams404 = {
   pageTitle: "Page Not Found!",
-  path: "404",
+  path: "error/404",
+};
+exports.renderParams500 = {
+  pageTitle: "Server error!",
+  path: "error/500",
 };
 
 // Data manipulation

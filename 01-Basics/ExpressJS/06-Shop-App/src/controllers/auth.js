@@ -2,7 +2,11 @@ const bcrypt = require("bcryptjs"),
   crypto = require("crypto"),
   { validationResult } = require("express-validator"),
   User = require("../models/users"),
-  { sendEmail, getOAuth2AccessToken } = require("../utility/mail"),
+  {
+    sendEmail,
+    getOAuth2AccessToken,
+    generateWelcomeEmail,
+  } = require("../utility/mail"),
   {
     renderParamsCommon,
     renderParamsLogin,
@@ -10,9 +14,6 @@ const bcrypt = require("bcryptjs"),
     renderParamsResetPassword,
     bcryptSalt,
   } = require("../constants/renderParams");
-
-const SERVER_PORT = process.env["SERVER_PORT"];
-const SERVER_IP = process.env["SERVER_IP"];
 
 const getLogin = (req, res, next) => {
   res.render("auth/login", {
@@ -103,16 +104,10 @@ const postLogin = (req, res, next) => {
         });
     })
     .catch((error) => {
-      res.render("auth/login", {
-        ...renderParamsLogin,
-        ...renderParamsCommon,
-        errorMessage: ["Something went wrong! Please try again."],
-        oldInputs: {
-          email: email,
-          password: password,
-        },
-      });
       console.error(error);
+      const err = new Error(error);
+      err.httpStatusCode = 500;
+      return next(err);
     });
 };
 
@@ -173,17 +168,10 @@ const postSignUp = (req, res, next) => {
       });
     })
     .catch((error) => {
-      res.render("auth/sign-up", {
-        ...renderParamsSignUp,
-        ...renderParamsCommon,
-        errorMessage: ["Something went wrong! Please try again."],
-        oldInputs: {
-          email: email,
-          password: password,
-          passwordConfirm: passwordConfirm,
-        },
-      });
       console.error(error);
+      const err = new Error(error);
+      err.httpStatusCode = 500;
+      return next(err);
     });
 };
 
@@ -234,17 +222,7 @@ const postResetPassword = (req, res, next) => {
                 return getOAuth2AccessToken();
               })
               .then((accessToken) => {
-                const emailHtml = `
-            <p>You requested a password reset.</p>
-            <p>
-              Please click this
-              <a href="http://${SERVER_IP}:${SERVER_PORT}/auth/set-new-password/${resetToken}"> link </a>
-              to set a new password.
-            </p>
-            <p>
-              This link will be expired in one hour.
-            </p>
-          `;
+                const emailHtml = generateWelcomeEmail(resetToken);
 
                 return sendEmail(
                   email,
@@ -268,8 +246,9 @@ const postResetPassword = (req, res, next) => {
         })
         .catch((error) => {
           console.error(error);
-          req.flash("errorMessage", "Something went wrong! Please try again.");
-          res.redirect("/auth/reset-password");
+          const err = new Error(error);
+          err.httpStatusCode = 500;
+          return next(err);
         });
     }
   });
@@ -297,8 +276,9 @@ const getSetNewPassword = (req, res, next) => {
     })
     .catch((error) => {
       console.error(error);
-      req.flash("errorMessage", "Something went wrong! Please try again.");
-      res.redirect("/auth/login");
+      const err = new Error(error);
+      err.httpStatusCode = 500;
+      return next(err);
     });
 };
 
@@ -351,9 +331,10 @@ const postSetNewPassword = (req, res, next) => {
       res.redirect("/auth/login");
     })
     .catch((error) => {
-      req.flash("errorMessage", "Something went wrong! Please try again.");
-      res.redirect("/auth/reset-password");
       console.error(error);
+      const err = new Error(error);
+      err.httpStatusCode = 500;
+      return next(err);
     });
 };
 

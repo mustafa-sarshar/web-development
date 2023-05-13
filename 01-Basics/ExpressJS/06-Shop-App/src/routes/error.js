@@ -1,6 +1,12 @@
 const router = require("express").Router(),
-  { errorPageNotFound } = require("../controllers/404");
+  { getError404, getError500 } = require("../controllers/error");
 
-router.use(errorPageNotFound);
+router
+  .route("/404") // /error/404
+  .get(getError404); // GET
+
+router
+  .route("/500") // /error/500
+  .get(getError500); // GET
 
 module.exports = router;

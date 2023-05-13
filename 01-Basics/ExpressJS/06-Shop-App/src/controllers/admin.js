@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const Product = require("../models/products"),
   { validationResult } = require("express-validator"),
   {
@@ -47,7 +48,12 @@ const postAddProduct = (req, res, next) => {
     .then((result) => {
       res.redirect("/admin/products");
     })
-    .catch((error) => console.error(error));
+    .catch((error) => {
+      console.error(error);
+      const err = new Error(error);
+      err.httpStatusCode = 500;
+      return next(err);
+    });
 };
 
 const getProducts = (req, res, next) => {
@@ -62,9 +68,10 @@ const getProducts = (req, res, next) => {
       });
     })
     .catch((error) => {
-      req.flash("errorMessage", "Something went wrong!");
-      res.redirect("/admin/products");
       console.error(error);
+      const err = new Error(error);
+      err.httpStatusCode = 500;
+      return next(err);
     });
 };
 
@@ -83,9 +90,10 @@ const getEditProduct = (req, res, next) => {
       });
     })
     .catch((error) => {
-      req.flash("errorMessage", "Something went wrong!");
-      res.redirect("/admin/products");
       console.error(error);
+      const err = new Error(error);
+      err.httpStatusCode = 500;
+      return next(err);
     });
 };
 
@@ -133,9 +141,10 @@ const postEditProduct = (req, res, next) => {
         });
     })
     .catch((error) => {
-      req.flash("errorMessage", "Something went wrong!");
-      res.redirect("/admin/products");
       console.error(error);
+      const err = new Error(error);
+      err.httpStatusCode = 500;
+      return next(err);
     });
 };
 
@@ -147,9 +156,10 @@ const postDeleteProduct = (req, res, next) => {
       res.redirect("/admin/products");
     })
     .catch((error) => {
-      req.flash("errorMessage", "Something went wrong!");
-      res.redirect("/admin/products");
       console.error(error);
+      const err = new Error(error);
+      err.httpStatusCode = 500;
+      return next(err);
     });
 };
 
