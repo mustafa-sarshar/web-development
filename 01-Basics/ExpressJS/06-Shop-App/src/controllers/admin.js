@@ -1,4 +1,5 @@
 const Product = require("../models/products"),
+  { validationResult } = require("express-validator"),
   {
     renderParamsCommon,
     renderParamsAdminAddProducts,
@@ -14,12 +15,30 @@ const getAddProduct = (req, res, next) => {
 };
 
 const postAddProduct = (req, res, next) => {
+  const validationErrors = validationResult(req);
   const { title, price, imageUrl, description } = req.body;
+
+  if (!validationErrors.isEmpty()) {
+    return res
+      .status(422) // validation error
+      .render("admin/add-product", {
+        ...renderParamsAdminAddProducts,
+        ...renderParamsCommon,
+        validationErrors: validationErrors.array(),
+        oldInputs: {
+          title: title,
+          price: price,
+          imageUrl: imageUrl,
+          description: description,
+        },
+      });
+  }
+
   const product = new Product({
-    title: title.trim(),
+    title: title,
     price: +price,
-    imageUrl: imageUrl.trim(),
-    description: description.trim(),
+    imageUrl: imageUrl,
+    description: description,
     user: req.user._id,
   });
 
@@ -71,7 +90,25 @@ const getEditProduct = (req, res, next) => {
 };
 
 const postEditProduct = (req, res, next) => {
+  const validationErrors = validationResult(req);
   const { productId, title, price, imageUrl, description } = req.body;
+
+  if (!validationErrors.isEmpty()) {
+    return res
+      .status(422) // validation error
+      .render("admin/edit-product", {
+        ...renderParamsAdminEditProduct,
+        ...renderParamsCommon,
+        validationErrors: validationErrors.array(),
+        product: {
+          _id: productId,
+          title: title,
+          price: price,
+          imageUrl: imageUrl,
+          description: description,
+        },
+      });
+  }
 
   Product.findOne({ _id: productId, user: req.user._id })
     .then((product) => {

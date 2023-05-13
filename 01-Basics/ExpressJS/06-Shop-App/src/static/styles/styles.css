@@ -285,7 +285,8 @@ main {
   color: var(--color-warn);
 }
 
-.form-group input.invalid-input {
+.form-group input.invalid-input,
+.form-group textarea.invalid-input {
   border-color: var(--color-error);
   color: var(--color-error);
 }

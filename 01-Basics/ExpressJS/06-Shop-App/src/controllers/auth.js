@@ -8,11 +8,11 @@ const bcrypt = require("bcryptjs"),
     renderParamsLogin,
     renderParamsSignUp,
     renderParamsResetPassword,
+    bcryptSalt,
   } = require("../constants/renderParams");
 
 const SERVER_PORT = process.env["SERVER_PORT"];
 const SERVER_IP = process.env["SERVER_IP"];
-const salt = bcrypt.genSaltSync(10);
 
 const getLogin = (req, res, next) => {
   res.render("auth/login", {
@@ -26,7 +26,6 @@ const postLogin = (req, res, next) => {
   const validationErrors = validationResult(req);
 
   if (!validationErrors.isEmpty()) {
-    console.error("VAL", validationErrors.array());
     return res
       .status(422) // validation error
       .render("auth/login", {
@@ -145,7 +144,7 @@ const postSignUp = (req, res, next) => {
   }
 
   bcrypt
-    .hash(password, salt)
+    .hash(password, bcryptSalt)
     .then((passHashed) => {
       newUser = new User({
         email: email,
@@ -189,14 +188,12 @@ const postSignUp = (req, res, next) => {
 };
 
 const postLogout = (req, res, next) => {
+  res.clearCookie("_csrf");
   req.session.destroy((error) => {
     if (error) {
       console.error(error);
     }
-    res.render("auth/login", {
-      ...renderParamsLogin,
-      ...renderParamsCommon,
-    });
+    res.redirect("/auth/login");
   });
 };
 
@@ -325,7 +322,7 @@ const postSetNewPassword = (req, res, next) => {
         res.redirect("/auth/reset-password");
       } else {
         userUpdate = user;
-        return bcrypt.hash(password, salt);
+        return bcrypt.hash(password, bcryptSalt);
       }
     })
     .then((passHashed) => {

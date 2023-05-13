@@ -9,6 +9,7 @@
     <%- include("../includes/content-nav.ejs") %>
   </header>
   <main>
+    <%- include("../includes/gadgets/flash-message.ejs") %>
     <% if(products.length> 0) { %>
       <div class="grid">
         <% for (let product of products) { %>

@@ -1,3 +1,5 @@
+const bcrypt = require("bcryptjs");
+
 // General
 exports.renderParamsCommon = {
   errorMessage: [],
@@ -54,3 +56,13 @@ exports.renderParamsAdminEditProduct = {
   pageTitle: "Edit Product",
   path: "/admin/edit-product",
 };
+
+// 404
+exports.renderParams404 = {
+  pageTitle: "Page Not Found!",
+  path: "404",
+};
+
+// Data manipulation
+
+exports.bcryptSalt = bcrypt.genSaltSync(10);
