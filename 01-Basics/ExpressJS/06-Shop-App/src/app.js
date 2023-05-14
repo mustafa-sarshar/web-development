@@ -4,12 +4,12 @@ require("dotenv").config();
 const express = require("express"),
   path = require("path"),
   bodyParser = require("body-parser"),
-  cookieParser = require("cookie-parser"),
+  // cookieParser = require("cookie-parser"),
   session = require("express-session"),
   csurf = require("csurf"),
   flash = require("connect-flash"),
   { mongodbConnect, mongoDBStore } = require("./utility/database"),
-  User = require("./models/users");
+  { getUser } = require("./controllers/auth");
 
 const SERVER_PORT = process.env["SERVER_PORT"];
 const SERVER_IP = process.env["SERVER_IP"];
@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(cookieParser());
 app.use(
   session({
-    secret: "keyboard cat",
+    secret: "d1abea63236dab4f405234961fa1fd1ededf1648cd8f04e8a55ace98163ed22d",
     resave: false,
     saveUninitialized: false,
     store: mongoDBStore,
@@ -51,26 +51,7 @@ app.use((req, res, next) => {
 });
 
 // Auth Middleware
-app.use((req, res, next) => {
-  if (!req.session.user) {
-    return next();
-  }
-
-  User.findOne({ _id: req.session.user._id })
-    .then((user) => {
-      if (!user) {
-        next();
-      }
-      req.user = user;
-      next();
-    })
-    .catch((error) => {
-      console.error(error);
-      const err = new Error(error);
-      err.httpStatusCode = 500;
-      return next(err);
-    });
-});
+app.use(getUser);
 
 // Set static routes
 app.use(express.static(path.join(__dirname, "static")));

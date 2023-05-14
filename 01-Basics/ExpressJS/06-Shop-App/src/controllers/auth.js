@@ -15,6 +15,27 @@ const bcrypt = require("bcryptjs"),
     bcryptSalt,
   } = require("../constants/renderParams");
 
+const getUser = (req, res, next) => {
+  if (!req.session.user) {
+    return next();
+  }
+
+  User.findOne({ _id: req.session.user._id })
+    .then((user) => {
+      if (!user) {
+        next();
+      }
+      req.user = user;
+      next();
+    })
+    .catch((error) => {
+      console.error(error);
+      const err = new Error(error);
+      err.httpStatusCode = 500;
+      return next(err);
+    });
+};
+
 const getLogin = (req, res, next) => {
   res.render("auth/login", {
     ...renderParamsLogin,
@@ -339,6 +360,7 @@ const postSetNewPassword = (req, res, next) => {
 };
 
 module.exports = {
+  getUser,
   getLogin,
   postLogin,
   postLogout,
