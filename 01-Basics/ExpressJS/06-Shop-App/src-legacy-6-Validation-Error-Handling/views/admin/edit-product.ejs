@@ -10,43 +10,40 @@
   </header>
   <main>
     <%- include("../includes/gadgets/flash-message.ejs") %>
-      <form class="form-main" action="/admin/add-product" method="post" enctype="multipart/form-data">
+      <form class="form-main" action="/admin/edit-product/<%= product._id %>" method="post">
         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
         <div class="form-group">
           <label class="form-control" for="title">Title:</label>
           <input
             class="form-control <%= validationErrors.find(error => error.path === 'title') ? 'invalid-input' : '' %>"
-            type="text" name="title" id="title" value="<%= oldInputs.title %>" required>
+            type="text" name="title" id="title" value="<%= product.title %>" required>
         </div>
-        <!-- <div class="form-group">
+        <div class="form-group">
           <label class="form-control" for="imageUrl">Image URL:</label>
           <input
             class="form-control <%= validationErrors.find(error => error.path === 'imageUrl') ? 'invalid-input' : '' %>"
-            type="text" name="imageUrl" id="imageUrl" value="<%= oldInputs.imageUrl %>" required>
-        </div> -->
-        <div class="form-group">
-          <label class="form-control" for="image">Image:</label>
-          <input class="form-control" type="file" name="image" id="image" required>
+            type="text" name="imageUrl" id="imageUrl" value="<%= product.imageUrl %>" required>
         </div>
         <div class="form-group">
           <label class="form-control" for="price">Price:</label>
           <input
             class="form-control <%= validationErrors.find(error => error.path === 'price') ? 'invalid-input' : '' %>"
-            type="number" min="0" name="price" id="price" step="0.01" value="<%= oldInputs.price %>" required>
+            type="number" min="0" name="price" id="price" step="0.01" value="<%= product.price %>" required>
         </div>
         <div class="form-group">
           <label class="form-control" for="description">Description:</label>
           <textarea
             class="form-control <%= validationErrors.find(error => error.path === 'description') ? 'invalid-input' : '' %>"
             cols="30" rows="10" name="description" id="description" required>
-            <%= oldInputs.description %>
+            <%= product.description %>
           </textarea>
         </div>
         <div class="form-group">
           <button class="form-control" type="submit">
-            Add Product
+            Edit Product
           </button>
         </div>
+        <input type="hidden" name="productId" id="productId" value="<%= product._id %>">
       </form>
   </main>
 </body>

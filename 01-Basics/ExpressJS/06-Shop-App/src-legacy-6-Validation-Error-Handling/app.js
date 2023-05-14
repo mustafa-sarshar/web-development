@@ -4,16 +4,11 @@ require("dotenv").config();
 const express = require("express"),
   path = require("path"),
   bodyParser = require("body-parser"),
-  multer = require("multer"),
   // cookieParser = require("cookie-parser"),
   session = require("express-session"),
   csurf = require("csurf"),
   flash = require("connect-flash"),
   { mongodbConnect, mongoDBStore } = require("./utility/database"),
-  {
-    multerFileFilter,
-    multerDiskStorage,
-  } = require("./constants/multerSettings"),
   { getUser } = require("./controllers/auth");
 
 const SERVER_PORT = process.env["SERVER_PORT"];
@@ -33,11 +28,6 @@ app.set("views", "src/views");
 
 // Set global middleware
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(
-  multer({ storage: multerDiskStorage, fileFilter: multerFileFilter }).single(
-    "image"
-  )
-);
 // app.use(cookieParser());
 app.use(
   session({
@@ -65,7 +55,6 @@ app.use(getUser);
 
 // Set static routes
 app.use(express.static(path.join(__dirname, "static")));
-app.use("/src/data", express.static(path.join(__dirname, "data")));
 
 // Set component routes
 app.use("/admin", adminRoutes);
@@ -79,6 +68,7 @@ app.use((error, req, res, next) => {
     pageTitle: "Error!",
     path: "error/" + error.httpStatusCode,
   });
+  // res.redirect("/error/" + error.httpStatusCode);
 });
 
 // Init the Database -->> run the Server

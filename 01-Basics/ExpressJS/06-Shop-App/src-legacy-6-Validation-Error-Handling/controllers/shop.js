@@ -1,6 +1,4 @@
-const path = require("path"),
-  { createPDF } = require("../utility/pdf"),
-  Product = require("../models/products"),
+const Product = require("../models/products"),
   User = require("../models/users"),
   Order = require("../models/orders"),
   {
@@ -48,8 +46,7 @@ const getProducts = (req, res, next) => {
 };
 
 const getProduct = (req, res, next) => {
-  const { productId } = req.params;
-
+  const productId = req.params.id;
   Product.findById(productId)
     .then((product) => {
       res.render("shop/product-details", {
@@ -140,48 +137,6 @@ const getOrders = (req, res, next) => {
     });
 };
 
-const getInvoice = (req, res, next) => {
-  const { invoiceId } = req.params;
-
-  // Check the authentication
-  Order.findOne({ _id: invoiceId })
-    .then((order) => {
-      if (!order) {
-        return new Error("No Order Found!");
-      }
-      if (order.user.userId.toString() !== req.user._id.toString()) {
-        return new Error("No Authorized!");
-      }
-
-      const invoiceFilename = `invoice_${invoiceId}.pdf`;
-      const invoicePath = path.join("src", "data", "invoices", invoiceFilename);
-
-      createPDF(invoiceFilename, invoicePath, order, res);
-
-      // fs.readFile(invoicePath, (error, data) => {
-      //   if (error) {
-      //     const err = new Error(error);
-      //     err.httpStatusCode = 500;
-      //     next(err);
-      //   } else {
-      //     res.set("Content-Type", "application/pdf");
-      //     res.set("Content-Disposition", `inline; filename=${invoiceFilename}`);
-      //     res.send(data);
-      //   }
-      // });
-      // const fileStream = fs.createReadStream(invoicePath);
-      // res.set("Content-Type", "application/pdf");
-      // res.set("Content-Disposition", `inline; filename=${invoiceFilename}`);
-      // fileStream.pipe(res);
-    })
-    .catch((error) => {
-      console.error(error);
-      const err = new Error(error);
-      err.httpStatusCode = 500;
-      return next(err);
-    });
-};
-
 const postOrderCreate = (req, res, next) => {
   req.user
     .populate({
@@ -247,7 +202,6 @@ module.exports = {
   postCart,
   postCartItemDelete,
   getOrders,
-  getInvoice,
   postOrderCreate,
   postOrderItemDelete,
   getCheckout,

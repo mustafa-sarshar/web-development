@@ -20,7 +20,7 @@
               </h1>
             </header>
             <div class="card__image">
-              <img src="/<%= product.imageUrl %>" alt="<%= product.title %>" />
+              <img src="<%= product.imageUrl %>" alt="<%= product.title %>" />
             </div>
             <div class="card__content">
               <h2 class="product__price">
@@ -31,14 +31,13 @@
               </p>
             </div>
             <div class="card__actions">
-              <form action="/admin/edit-product/<%= product._id %>" method="get">
+              <form action="/products/<%= product._id %>" method="get">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                <button class="btn" type="submit">Edit</button>
+                <button class="btn" type="submit">Details</button>
               </form>
-              <form action="/admin/delete-product/<%= product._id %>" method="post">
-                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                <button class="btn" type="submit">Delete</button>
-              </form>
+              <% if (isAuthenticated) { %>
+                <%- include("../includes/gadgets/add-to-cart-button.ejs", {product}) %>
+                  <% } %>
             </div>
           </article>
           <% } %>

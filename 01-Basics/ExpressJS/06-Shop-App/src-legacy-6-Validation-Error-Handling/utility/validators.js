@@ -59,6 +59,10 @@ const addProductValidation = [
         }
       });
     }),
+  check("imageUrl")
+    .trim()
+    .isURL()
+    .withMessage("Please enter a valid image url!"),
   check("price").isFloat().withMessage("Price must be numeric!"),
   check("description")
     .trim()
@@ -75,6 +79,10 @@ const editProductValidation = [
     .isLength({ min: 3 })
     .withMessage("Title must be at list 3 characters long!")
     .trim(),
+  check("imageUrl")
+    .trim()
+    .isURL()
+    .withMessage("Please enter a valid image url!"),
   check("price").isFloat().withMessage("Price must be numeric!"),
   check("description")
     .trim()

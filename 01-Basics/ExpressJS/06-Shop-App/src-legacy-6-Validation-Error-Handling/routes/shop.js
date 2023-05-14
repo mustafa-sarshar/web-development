@@ -8,7 +8,6 @@ const router = require("express").Router(),
     postCartItemDelete,
     getCheckout,
     getOrders,
-    getInvoice,
     postOrderCreate,
     postOrderItemDelete,
   } = require("../controllers/shop"),
@@ -23,7 +22,7 @@ router
   .get(getProducts); // GET
 
 router
-  .route("/products/:productId") // ROUTE: /products/{id}
+  .route("/products/:id") // ROUTE: /products/{id}
   .get(getProduct); // GET
 
 router
@@ -38,10 +37,6 @@ router
 router
   .route("/orders") // ROUTE: /orders
   .get(authFirewall, getOrders); // GET
-
-router
-  .route("/invoices/:invoiceId") // ROUTE: /invoices/{invoiceId}
-  .get(authFirewall, getInvoice); // GET
 
 router
   .route("/order-create") // ROUTE: /order-create

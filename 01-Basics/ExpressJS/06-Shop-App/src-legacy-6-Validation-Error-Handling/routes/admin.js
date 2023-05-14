@@ -20,12 +20,12 @@ router
   .post(authFirewall, addProductValidation, postAddProduct); // POST
 
 router
-  .route("/edit-product/:productId") // ROUTE: /admin/edit-product/{productId}
+  .route("/edit-product/:id") // ROUTE: /admin/edit-product/{productId}
   .get(authFirewall, getEditProduct) // GET
   .post(authFirewall, editProductValidation, postEditProduct); // POST
 
 router
-  .route("/delete-product/:productId") // ROUTE: /admin/delete-product/{productId}
+  .route("/delete-product/:id") // ROUTE: /admin/delete-product/{productId}
   .post(authFirewall, postDeleteProduct); // POST
 
 router
