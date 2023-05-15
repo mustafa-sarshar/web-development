@@ -116,5 +116,5 @@ package-lock.json
 # Others
 /assets
 *.vscode/*
-*data/images/*
-*data/invoices/*
+data/images/
+data/invoices/
