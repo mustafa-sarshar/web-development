@@ -75,9 +75,6 @@ app.use("/", shopRoutes);
 // Handle errors
 app.use("/error", errorRoutes);
 app.use((error, req, res, next) => {
-  if (!error.httpStatusCode) {
-    error.httpStatusCode = 500;
-  }
   res.status(error.httpStatusCode).render("error/" + error.httpStatusCode, {
     pageTitle: "Error!",
     path: "error/" + error.httpStatusCode,

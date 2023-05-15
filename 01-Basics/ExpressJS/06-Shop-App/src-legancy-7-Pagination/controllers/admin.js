@@ -216,36 +216,6 @@ const postDeleteProduct = (req, res, next) => {
     });
 };
 
-const deleteDeleteProduct = (req, res, next) => {
-  const { productId } = req.params;
-
-  Product.findById(productId)
-    .then((product) => {
-      if (!product) {
-        const err = new Error("No product found");
-        err.httpStatusCode = 500;
-        return next(err);
-      } else {
-        deleteFile(product.imageUrl);
-        return Product.deleteOne({ _id: productId, user: req.user._id });
-      }
-    })
-    .then((results) => {
-      res.status(200).json({
-        msg: "Product deleted!",
-      });
-    })
-    .catch((error) => {
-      res.status(500).json({
-        msh: "Deleting product failed!",
-      });
-      // console.error(error);
-      // const err = new Error(error);
-      // err.httpStatusCode = 500;
-      // return next(err);
-    });
-};
-
 module.exports = {
   getAddProduct,
   postAddProduct,
@@ -253,5 +223,4 @@ module.exports = {
   getEditProduct,
   postEditProduct,
   postDeleteProduct,
-  deleteDeleteProduct,
 };

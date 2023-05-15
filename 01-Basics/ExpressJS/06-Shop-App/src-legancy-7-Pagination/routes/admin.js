@@ -6,13 +6,12 @@ const router = require("express").Router(),
     getEditProduct,
     postEditProduct,
     postDeleteProduct,
-    deleteDeleteProduct,
   } = require("../controllers/admin"),
   {
     addProductValidation,
     editProductValidation,
-  } = require("../utility/validators"),
-  authFirewall = require("../middleware/auth");
+  } = require("../utility/validators");
+authFirewall = require("../middleware/auth");
 
 // sub-routes for /admin
 router
@@ -27,8 +26,7 @@ router
 
 router
   .route("/delete-product/:productId") // ROUTE: /admin/delete-product/{productId}
-  .post(authFirewall, postDeleteProduct) // POST
-  .delete(authFirewall, deleteDeleteProduct); // Delete
+  .post(authFirewall, postDeleteProduct); // POST
 
 router
   .route("/products") // ROUTE: /admin/products

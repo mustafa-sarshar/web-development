@@ -112,10 +112,16 @@ const postLogin = (req, res, next) => {
           }
         })
         .catch((error) => {
+          res.render("auth/login", {
+            ...renderParamsLogin,
+            ...renderParamsCommon,
+            errorMessage: ["Something went wrong! Please try again."],
+            oldInputs: {
+              email: email,
+              password: password,
+            },
+          });
           console.error(error);
-          const err = new Error(error);
-          err.httpStatusCode = 500;
-          return next(err);
         });
     })
     .catch((error) => {
@@ -251,9 +257,11 @@ const postResetPassword = (req, res, next) => {
               })
               .catch((error) => {
                 console.error(error);
-                const err = new Error(error);
-                err.httpStatusCode = 500;
-                return next(err);
+                req.flash(
+                  "errorMessage",
+                  "Something went wrong! Please try again."
+                );
+                res.redirect("/auth/reset-password");
               });
           }
         })

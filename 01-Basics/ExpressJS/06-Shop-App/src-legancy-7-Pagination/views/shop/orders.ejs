@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("../includes/content-head.ejs") %>
+    <%- include("../includes/content-title.ejs") %>
+</head>
+<body>
+  <header class="main-header">
+    <%- include("../includes/content-nav.ejs") %>
+  </header>
+  <main>
+    <%- include("../includes/gadgets/flash-message.ejs") %>
+      <% if (orders.length> 0) { %>
+        <ul class="orders">
+          <% for (let order of orders) { %>
+            <li class="orders__item">
+              <h1>
+                #<%= order._id %> - <a href="/invoices/<%= order._id %>">Invoice</a>
+              </h1>
+              <ul class="orders__product">
+                <% for (let orderItem of order.products) { %>
+                  <li class="orders__products-item">
+                    <%= orderItem.product.title %> (<%= orderItem.quantity %>)
+                  </li>
+                  <% } %>
+              </ul>
+              <form action="/order-item-delete" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <input type="hidden" value="<%= order._id %>" name="orderId">
+                <button class="btn danger" type="submit">Delete</button>
+              </form>
+            </li>
+            <% } %>
+        </ul>
+        <% } else { %>
+          <h1>No Orders!</h1>
+          <% } %>
+  </main>
+</body>
+</html>

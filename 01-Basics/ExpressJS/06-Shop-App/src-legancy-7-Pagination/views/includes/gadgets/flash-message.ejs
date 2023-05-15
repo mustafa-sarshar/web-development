@@ -1,0 +1,20 @@
+<% if (successMessage.length> 0) { %>
+  <div class="flash-message flash-message--success">
+    <%= successMessage.join(" ") %>
+  </div>
+  <% } %>
+    <% if (warnMessage.length> 0) { %>
+      <div class=" flash-message flash-message--warn">
+      <%= warnMessage.join(" ") %>
+      </div>
+      <% } %>
+        <% if (errorMessage.length> 0) { %>
+          <div class=" flash-message flash-message--error">
+        <%= errorMessage.join(" ") %>
+          </div>
+          <% } %>
+            <% if (validationErrors.length> 0) { %>
+              <div class=" flash-message flash-message--error">
+          <%= validationErrors.map((error)=> error.msg).join(" ") %>
+  </div>
+  <% } %>
