@@ -270,30 +270,10 @@ const postOrderItemDelete = (req, res, next) => {
 };
 
 const getCheckout = (req, res, next) => {
-  req.user
-    .populate({
-      path: "cart.items.product",
-      select: "",
-    })
-    .then((user) => {
-      const cartItems = user.cart.items;
-      let totalPrice = 0;
-      for (let i = 0; i < cartItems.length; i++) {
-        totalPrice += cartItems[i].quantity * cartItems[i].product.price;
-      }
-      res.render("shop/checkout", {
-        ...renderParamsCheckout,
-        ...renderParamsCommon,
-        cartItems: cartItems,
-        totalPrice: totalPrice,
-      });
-    })
-    .catch((error) => {
-      console.error(error);
-      const err = new Error(error);
-      err.httpStatusCode = 500;
-      return next(err);
-    });
+  res.render("shop/checkout", {
+    ...renderParamsCheckout,
+    ...renderParamsCommon,
+  });
 };
 
 module.exports = {

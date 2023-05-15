@@ -10,35 +10,36 @@
   </header>
   <main>
     <%- include("../includes/gadgets/flash-message.ejs") %>
-    <% if (cartItems.length> 0) { %>
-      <ul class="cart__item-list">
-        <% for (let cartItem of cartItems) { %>
-          <li class="cart__item">
-            <h1>
-              <%= cartItem.product.title %>
-            </h1>
-            <h2>Quantity: <%= cartItem.quantity %>
-            </h2>
-            <form action="/cart-item-delete" method="post">
-              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-              <input type="hidden" value="<%= cartItem.product._id %>" name="cartItemId">
-              <button class="btn danger" type="submit">Delete</button>
-            </form>
-          </li>
-          <% } %>
-      </ul>
-      <br><br>
-      <hr>
-      <br>
-      <div class="centered">
-        <form action="/order-create" method="post">
+      <% if (cartItems.length> 0) { %>
+        <ul class="cart__item-list">
+          <% for (let cartItem of cartItems) { %>
+            <li class="cart__item">
+              <h1>
+                <%= cartItem.product.title %>
+              </h1>
+              <h2>Quantity: <%= cartItem.quantity %>
+              </h2>
+              <form action="/cart-item-delete" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <input type="hidden" value="<%= cartItem.product._id %>" name="cartItemId">
+                <button class="btn danger" type="submit">Delete</button>
+              </form>
+            </li>
+            <% } %>
+        </ul>
+        <br><br>
+        <hr>
+        <br>
+        <div class="centered">
+          <!-- <form action="/order-create" method="post">
           <input type="hidden" name="_csrf" value="<%= csrfToken %>">
           <button class="btn" type="submit">Order Now!</button>
-        </form>
-      </div>
-      <% } else { %>
-        <h1>Your cart is empty!</h1>
-        <% } %>
+        </form> -->
+          <a class="btn" href="/checkout">Checkout</a>
+        </div>
+        <% } else { %>
+          <h1>Your cart is empty!</h1>
+          <% } %>
   </main>
 </body>
 </html>

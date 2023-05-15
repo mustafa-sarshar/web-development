@@ -10,7 +10,35 @@
   </header>
   <main>
     <%- include("../includes/gadgets/flash-message.ejs") %>
-    <h1>Checkout!</h1>
+      <% if (cartItems.length> 0) { %>
+        <ul class="cart__item-list">
+          <% for (let cartItem of cartItems) { %>
+            <li class="cart__item">
+              <h1>
+                <%= cartItem.product.title %>
+              </h1>
+              <h2>Quantity: <%= cartItem.quantity %>
+              </h2>
+            </li>
+            <% } %>
+        </ul>
+        <br><br>
+        <hr>
+        <br>
+        <!-- <div class="centered">
+          <form action="/order-create" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="btn" type="submit">Order Now!</button>
+          </form>
+        </div> -->
+        <div class="centered">
+          <h2>
+            Total Price: <%= totalPrice %>
+          </h2>
+        </div>
+        <% } else { %>
+          <h1>Your cart is empty!</h1>
+          <% } %>
   </main>
 </body>
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("../includes/content-head.ejs") %>
+    <%- include("../includes/content-title.ejs") %>
+</head>
+<body>
+  <header class="main-header">
+    <%- include("../includes/content-nav.ejs") %>
+  </header>
+  <main>
+    <%- include("../includes/gadgets/flash-message.ejs") %>
+      <form class="form-main" action="/auth/login" method="post">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <div class="form-group">
+          <label class="form-control" for="email">Email:</label>
+          <input
+            class="form-control <%= validationErrors.find(error => error.path === 'email') ? 'invalid-input' : '' %>"
+            type="text" name="email" id="email" value="<%= oldInputs.email %>" required>
+        </div>
+        <div class="form-group">
+          <label class="form-control" for="password">Password:</label>
+          <input
+            class="form-control <%= validationErrors.find(error => error.path === 'password') ? 'invalid-input' : '' %>"
+            type="password" name="password" id="password" value="<%= oldInputs.password %>" required>
+        </div>
+        <div class="form-group">
+          <button class="form-control" type="submit">
+            Login
+          </button>
+        </div>
+      </form>
+      <div class="centered">
+        <a href="/auth/reset-password">Reset password?</a>
+      </div>
+  </main>
+</body>
+</html>
