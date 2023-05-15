@@ -1,5 +1,4 @@
-const path = require("path"),
-  multer = require("multer");
+const multer = require("multer");
 
 const acceptedMimeTypes = [
   "image/png",

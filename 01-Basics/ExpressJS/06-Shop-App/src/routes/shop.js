@@ -23,7 +23,7 @@ router
   .get(getProducts); // GET
 
 router
-  .route("/products/:productId") // ROUTE: /products/{id}
+  .route("/products/:productId") // ROUTE: /products/{productId}
   .get(getProduct); // GET
 
 router

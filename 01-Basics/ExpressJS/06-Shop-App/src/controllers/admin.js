@@ -7,7 +7,8 @@ const Product = require("../models/products"),
     renderParamsAdminAddProducts,
     renderParamsAdminProducts,
     renderParamsAdminEditProduct,
-  } = require("../constants/renderParams");
+  } = require("../constants/renderParams"),
+  { ITEMS_PER_PAGE } = require("../constants/pagination");
 
 const getAddProduct = (req, res, next) => {
   res.render("admin/add-product", {
@@ -74,14 +75,34 @@ const postAddProduct = (req, res, next) => {
 };
 
 const getProducts = (req, res, next) => {
-  Product.find({ user: req.user._id })
-    // .select("title price -_id")
-    // .populate("userId", "username -_id")
+  const page = +req.query.page || 1;
+  let totalItems;
+
+  Product.count({ user: req.user._id })
+    .then((numProducts) => {
+      totalItems = numProducts;
+
+      return (
+        Product.find({ user: req.user._id })
+          // .select("title price -_id")
+          // .populate("userId", "username -_id")
+          .skip((page - 1) * ITEMS_PER_PAGE)
+          .limit(ITEMS_PER_PAGE)
+      );
+    })
     .then((products) => {
       res.render("admin/products", {
         ...renderParamsAdminProducts,
         ...renderParamsCommon,
         products: products,
+        pagination: {
+          hasNextPage: ITEMS_PER_PAGE * page < totalItems,
+          hasPrevPage: page > 1,
+          curPage: page,
+          nextPage: page + 1,
+          prevPage: page - 1,
+          lastPage: Math.ceil(totalItems / ITEMS_PER_PAGE),
+        },
       });
     })
     .catch((error) => {
@@ -156,9 +177,10 @@ const postEditProduct = (req, res, next) => {
           res.redirect("/admin/products");
         })
         .catch((error) => {
-          req.flash("errorMessage", "Something went wrong!");
-          res.redirect("/admin/products");
           console.error(error);
+          const err = new Error(error);
+          err.httpStatusCode = 500;
+          return next(err);
         });
     })
     .catch((error) => {
