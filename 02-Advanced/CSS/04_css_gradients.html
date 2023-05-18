@@ -10,14 +10,17 @@
         * {
             box-sizing: border-box;
         }
+
         h2 {
             text-align: center;
             border-bottom: 1px solid;
             margin-top: 40px;
         }
+
         h3 {
             text-align: center;
         }
+
         .style-and-shape-settings {
             display: flex;
             width: 100%;
@@ -28,36 +31,47 @@
             color: white;
             text-shadow: 1px 1px 2px black;
         }
+
         .grouped-elements {
             display: flex;
             margin: 0 auto;
         }
+
         .grouped-elements::after {
             content: "";
             display: table;
             clear: both;
         }
+
         #linear-gradient1 {
             background-image: linear-gradient(red, yellow);
         }
+
         #linear-gradient2 {
             background-image: linear-gradient(to left, red, yellow);
         }
+
         #linear-gradient3 {
-            background-image: linear-gradient(10deg, red, yellow);              /* via angle */
+            background-image: linear-gradient(10deg, red, yellow);
+            /* via angle */
         }
+
         #linear-gradient3:hover {
             background-image: linear-gradient(25deg, red, yellow);
         }
+
         #linear-gradientRainbow {
             background-image: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
         }
+
         #linear-gradientRainbow:hover {
             background-image: linear-gradient(135deg, red, orange, yellow, green, blue, indigo, violet);
         }
+
         #linear-gradient4 {
             background-image: linear-gradient(to left, rgba(128, 128, 128, 0.1), gray, black, gray, rgba(128, 128, 128, 0.1));
         }
+
         #linear-gradientRepeating {
             background-image: repeating-linear-gradient(to right, red, green 10%, blue 20%);
         }
@@ -65,17 +79,21 @@
         #radial-gradient1 {
             background-image: radial-gradient(rgba(255, 0, 0, 0.582), rgba(255, 255, 0, 0.651), rgba(211, 211, 211, 0.233));
         }
+
         #radial-gradient1:hover {
             background-image: radial-gradient(red, yellow, lightgray);
         }
+
         #radial-gradient2 {
             background-image: radial-gradient(rgba(255, 0, 0, 0.336) 5%, rgba(0, 128, 0, 0.596) 10%, rgba(0, 0, 255, 0.5) 50%);
             border-radius: 50%;
         }
+
         #radial-gradient3 {
             background-image: radial-gradient(circle, red, yellow, green);
             border-radius: 30%;
         }
+
         #radial-gradientRepeating {
             background-image: repeating-radial-gradient(red 40%, green, blue);
         }
@@ -83,46 +101,55 @@
         #conic-gradient1 {
             background-image: conic-gradient(red, yellow, green);
         }
+
         #conic-gradient2 {
             background-image: conic-gradient(lightgray, gray, darkblue, black, darkgreen, gray, lightgray);
         }
+
         #conic-gradient3 {
             background-image: conic-gradient(lightgray 10deg, gray 30deg, darkblue 90deg, black 95deg, darkred, gray);
         }
+
         #conic-gradient4 {
             float: left;
             width: 100px;
             background-image: conic-gradient(red, yellow, green, blue, black);
             border-radius: 50%;
         }
+
         #conic-gradient5 {
             float: left;
             width: 100px;
             background-image: conic-gradient(red 0deg, red 90deg, yellow 90deg, yellow 180deg, green 180deg, green 270deg, blue 270deg);
             border-radius: 50%;
         }
+
         #conic-gradient6 {
             float: left;
             width: 100px;
             background-image: conic-gradient(from 90deg, rgb(214, 86, 86), yellow, rgb(14, 54, 14));
             border-radius: 50%;
         }
+
         #conic-gradient7 {
             float: left;
             width: 100px;
             background-image: conic-gradient(at 60% 45%, red, yellow, green);
             border-radius: 50%;
         }
+
         #conic-gradient8 {
             width: 100px;
             background-image: repeating-conic-gradient(red 0deg 10deg, yellow 10deg 20deg, blue 20deg 30deg);
             border-radius: 50%;
         }
+
         #conic-gradient9 {
             width: 100px;
             background-image: repeating-conic-gradient(red 0deg 10deg, yellow 10deg 40deg, blue 40deg 90deg);
             border-radius: 50%;
         }
+
         #conic-gradient10 {
             width: 100px;
             background-image: repeating-conic-gradient(red 0deg 30deg, yellow 30deg 60deg, blue 60deg 90deg);
@@ -179,13 +206,6 @@
                 <div class="style-and-shape-settings" id="conic-gradient5"></div>
                 <div class="style-and-shape-settings" id="conic-gradient6"></div>
                 <div class="style-and-shape-settings" id="conic-gradient7"></div>
-            </div>
-            <hr>
-            <h3>Repeating a Conic Gradient</h3>
-            <div class="grouped-elements">
-                <div class="style-and-shape-settings" id="conic-gradient8"></div>
-                <div class="style-and-shape-settings" id="conic-gradient9"></div>
-                <div class="style-and-shape-settings" id="conic-gradient10"></div>
             </div>
             <hr>
             <h3>Repeating a Conic Gradient</h3>
