@@ -1,10 +1,19 @@
 const router = require("express").Router(),
-  { getPost, getPosts, createPost } = require("../controllers/feed"),
-  { createPostValidation } = require("../utility/validator");
+  {
+    getPost,
+    getPosts,
+    createPost,
+    updatePost,
+  } = require("../controllers/feed"),
+  {
+    createPostValidation,
+    updatePostValidation,
+  } = require("../utility/validator");
 
 router
   .route("/posts/:postId") // ROUTE: /feed/posts/{postId}
-  .get(getPost); // GET
+  .get(getPost) // GET
+  .put(updatePostValidation, updatePost); // PUT
 
 router
   .route("/posts") // ROUTE: /feed/posts

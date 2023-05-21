@@ -1,0 +1,45 @@
+<form autocomplete="off" [formGroup]="formGroupEl" *ngIf="formGroupEl">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title class="dialog__title">
+        Add/Edit Page
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- Title field -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>
+          Title
+        </mat-label>
+        <input matInput type="text" formControlName="title" id="title">
+      </mat-form-field>
+      <!-- Content field -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>
+          Content
+        </mat-label>
+        <input matInput type="text" formControlName="content" id="content">
+      </mat-form-field>
+      <!-- Image field -->
+      <br>
+      <mat-label>
+        Image
+      </mat-label>
+      <input type="file" formControlName="image" id="image">
+    </mat-card-content>
+    <mat-card-content class="space-flex"></mat-card-content>
+    <mat-card-footer>
+      <mat-card-actions align="end">
+        <!-- Cancel Button -->
+        <button mat-stroked-button class="element__bg--error element__color--light element__mr--10" type="button"
+          (click)="onClickCancel()">
+          Cancel
+        </button>
+        <!-- Login Button -->
+        <button mat-raised-button class="element__color--light" type="button" color="default" (click)="onClickSubmit()">
+          Submit
+        </button>
+      </mat-card-actions>
+    </mat-card-footer>
+  </mat-card>
+</form>

@@ -1,5 +1,7 @@
-const { validationResult } = require("express-validator"),
+const path = require("path"),
+  { validationResult } = require("express-validator"),
   { httpStatus } = require("../constants/httpStatus"),
+  { deleteFile } = require("../utility/file"),
   Post = require("../models/posts");
 
 exports.getPosts = (req, res, next) => {
@@ -52,6 +54,7 @@ exports.createPost = (req, res, next) => {
     throw err;
   }
 
+  const image = req.file;
   if (!image) {
     const err = new Error("No image provided!");
     err.statusCode = httpStatus.validationFailed.code;
@@ -60,7 +63,6 @@ exports.createPost = (req, res, next) => {
   }
 
   const { title, content } = req.body;
-  const image = req.file;
   Post({
     title: title,
     content: content,
@@ -74,6 +76,84 @@ exports.createPost = (req, res, next) => {
       res.status(httpStatus.successfulCreation.code).json({
         message: "Post created successfully!",
         results: [result],
+      });
+    })
+    .catch((error) => {
+      if (!error.statusCode) {
+        error.statusCode = httpStatus.systemFailure.code;
+      }
+      next(error);
+    });
+};
+
+exports.updatePost = (req, res, next) => {
+  const validationErrors = validationResult(req);
+
+  if (!validationErrors.isEmpty()) {
+    const err = new Error("Validation failed!");
+    err.statusCode = httpStatus.validationFailed.code;
+    err.errorData = validationErrors.array();
+    throw err;
+  }
+
+  let { title, content, imageUrl } = req.body;
+  const { postId } = req.params;
+  const image = req.file;
+  if (image) {
+    imageUrl = image.path;
+  }
+  if (!imageUrl) {
+    const err = new Error("No image provided!");
+    err.statusCode = httpStatus.validationFailed.code;
+    throw err;
+  }
+
+  Post.findById(postId)
+    .then((post) => {
+      if (!post) {
+        const err = new Error("No post found!");
+        err.statusCode = httpStatus.notFound.code;
+        throw err;
+      }
+
+      if (imageUrl !== post.imageUrl) {
+        const imagePath = path.join(__dirname, "..", "..", post.imageUrl);
+        deleteFile(imagePath);
+      }
+
+      post.title = title;
+      post.content = content;
+      post.imageUrl = imageUrl;
+      return post.save();
+    })
+    .then((result) => {
+      res.status(httpStatus.success.code).json({
+        message: "Post updated successfully!",
+        results: [result],
+      });
+    })
+    .catch((error) => {
+      if (!error.statusCode) {
+        error.statusCode = httpStatus.systemFailure.code;
+      }
+      next(error);
+    });
+};
+
+exports.deletePost = (req, res, next) => {
+  const { postId } = req.params;
+
+  Post.deleteOne(postId)
+    .then((post) => {
+      if (!post) {
+        const err = new Error("No post found!");
+        err.statusCode = httpStatus.notFound.code;
+        throw err;
+      }
+
+      res.status(httpStatus.success.code).json({
+        message: "The post fetched successfully!",
+        post: post,
       });
     })
     .catch((error) => {
