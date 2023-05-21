@@ -4,23 +4,26 @@ const router = require("express").Router(),
     getPosts,
     createPost,
     updatePost,
+    deletePost,
   } = require("../controllers/feed"),
   {
     createPostValidation,
     updatePostValidation,
-  } = require("../utility/validator");
+  } = require("../utility/validator"),
+  checkAuth = require("../middleware/check-auth");
 
 router
   .route("/posts/:postId") // ROUTE: /feed/posts/{postId}
-  .get(getPost) // GET
-  .put(updatePostValidation, updatePost); // PUT
+  .get(checkAuth, getPost) // GET
+  .put(checkAuth, updatePostValidation, updatePost) // PUT
+  .delete(checkAuth, deletePost); // DELETE
 
 router
   .route("/posts") // ROUTE: /feed/posts
-  .get(getPosts); // GET
+  .get(checkAuth, getPosts); // GET
 
 router
   .route("/post") // ROUTE: /feed/post
-  .post(createPostValidation, createPost); // POST
+  .post(checkAuth, createPostValidation, createPost); // POST
 
 module.exports = router;

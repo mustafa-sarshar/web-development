@@ -7,6 +7,14 @@ exports.httpStatus = {
     code: 201,
     message: "",
   },
+  unauthorized: {
+    code: 401,
+    message: "",
+  },
+  forbidden: {
+    code: 403,
+    message: "Forbidden!",
+  },
   notFound: {
     code: 404,
     message: "Not found!",

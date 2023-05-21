@@ -7,10 +7,7 @@ const express = require("express"),
   multer = require("multer"),
   { corsMiddleware } = require("./config/cors"),
   { mongodbConnect } = require("./utility/database"),
-  {
-    multerFileFilter,
-    multerDiskStorage,
-  } = require("./config/multerSettings");
+  { multerFileFilter, multerDiskStorage } = require("./config/multerSettings");
 
 const SERVER_PORT = process.env["SERVER_PORT"],
   SERVER_IP = process.env["SERVER_IP"];
@@ -18,7 +15,9 @@ const SERVER_PORT = process.env["SERVER_PORT"],
 const app = express();
 
 // Extract Routers
-const feedRoutes = require("./routes/feed");
+const feedRoutes = require("./routes/feed"),
+  authRoutes = require("./routes/auth"),
+  userRoutes = require("./routes/user");
 
 // Set middleware
 // app.use(bodyParse.urlencoded()); // x-www-form-urlencoded <form>
@@ -40,10 +39,11 @@ app.use(
 // });
 app.use(corsMiddleware);
 
-app.use("/src/data", express.static(path.join(__dirname, "data")));
-
 // Routes
-app.use("/feed", feedRoutes);
+app.use("/src/data", express.static(path.join(__dirname, "data")));
+app.use("/feeds", feedRoutes);
+app.use("/auth", authRoutes);
+app.use("/users", userRoutes);
 
 // Error Handler
 app.use((error, req, res, next) => {
