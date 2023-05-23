@@ -7,7 +7,8 @@ const express = require("express"),
   multer = require("multer"),
   { corsMiddleware } = require("./config/cors"),
   { mongodbConnect } = require("./utility/database"),
-  { multerFileFilter, multerDiskStorage } = require("./config/multerSettings");
+  { multerFileFilter, multerDiskStorage } = require("./config/multerSettings"),
+  passportSetup = require("./config/passport-setup");
 
 const SERVER_PORT = process.env["SERVER_PORT"],
   SERVER_IP = process.env["SERVER_IP"];

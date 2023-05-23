@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs"),
   jwt = require("jsonwebtoken"),
+  passport = require("passport"),
   { validationResult } = require("express-validator"),
   { httpStatus } = require("../constants/http-status"),
   { bcryptSalt } = require("../constants/encryption"),
@@ -84,4 +85,18 @@ exports.signUp = (req, res, next) => {
       }
       next(error);
     });
+};
+
+exports.authGoogle = (req, res, next) => {
+  return passport.authenticate("google", { scope: ["profile"] });
+};
+
+exports.authGoogleDone = (req, res, next) => {
+  console.log("DONE");
+  next();
+};
+
+exports.authGoogleRedirect = (req, res, next) => {
+  console.log("REDIRECT");
+  next();
 };
