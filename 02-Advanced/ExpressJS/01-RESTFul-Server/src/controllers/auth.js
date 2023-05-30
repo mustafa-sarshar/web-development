@@ -6,50 +6,47 @@ const bcrypt = require("bcryptjs"),
   { bcryptSalt } = require("../constants/encryption"),
   User = require("../models/users");
 
-exports.login = (req, res, next) => {
+exports.login = async (req, res, next) => {
   const { email, password } = req.body;
-  let userFetched;
 
-  User.findOne({ email: email })
-    .then((user) => {
-      if (!user) {
-        const err = new Error("No user found!");
-        err.statusCode = httpStatus.notFound.code;
-        throw err;
-      }
+  try {
+    const user = await User.findOne({ email: email });
 
-      userFetched = user;
-      return bcrypt.compare(password, user.password);
-    })
-    .then((isEqual) => {
-      if (!isEqual) {
-        const err = new Error("Wrong credentials!");
-        err.statusCode = httpStatus.unauthorized.code;
-        throw err;
-      }
+    if (!user) {
+      const err = new Error("No user found!");
+      err.statusCode = httpStatus.notFound.code;
+      throw err;
+    }
 
-      const token = jwt.sign(
-        {
-          email: userFetched.email,
-          userId: userFetched._id.toString(),
-        },
-        process.env["JWT_SECRET_KEY"],
-        { expiresIn: "1h" }
-      );
-      res.status(httpStatus.success.code).json({
-        message: "User logged in successfully!",
-        result: { token: token, userId: userFetched._id.toString() },
-      });
-    })
-    .catch((error) => {
-      if (!error.statusCode) {
-        error.statusCode = httpStatus.systemFailure.code;
-      }
-      next(error);
+    const isEqual = await bcrypt.compare(password, user.password);
+
+    if (!isEqual) {
+      const err = new Error("Wrong credentials!");
+      err.statusCode = httpStatus.unauthorized.code;
+      throw err;
+    }
+
+    const token = jwt.sign(
+      {
+        email: user.email,
+        userId: user._id.toString(),
+      },
+      process.env["JWT_SECRET_KEY"],
+      { expiresIn: "1h" }
+    );
+    res.status(httpStatus.success.code).json({
+      message: "User logged in successfully!",
+      result: { token: token, userId: user._id.toString() },
     });
+  } catch (error) {
+    if (!error.statusCode) {
+      error.statusCode = httpStatus.systemFailure.code;
+    }
+    next(error);
+  }
 };
 
-exports.signUp = (req, res, next) => {
+exports.signUp = async (req, res, next) => {
   const validationErrors = validationResult(req);
   const { username, email, password } = req.body;
 
@@ -61,30 +58,25 @@ exports.signUp = (req, res, next) => {
     throw err;
   }
 
-  bcrypt
-    .hash(password, bcryptSalt)
-    .then((passHashed) => {
-      newUser = new User({
-        username: username,
-        email: email,
-        password: passHashed,
-        status: "NEW USER",
-      });
+  try {
+    const passHashed = await bcrypt.hash(password, bcryptSalt);
 
-      return newUser.save();
-    })
-    .then((result) => {
-      res.status(httpStatus.successfulCreation.code).json({
-        message: "User created successfully!",
-        result: { userId: result._id },
-      });
-    })
-    .catch((error) => {
-      if (!error.statusCode) {
-        error.statusCode = httpStatus.systemFailure.code;
-      }
-      next(error);
+    const userNew = await new User({
+      username: username,
+      email: email,
+      password: passHashed,
+      status: "NEW USER",
+    }).save();
+    res.status(httpStatus.successfulCreation.code).json({
+      message: "User created successfully!",
+      result: { userId: userNew._id },
     });
+  } catch (error) {
+    if (!error.statusCode) {
+      error.statusCode = httpStatus.systemFailure.code;
+    }
+    next(error);
+  }
 };
 
 exports.authGoogle = (req, res, next) => {

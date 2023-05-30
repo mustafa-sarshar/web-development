@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Layout (Grid)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      display: grid;
+      grid-template-areas:
+        "head head head"
+        "side content content"
+        "foot foot foot";
+      grid-template-columns: auto auto auto;
+      grid-template-rows: 10vh 80vh 10vh;
+    }
+
+    header {
+      background-color: wheat;
+      grid-area: head;
+    }
+
+    article {
+      background-color: #b08fcf;
+      grid-area: content;
+    }
+
+    aside {
+      background-color: aqua;
+      grid-area: side;
+    }
+
+    footer {
+      background-color: wheat;
+      grid-area: foot;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Header
+  </header>
+  <article>
+    Article 1
+  </article>
+  <aside>
+    Aside 1
+  </aside>
+  <footer>
+    Footer
+  </footer>
+</body>
+</html>
