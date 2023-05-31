@@ -14,6 +14,10 @@ exports.getPosts = async (req, res, next) => {
       numItemsPerPage = numItemsTotal;
     }
     const posts = await Post.find()
+      .populate({
+        path: "author",
+        select: "",
+      })
       .skip((currentPage - 1) * numItemsPerPage)
       .limit(numItemsPerPage);
     res.status(httpStatus.success.code).json({
@@ -57,6 +61,8 @@ exports.createPost = async (req, res, next) => {
   const { title, content } = req.body;
   const image = req.file;
 
+  console.log("IMG", image);
+
   if (!validationErrors.isEmpty()) {
     const err = new Error("Validation failed!");
     err.statusCode = httpStatus.validationFailed.code;
@@ -72,7 +78,6 @@ exports.createPost = async (req, res, next) => {
   if (!image) {
     const err = new Error("No image provided!");
     err.statusCode = httpStatus.validationFailed.code;
-    err.errorData = validationErrors.array();
     throw err;
   }
 

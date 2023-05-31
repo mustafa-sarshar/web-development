@@ -32,7 +32,7 @@ module.exports = (req, res, next) => {
   }
 
   if (!tokenDecoded) {
-    const err = new Error("Not Authenticated!");
+    const err = new Error("Authentication Failed!");
     err.statusCode = httpStatus.unauthorized.code;
     if (image) {
       deleteFile(image.path);
