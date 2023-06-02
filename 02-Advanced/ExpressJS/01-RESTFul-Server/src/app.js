@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const express = require("express"),
   path = require("path"),
-  bodyParse = require("body-parser"),
+  bodyParser = require("body-parser"),
   multer = require("multer"),
   { corsMiddleware } = require("./config/cors"),
   { mongodbConnect } = require("./utility/database"),
@@ -21,8 +21,8 @@ const feedRoutes = require("./routes/feed"),
   userRoutes = require("./routes/user");
 
 // Set middleware
-// app.use(bodyParse.urlencoded()); // x-www-form-urlencoded <form>
-app.use(bodyParse.json()); // application/json
+// app.use(bodyParser.urlencoded()); // x-www-form-urlencoded <form>
+app.use(bodyParser.json()); // application/json
 app.use(
   multer({ storage: multerDiskStorage, fileFilter: multerFileFilter }).single(
     "image"

@@ -61,34 +61,32 @@ exports.createPost = async (req, res, next) => {
   const { title, content } = req.body;
   const image = req.file;
 
-  console.log("IMG", image);
+  try {
+    if (!validationErrors.isEmpty()) {
+      const err = new Error("Validation failed!");
+      err.statusCode = httpStatus.validationFailed.code;
+      err.errorData = validationErrors.array();
 
-  if (!validationErrors.isEmpty()) {
-    const err = new Error("Validation failed!");
-    err.statusCode = httpStatus.validationFailed.code;
-    err.errorData = validationErrors.array();
+      if (image) {
+        deleteFile(image.path);
+      }
 
-    if (image) {
-      deleteFile(image.path);
+      throw err;
     }
 
-    throw err;
-  }
+    if (!image) {
+      const err = new Error("No image provided!");
+      err.statusCode = httpStatus.validationFailed.code;
+      throw err;
+    }
 
-  if (!image) {
-    const err = new Error("No image provided!");
-    err.statusCode = httpStatus.validationFailed.code;
-    throw err;
-  }
+    const postNew = new Post({
+      title: title,
+      content: content,
+      imageUrl: image.path,
+      author: req.userId,
+    });
 
-  const postNew = new Post({
-    title: title,
-    content: content,
-    imageUrl: image.path,
-    author: req.userId,
-  });
-
-  try {
     await postNew.save();
 
     const user = await User.findById(req.userId);
@@ -123,23 +121,23 @@ exports.updatePost = async (req, res, next) => {
   const image = req.file;
   let imageUrlOld = "";
 
-  if (!validationErrors.isEmpty()) {
-    const err = new Error("Validation failed!");
-    err.statusCode = httpStatus.validationFailed.code;
-    err.errorData = validationErrors.array();
+  try {
+    if (!validationErrors.isEmpty()) {
+      const err = new Error("Validation failed!");
+      err.statusCode = httpStatus.validationFailed.code;
+      err.errorData = validationErrors.array();
 
-    if (image) {
-      deleteFile(image.path);
+      if (image) {
+        deleteFile(image.path);
+      }
+
+      throw err;
     }
 
-    throw err;
-  }
+    if (image) {
+      imageUrl = image.path;
+    }
 
-  if (image) {
-    imageUrl = image.path;
-  }
-
-  try {
     const postUpdate = await Post.findById(postId);
     if (!postUpdate) {
       const err = new Error("No post found!");
@@ -208,7 +206,6 @@ exports.deletePost = async (req, res, next) => {
     if (post.author.toString() !== req.userId) {
       const err = new Error("Not Authorized!");
       err.statusCode = httpStatus.unauthorized.code;
-
       throw err;
     }
 
