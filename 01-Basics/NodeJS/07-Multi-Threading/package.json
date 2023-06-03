@@ -1,0 +1,12 @@
+{
+  "name": "07-multi-threading",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index_correct.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
