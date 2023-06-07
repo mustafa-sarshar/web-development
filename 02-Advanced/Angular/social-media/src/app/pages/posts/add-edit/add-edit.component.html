@@ -25,7 +25,11 @@
       <mat-label>
         Image
       </mat-label>
-      <input type="file" formControlName="imageFile" id="imageFile" (change)="onChangeImage($event)">
+      <input type="file" formControlName="imageFile" (change)="onChangeImage($event)">
+      <hr>
+      <div *ngIf="imgPreview">
+        <img [src]="imgPreview" alt="image preview" />
+      </div>
     </mat-card-content>
     <mat-card-content class="space-flex"></mat-card-content>
     <mat-card-footer>

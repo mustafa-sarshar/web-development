@@ -76,6 +76,7 @@ exports.createPost = async (req, res, next) => {
     }
 
     if (!image) {
+      console.log("RECEIVED", req.body, req.file);
       const err = new Error("No image provided!");
       err.statusCode = httpStatus.validationFailed.code;
       throw err;

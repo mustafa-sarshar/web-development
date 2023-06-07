@@ -35,9 +35,7 @@ export class WelcomeComponent implements OnInit {
             console.error(console.error());
           },
         });
-        const socket = io("http://localhost:8282", {
-          reconnectionDelayMax: 10000,
-        });
+        const socket = io("http://localhost:8282");
         socket.on("POSTS", (data) => {
           console.log("DATA", data);
         });

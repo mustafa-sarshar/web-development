@@ -27,5 +27,8 @@ btnSubmitEl.addEventListener("click", (evt) => {
   const fd = new FormData();
   fd.append("username", txtUsernameEl.value);
   fd.append("image", fileImageEl.value);
-  console.log(fd);
+
+  for (let pair of fd.entries()) {
+    console.log(pair[0], pair[1]);
+  }
 });

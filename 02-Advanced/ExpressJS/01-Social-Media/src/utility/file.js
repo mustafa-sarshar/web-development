@@ -1,15 +1,14 @@
 const fs = require("fs");
 
 const deleteFile = (filePath) => {
-  if (fs.existsSync(filePath)) {
+  try {
     fs.unlink(filePath, (error) => {
       if (error) {
         throw error;
       }
     });
-  } else {
-    // throw new Error("No such a file exists!");
-    console.error("No such a file exists!");
+  } catch (error) {
+    console.error(error);
   }
 };
 

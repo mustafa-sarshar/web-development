@@ -28,9 +28,10 @@ export class ApiService {
       );
   }
 
-  public createPost(token: string, postData: FormData): Observable<any> {
+  public createPost(token: string, postData: any): Observable<any> {
+    console.log("NEW POST", postData);
     const headers = new HttpHeaders({
-      "Content-Type": "application/json",
+      // "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     });
     return this.http

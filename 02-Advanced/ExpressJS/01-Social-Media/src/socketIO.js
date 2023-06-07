@@ -3,7 +3,7 @@ let io;
 
 module.exports = {
   init: (httpServer) => {
-    io = new Server(httpServer, { cors: { origin: "http://localhost:4200" } });
+    io = new Server(httpServer, { cors: { origin: "*" } });
     return io;
   },
   getIO: () => {

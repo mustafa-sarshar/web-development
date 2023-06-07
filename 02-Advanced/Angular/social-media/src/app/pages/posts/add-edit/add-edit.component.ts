@@ -1,10 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 import { ApiService } from "src/app/shared/services/api/api.service";
 import { UtilityService } from "src/app/shared/services/utility/utility.service";
@@ -16,41 +11,47 @@ import { UtilityService } from "src/app/shared/services/utility/utility.service"
 })
 export class AddEditComponent implements OnInit {
   public formGroupEl?: FormGroup;
+  public imgPreview?: string;
   public isDataFetching: boolean = false;
 
   constructor(
     private apiService: ApiService,
-    private utilityService: UtilityService,
-    private formBuilder: FormBuilder
+    private utilityService: UtilityService
   ) {}
 
   public ngOnInit(): void {
-    this.formGroupEl = this.formBuilder.group({
-      title: [null, Validators.required],
-      content: [null, Validators.required],
-      imageFile: [null, Validators.required],
-      image: null,
+    this.formGroupEl = new FormGroup({
+      title: new FormControl(null, Validators.required),
+      content: new FormControl(null, Validators.required),
+      imageFile: new FormControl(null, Validators.required),
+      image: new FormControl(null, Validators.required),
     });
   }
 
-  public onChangeImage(event: any) {
+  public onChangeImage(event: Event) {
     // @ts-ignore
-    if (event.target && event.target.files && event.target.files.length > 0) {
-      this.formGroupEl?.patchValue({
-        image: event.target.files[0],
-      });
+    const file = (event.target as HTMLInputElement).files[0];
+    if (this.formGroupEl && file) {
+      this.formGroupEl.patchValue({ image: file });
+      const allowedMimeTypes = ["image/png", "image/jpeg", "image/jpg"];
+      if (file && allowedMimeTypes.includes(file.type)) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.imgPreview = reader.result as string;
+        };
+        reader.readAsDataURL(file);
+      }
     }
-    console.log(this.formGroupEl);
   }
 
   public onClickCancel(): void {}
 
   public onClickSubmit(): void {
     if (this.formGroupEl) {
-      const formData: FormData = new FormData();
-      formData.append("title", this.formGroupEl.get("title")?.value);
-      formData.append("content", this.formGroupEl.get("content")?.value);
-      formData.append("image", this.formGroupEl.get("image")?.value);
+      const fd: FormData = new FormData();
+      fd.append("title", this.formGroupEl.get("title")?.value);
+      fd.append("content", this.formGroupEl.get("content")?.value);
+      fd.append("image", this.formGroupEl.get("image")?.value);
 
       const authData = localStorage.getItem("auth-data");
 
@@ -59,9 +60,11 @@ export class AddEditComponent implements OnInit {
 
         const isTokenExpired = this.utilityService.isTokenExpired(token);
         if (!isTokenExpired) {
-          this.apiService.createPost(token, formData).subscribe({
+          this.apiService.createPost(token, fd).subscribe({
             next: (response) => {
               console.log(response);
+              this.formGroupEl?.reset();
+              this.imgPreview = "";
             },
             error: (error) => {
               console.error(error);

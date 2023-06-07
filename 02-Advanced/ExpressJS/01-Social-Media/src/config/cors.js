@@ -5,7 +5,7 @@ const cors = require("cors");
  */
 const corsMiddleware = cors({
   origin: (origin, callback) => {
-    let allowedOrigins = ["http://localhost:4200"];
+    let allowedOrigins = ["http://localhost:4200", "*"];
 
     if (!origin || allowedOrigins.indexOf("*") > -1) {
       return callback(null, true);
