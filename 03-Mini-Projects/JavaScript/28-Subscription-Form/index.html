@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./index.css">
+  <title>Subscription Form</title>
+</head>
+<body>
+  <form action="#">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" required>
+    </div>
+    <div class="form-group">
+      <label for="username">Image:</label>
+      <input type="file" name="image" id="image" required>
+    </div>
+    <div class="form-group">
+      <button type="button" id="btn-submit">Submit</button>
+    </div>
+  </form>
+  <hr>
+  <div id="img-preview_container" class="hidden">
+    <p>
+      Image preview:
+    </p>
+    <img src="" alt="" id="img-preview">
+  </div>
+
+  <script type="module" src="./index.js"></script>
+</body>
+</html>
