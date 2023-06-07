@@ -1,8 +1,9 @@
 "use strict";
 require("dotenv").config();
 
-const express = require("express"),
-  path = require("path"),
+const path = require("path"),
+  express = require("express"),
+  http = require("http"),
   bodyParser = require("body-parser"),
   multer = require("multer"),
   { corsMiddleware } = require("./config/cors"),
@@ -14,6 +15,8 @@ const SERVER_PORT = process.env["SERVER_PORT"],
   SERVER_IP = process.env["SERVER_IP"];
 
 const app = express();
+const server = http.createServer(app);
+const io = require("./socketIO").init(server);
 
 // Extract Routers
 const feedRoutes = require("./routes/feed"),
@@ -61,7 +64,15 @@ app.use((error, req, res, next) => {
 
 // Init the Database -->> run the Server
 mongodbConnect(() => {
-  app.listen(SERVER_PORT, SERVER_IP, () => {
+  server.listen(SERVER_PORT, SERVER_IP, () => {
     console.log(`App is running @${SERVER_IP}:${SERVER_PORT}`);
+  });
+  // const serverIO = new Server(server);
+  io.on("connection", (socket) => {
+    console.log("Client connected!", socket.id);
+
+    socket.on("disconnect", () => {
+      console.log("user disconnected", socket.id);
+    });
   });
 });

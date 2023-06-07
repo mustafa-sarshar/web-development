@@ -1,6 +1,7 @@
 const { validationResult } = require("express-validator"),
   { httpStatus } = require("../constants/http-status"),
   { deleteFile } = require("../utility/file"),
+  io = require("../socketIO"),
   Post = require("../models/posts"),
   User = require("../models/users");
 
@@ -92,6 +93,9 @@ exports.createPost = async (req, res, next) => {
     const user = await User.findById(req.userId);
     user.posts.push(postNew);
     await user.save();
+
+    // inform all other users
+    io.getIO().emit("POSTS", { action: "CREATE", post: postNew });
 
     res.status(httpStatus.successfulCreation.code).json({
       message: "Post created successfully!",

@@ -25,7 +25,7 @@
       <mat-label>
         Image
       </mat-label>
-      <input type="file" formControlName="image" id="image">
+      <input type="file" formControlName="imageFile" id="imageFile" (change)="onChangeImage($event)">
     </mat-card-content>
     <mat-card-content class="space-flex"></mat-card-content>
     <mat-card-footer>

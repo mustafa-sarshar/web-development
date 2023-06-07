@@ -5,7 +5,7 @@ const cors = require("cors");
  */
 const corsMiddleware = cors({
   origin: (origin, callback) => {
-    let allowedOrigins = ["*"];
+    let allowedOrigins = ["http://localhost:4200"];
 
     if (!origin || allowedOrigins.indexOf("*") > -1) {
       return callback(null, true);
@@ -14,7 +14,7 @@ const corsMiddleware = cors({
     if (allowedOrigins.indexOf(origin) === -1) {
       // If a specific origin isn’t found on the list of allowed origins
       const message =
-        "The CORS policy for this application doesn’t allow access from origin " +
+        "The CORS policy for this application doesn't allow access from origin " +
         origin;
       return callback(new Error(message), false);
     }
