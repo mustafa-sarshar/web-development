@@ -38,6 +38,9 @@ export class WelcomeComponent implements OnInit {
         const socket = io("http://localhost:8282");
         socket.on("POSTS", (data) => {
           console.log("DATA", data);
+          if (data.action === "CREATE") {
+            this.posts.push(data.post);
+          }
         });
       } else {
         console.info("TOKEN expired", token);

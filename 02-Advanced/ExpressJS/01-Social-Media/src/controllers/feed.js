@@ -19,6 +19,7 @@ exports.getPosts = async (req, res, next) => {
         path: "author",
         select: "",
       })
+      .sort({ createdAt: -1 })
       .skip((currentPage - 1) * numItemsPerPage)
       .limit(numItemsPerPage);
     res.status(httpStatus.success.code).json({
