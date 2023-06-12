@@ -118,3 +118,5 @@ package-lock.json
 *.vscode/*
 data/images/
 data/invoices/
+*.cert
+*.key

@@ -9,6 +9,7 @@ const fs = require("fs"),
   helmet = require("helmet"),
   compression = require("compression"),
   morgan = require("morgan"),
+  { createHandler } = require("graphql-http/lib/use/express"),
   bodyParser = require("body-parser"),
   multer = require("multer"),
   { corsMiddleware } = require("./config/cors"),
@@ -17,15 +18,16 @@ const fs = require("fs"),
   passportSetup = require("./config/passport-setup");
 
 const SERVER_PORT = process.env["SERVER_PORT"],
-  SERVER_IP = process.env["SERVER_IP"];
+  SERVER_IP = process.env["SERVER_IP"],
+  DEV_MODE = process.env["NODE_ENV"] === "production" ? false : true;
 
 // Import certificates
 const privateKey = fs.readFileSync("server.key"),
   certificate = fs.readFileSync("server.cert");
 
 const app = express();
-// const server = http.createServer(app);
-const server = https.createServer({ key: privateKey, cert: certificate }, app);
+const server = http.createServer(app);
+// const server = https.createServer({ key: privateKey, cert: certificate }, app);
 const io = require("./socketIO").init(server);
 
 // Define the Logger
@@ -35,9 +37,13 @@ const logStream = fs.createWriteStream(
 );
 
 // Extract Routers
-const feedRoutes = require("./routes/feed"),
-  authRoutes = require("./routes/auth"),
-  userRoutes = require("./routes/user");
+// const feedRoutes = require("./routes/feed"),
+//   authRoutes = require("./routes/auth"),
+//   userRoutes = require("./routes/user");
+
+// Extract GraphQL objects
+const graphqlSchemas = require("./graphql/schemas"),
+  graphqlResolvers = require("./graphql/resolvers");
 
 // Set middleware
 // app.use(bodyParser.urlencoded()); // x-www-form-urlencoded <form>
@@ -55,7 +61,7 @@ app.use(
 //   res.setHeader("Access-Control-Allow-Origin", "*");
 //   res.setHeader(
 //     "Access-Control-Allow-Methods",
-//     "GET, POST, PUT, PATCH, DELETE"
+//     "GET, POST, PUT, PATCH, DELETE, OPTIONS"
 //   );
 //   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 //   next();
@@ -64,9 +70,37 @@ app.use(corsMiddleware);
 
 // Routes
 app.use("/src/data", express.static(path.join(__dirname, "data")));
-app.use("/feeds", feedRoutes);
-app.use("/auth", authRoutes);
-app.use("/users", userRoutes);
+// app.use("/feeds", feedRoutes);
+// app.use("/auth", authRoutes);
+// app.use("/users", userRoutes);
+
+app.use(
+  "/graphql",
+  createHandler({
+    schema: graphqlSchemas,
+    rootValue: graphqlResolvers,
+    formatError(error) {
+      if (!error.originalError) {
+        return error;
+      }
+      const { data, code, message } = error.originalError;
+      return {
+        data: data,
+        status: code || 500,
+        message: message || "An error occurred!",
+      };
+    },
+  })
+);
+// app.use(
+//   "/graphql",
+//   graphqlHTTP({
+//     schema: graphqlSchemas,
+//     rootValue: graphqlResolvers,
+//     graphiql: DEV_MODE,
+//     pretty: true,
+//   })
+// );
 
 // Error Handler
 app.use((error, req, res, next) => {
