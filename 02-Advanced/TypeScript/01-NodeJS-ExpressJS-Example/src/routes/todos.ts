@@ -1,5 +1,10 @@
 import { Router } from "express";
-import { createToDo, getToDos } from "../controllers/todos";
+import {
+  createToDo,
+  deleteToDo,
+  getToDos,
+  updateToDo,
+} from "../controllers/todos";
 
 const router = Router();
 
@@ -10,5 +15,10 @@ router
 router
   .route("/todo") // Route: /todo
   .post(createToDo); // Method: POST
+
+router
+  .route("/todo/:tId") //Route: /todo/{id}
+  .put(updateToDo) // Method: PUT
+  .delete(deleteToDo); // Method: DELETE
 
 export default router;

@@ -1,8 +1,8 @@
-import * as express from "express";
-import * as bodyParser from "body-parser";
+// const express = require("express");
+import express from "express";
+import bodyParser from "body-parser";
 import routesToDo from "./routes/todos";
 
-/* @ts-ignore */
 const app = express();
 
 app.use(bodyParser.json());
