@@ -19,3 +19,5 @@ btnTranslateEl.addEventListener("click", async (evt: Event) => {
 
   console.log(await res.json());
 });
+
+const mySet = new Set([1, 2, 3]);
