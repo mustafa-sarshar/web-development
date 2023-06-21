@@ -11,12 +11,10 @@ const PORT: number = 4000;
 app.use(bodyParser.json({ limit: "30mb", strict: false }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
+// Define Routes
 app.get("/", (req: Request, res: Response, next: NextFunction) => {
-  res.status(200).json({
-    message: "Alright!!!",
-  });
+  res.status(200).send("Alright!!! Welcome!");
 });
-
 app.use("/ai", aiRoutes);
 app.use("/others", othersRoutes);
 
