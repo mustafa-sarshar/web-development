@@ -8,6 +8,17 @@ Promise.all([
   // faceapi.nets.faceExpressionNet.loadFromUri("/models"),
 ]).then(startVideo);
 
+if (videoEl.requestFullscreen) {
+  videoEl.requestFullscreen();
+  console.log("Fullscreen")
+} else if (videoEl.mozRequestFullScreen) {
+  videoEl.mozRequestFullScreen();
+} else if (videoEl.webkitRequestFullscreen) {
+  videoEl.webkitRequestFullscreen();
+} else if (videoEl.msRequestFullscreen) {
+  videoEl.msRequestFullscreen();
+}
+
 function startVideo() {
   navigator.getUserMedia(
     { video: true, width: 1280, height: 720 },
