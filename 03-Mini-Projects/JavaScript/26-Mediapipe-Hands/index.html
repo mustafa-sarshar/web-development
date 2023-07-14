@@ -1,25 +1,55 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils_3d/control_utils_3d.js"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="./styles.css">
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils_3d/control_utils_3d.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
 
-<body>
-  <div class="container">
-    <p>MediaPipe Hands v1</p>
-    <div class="landmark-grid-container"></div>
-    <video class="input_video"></video>
-    <canvas class="output_canvas" width="1280px" height="720px"></canvas>
-  </div>
-  <div class="clearfix"></div>
+  <body>
+    <div class="container">
+      <p>MediaPipe Hands v1</p>
+      <div id="landmark-grid-container"></div>
+      <video id="camera"></video>
+      <canvas id="canvas--camera"></canvas>
+    </div>
+    <div class="clearfix"></div>
+    <div class="container">
+      <img
+        id="photo"
+        src="./assets/images/luis-quintero-qKspdY9XUzs-unsplash.jpg"
+        alt="hands"
+      />
+      <canvas id="canvas--photo"></canvas>
+    </div>
+    <div class="clearfix"></div>
+    <div class="container">
+      <video controls id="video" poster="./assets/images/video-thumbnail.png">
+        <source src="./assets/videos/dance.mp4" type="video/mp4" />
+      </video>
+      <canvas id="canvas--video"></canvas>
+    </div>
+    <div class="clearfix"></div>
 
-  <script src="./scripts.js"></script>
-</body>
+    <script src="./scripts.js"></script>
+  </body>
 </html>

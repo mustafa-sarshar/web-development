@@ -1,6 +1,8 @@
 .container {
   position: relative;
-  height: 720px;
+  height: 200vh;
+  border: 2px solid green;
+  overflow: hidden;
 }
 
 .landmark-grid-container {
@@ -10,16 +12,21 @@
   z-index: 999;
 }
 
-video {
+video,
+canvas,
+#photo {
   position: absolute;
   width: 80% !important;
   height: auto !important;
-  z-index: 80;
+  z-index: 1;
+}
+
+.clearfix {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 canvas {
-  position: absolute;
-  width: 80% !important;
-  height: auto !important;
-  z-index: 80;
+  border: 10px solid red;
 }
