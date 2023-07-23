@@ -265,6 +265,7 @@ window.addEventListener("load", (_) => {
   setInterval(() => {
     if (is_running) {
       getPositionAndVelocity((position, velocity) => {
+        console.log(position)
         curPos[0] += position[0];
         curPos[1] += position[1];
         curPos[2] += position[2];
