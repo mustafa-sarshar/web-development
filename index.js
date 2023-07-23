@@ -1,6 +1,7 @@
 import * as THREE from "three";
 
 window.addEventListener("load", (_) => {
+  const curPos = [0, 0, 0];
   const divAnimationEl = document.getElementById("div-animation");
   const canvasEl = document.getElementById("canvas");
   const demo_button = document.getElementById("start_demo");
@@ -264,9 +265,12 @@ window.addEventListener("load", (_) => {
   setInterval(() => {
     if (is_running) {
       getPositionAndVelocity((position, velocity) => {
-        updateFieldIfNotNull("Position_x", position[0]);
-        updateFieldIfNotNull("Position_y", position[1]);
-        updateFieldIfNotNull("Position_z", position[2]);
+        curPos[0] += position[0];
+        curPos[1] += position[1];
+        curPos[2] += position[2];
+        updateFieldIfNotNull("Position_x", curPos[0]);
+        updateFieldIfNotNull("Position_y", curPos[1]);
+        updateFieldIfNotNull("Position_z", curPos[2]);
 
         updateFieldIfNotNull("Velocity_x", velocity[0]);
         updateFieldIfNotNull("Velocity_y", velocity[1]);
