@@ -1,27 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Demo - The Web's Sixth Sense: A Study of Scripts Accessing Smartphone Sensors</title>
-  <link href="./assets/styles/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="./index.css">
-  <title>JavaScript Sensor Access Demo</title>
-  <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://unpkg.com/three@v0.151.3/build/three.module.js",
-        "three/addons/": "https://unpkg.com/three@v0.151.3/examples/jsm/"
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>
+      Demo - The Web's Sixth Sense: A Study of Scripts Accessing Smartphone
+      Sensors
+    </title>
+    <link href="./assets/styles/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>JavaScript Sensor Access Demo</title>
+    <script
+      async
+      src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"
+    ></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@v0.151.3/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@v0.151.3/examples/jsm/"
+        }
       }
-    }
-  </script>
-
-</head>
-<body>
-  <main role="main" class="container">
-
-    <h1 align="left">JavaScript Sensor Access Demo v1.2</h1>
+    </script>
+  </head>
+  <body>
+    <main role="main" class="container">
+      <!-- <h1 align="left">JavaScript Sensor Access Demo v1.2</h1>
     <p><b>This demo page should be run from a mobile phone or a tablet.</b></p>
     <p>This demo page shows how websites can access sensor data from mobile devices using <a
         href="https://developer.mozilla.org/en-US/docs/Web/Events/deviceorientation"><i>deviceorientation</i></a> and <a
@@ -34,67 +41,130 @@
 
     <p>The sensor data shown below does not leave your browser: it is not collected, shared or transmitted. However this
       may not be true for other websites that you visit. For more information, see the companion page for our study: <a
-        href="https://sensor-js.xyz/">"The Web's Sixth Sense: A Study of Scripts Accessing Smartphone Sensors"</a>.</p>
+        href="https://sensor-js.xyz/">"The Web's Sixth Sense: A Study of Scripts Accessing Smartphone Sensors"</a>.</p> -->
 
-    <div class="p-3 mb-2 bg-secondary" id="div-demo">
-      <a id="start_demo" class="btn btn-lg btn-success py-1" href="#" role="button">Start the demo</a>
-      <p style="margin-top:1rem;">Num. of datapoints: <span class="badge badge-warning"
-          id="num-observed-events">0</span></p>
+      <div class="p-3 mb-2 bg-secondary" id="div-demo">
+        <a
+          id="start_demo"
+          class="btn btn-lg btn-success py-1"
+          href="#"
+          role="button"
+          >Start the demo</a
+        >
+        <p style="margin-top: 1rem">
+          Num. of datapoints:
+          <span class="badge badge-warning" id="num-observed-events">0</span>
+        </p>
 
+        <h4 style="margin-top: 0.75rem">Position</h4>
+        <ul>
+          <li>X-direction: <span id="Position_x">0</span></li>
+          <li>Y-direction: <span id="Position_y">0</span></li>
+          <li>Z-direction: <span id="Position_z">0</span></li>
+        </ul>
 
-      <h4 style="margin-top:0.75rem;">Orientation</h4>
-      <ul>
-        <li>X-axis (&beta;): <span id="Orientation_b">0</span><span>&deg;</span></li>
-        <li>Y-axis (&gamma;): <span id="Orientation_g">0</span><span>&deg;</span></li>
-        <li>Z-axis (&alpha;): <span id="Orientation_a">0</span><span>&deg;</span></li>
-      </ul>
+        <h4 style="margin-top: 0.75rem">Velocity</h4>
+        <ul>
+          <li>X-direction: <span id="Velocity_x">0</span></li>
+          <li>Y-direction: <span id="Velocity_y">0</span></li>
+          <li>Z-direction: <span id="Velocity_z">0</span></li>
+        </ul>
 
-      <h4>Accelerometer</h4>
-      <ul>
-        <li>X-axis: <span id="Accelerometer_x">0</span><span> m/s<sup>2</sup></span></li>
-        <li>Y-axis: <span id="Accelerometer_y">0</span><span> m/s<sup>2</sup></span></li>
-        <li>Z-axis: <span id="Accelerometer_z">0</span><span> m/s<sup>2</sup></span></li>
-        <li>Data Interval: <span id="Accelerometer_i">0</span><span> ms</span></li>
-      </ul>
+        <h4 style="margin-top: 0.75rem">Orientation</h4>
+        <ul>
+          <li>
+            X-axis (&beta;): <span id="Orientation_b">0</span><span>&deg;</span>
+          </li>
+          <li>
+            Y-axis (&gamma;): <span id="Orientation_g">0</span
+            ><span>&deg;</span>
+          </li>
+          <li>
+            Z-axis (&alpha;): <span id="Orientation_a">0</span
+            ><span>&deg;</span>
+          </li>
+        </ul>
 
-      <h4>Accelerometer including gravity</h4>
-      <ul>
-        <li>X-axis: <span id="Accelerometer_gx">0</span><span> m/s<sup>2</sup></span></li>
-        <li>Y-axis: <span id="Accelerometer_gy">0</span><span> m/s<sup>2</sup></span></li>
-        <li>Z-axis: <span id="Accelerometer_gz">0</span><span> m/s<sup>2</sup></span></li>
-      </ul>
+        <h4>Accelerometer</h4>
+        <ul>
+          <li>
+            X-axis: <span id="Accelerometer_x">0</span
+            ><span> m/s<sup>2</sup></span>
+          </li>
+          <li>
+            Y-axis: <span id="Accelerometer_y">0</span
+            ><span> m/s<sup>2</sup></span>
+          </li>
+          <li>
+            Z-axis: <span id="Accelerometer_z">0</span
+            ><span> m/s<sup>2</sup></span>
+          </li>
+          <li>
+            Data Interval: <span id="Accelerometer_i">0</span><span> ms</span>
+          </li>
+        </ul>
 
-      <h4>Gyroscope</h4>
-      <ul>
-        <li>X-axis: <span id="Gyroscope_x">0</span><span>&deg;/s</span></li>
-        <li>Y-axis: <span id="Gyroscope_y">0</span><span>&deg;/s</span></li>
-        <li>Z-axis: <span id="Gyroscope_z">0</span><span>&deg;/s</span></li>
-      </ul>
+        <h4>Accelerometer including gravity</h4>
+        <ul>
+          <li>
+            X-axis: <span id="Accelerometer_gx">0</span
+            ><span> m/s<sup>2</sup></span>
+          </li>
+          <li>
+            Y-axis: <span id="Accelerometer_gy">0</span
+            ><span> m/s<sup>2</sup></span>
+          </li>
+          <li>
+            Z-axis: <span id="Accelerometer_gz">0</span
+            ><span> m/s<sup>2</sup></span>
+          </li>
+        </ul>
 
-      <h4>Light</h4>
-      <ul>
-        <li>Device Light: <span id="DeviceLight">0</span><span>&deg;/s</span></li>
-        <li>Light Level: <span id="LightLevel">0</span><span>&deg;/s</span></li>
-      </ul>
+        <h4>Gyroscope</h4>
+        <ul>
+          <li>X-axis: <span id="Gyroscope_x">0</span><span>&deg;/s</span></li>
+          <li>Y-axis: <span id="Gyroscope_y">0</span><span>&deg;/s</span></li>
+          <li>Z-axis: <span id="Gyroscope_z">0</span><span>&deg;/s</span></li>
+        </ul>
 
-      <h4>Proximity</h4>
-      <ul>
-        <li>Device Proximity: <span id="DeviceProximity">0</span><span>&deg;/s</span></li>
-        <li>User Proximity: <span id="UserProximity">0</span><span>&deg;/s</span></li>
-      </ul>
+        <h4>Light</h4>
+        <ul>
+          <li>
+            Device Light: <span id="DeviceLight">0</span><span>&deg;/s</span>
+          </li>
+          <li>
+            Light Level: <span id="LightLevel">0</span><span>&deg;/s</span>
+          </li>
+        </ul>
 
-    </div>
-    <div id="div-animation">
-      <!-- <canvas id="canvas"></canvas> -->
-    </div>
-  </main>
-  <footer class="footer">
-    <div class="container">
-      <span class="text-muted small">This page is hosted on GitHub Pages, please see GitHub's privacy statement
-        <a href="https://help.github.com/articles/github-privacy-statement/">here</a>.</span>
-    </div>
-  </footer>
-  <noscript>Please enable JavaScript in your browser.</noscript>
-  <script type="module" src="./index.js"></script>
-</body>
+        <h4>Proximity</h4>
+        <ul>
+          <li>
+            Device Proximity: <span id="DeviceProximity">0</span
+            ><span>&deg;/s</span>
+          </li>
+          <li>
+            User Proximity: <span id="UserProximity">0</span
+            ><span>&deg;/s</span>
+          </li>
+        </ul>
+      </div>
+      <div id="div-animation">
+        <!-- <canvas id="canvas"></canvas> -->
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted small"
+          >This page is hosted on GitHub Pages, please see GitHub's privacy
+          statement
+          <a href="https://help.github.com/articles/github-privacy-statement/"
+            >here</a
+          >.</span
+        >
+      </div>
+    </footer>
+    <noscript>Please enable JavaScript in your browser.</noscript>
+    <script type="module" src="./index.js"></script>
+  </body>
 </html>
