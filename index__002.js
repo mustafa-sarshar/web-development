@@ -13,6 +13,16 @@ window.addEventListener("load", (_) => {
     beta: 0,
     gamma: 0,
   };
+  const GRAVITY = 9.81;
+
+  // Calibration settings
+  const calSamplesLength = 150; // min. required samples for calibration
+  let calSamples = [];
+  let calSampleCount = 0;
+  let calSampleSum = [0, 0, 0];
+  let calBias = [0, 0, 0];
+  let calSD = [0, 0, 0];
+  let accCalibrated = false;
 
   function deg2Rad(degree) {
     return (degree * Math.PI) / 180;
@@ -164,7 +174,6 @@ window.addEventListener("load", (_) => {
   });
 
   // Extended Kalman Filter
-
   function getOrientation(callback) {
     window.addEventListener("deviceorientation", (event) => {
       const alpha = event.alpha;
@@ -184,7 +193,56 @@ window.addEventListener("load", (_) => {
     });
   }
 
-  const GRAVITY = 9.81;
+  function calibrateAccData(acc, sampleCount) {
+    if (calSampleCount === 0) {
+      calSampleSum = [0, 0, 0];
+    }
+
+    calSampleSum[0] += acc.x;
+    calSampleSum[1] += acc.y;
+    calSampleSum[2] += acc.z;
+    calSampleCount++;
+
+    if (calSampleCount >= sampleCount) {
+      // Compute accelerometer bias from samples
+      const mean = [
+        calSampleSum[0] / calSampleCount,
+        calSampleSum[1] / calSampleCount,
+        calSampleSum[2] / calSampleCount,
+      ];
+      calBias = mean.slice();
+
+      // Compute accelerometer variance and standard deviation from samples
+      let varianceSum = [0, 0, 0];
+      for (let i = 0; i < sampleCount; i++) {
+        const x = calSamples[i][0] - calBias[0];
+        const y = calSamples[i][1] - calBias[1];
+        const z = calSamples[i][2] - calBias[2];
+        varianceSum[0] += x * x;
+        varianceSum[1] += y * y;
+        varianceSum[2] += z * z;
+      }
+      const variance = [
+        varianceSum[0] / sampleCount,
+        varianceSum[1] / sampleCount,
+        varianceSum[2] / sampleCount,
+      ];
+      calSD = [
+        Math.sqrt(variance[0]),
+        Math.sqrt(variance[1]),
+        Math.sqrt(variance[2]),
+      ];
+
+      accCalibrated = true;
+    }
+  }
+
+  function getCalibratedAccelerometer(acc) {
+    const x = (acc.x - calBias[0]) / calSD[0];
+    const y = (acc.y - calBias[1]) / calSD[1];
+    const z = (acc.z - calBias[2]) / calSD[2];
+    return [x, y, z];
+  }
 
   function getPositionAndVelocity(callback) {
     let alpha = 0;
@@ -205,6 +263,14 @@ window.addEventListener("load", (_) => {
       x = _x;
       y = _y;
       z = _z;
+
+      calSamples.push([x, y, z]);
+      if (!accCalibrated) {
+        calibrateAccData({ x, y, z }, calSamplesLength);
+      } else {
+        [x, y, z] = getCalibratedAccelerometer({ x, y, z });
+      }
+
       const timestamp = Date.now();
       if (lastTimestamp !== 0) {
         const dt = (timestamp - lastTimestamp) / 1000;
@@ -265,7 +331,7 @@ window.addEventListener("load", (_) => {
   setInterval(() => {
     if (is_running) {
       getPositionAndVelocity((position, velocity) => {
-        console.log(position)
+        console.log(position);
         curPos[0] += position[0];
         curPos[1] += position[1];
         curPos[2] += position[2];
