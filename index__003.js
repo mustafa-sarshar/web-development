@@ -264,12 +264,12 @@ window.addEventListener("load", (_) => {
       y = _y;
       z = _z;
 
-      calSamples.push([x, y, z]);
-      if (!accCalibrated) {
-        calibrateAccData({ x, y, z }, calSamplesLength);
-      } else {
-        [x, y, z] = getCalibratedAccelerometer({ x, y, z });
-      }
+      // if (!accCalibrated) {
+      //   calSamples.push([x, y, z]);
+      //   calibrateAccData({ x, y, z }, calSamplesLength);
+      // } else {
+      //   [x, y, z] = getCalibratedAccelerometer({ x, y, z });
+      // }
 
       const timestamp = Date.now();
       if (lastTimestamp !== 0) {
