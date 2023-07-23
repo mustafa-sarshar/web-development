@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Positioning using Mobile's Sensors</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets//styles/index.css" />
+    <title>JavaScript Sensor Access Demo</title>
+    <script
+      async
+      src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"
+    ></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@v0.151.3/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@v0.151.3/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <main role="main" class="container">
+      <div class="p-3 mb-2 bg-secondary" id="div__main">
+        <a
+          id="btn__start"
+          class="btn btn-lg btn-success py-1"
+          href="#"
+          role="button"
+          >Start measuring (v.0.0.1)</a
+        >
+        <p style="margin-top: 1rem">
+          Num. of data points:
+          <span class="badge badge-warning" id="num-observed-events">0</span>
+        </p>
+
+        <h4 style="margin-top: 0.75rem">Current Position</h4>
+        <ul>
+          <li>X-direction: <span id="Position_x">0</span></li>
+          <li>Y-direction: <span id="Position_y">0</span></li>
+          <li>Z-direction: <span id="Position_z">0</span></li>
+        </ul>
+
+        <h4 style="margin-top: 0.75rem">Velocity</h4>
+        <ul>
+          <li>X-direction: <span id="Velocity_x">0</span></li>
+          <li>Y-direction: <span id="Velocity_y">0</span></li>
+          <li>Z-direction: <span id="Velocity_z">0</span></li>
+        </ul>
+
+        <h4 style="margin-top: 0.75rem">Orientation</h4>
+        <ul>
+          <li>
+            X-axis (&beta;): <span id="Orientation_b">0</span><span>&deg;</span>
+          </li>
+          <li>
+            Y-axis (&gamma;): <span id="Orientation_g">0</span
+            ><span>&deg;</span>
+          </li>
+          <li>
+            Z-axis (&alpha;): <span id="Orientation_a">0</span
+            ><span>&deg;</span>
+          </li>
+        </ul>
+
+        <h4>Accelerometer</h4>
+        <ul>
+          <li>
+            X-axis: <span id="Accelerometer_x">0</span
+            ><span> m/s<sup>2</sup></span>
+          </li>
+          <li>
+            Y-axis: <span id="Accelerometer_y">0</span
+            ><span> m/s<sup>2</sup></span>
+          </li>
+          <li>
+            Z-axis: <span id="Accelerometer_z">0</span
+            ><span> m/s<sup>2</sup></span>
+          </li>
+          <li>
+            Data Interval: <span id="Accelerometer_i">0</span><span> ms</span>
+          </li>
+        </ul>
+
+        <h4>Accelerometer including gravity</h4>
+        <ul>
+          <li>
+            X-axis: <span id="Accelerometer_gx">0</span
+            ><span> m/s<sup>2</sup></span>
+          </li>
+          <li>
+            Y-axis: <span id="Accelerometer_gy">0</span
+            ><span> m/s<sup>2</sup></span>
+          </li>
+          <li>
+            Z-axis: <span id="Accelerometer_gz">0</span
+            ><span> m/s<sup>2</sup></span>
+          </li>
+        </ul>
+
+        <h4>Gyroscope</h4>
+        <ul>
+          <li>X-axis: <span id="Gyroscope_x">0</span><span>&deg;/s</span></li>
+          <li>Y-axis: <span id="Gyroscope_y">0</span><span>&deg;/s</span></li>
+          <li>Z-axis: <span id="Gyroscope_z">0</span><span>&deg;/s</span></li>
+        </ul>
+      </div>
+      <div id="div-animation">
+        <!-- <canvas id="canvas"></canvas> -->
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted small"
+          >This page is hosted on GitHub Pages, please see GitHub's privacy
+          statement
+          <a href="https://help.github.com/articles/github-privacy-statement/"
+            >here</a
+          >.</span
+        >
+      </div>
+    </footer>
+    <noscript>Please enable JavaScript in your browser.</noscript>
+    <script type="module" src="./assets/scripts/index__002.js"></script>
+  </body>
+</html>
