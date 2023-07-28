@@ -73,7 +73,7 @@ exports.loginValidation = [
     .isEmpty()
     .withMessage("Password is required!")
     .isLength({ min: 5 })
-    .withMessage("Password must be at least 8 characters long!"),
+    .withMessage("Password must be at least 5 characters long!"),
 ];
 
 exports.updateUserValidation = [
@@ -112,3 +112,14 @@ exports.updateUserValidation = [
 ];
 
 exports.updateUserStatusValidation = [body("status").trim().not().isEmpty()];
+
+body("username")
+  .trim()
+  .not()
+  .isEmpty()
+  .withMessage("Username is required!")
+  .isLength({ min: 3 })
+  .withMessage("Username must be at least 3 characters long!")
+  .matches(/^[A-Za-z\s]+$/)
+  .withMessage("Username must be alphabetic.");
+
