@@ -1,0 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediaPipe Models</title>
+
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <header class="page__header">
+      <h1>MediaPipe Models</h1>
+    </header>
+    <main class="page__main">
+      <form action="#">
+        <label for="modelSelection">Select the model</label>
+        <select name="modelSelection" id="sltModel">
+          <option value="face_mesh">Face Mesh</option>
+          <option value="hands">Hands</option>
+          <option value="pose">Pose</option>
+          <option value="holistic">Holistic</option>
+        </select>
+        <br />
+        <button id="btnLoadModel">Load Model</button>
+      </form>
+      <form action="#">
+        <label for="imageToLoad">Load Image</label>
+        <input type="file" name="fileImage" id="fileImage" />
+      </form>
+      <section id="output__container">
+        <video id="output__camera"></video>
+        <canvas id="output__canvas"></canvas>
+      </section>
+    </main>
+    <footer class="page__footer">Developed by Musto</footer>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

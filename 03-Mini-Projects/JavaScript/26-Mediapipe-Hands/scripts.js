@@ -92,7 +92,10 @@ window.onload = () => {
     width: videoSize.width,
     height: videoSize.height,
   });
-  camera.start();
+
+  function onClickCameraStart() {
+    camera.start();
+  }
 
   //  Detect from Photo
   function onResultsPhoto(results) {
