@@ -16,7 +16,6 @@ export class AuthController {
       email: signUpDto.email,
       password: signUpDto.password,
     };
-    console.log(process.env["SECRET_KEY"]);
 
     return this._authService.signUp(createUserDto);
   }
