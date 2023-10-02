@@ -1,4 +1,5 @@
-import { Controller, Get } from "@nestjs/common";
+import { Controller, Get, Res } from "@nestjs/common";
+import { Response } from "express";
 
 import { CpuService } from "src/cpu/cpu.service";
 import { DiskService } from "src/disk/disk.service";
@@ -11,7 +12,7 @@ export class ComputerController {
   ) {}
 
   @Get()
-  public run() {
-    return [this._cpuService.compute(1, 2), this._diskService.getData()];
+  public run(@Res() res: Response) {
+    res.json([this._cpuService.compute(1, 2), this._diskService.getData()]);
   }
 }
