@@ -16,8 +16,8 @@ export class UsersService {
     return this._userRepository.save(userNew);
   }
 
-  public async findOne(_id: number): Promise<User> {
-    const userFound = await this._userRepository.findOneBy({ _id });
+  public async findOneById(_id: number): Promise<User> {
+    const userFound: User = await this._userRepository.findOneBy({ _id });
 
     if (!userFound) {
       throw new NotFoundException("user not found");
@@ -26,19 +26,29 @@ export class UsersService {
     return userFound;
   }
 
-  public find(email: string): Promise<User[]> {
+  public async findOneByEmail(email: string): Promise<User> {
+    const userFound: User = await this._userRepository.findOneBy({ email });
+
+    if (!userFound) {
+      throw new NotFoundException("user not found");
+    }
+
+    return userFound;
+  }
+
+  public findByEmail(email: string): Promise<User[]> {
     return this._userRepository.find({ where: { email } });
   }
 
   public async update(_id: number, attrs: Partial<User>): Promise<User> {
-    const userFound = await this.findOne(_id);
+    const userFound: User = await this.findOneById(_id);
 
     Object.assign(userFound, attrs);
     return this._userRepository.save(userFound);
   }
 
   public async remove(_id: number): Promise<User> {
-    const userFound = await this.findOne(_id);
+    const userFound = await this.findOneById(_id);
 
     return this._userRepository.remove(userFound);
   }
