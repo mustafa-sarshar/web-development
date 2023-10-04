@@ -8,6 +8,7 @@ import {
   Post,
   Query,
   Session,
+  UseGuards,
   UseInterceptors,
 } from "@nestjs/common";
 
@@ -19,6 +20,9 @@ import { User } from "./entities/user.entity";
 import { SerializeInterceptor } from "src/shared/interceptors/serialize.interceptor";
 import { AuthService } from "../auth/auth.service";
 import { LoginUserDto } from "./dto/login-user";
+import { CurrentUser } from "src/users/decorators/current-user/current-user.decorator";
+import { CurrentUserInterceptor } from "./interceptors/current-user.interceptor";
+import { AuthGuard } from "../auth/guards/auth.guard";
 
 @Controller("auth")
 @UseInterceptors(new SerializeInterceptor(UserDto))
@@ -28,27 +32,44 @@ export class UsersController {
     private readonly _authService: AuthService,
   ) {}
 
-  @Get("/colors/:color")
-  public setColor(@Param("color") color: string, @Session() session: any) {
-    session.color = color;
-  }
-
-  @Get("/colors")
-  public getColor(@Session() session: any) {
-    return session.color;
+  @Get("/whoami")
+  @UseGuards(AuthGuard)
+  @UseInterceptors(CurrentUserInterceptor)
+  public whoAmI(@CurrentUser() user: User) {
+    return user;
   }
 
   @Post("/sign-up")
-  public createUser(@Body() createUserDto: CreateUserDto): Promise<User> {
-    return this._authService.signUp(
+  public async createUser(
+    @Body() createUserDto: CreateUserDto,
+    @Session() session: any,
+  ): Promise<User> {
+    const user = await this._authService.signUp(
       createUserDto.email,
       createUserDto.password,
     );
+    session.userId = user._id;
+
+    return user;
   }
 
   @Post("/sign-in")
-  public loginUser(@Body() loginUserDto: LoginUserDto): Promise<User> {
-    return this._authService.signIn(loginUserDto.email, loginUserDto.password);
+  public async loginUser(
+    @Body() loginUserDto: LoginUserDto,
+    @Session() session: any,
+  ): Promise<User> {
+    const user = await this._authService.signIn(
+      loginUserDto.email,
+      loginUserDto.password,
+    );
+    session.userId = user._id;
+
+    return user;
+  }
+
+  @Get("/sign-out")
+  public async signOut(@Session() session: any) {
+    session.userId = null;
   }
 
   @Get("/:id")

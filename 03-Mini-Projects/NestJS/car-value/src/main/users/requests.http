@@ -3,8 +3,8 @@ POST http://localhost:3000/auth/sign-up
 Content-Type: application/json
 
 {
-    "email": "user3@mail.com",
-    "password": "user3@123@ABC"
+    "email": "user1@mail.com",
+    "password": "user1@123@ABC"
 }
 
 ### Sign In Request
@@ -12,9 +12,15 @@ POST http://localhost:3000/auth/sign-in
 Content-Type: application/json
 
 {
-    "email": "user3@mail.com",
-    "password": "user3@123@ABC"
+    "email": "user1@mail.com",
+    "password": "user1@123@ABC"
 }
+
+### Sign Out
+GET http://localhost:3000/auth/sign-out
+
+### Get the logged in user
+GET http://localhost:3000/auth/whoami
 
 ### Find a particular User by ID
 GET http://localhost:3000/auth/1
@@ -26,7 +32,7 @@ GET http://localhost:3000/auth?email=user@mail.com
 GET http://localhost:3000/auth
 
 ### Delete a user by ID
-DELETE http://localhost:3000/auth/5
+DELETE http://localhost:3000/auth/7
 
 ### Update a user by ID
 PATCH http://localhost:3000/auth/2
@@ -37,6 +43,3 @@ PATCH http://localhost:3000/auth/2
 
 ### Color test
 GET http://localhost:3000/auth/colors/red
-
-###
-GET http://localhost:3000/auth/colors

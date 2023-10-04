@@ -5,7 +5,7 @@ import { Observable, map } from "rxjs";
 export class SerializeInterceptor implements NestInterceptor {
   constructor(public dto: any) {}
 
-  intercept(
+  public intercept(
     context: ExecutionContext,
     next: CallHandler<any>,
   ): Observable<any> | Promise<Observable<any>> {
