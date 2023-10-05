@@ -10,9 +10,9 @@ export class AuthService {
   constructor(private readonly _usersService: UsersService) {}
 
   public async signUp(email: string, password: string): Promise<User> {
-    const userFound: User[] = await this._usersService.findByEmail(email);
+    const usersFound: User[] = await this._usersService.findByEmail(email);
 
-    if (userFound.length) {
+    if (usersFound.length) {
       throw new BadRequestException("email in use");
     }
 

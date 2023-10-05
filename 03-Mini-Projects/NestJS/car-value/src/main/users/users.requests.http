@@ -3,8 +3,8 @@ POST http://localhost:3000/auth/sign-up
 Content-Type: application/json
 
 {
-    "email": "user1@mail.com",
-    "password": "user1@123@ABC"
+    "email": "user2@mail.com",
+    "password": "user2@123@ABC"
 }
 
 ### Sign In Request
@@ -26,13 +26,13 @@ GET http://localhost:3000/auth/whoami
 GET http://localhost:3000/auth/1
 
 ### Get all users filtered by Email
-GET http://localhost:3000/auth?email=user@mail.com
+GET http://localhost:3000/auth?email=user1@mail.com
 
 ### Get all users
 GET http://localhost:3000/auth
 
 ### Delete a user by ID
-DELETE http://localhost:3000/auth/7
+DELETE http://localhost:3000/auth/1
 
 ### Update a user by ID
 PATCH http://localhost:3000/auth/2
