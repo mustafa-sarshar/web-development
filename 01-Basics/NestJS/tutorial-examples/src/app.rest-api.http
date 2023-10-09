@@ -1,0 +1,5 @@
+### Check home page
+GET http://localhost:3000/
+
+### Redirect to Nest JS
+GET http://localhost:3000/nestjs

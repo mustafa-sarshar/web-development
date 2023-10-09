@@ -1,0 +1,17 @@
+### Create a cat post
+POST http://localhost:3000/cats
+Content-Type: application/json
+
+{
+    "name": "Loosi",
+    ""
+}
+
+### Get all cats
+GET http://localhost:3000/cats
+
+### Get a cat by ID
+GET http://localhost:3000/cats/1
+
+### Redirect to Nest JS
+GET http://localhost:3000/nestjs
