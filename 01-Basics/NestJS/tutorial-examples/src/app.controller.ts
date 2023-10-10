@@ -4,11 +4,11 @@ import { AppService } from "./app.service";
 
 @Controller({ host: "localhost" })
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly _appService: AppService) {}
 
   @Get()
   public getHello(): string {
-    return this.appService.getHello();
+    return this._appService.getHello();
   }
 
   @Get("/nestjs")

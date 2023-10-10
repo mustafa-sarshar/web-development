@@ -3,8 +3,7 @@ POST http://localhost:3000/cats
 Content-Type: application/json
 
 {
-    "name": "Loosi",
-    ""
+    "name": "Loosi"
 }
 
 ### Get all cats

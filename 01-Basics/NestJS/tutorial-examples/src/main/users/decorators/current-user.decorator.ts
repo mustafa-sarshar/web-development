@@ -3,13 +3,15 @@ import { Request } from "express";
 
 declare module "express" {
   interface Request {
-    currentUser: string;
+    user: any;
   }
 }
 
-export const User = createParamDecorator(
-  (data: unknown, ctx: ExecutionContext) => {
+export const User = createParamDecorator<string>(
+  (data: string, ctx: ExecutionContext) => {
     const request: Request = ctx.switchToHttp().getRequest();
-    return request.currentUser;
+    const user = request.user;
+
+    return data ? user?.[data] : user;
   },
 );

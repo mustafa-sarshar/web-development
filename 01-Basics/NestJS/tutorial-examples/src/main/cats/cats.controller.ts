@@ -12,14 +12,14 @@ import {
   Post,
   Put,
   Res,
-  UseFilters,
+  UseInterceptors,
 } from "@nestjs/common";
 import { Response } from "express";
 
 import { CreateCatDto } from "./dto/create-cat.dto";
 import { UpdateCatDto } from "./dto/update-cat.dto";
 import { CatsService } from "./cats.service";
-import { HttpExceptionFilter } from "../../shared/filters/http-exception/http-exception.filter";
+import { TransformInterceptor } from "src/shared/interceptors/transform/transform.interceptor";
 
 @Controller("cats")
 export class CatsController {
@@ -57,6 +57,7 @@ export class CatsController {
 
   @Get(":id")
   // @UseFilters(new HttpExceptionFilter())
+  @UseInterceptors(new TransformInterceptor())
   findOne(
     @Param(
       "id",
