@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
-import { SerialPort } from "serialport";
 import { Buffer } from "node:buffer";
+import internal from "node:stream";
+import { SerialPort } from "serialport";
 
 @Injectable()
 export class SerialportService {
@@ -8,7 +9,11 @@ export class SerialportService {
 
   constructor() {}
 
-  async openPort(portName: string, baudRate: number, dataBits: 5 | 6 | 7 | 8) {
+  public async openPort(
+    portName: string,
+    baudRate: number,
+    dataBits: 5 | 6 | 7 | 8,
+  ) {
     try {
       this.port = new SerialPort({
         path: portName,
@@ -32,13 +37,45 @@ export class SerialportService {
           dateNow.getTime().toString(),
           Buffer.from(data).toString("utf8"),
         );
+
+        this.port.on("end", () => {
+          console.log("Data Ended!");
+        });
+
+        this.port.on("finish", () => {
+          console.log("Data Finished!");
+        });
+
+        this.port.on("pause", () => {
+          console.log("Data Paused!");
+        });
+
+        this.port.on("drain", () => {
+          console.log("Data Drained!");
+        });
+
+        this.port.on("pipe", (src: internal.Readable) => {
+          console.log("Data Piped!", src);
+        });
+
+        // this.port.on("readable", () => {
+        //   console.log("Data Readable!");
+        // });
+
+        this.port.on("resume", () => {
+          console.log("Data Resumed!");
+        });
+
+        this.port.on("unpipe", (src: internal.Readable) => {
+          console.log("Data Unpipe!", src);
+        });
       });
     } catch (error) {
       console.error("Error opening serial port:", error);
     }
   }
 
-  async closePort() {
+  public async closePort() {
     if (this.port) {
       await this.port.close();
       this.port = undefined;
@@ -46,9 +83,9 @@ export class SerialportService {
     }
   }
 
-  writeData(data: string) {
+  public async writeData(data: string) {
     if (this.port) {
-      this.port.write(data);
+      await this.port.write(data);
     } else {
       console.error("Serial port is not open");
     }
