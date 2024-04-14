@@ -1,0 +1,244 @@
+<div class="container">
+  <div class="content">
+    <div class="content__player__info">
+      @if (playerNew) {
+        <span>
+          Player: <b>{{ playerNew._id || "Unknown" }} </b>
+        </span>
+        <span
+          >Score: <b>{{ playerNew.score }}</b></span
+        >
+        <span
+          >FTA: <b>{{ playerNew.freeThrowsAttempt }}</b>
+        </span>
+        <span
+          >FTM: <b>{{ playerNew.freeThrowsMade }}</b>
+        </span>
+        <span
+          >3pts: <b>{{ playerNew.threePoints }}</b>
+        </span>
+        <span
+          >Fouls: <b>{{ playerNew.fouls }}</b>
+        </span>
+      }
+    </div>
+    @if (formGroupEl) {
+      <form class="content__form-fields" autoComplete="off" [formGroup]="formGroupEl">
+        <div class="content__form-fields__field">
+          <mat-form-field appearance="outline" color="primary">
+            <mat-label> Player Id </mat-label>
+            <input
+              matInput
+              id="playerId"
+              type="text"
+              formControlName="playerId"
+              placeholder="id"
+              #playerId
+              (input)="onChangeInput('playerId', playerId.value)"
+            />
+          </mat-form-field>
+          <!-- Create Player Button -->
+          <button mat-raised-button color="primary" type="button" (click)="onClickCreatePlayer()">
+            Create
+          </button>
+        </div>
+        <div class="content__form-fields__field">
+          <!-- Decrease Button -->
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="onClickUpdatePropValue('playerScore', 1, 'DECREASE')"
+          >
+            +
+          </button>
+          <mat-form-field appearance="outline" color="primary">
+            <mat-label> Score </mat-label>
+            <input
+              matInput
+              id="playerScore"
+              type="number"
+              formControlName="playerScore"
+              placeholder="score"
+            />
+          </mat-form-field>
+          <!-- Increase Button -->
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="onClickUpdatePropValue('playerScore', 1, 'INCREASE')"
+          >
+            +
+          </button>
+        </div>
+        <div class="content__form-fields__field">
+          <!-- Decrease Button -->
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="onClickUpdatePropValue('playerFreeThrowsAttempt', 1, 'DECREASE')"
+          >
+            +
+          </button>
+          <mat-form-field appearance="outline" color="primary">
+            <mat-label> FTA </mat-label>
+            <input
+              matInput
+              id="playerFreeThrowsAttempt"
+              type="number"
+              formControlName="playerFreeThrowsAttempt"
+              placeholder="fta"
+            />
+          </mat-form-field>
+          <!-- Increase Button -->
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="onClickUpdatePropValue('playerFreeThrowsAttempt', 1, 'INCREASE')"
+          >
+            +
+          </button>
+        </div>
+        <div class="content__form-fields__field">
+          <!-- Decrease Button -->
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="onClickUpdatePropValue('playerFreeThrowsMade', 1, 'DECREASE')"
+          >
+            +
+          </button>
+          <mat-form-field appearance="outline" color="primary">
+            <mat-label> FTM </mat-label>
+            <input
+              matInput
+              id="playerFreeThrowsMade"
+              type="number"
+              formControlName="playerFreeThrowsMade"
+              placeholder="ftm"
+            />
+          </mat-form-field>
+          <!-- Increase Button -->
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="onClickUpdatePropValue('playerFreeThrowsMade', 1, 'INCREASE')"
+          >
+            +
+          </button>
+        </div>
+        <div class="content__form-fields__field">
+          <!-- Decrease Button -->
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="onClickUpdatePropValue('playerThreePoints', 1, 'DECREASE')"
+          >
+            -
+          </button>
+          <mat-form-field appearance="outline" color="primary">
+            <mat-label> 3pts </mat-label>
+            <input
+              matInput
+              id="playerThreePoints"
+              type="number"
+              formControlName="playerThreePoints"
+              placeholder="3pts"
+            />
+          </mat-form-field>
+          <!-- Increase Button -->
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="onClickUpdatePropValue('playerThreePoints', 1, 'INCREASE')"
+          >
+            +
+          </button>
+        </div>
+        <div class="content__form-fields__field">
+          <!-- Decrease Button -->
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="onClickUpdatePropValue('playerFouls', 1, 'DECREASE')"
+          >
+            -
+          </button>
+          <mat-form-field appearance="outline" color="primary">
+            <mat-label> fouls </mat-label>
+            <input
+              matInput
+              id="playerFouls"
+              type="number"
+              formControlName="playerFouls"
+              placeholder="fouls"
+            />
+          </mat-form-field>
+          <!-- Increase Button -->
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="onClickUpdatePropValue('playerFouls', 1, 'INCREASE')"
+          >
+            +
+          </button>
+        </div>
+      </form>
+      <div class="content__actions">
+        <!-- Reset Button -->
+        <button mat-stroked-button color="default" type="button" (click)="onClickReset()">
+          Reset
+        </button>
+        <!-- Submit Button -->
+        <button
+          mat-raised-button
+          color="primary"
+          type="button"
+          (click)="onClickSubmit()"
+          [disabled]="formGroupEl.status !== 'VALID'"
+        >
+          Submit
+        </button>
+      </div>
+    }
+    <div class="content__players">
+      @if (players && players.length > 0) {
+        <table class="content__players__table">
+          <tr>
+            <th>Player Id</th>
+            <th>Score</th>
+            <th>FTA</th>
+            <th>FTM</th>
+            <th>3pts</th>
+            <th>Fouls</th>
+          </tr>
+          @for (player of players; track $index) {
+            <tr>
+              <td>{{ player._id }}</td>
+              <td>{{ player.score }}</td>
+              <td>{{ player.freeThrowsAttempt }}</td>
+              <td>{{ player.freeThrowsMade }}</td>
+              <td>{{ player.threePoints }}</td>
+              <td>{{ player.fouls }}</td>
+            </tr>
+          }
+        </table>
+      }
+    </div>
+    <div class="content__actions">
+      <!-- Reset Players Button -->
+      <button mat-stroked-button color="default" type="button" (click)="onClickResetPlayers()">
+        Reset Players
+      </button>
+    </div>
+  </div>
+</div>
