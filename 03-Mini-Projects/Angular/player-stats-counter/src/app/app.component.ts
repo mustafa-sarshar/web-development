@@ -74,7 +74,20 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public onClickCreatePlayer() {
     if (this.formGroupEl) {
-      this.playerNew = new Player(this.formGroupEl.value["playerId"], 0, 0, 0, 0, 0);
+      const idGiven = this.formGroupEl.value["playerId"];
+      const playerFound = this.players.find((player: Player) => player._id === idGiven);
+      if (!playerFound) {
+        this.playerNew = new Player(this.formGroupEl.value["playerId"], 0, 0, 0, 0, 0);
+      } else {
+        alert("Player ID must be unique");
+      }
+    }
+  }
+
+  public onClickDeletePlayer(playerId: string) {
+    const playerFound = this.players.find((player: Player) => player._id === playerId);
+    if (playerFound) {
+      this.players = this.players.filter((player: Player) => player._id !== playerId);
     }
   }
 
@@ -206,18 +219,32 @@ export class AppComponent implements OnInit, OnDestroy {
 
       this.players.push(playerNew);
 
-      this._resetFormValues();
+      this._resetFormValues(true);
       this.playerNew = undefined;
     }
   }
 
   public onClickReset() {
-    this._resetFormValues();
+    this._resetFormValues(true);
+  }
+
+  public onClickResetData() {
+    this._resetFormValues(false);
   }
 
   public onClickResetPlayers() {
-    this._resetFormValues();
+    this._resetFormValues(true);
     this.players = [];
+  }
+
+  public getSum(
+    propertyName: "score" | "freeThrowsAttempt" | "freeThrowsMade" | "threePoints" | "fouls",
+  ) {
+    if (this.players && this.players.length > 0) {
+      return this.players.reduce((sum, player: Player) => sum + player[propertyName], 0);
+    } else {
+      return 0;
+    }
   }
 
   private _initForm() {
@@ -268,16 +295,22 @@ export class AppComponent implements OnInit, OnDestroy {
     return formGroupEl;
   }
 
-  private _resetFormValues() {
-    if (this.formGroupEl) {
+  private _resetFormValues(resetAll: boolean) {
+    if (this.formGroupEl && this.playerNew) {
       this.formGroupEl.setValue({
-        playerId: "",
+        playerId: resetAll ? "" : this.playerNew._id,
         playerScore: 0,
         playerFreeThrowsAttempt: 0,
         playerFreeThrowsMade: 0,
         playerThreePoints: 0,
         playerFouls: 0,
       });
+      this.playerNew._id = resetAll ? "" : this.playerNew._id;
+      this.playerNew.score = 0;
+      this.playerNew.freeThrowsAttempt = 0;
+      this.playerNew.freeThrowsMade = 0;
+      this.playerNew.threePoints = 0;
+      this.playerNew.fouls = 0;
     }
   }
 }

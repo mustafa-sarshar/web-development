@@ -198,6 +198,10 @@
         <button mat-stroked-button color="default" type="button" (click)="onClickReset()">
           Reset
         </button>
+        <!-- Reset data Button -->
+        <button mat-stroked-button color="default" type="button" (click)="onClickResetData()">
+          Reset Data
+        </button>
         <!-- Submit Button -->
         <button
           mat-raised-button
@@ -215,9 +219,9 @@
         <table class="content__players__table">
           <tr>
             <th>Player Id</th>
-            <th>Score</th>
-            <th>FTA</th>
-            <th>FTM</th>
+            <th>Scores</th>
+            <th>FTAs</th>
+            <th>FTMs</th>
             <th>3pts</th>
             <th>Fouls</th>
           </tr>
@@ -229,8 +233,20 @@
               <td>{{ player.freeThrowsMade }}</td>
               <td>{{ player.threePoints }}</td>
               <td>{{ player.fouls }}</td>
+              <td>
+                <button (click)="onClickDeletePlayer(player._id)"><b>X</b></button>
+              </td>
             </tr>
           }
+          <tr></tr>
+          <tr>
+            <th>Total</th>
+            <th>{{ getSum("score") }}</th>
+            <th>{{ getSum("freeThrowsAttempt") }}</th>
+            <th>{{ getSum("freeThrowsMade") }}</th>
+            <th>{{ getSum("threePoints") }}</th>
+            <th>{{ getSum("fouls") }}</th>
+          </tr>
         </table>
       }
     </div>
