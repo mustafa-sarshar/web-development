@@ -16,14 +16,5 @@
   "bugs": {
     "url": "https://github.com/mustafa-sarshar/Web-Development/issues"
   },
-  "homepage": "https://github.com/mustafa-sarshar/Web-Development#readme",
-  "dependencies": {
-    "@types/cookie-session": "^2.0.45",
-    "bcrypt": "^5.1.1",
-    "cookie-session": "^2.0.0",
-    "mongoose": "^8.1.2"
-  },
-  "devDependencies": {
-    "@types/bcrypt": "^5.0.0"
-  }
+  "homepage": "https://github.com/mustafa-sarshar/Web-Development#readme"
 }
