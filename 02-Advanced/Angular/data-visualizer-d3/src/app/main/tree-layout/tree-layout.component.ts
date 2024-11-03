@@ -17,17 +17,11 @@ export class TreeLayoutComponent implements AfterViewInit {
 	public ngAfterViewInit(): void {
 		if (this.contentChartElRef) {
 			this.contentChartEl = this.contentChartElRef.nativeElement;
-
-			if (this.contentChartEl) {
-				this.contentChartEl.innerHTML = "";
-			}
 		}
 	}
 
 	public onClickLayout(layoutId: any) {
 		if (this.contentChartEl) {
-			this.contentChartEl.innerHTML = "";
-
 			this._treeLayoutService.drawLayouts(layoutId, this.contentChartEl);
 		}
 	}

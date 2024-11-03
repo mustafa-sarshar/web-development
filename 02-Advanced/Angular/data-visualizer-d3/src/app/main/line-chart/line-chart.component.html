@@ -1,20 +1,12 @@
-<div
-	#container
-	class="container"
->
+<div #container class="container">
 	<h1>Line Chart</h1>
-	<div
-		#content
-		class="content"
-	>
+	<div #content class="content">
 		<div class="content__actions">
 			<button (click)="onClickCharts('CHART_1')">Chart 1</button>
 			<button (click)="onClickCharts('CHART_2')">Chart 2</button>
 			<button (click)="onClickCharts('CHART_3')">Chart 3 (PRICES:CSV)</button>
+			<button (click)="onClickCharts('CHART_STREAM')">Chart Stream</button>
 		</div>
-		<div
-			#contentChart
-			class="content__chart"
-		></div>
+		<div #contentChart class="content__chart"></div>
 	</div>
 </div>

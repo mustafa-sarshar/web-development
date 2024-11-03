@@ -6,13 +6,22 @@ import { Injectable } from "@angular/core";
 export class UtilityService {
 	constructor() {}
 
-	public generateRandomNumbers(
-		N: number,
-		min: number = 0,
-		max: number = 100,
-		outputType: "INTEGER" | "DECIMAL" = "INTEGER",
-		exclusions: number[] = [],
-	): number[] {
+	public generateRandomNumber(min: number = 0, max: number = 100, outputType: "INTEGER" | "DECIMAL" = "INTEGER", exclusions: number[] = []): number {
+		let randomNum: number | undefined = undefined;
+
+		while (randomNum === undefined || exclusions.includes(randomNum)) {
+			// Generate random number based on output type
+			if (outputType === "INTEGER") {
+				randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+			} else {
+				randomNum = parseFloat((Math.random() * (max - min) + min).toFixed(2)); // Limit to 2 decimal places
+			}
+		}
+
+		return randomNum;
+	}
+
+	public generateRandomNumbers(N: number, min: number = 0, max: number = 100, outputType: "INTEGER" | "DECIMAL" = "INTEGER", exclusions: number[] = []): number[] {
 		const randomNumbers: Set<number> = new Set(); // Use a Set to avoid duplicates
 
 		while (randomNumbers.size < N) {
@@ -34,13 +43,7 @@ export class UtilityService {
 		return Array.from(randomNumbers).slice(); // Convert Set back to Array
 	}
 
-	public generateSequentialNumbers(
-		N: number,
-		start: number,
-		end: number,
-		outputType: "INTEGER" | "DECIMAL" = "INTEGER",
-		exclusions: number[] = [],
-	): number[] {
+	public generateSequentialNumbers(N: number, start: number, end: number, outputType: "INTEGER" | "DECIMAL" = "INTEGER", exclusions: number[] = []): number[] {
 		// If N is 0, generate all integers from start to end
 		if (N === 0) {
 			const result: number[] = [];
@@ -79,10 +82,7 @@ export class UtilityService {
 		return result;
 	}
 
-	public generateRandomColorCodes(
-		N: number,
-		exclusions: string[] = [],
-	): string[] | string {
+	public generateRandomColorCodes(N: number, exclusions: string[] = []): string[] | string {
 		const colorCodes: Set<string> = new Set(); // Use a Set to avoid duplicates
 
 		while (colorCodes.size < N) {
@@ -103,11 +103,7 @@ export class UtilityService {
 		return Array.from(colorCodes).slice(); // Convert Set back to Array
 	}
 
-	public scaleValuesToRange(
-		arr: number[],
-		newMin: number,
-		newMax: number,
-	): number[] {
+	public scaleValuesToRange(arr: number[], newMin: number, newMax: number): number[] {
 		if (arr.length === 0) {
 			return [].slice(); // Return an empty array for empty input
 		}
@@ -119,19 +115,12 @@ export class UtilityService {
 			.slice()
 			.map((num) => {
 				// Scale the number to the new range
-				return (
-					newMin + ((num - oldMin) * (newMax - newMin)) / (oldMax - oldMin)
-				);
+				return newMin + ((num - oldMin) * (newMax - newMin)) / (oldMax - oldMin);
 			})
 			.slice();
 	}
 
-	public generateDateRange(
-		startDate: Date,
-		endDate: Date,
-		N: number | null = null,
-		step: "WEEK" | "MONTH" | "YEAR" | null = null,
-	): Date[] {
+	public generateDateRange(startDate: Date, endDate: Date, N: number | null = null, step: "WEEK" | "MONTH" | "YEAR" | null = null): Date[] {
 		const dates: Date[] = [];
 
 		if (N !== null && N > 0) {
@@ -162,9 +151,7 @@ export class UtilityService {
 						currentDate.setFullYear(currentDate.getFullYear() + 1); // Add 1 year
 						break;
 					default:
-						throw new Error(
-							"Invalid step type. Use 'WEEK', 'MONTH', or 'YEAR'.",
-						);
+						throw new Error("Invalid step type. Use 'WEEK', 'MONTH', or 'YEAR'.");
 				}
 			}
 		} else {
@@ -200,10 +187,7 @@ export class UtilityService {
 		return 0.299 * r + 0.587 * g + 0.114 * b;
 	}
 
-	public sortColors(
-		colors: string[],
-		order: "LIGHT_TO_DARK" | "DARK_TO_LIGHT",
-	): string[] {
+	public sortColors(colors: string[], order: "LIGHT_TO_DARK" | "DARK_TO_LIGHT"): string[] {
 		// Sort colors based on brightness
 		const sortedColors = colors.sort((a, b) => {
 			const brightnessA = this._calculateBrightness(this._hexToRgb(a));
@@ -213,9 +197,7 @@ export class UtilityService {
 		});
 
 		// Reverse the array if sorting from dark to light
-		return order === "DARK_TO_LIGHT"
-			? sortedColors.reverse().slice()
-			: sortedColors.slice();
+		return order === "DARK_TO_LIGHT" ? sortedColors.reverse().slice() : sortedColors.slice();
 	}
 
 	public contrastColor(color: string): string {
@@ -227,11 +209,7 @@ export class UtilityService {
 		const [r, g, b] = this._hexToRgb(color);
 
 		// Calculate the complementary color
-		const contrastingColor: [number, number, number] = [
-			255 - r,
-			255 - g,
-			255 - b,
-		];
+		const contrastingColor: [number, number, number] = [255 - r, 255 - g, 255 - b];
 
 		return this._rgbToHex(...contrastingColor);
 	}

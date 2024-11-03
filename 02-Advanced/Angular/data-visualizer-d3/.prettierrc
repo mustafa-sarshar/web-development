@@ -3,7 +3,10 @@
 	"trailingComma": "all",
 	"tabWidth": 2,
 	"useTabs": true,
-	"bracketSameLine": true,
+	"bracketSameLine": false,
 	"bracketSpacing": true,
-	"quoteProps": "consistent"
+	"quoteProps": "consistent",
+	"singleAttributePerLine": false,
+	"endOfLine": "crlf",
+	"printWidth": 200
 }

@@ -8,27 +8,24 @@ export class TreeLayoutService {
 	constructor(private readonly _utilityService: UtilityService) {}
 
 	public async drawLayouts(layoutId: any, contentEl: HTMLDivElement) {
-		const maxWidth = contentEl.scrollWidth;
-		const maxHeight = contentEl.scrollHeight;
+		const maxWidth = contentEl.offsetWidth;
+		const maxHeight = contentEl.offsetHeight;
 		const settings = {
 			size: { h: maxHeight, w: maxWidth },
 			margin: { l: 50, r: 50, t: 50, b: 0 },
 		};
 
-		const containerEl = d3.select(contentEl);
-		const svg = containerEl
-			.append("svg")
-			.attr("width", settings.size.w)
-			.attr("height", settings.size.h);
+		const d3ContainerEl = d3.select(contentEl);
+
+		if (!d3ContainerEl.select("svg").empty()) {
+			!d3ContainerEl.select("svg").remove();
+		}
+
+		const svg = d3ContainerEl.append("svg").attr("width", settings.size.w).attr("height", settings.size.h);
 
 		const tree = d3.tree().size([settings.size.w - 50, settings.size.h - 100]);
 
-		const chartGroup = svg
-			.append("g")
-			.attr(
-				"transform",
-				`translate(${settings.margin.l},${settings.margin.t})`,
-			);
+		const chartGroup = svg.append("g").attr("transform", `translate(${settings.margin.l},${settings.margin.t})`);
 
 		try {
 			const data = await d3.json<Array<unknown>>("data/tree-data.json");
