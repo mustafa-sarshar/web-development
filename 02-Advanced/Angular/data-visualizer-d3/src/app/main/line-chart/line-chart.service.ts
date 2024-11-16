@@ -261,10 +261,10 @@ export class LineChartService {
 			.enter()
 			.append("circle")
 			.attr("class", "dot")
-			.attr("cx", (d: LineChartData, i: number) => {
+			.attr("cx", (d: StreamChartData, i: number) => {
 				return i * (lineLength - 1);
 			})
-			.attr("cy", (d: LineChartData, i: number) => {
+			.attr("cy", (d: StreamChartData, i: number) => {
 				return d.y;
 			})
 			.attr("r", "2")
