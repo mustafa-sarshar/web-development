@@ -1,0 +1,17 @@
+<div>
+  <p>
+    Counter: {{ count$ | async }}, -------------- x2 =
+    {{ countDouble$ | async }}
+  </p>
+  <div style="display: flex">
+    <button (click)="onClickCounterInc()">+</button>
+    <button (click)="onClickCounterDec()">-</button>
+  </div>
+  <ul>
+    @for (action of actions(); track $index) {
+      <li>
+        {{ action }}
+      </li>
+    }
+  </ul>
+</div>

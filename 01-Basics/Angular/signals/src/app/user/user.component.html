@@ -1,0 +1,15 @@
+<div>
+  <button (click)="onClickUser()">
+    <img [src]="userSelected().avatarPath" [alt]="userSelected().username" />
+    <span>{{ userSelected().username }}</span>
+  </button>
+  <p>Counter: {{ counter() }}</p>
+  <div style="display: flex">
+    <button (click)="onClickCounterInc()">+</button>
+    <button (click)="onClickCounterDec()">-</button>
+  </div>
+  @if (action()) {
+    <p>Action ===> {{ action() }}</p>
+  }
+  <p>Counter (x2): {{ doubleCounter() }}</p>
+</div>
