@@ -33,6 +33,8 @@ export class UserComponent {
 
   public onClickUser() {
     const randomIdx = Math.floor(Math.random() * this.users.length);
+
+    
     this.userSelected.set(this.users[randomIdx]);
   }
 

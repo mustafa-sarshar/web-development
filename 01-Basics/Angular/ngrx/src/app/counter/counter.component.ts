@@ -1,5 +1,5 @@
 import { AsyncPipe } from "@angular/common";
-import { Component, effect, signal } from "@angular/core";
+import { Component, signal } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 
