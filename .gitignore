@@ -121,3 +121,5 @@ data/images/
 data/invoices/
 *.cert
 *.key
+*.fbx
+*.zip
