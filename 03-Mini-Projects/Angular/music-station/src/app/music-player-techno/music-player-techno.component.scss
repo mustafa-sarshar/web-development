@@ -1,0 +1,41 @@
+.track-list {
+  padding: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px;
+  margin-right: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #cccccc;
+  }
+}
+
+.stop-all {
+  background-color: #dc3545;
+  margin-bottom: 50px;
+}
+
+.status.stick-to-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffcccc;
+  padding: 10px;
+  text-align: center;
+  z-index: 1000;
+}

@@ -4,7 +4,7 @@ import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
-import { GLTF, GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import Stats from "three/addons/libs/stats.module.js";
 
 const modelUrl = {
@@ -77,9 +77,9 @@ new GLTFLoader().load(modelUrl.MODEL_EVE.MODEL_IDLE, (gltf: GLTF) => {
 async function loadEve() {
   const loader = new GLTFLoader();
   const [model_idle, model_walking, model_running] = await Promise.all([
-    loader.loadAsync(modelUrl.MODEL_WARROCK_KURNIAWAN.MODEL_IDLE),
-    loader.loadAsync(modelUrl.MODEL_WARROCK_KURNIAWAN.MODEL_WALKING),
-    loader.loadAsync(modelUrl.MODEL_WARROCK_KURNIAWAN.MODEL_RUNNING),
+    loader.loadAsync(modelUrl.MODEL_EVE.MODEL_IDLE),
+    loader.loadAsync(modelUrl.MODEL_EVE.MODEL_WALKING),
+    loader.loadAsync(modelUrl.MODEL_EVE.MODEL_RUNNING),
   ]);
 
   mixer = new THREE.AnimationMixer(model_idle.scene);

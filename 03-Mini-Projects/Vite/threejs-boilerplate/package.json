@@ -15,6 +15,7 @@
     "vite": "^6.1.0"
   },
   "dependencies": {
+    "@dimforge/rapier3d-compat": "^0.15.0",
     "dat.gui": "^0.7.9",
     "jeasings": "^0.0.16",
     "three": "^0.173.0"

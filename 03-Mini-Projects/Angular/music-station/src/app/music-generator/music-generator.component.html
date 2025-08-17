@@ -1,0 +1,47 @@
+<form [formGroup]="musicForm">
+  <label>Tempo (BPM):</label>
+  <input
+    formControlName="tempo"
+    type="number"
+    placeholder="Enter tempo (60-240)"
+  />
+  <!-- Error 1 -->
+  @if (
+    musicForm.get("tempo")?.hasError("required") &&
+    musicForm.get("tempo")?.touched
+  ) {
+    <div class="error">Tempo is required.</div>
+  }
+  <!-- Error 2 -->
+  @if (
+    musicForm.get("tempo")?.hasError("min") && musicForm.get("tempo")?.touched
+  ) {
+    <div class="error">Tempo must be at least 60 BPM.</div>
+  }
+  <!-- Error 3 -->
+  @if (
+    musicForm.get("tempo")?.hasError("max") && musicForm.get("tempo")?.touched
+  ) {
+    <div class="error">Tempo cannot exceed 240 BPM.</div>
+  }
+
+  <!-- Actions -->
+  <button
+    type="button"
+    [disabled]="musicForm.invalid || musicStatus === 'START'"
+    (click)="startMusic()"
+  >
+    Start Music
+  </button>
+  <button
+    type="button"
+    [disabled]="musicForm.invalid || musicStatus === 'STOP'"
+    (click)="stopMusic()"
+  >
+    Stop Music
+  </button>
+</form>
+
+<div class="status stick-to-bottom">
+  <p>{{ musicForm.get("tempo")?.value }} BPM</p>
+</div>

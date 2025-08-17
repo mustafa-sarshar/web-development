@@ -1,0 +1,17 @@
+<div class="track-list">
+  <h2>Techno Music Tracks (30 Seconds Each)</h2>
+  <ul>
+    @for (item of tracks; track $index) {
+    <li>
+      <button (click)="playTrack(item)" [disabled]="isPlaying(item)">
+        {{ isPlaying(item) ? "Playing" : "Start" }} {{ item }}
+      </button>
+    </li>
+    }
+  </ul>
+  <button class="stop-all" (click)="stopAll()">Stop All</button>
+</div>
+
+<div class="status stick-to-bottom">
+  <p>Current Track: {{ getCurrentTrack() || "None" }}</p>
+</div>

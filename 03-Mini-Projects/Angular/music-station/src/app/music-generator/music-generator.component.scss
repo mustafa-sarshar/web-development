@@ -1,0 +1,28 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+input,
+button {
+  padding: 5px;
+  margin: 5px 0;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+.status.stick-to-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffcccc;
+  padding: 10px;
+  text-align: center;
+  z-index: 1000;
+}
